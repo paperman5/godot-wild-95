@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytyeorukhd6h"
-path="res://.godot/imported/test_character.png-109135e0177df6fac69651bb2512e59d.ctex"
+uid="uid://jj5udgyqmmvl"
+path="res://.godot/imported/Sabrina_Side_Idle_Animation.png-a0898340f2d846e5d4def7b9475cf414.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_character.png"
-dest_files=["res://.godot/imported/test_character.png-109135e0177df6fac69651bb2512e59d.ctex"]
+source_file="res://player/Sabrina_Side_Idle_Animation.png"
+dest_files=["res://.godot/imported/Sabrina_Side_Idle_Animation.png-a0898340f2d846e5d4def7b9475cf414.ctex"]
 
 [params]
 

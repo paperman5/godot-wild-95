@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dp4apy3l6khat"]
+
+[ext_resource type="Script" uid="uid://cxus5hjm8my5a" path="res://map/table.gd" id="1_5b3ib"]
+[ext_resource type="Texture2D" uid="uid://bkbs0r22bpvlc" path="res://map/counter_h.png" id="2_g5qrt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
+size = Vector2(32, 32)
+
+[node name="CounterH" type="StaticBody2D" unique_id=1824851107]
+script = ExtResource("1_5b3ib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496502224]
+shape = SubResource("RectangleShape2D_hunv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429451809]
+texture = ExtResource("2_g5qrt")
+offset = Vector2(0, -20)
