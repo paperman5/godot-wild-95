@@ -43,6 +43,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("2_yw30f")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, -7)]
+}
 
 [sub_resource type="Animation" id="Animation_yw30f"]
 resource_name = "idle_down"
@@ -84,6 +96,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_yw30f")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, -7)]
 }
 
 [sub_resource type="Animation" id="Animation_qjkh3"]
@@ -127,6 +151,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("3_qjkh3")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -6)]
+}
 
 [sub_resource type="Animation" id="Animation_g6k8r"]
 resource_name = "idle_right"
@@ -168,6 +204,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("3_qjkh3")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, -6)]
 }
 
 [sub_resource type="Animation" id="Animation_boad6"]
@@ -211,6 +259,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("4_g6k8r")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, -7)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgyib"]
 _data = {
@@ -233,3 +293,7 @@ hframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=97116969]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rgyib")
+
+[node name="Hand" type="Marker2D" parent="." unique_id=472818977]
+unique_name_in_owner = true
+position = Vector2(-11, -7)

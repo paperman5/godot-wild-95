@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cbyr57q28oqv3"]
+
+[ext_resource type="Script" uid="uid://3gnmc8ror7x2" path="res://map/ice_cream_dispenser.gd" id="1_1ld14"]
+[ext_resource type="Texture2D" uid="uid://bkbs0r22bpvlc" path="res://map/counter_h.png" id="1_qu1ho"]
+[ext_resource type="Texture2D" uid="uid://c84o8bjnw7wjv" path="res://map/ice_cream_dispenser.png" id="2_1ld14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_1ld14"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7b218"]
+gradient = SubResource("Gradient_1ld14")
+width = 1
+
+[node name="IceCreamDispenser" type="StaticBody2D" unique_id=1869970340]
+script = ExtResource("1_1ld14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1996763604]
+shape = SubResource("RectangleShape2D_hunv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236278550]
+texture = ExtResource("1_qu1ho")
+offset = Vector2(0, -20)
+
+[node name="IceCreamDispenser" type="Sprite2D" parent="." unique_id=954497979]
+position = Vector2(0, -40)
+texture = ExtResource("2_1ld14")
+
+[node name="Color" type="Sprite2D" parent="IceCreamDispenser" unique_id=439697275]
+unique_name_in_owner = true
+modulate = Color(0, 0, 1, 1)
+position = Vector2(2.3841858e-07, -0.49999905)
+scale = Vector2(6.0000005, 3.000002)
+texture = SubResource("GradientTexture1D_7b218")

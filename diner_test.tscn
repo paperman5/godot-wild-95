@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cryasie5difhi" path="res://player/player.tscn" id="2_sly2x"]
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter_h.tscn" id="3_wdah5"]
 [ext_resource type="PackedScene" uid="uid://cu5684ss75bud" path="res://map/table.tscn" id="4_pbfy6"]
+[ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="5_o4td3"]
+[ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="6_qvh8k"]
 
 [node name="DinerTest" type="Node2D" unique_id=953448583]
 y_sort_enabled = true
@@ -14,13 +16,15 @@ tile_map_data = PackedByteArray("AAABAP//AQAAAAAAAQAAAP//AQAAAAAAAQACAP//AQAAAAA
 tile_set = ExtResource("1_okmqi")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=1222708539 instance=ExtResource("2_sly2x")]
-position = Vector2(240, 208)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1818393492]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1818393492]
+position = Vector2(176, 48)
 zoom = Vector2(3, 3)
 
+[node name="Player" parent="." unique_id=1222708539 instance=ExtResource("2_sly2x")]
+position = Vector2(176, 80)
+
 [node name="Tables" type="Node2D" parent="." unique_id=206303096]
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="CounterH" parent="Tables" unique_id=1824851107 instance=ExtResource("3_wdah5")]
@@ -40,3 +44,17 @@ position = Vector2(304, 144)
 
 [node name="Table2" parent="Tables" unique_id=1278872218 instance=ExtResource("4_pbfy6")]
 position = Vector2(112, 240)
+
+[node name="IceCreamDispenser" parent="." unique_id=1869970340 instance=ExtResource("5_o4td3")]
+position = Vector2(112, 16)
+
+[node name="IceCreamDispenser2" parent="." unique_id=1618600525 instance=ExtResource("5_o4td3")]
+position = Vector2(144, 16)
+type = 1
+
+[node name="IceCreamDispenser3" parent="." unique_id=431738218 instance=ExtResource("5_o4td3")]
+position = Vector2(176, 16)
+type = 2
+
+[node name="IceCreamGlassDispenser" parent="." unique_id=985355287 instance=ExtResource("6_qvh8k")]
+position = Vector2(80, 16)

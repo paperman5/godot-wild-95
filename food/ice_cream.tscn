@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cg80er3ff08wp"]
+
+[ext_resource type="Texture2D" uid="uid://civajqxmnekk0" path="res://food/ice_cream_glass.png" id="1_ne46q"]
+[ext_resource type="Script" uid="uid://c440lb7pchno" path="res://food/ice_cream.gd" id="2_on6e3"]
+
+[sub_resource type="Gradient" id="Gradient_vhhsd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7b218"]
+gradient = SubResource("Gradient_vhhsd")
+width = 1
+
+[node name="IceCream" type="Sprite2D" unique_id=1566709364 node_paths=PackedStringArray("stack_pos")]
+texture = ExtResource("1_ne46q")
+offset = Vector2(0, -12)
+script = ExtResource("2_on6e3")
+stack_pos = NodePath("Stack")
+
+[node name="Layer1" type="Sprite2D" parent="." unique_id=1201180073]
+unique_name_in_owner = true
+position = Vector2(0, -6.5)
+scale = Vector2(4, 3)
+texture = SubResource("GradientTexture1D_7b218")
+
+[node name="Layer2" type="Sprite2D" parent="." unique_id=292121257]
+unique_name_in_owner = true
+position = Vector2(-1.4901161e-08, -9.5)
+scale = Vector2(4, 3)
+texture = SubResource("GradientTexture1D_7b218")
+
+[node name="Layer3" type="Sprite2D" parent="." unique_id=162739854]
+unique_name_in_owner = true
+position = Vector2(-1.1920929e-07, -12.5)
+scale = Vector2(3.9999998, 2.9999995)
+texture = SubResource("GradientTexture1D_7b218")
+
+[node name="Stack" type="Marker2D" parent="." unique_id=1238342577]
+position = Vector2(0, -14)

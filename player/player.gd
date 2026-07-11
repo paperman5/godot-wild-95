@@ -1,17 +1,23 @@
+class_name Player
 extends Node2D
 
 const TILE_SIZE = 32
 
 @export var tile_move_speed := 0.1
 @export var move_cooldown := 0.075
+@export var max_food_stack := 4
 
 @onready var spr := %Sprite2D as Sprite2D
 @onready var anim := %AnimationPlayer as AnimationPlayer
+@onready var hand := %Hand as Marker2D
 var move_tween : Tween
 var true_pos := Vector2.ZERO
 var moving := false
 
+var food_stack : Array[FoodItem] = []
+
 func _ready() -> void:
+	GameManager.player = self
 	anim.play("idle_down")
 	true_pos = position
 
@@ -61,4 +67,38 @@ func _create_move_tween(dir : Vector2, bump : bool):
 	move_tween.tween_interval(move_cooldown)
 	move_tween.chain().tween_callback(func(): moving = false)
 	
+func holding_icecream() -> bool:
+	return len(food_stack) > 0 and is_instance_of(food_stack[0], IceCream)
+
+func holding_food() -> bool:
+	return len(food_stack) > 0 and is_instance_of(food_stack[0], CookedFood)
+
+func add_empty_icecream() -> bool:
+	if len(food_stack) < max_food_stack:
+		# If we already have an empty icecream don't add another one
+		if holding_icecream() and food_stack[0].is_empty():
+			return false
+		var icecream = preload("uid://cg80er3ff08wp").instantiate()
+		add_to_food_stack(icecream)
+		return true
+	return false
+
+func add_icecream_flavor(flavor : Utils.IceCreamType):
+	if holding_icecream() and not food_stack[0].is_full():
+		food_stack[0].add_flavor(flavor)
+
+func add_to_food_stack(new_food : FoodItem):
+	food_stack.push_front(new_food)
+	for c : Node2D in hand.get_children():
+		c.position.y += new_food.stack_pos.position.y
+	hand.add_child(new_food)
+	hand.move_child(new_food, 0)
 	
+func pop_food_stack():
+	if len(food_stack) <= 0:
+		return
+	var food = food_stack[0]
+	for c : Node2D in hand.get_children():
+		c.position.y -= food.stack_pos.position.y
+	hand.get_child(0).queue_free()
+	food_stack.pop_front()
