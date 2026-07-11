@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
 size = Vector2(32, 32)
 
-[node name="CounterH" type="StaticBody2D" unique_id=1824851107]
+[node name="CounterH" type="StaticBody2D" unique_id=1824851107 node_paths=PackedStringArray("seat_positions") groups=["tables"]]
 script = ExtResource("1_5b3ib")
+seat_positions = [NodePath("Seat1")]
+seat_directions = Array[Vector2i]([Vector2i(0, -1)])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496502224]
 shape = SubResource("RectangleShape2D_hunv0")
@@ -15,3 +17,6 @@ shape = SubResource("RectangleShape2D_hunv0")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429451809]
 texture = ExtResource("2_g5qrt")
 offset = Vector2(0, -20)
+
+[node name="Seat1" type="Marker2D" parent="." unique_id=1181424213]
+position = Vector2(0, 9)

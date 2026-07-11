@@ -4,7 +4,7 @@ extends Node2D
 const TILE_SIZE = 32
 
 @export var tile_move_speed := 0.1
-@export var move_cooldown := 0.075
+@export var move_cooldown := 0.05
 @export var max_food_stack := 4
 
 @onready var spr := %Sprite2D as Sprite2D
@@ -102,3 +102,9 @@ func pop_food_stack():
 		c.position.y -= food.stack_pos.position.y
 	hand.get_child(0).queue_free()
 	food_stack.pop_front()
+
+func get_held_order() -> FoodItem:
+	if len(food_stack) > 0:
+		return food_stack[0]
+	else:
+		return null
