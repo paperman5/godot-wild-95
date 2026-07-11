@@ -12,8 +12,10 @@ func _ready() -> void:
 
 func bump(_from_dir : Vector2):
 	var test_order = GameManager.player.get_held_order()
+	if not is_instance_valid(test_order):
+		return
 	for customer in seated_customers:
-		if customer.has_matching_order(test_order):
+		if is_instance_valid(customer) and customer.has_matching_order(test_order):
 			customer.deliver_order(test_order)
 			GameManager.player.pop_food_stack()
 
@@ -35,5 +37,5 @@ func table_is_full() -> bool:
 			return false
 	return true
 
-func _on_customer_left(spot : int):
-	pass
+func _on_customer_left(_orders : Array[FoodItem], _bonus : bool, spot : int):
+	seated_customers[spot] = null

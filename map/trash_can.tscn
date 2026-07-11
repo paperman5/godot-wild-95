@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b601qwcmx8o72"]
+
+[ext_resource type="Script" uid="uid://du7uehhltncs1" path="res://map/trash_can.gd" id="1_h6tr3"]
+[ext_resource type="Texture2D" uid="uid://cjgkqag7tg4mt" path="res://map/TrashCan.png" id="2_wy813"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
+size = Vector2(32, 32)
+
+[node name="IceCreamDispenser" type="StaticBody2D" unique_id=1869970340]
+script = ExtResource("1_h6tr3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1996763604]
+shape = SubResource("RectangleShape2D_hunv0")
+
+[node name="TrashCan" type="Sprite2D" parent="." unique_id=954497979]
+texture = ExtResource("2_wy813")
+offset = Vector2(0, -16)

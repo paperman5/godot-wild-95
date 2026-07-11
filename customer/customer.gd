@@ -1,10 +1,11 @@
 class_name Customer
 extends Node2D
 
-signal left_seat
+signal left_seat(orders : Array[FoodItem], bonus : bool)
 
 var orig_orders : Array[FoodItem] = []
 var orders_left : Array[FoodItem] = []
+var bonus := false
 
 @onready var anim := %AnimationPlayer as AnimationPlayer
 @onready var order_backer := %Backer as Sprite2D
@@ -12,6 +13,7 @@ var orders_left : Array[FoodItem] = []
 
 func _ready() -> void:
 	randomize_order()
+	left_seat.connect(GameManager.level.customer_left)
 
 func has_matching_order(order_to_check : FoodItem) -> bool:
 	return find_matching_order(order_to_check) >= 0
@@ -30,7 +32,7 @@ func deliver_order(order : FoodItem):
 		start_eating()
 
 func start_eating():
-	left_seat.emit()
+	left_seat.emit(orig_orders, bonus)
 	queue_free()
 
 func sit_direction(dir : Vector2):

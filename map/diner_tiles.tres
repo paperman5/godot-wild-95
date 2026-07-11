@@ -1,7 +1,14 @@
 [gd_resource type="TileSet" format=3 uid="uid://c1l35qqps12hs"]
 
+[ext_resource type="Texture2D" uid="uid://dlg3tf7cu60s5" path="res://map/Stage1Tiles_Test.png" id="1_0f402"]
 [ext_resource type="PackedScene" uid="uid://bloghmewdp20e" path="res://map/wall.tscn" id="1_c50ke"]
 [ext_resource type="Texture2D" uid="uid://caylm6533qoaj" path="res://map/floor_tile.png" id="3_sxk1a"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxk1a"]
+texture = ExtResource("1_0f402")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_58y20"]
 resource_name = "Walls"
@@ -16,3 +23,4 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetScenesCollectionSource_58y20")
 sources/3 = SubResource("TileSetAtlasSource_qp683")
+sources/0 = SubResource("TileSetAtlasSource_sxk1a")

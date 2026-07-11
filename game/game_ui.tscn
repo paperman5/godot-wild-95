@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://d1ihbqcdneuak"]
+
+[ext_resource type="Script" uid="uid://b8rvdausgmssn" path="res://addons/virtual_joystick_DX/vjdx_core_script.gd" id="1_0occc"]
+[ext_resource type="Script" uid="uid://ct00nivkirf2" path="res://game/game_ui.gd" id="1_qe77m"]
+
+[sub_resource type="Gradient" id="Gradient_v85ny"]
+offsets = PackedFloat32Array(0, 0.66541356, 0.67794484)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hunv0"]
+gradient = SubResource("Gradient_v85ny")
+fill = 1
+fill_from = Vector2(0.5, 0.49317408)
+
+[sub_resource type="Gradient" id="Gradient_ej7fd"]
+offsets = PackedFloat32Array(0, 0.5902256, 0.6378446)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hyule"]
+gradient = SubResource("Gradient_ej7fd")
+fill = 1
+fill_from = Vector2(0.5, 0.49317408)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1845355852]
+script = ExtResource("1_qe77m")
+
+[node name="VirtualJoystickDX" type="Control" parent="." unique_id=1742744842]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -411.0
+offset_right = 535.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_0occc")
+controller_style = 1
+dpad_radius = 130.0
+"Joystick Mode" = null
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
+debug_show_region = false
+region_w = 413.0
+region_h = 718.0
+"Colors - Joystick" = null
+"Textures - Joystick" = null
+metadata/_custom_type_script = "uid://b8rvdausgmssn"
+
+[node name="Timer" type="TextureProgressBar" parent="." unique_id=967735402]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 99.0
+grow_horizontal = 0
+step = 0.0
+value = 17.0
+fill_mode = 4
+texture_under = SubResource("GradientTexture2D_hunv0")
+texture_progress = SubResource("GradientTexture2D_hyule")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1710447071]
+propagate_maximum_size = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_top = 28.0
+offset_right = -132.0
+offset_bottom = 76.0
+grow_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1535897477]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "MONEYZ: "
+
+[node name="Money" type="Label" parent="HBoxContainer" unique_id=1411195399]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "$0"
