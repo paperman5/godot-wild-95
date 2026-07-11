@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cu5684ss75bud"]
+
+[ext_resource type="Script" uid="uid://cxus5hjm8my5a" path="res://table.gd" id="1_jd0nb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_1emcc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hunv0"]
+gradient = SubResource("Gradient_1emcc")
+width = 32
+height = 32
+
+[node name="Table" type="StaticBody2D" unique_id=1824851107]
+script = ExtResource("1_jd0nb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496502224]
+shape = SubResource("RectangleShape2D_hunv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429451809]
+texture = SubResource("GradientTexture2D_hunv0")
