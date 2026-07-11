@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter_h.tscn" id="3_wdah5"]
 [ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="5_o4td3"]
 [ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="6_qvh8k"]
+[ext_resource type="Script" uid="uid://b8rvdausgmssn" path="res://addons/virtual_joystick_DX/vjdx_core_script.gd" id="7_v85ny"]
 
 [node name="DinerTest" type="Node2D" unique_id=953448583]
 y_sort_enabled = true
@@ -53,3 +54,27 @@ type = 2
 
 [node name="IceCreamGlassDispenser" parent="." unique_id=985355287 instance=ExtResource("6_qvh8k")]
 position = Vector2(80, 16)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=369105129]
+
+[node name="VirtualJoystickDX" type="Control" parent="CanvasLayer" unique_id=1099969007]
+layout_mode = 3
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -371.0
+offset_right = 461.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("7_v85ny")
+controller_style = 1
+dpad_radius = 100.0
+"Joystick Mode" = null
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
+region_w = 413.0
+region_h = 718.0
+"Colors - Joystick" = null
+"Textures - Joystick" = null
+metadata/_custom_type_script = "uid://b8rvdausgmssn"
