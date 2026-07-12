@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7xqyita073mw" path="res://player/Sabrina_Front_Idle_Animation.png" id="2_wgyk6"]
 [ext_resource type="Texture2D" uid="uid://jj5udgyqmmvl" path="res://player/Sabrina_Side_Idle_Animation.png" id="3_kyy7l"]
 [ext_resource type="Texture2D" uid="uid://cu4oq4qw3bst1" path="res://player/Sabrina_Back_Idle_Animation.png" id="4_tamf7"]
+[ext_resource type="Texture2D" uid="uid://1gx320xrcy8h" path="res://customer/CustomerBubble.png" id="5_kyy7l"]
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 length = 0.001
@@ -281,14 +282,6 @@ _data = {
 &"idle_up": SubResource("Animation_boad6")
 }
 
-[sub_resource type="Gradient" id="Gradient_tamf7"]
-colors = PackedColorArray(3.272891e-06, 0.45484233, 0.22750661, 1, 0, 0.45490196, 0.22745098, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kyy7l"]
-gradient = SubResource("Gradient_tamf7")
-width = 16
-height = 24
-
 [node name="Customer" type="Node2D" unique_id=380656062]
 script = ExtResource("1_2c3mv")
 
@@ -311,5 +304,6 @@ position = Vector2(-11, -7)
 [node name="Backer" type="Sprite2D" parent="OrderBubble" unique_id=1098259920]
 unique_name_in_owner = true
 position = Vector2(19, -31)
-texture = SubResource("GradientTexture2D_kyy7l")
-offset = Vector2(0, -8)
+texture = ExtResource("5_kyy7l")
+offset = Vector2(-2, -1)
+hframes = 2

@@ -28,16 +28,16 @@ func _physics_process(_delta: float) -> void:
 	var move_dir := Vector2.ZERO
 	if Input.is_action_just_pressed("move_down"):
 		move_dir = Vector2.DOWN
-		anim.play("idle_down")
+		anim.play("walk_down")
 	elif Input.is_action_just_pressed("move_up"):
 		move_dir = Vector2.UP
-		anim.play("idle_up")
+		anim.play("walk_up")
 	elif Input.is_action_just_pressed("move_left"):
 		move_dir = Vector2.LEFT
-		anim.play("idle_left")
+		anim.play("walk_left")
 	elif Input.is_action_just_pressed("move_right"):
 		move_dir = Vector2.RIGHT
-		anim.play("idle_right")
+		anim.play("walk_right")
 	
 	if not move_dir.is_zero_approx():
 		var space_state = get_world_2d().direct_space_state
