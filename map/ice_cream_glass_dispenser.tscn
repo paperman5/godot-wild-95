@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://debcpdu3g2lb1" path="res://map/ice_cream_glass_dispenser.gd" id="1_802qu"]
 [ext_resource type="Texture2D" uid="uid://b8gnh4jvk427s" path="res://map/Stage1Tiles.png" id="2_802qu"]
-[ext_resource type="Texture2D" uid="uid://civajqxmnekk0" path="res://food/ice_cream_glass.png" id="3_802qu"]
+[ext_resource type="Texture2D" uid="uid://dyu3dll1riiam" path="res://food/Icecream-Cup-Normal-Sheet.png" id="3_802qu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
 size = Vector2(32, 32)
@@ -24,5 +24,57 @@ texture = SubResource("AtlasTexture_802qu")
 offset = Vector2(0, -16)
 
 [node name="IceCreamGlass" type="Sprite2D" parent="." unique_id=954497979]
+position = Vector2(-7, -2)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass2" type="Sprite2D" parent="." unique_id=2118368986]
+position = Vector2(-7, 2)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass3" type="Sprite2D" parent="." unique_id=1433146987]
+position = Vector2(-7, 6)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass4" type="Sprite2D" parent="." unique_id=1728585973]
+position = Vector2(-7, 10)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass5" type="Sprite2D" parent="." unique_id=2039446348]
+position = Vector2(7, -2)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass6" type="Sprite2D" parent="." unique_id=1037110914]
+position = Vector2(7, 2)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass7" type="Sprite2D" parent="." unique_id=783513588]
+position = Vector2(7, 6)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1
+
+[node name="IceCreamGlass8" type="Sprite2D" parent="." unique_id=1712233080]
+position = Vector2(7, 10)
+texture = ExtResource("3_802qu")
+offset = Vector2(0, -24)
+hframes = 2
+frame = 1

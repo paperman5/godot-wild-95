@@ -60,9 +60,11 @@ func sit_direction(dir : Vector2):
 		#anim.play("idle_left")
 
 func randomize_order():
-	var icecream = icecream_scene.instantiate()
+	var icecream := icecream_scene.instantiate() as IceCream
+	icecream.max_flavors = GameManager.level.max_icecream_scoops
+	var scoops = randi_range(1, icecream.max_flavors)
 	order_backer.add_child(icecream)
-	for i in range(icecream.max_flavors):
+	for i in range(scoops):
 		icecream.add_flavor([Utils.IceCreamType.BooBerry, 
 							Utils.IceCreamType.ShockALot, 
 							Utils.IceCreamType.Vilenilla].pick_random())

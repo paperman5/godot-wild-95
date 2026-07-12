@@ -89,22 +89,39 @@ func add_icecream_flavor(flavor : Utils.IceCreamType):
 
 func add_to_food_stack(new_food : FoodItem):
 	food_stack.push_front(new_food)
-	for c : Node2D in hand.get_children():
-		c.position.y += new_food.stack_pos.position.y
-	hand.add_child(new_food)
-	hand.move_child(new_food, 0)
+	_restack_food()
 	
 func pop_food_stack():
+	var food = food_stack.pop_front()
+	_restack_food()
+	if food != null:
+		food.queue_free()
+
+func _restack_food():
+	for item in food_stack:
+		if is_instance_valid(item.get_parent()):
+			item.get_parent().remove_child(item)
+			item.position = Vector2.ZERO
 	if len(food_stack) <= 0:
 		return
-	var food = food_stack[0]
-	for c : Node2D in hand.get_children():
-		c.position.y -= food.stack_pos.position.y
-	hand.get_child(0).queue_free()
-	food_stack.pop_front()
+	hand.add_child(food_stack[0])
+	var next_par := food_stack[0].stack_pos
+	for i in range(1, len(food_stack)):
+		next_par.add_child(food_stack[i])
+		next_par = food_stack[i].stack_pos
 
 func get_held_order() -> FoodItem:
 	if len(food_stack) > 0:
 		return food_stack[0]
 	else:
 		return null
+
+func holding_valid_order() -> bool:
+	var order = get_held_order()
+	if order == null: return false
+	if is_instance_of(order, IceCream):
+		if order.scoop_count() <= 0:
+			return false
+	return true
+	
+	

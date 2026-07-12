@@ -23,9 +23,9 @@ func _ready() -> void:
 		seated_customers.append(null)
 
 func bump(_from_dir : Vector2):
-	var test_order = GameManager.player.get_held_order()
-	if not is_instance_valid(test_order):
+	if not GameManager.player.holding_valid_order():
 		return
+	var test_order = GameManager.player.get_held_order()
 	for customer in seated_customers:
 		if is_instance_valid(customer) and customer.can_be_served():
 			customer.deliver_order(test_order)

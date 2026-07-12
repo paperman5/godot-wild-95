@@ -7,7 +7,8 @@ extends FoodItem
 
 func _ready() -> void:
 	for c in get_children():
-		c.modulate = Color.TRANSPARENT
+		if is_instance_of(c, Sprite2D) and c.name != "Cup":
+			c.hide()
 
 func is_equal(other : FoodItem) -> bool:
 	if not is_instance_of(other, IceCream):
@@ -32,5 +33,11 @@ func is_full() -> bool:
 
 func add_flavor(flavor : Utils.IceCreamType):
 	if not is_full():
-		get_child(len(flavors)).modulate = Utils.IceCreamColors[flavor]
 		flavors.append(flavor)
+		var scoop_spr := get_node("Scoop%d" % (len(flavors)-1)) as Sprite2D
+		scoop_spr.frame = flavor
+		scoop_spr.show()
+		stack_pos.position = get_node("Stack%d" % len(flavors)).position
+
+func scoop_count() -> int:
+	return len(flavors)

@@ -1,9 +1,9 @@
 extends Node
 
 enum IceCreamType {
-	BooBerry,
-	ShockALot,
-	Vilenilla
+	BooBerry = 0,
+	ShockALot = 1,
+	Vilenilla = 2
 }
 
 enum FoodType {

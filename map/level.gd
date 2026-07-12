@@ -16,6 +16,7 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var combo_cooldown := 2.0
 @export var combo_refresh_on_success := true
 @export var combo_bonus := 0.25
+@export var max_icecream_scoops := 3
 # TODO: Stats?
 
 var score := 0

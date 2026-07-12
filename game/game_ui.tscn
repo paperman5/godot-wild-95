@@ -26,6 +26,7 @@ fill_from = Vector2(0.5, 0.49317408)
 script = ExtResource("1_qe77m")
 
 [node name="VirtualJoystickDX" type="Control" parent="." unique_id=1742744842]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 3
 anchors_preset = 2
@@ -38,6 +39,8 @@ mouse_filter = 2
 script = ExtResource("1_0occc")
 controller_style = 1
 dpad_radius = 130.0
+auto_hide_on_physical_input = false
+auto_show_on_touch = false
 "Joystick Mode" = null
 action_left = &"move_left"
 action_right = &"move_right"
@@ -124,3 +127,4 @@ text = "$0"
 [node name="Menus" parent="." unique_id=578367975 instance=ExtResource("3_pyphj")]
 process_mode = 2
 visible = false
+mouse_filter = 2
