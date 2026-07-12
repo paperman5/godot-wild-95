@@ -1,36 +1,30 @@
 [gd_scene format=3 uid="uid://cbyr57q28oqv3"]
 
 [ext_resource type="Script" uid="uid://3gnmc8ror7x2" path="res://map/ice_cream_dispenser.gd" id="1_1ld14"]
-[ext_resource type="Texture2D" uid="uid://bkbs0r22bpvlc" path="res://map/counter_h.png" id="1_qu1ho"]
-[ext_resource type="Texture2D" uid="uid://c84o8bjnw7wjv" path="res://map/ice_cream_dispenser.png" id="2_1ld14"]
+[ext_resource type="Texture2D" uid="uid://b8gnh4jvk427s" path="res://map/Stage1Tiles.png" id="2_1ld14"]
+[ext_resource type="Texture2D" uid="uid://t6gg6lvr2i6h" path="res://map/IceCreamMachine-BooBerry.png" id="3_osaqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
 size = Vector2(32, 32)
 
-[sub_resource type="Gradient" id="Gradient_1ld14"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7b218"]
-gradient = SubResource("Gradient_1ld14")
-width = 1
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej7fd"]
+resource_local_to_scene = true
+atlas = ExtResource("2_1ld14")
+region = Rect2(0, 32, 32, 64)
 
 [node name="IceCreamDispenser" type="StaticBody2D" unique_id=1869970340]
 script = ExtResource("1_1ld14")
+counter_style = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1996763604]
 shape = SubResource("RectangleShape2D_hunv0")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236278550]
-texture = ExtResource("1_qu1ho")
-offset = Vector2(0, -20)
-
-[node name="IceCreamDispenser" type="Sprite2D" parent="." unique_id=954497979]
-position = Vector2(0, -40)
-texture = ExtResource("2_1ld14")
-
-[node name="Color" type="Sprite2D" parent="IceCreamDispenser" unique_id=439697275]
+[node name="Counter" type="Sprite2D" parent="." unique_id=1236278550]
 unique_name_in_owner = true
-modulate = Color(0, 0, 1, 1)
-position = Vector2(2.3841858e-07, -0.49999905)
-scale = Vector2(6.0000005, 3.000002)
-texture = SubResource("GradientTexture1D_7b218")
+texture = SubResource("AtlasTexture_ej7fd")
+offset = Vector2(0, -16)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=954497979]
+unique_name_in_owner = true
+texture = ExtResource("3_osaqr")
+offset = Vector2(0, -22)

@@ -1,11 +1,23 @@
+@tool
 class_name Table
 extends StaticBody2D
 
 var seated_customers : Array[Customer] = []
 @export var seat_positions : Array[Node2D] = []
 @export var seat_directions : Array[Vector2i] = []
+@export var orientation : Utils.TableOrientation:
+	get:
+		return orientation
+	set(value):
+		orientation = value
+		if is_instance_valid(spr):
+			spr.texture.region = Utils.TableTextureRegions[value]
+			spr.flip_h = value == Utils.TableOrientation.LEFT
+
+@onready var spr = %Sprite2D as Sprite2D
 
 func _ready() -> void:
+	orientation = orientation
 	assert(len(seat_positions) == len(seat_directions))
 	for seat in seat_positions:
 		seated_customers.append(null)
