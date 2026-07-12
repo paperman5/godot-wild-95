@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8rvdausgmssn" path="res://addons/virtual_joystick_DX/vjdx_core_script.gd" id="1_0occc"]
 [ext_resource type="Script" uid="uid://ct00nivkirf2" path="res://game/game_ui.gd" id="1_qe77m"]
+[ext_resource type="PackedScene" uid="uid://ba36jwtdxnm45" path="res://game/menus.tscn" id="3_pyphj"]
 
 [sub_resource type="Gradient" id="Gradient_v85ny"]
 offsets = PackedFloat32Array(0, 0.66541356, 0.67794484)
@@ -22,6 +23,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.49317408)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1845355852]
+process_mode = 2
 script = ExtResource("1_qe77m")
 
 [node name="VirtualJoystickDX" type="Control" parent="." unique_id=1742744842]
@@ -86,3 +88,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "$0"
+
+[node name="Menus" parent="." unique_id=578367975 instance=ExtResource("3_pyphj")]
+visible = false

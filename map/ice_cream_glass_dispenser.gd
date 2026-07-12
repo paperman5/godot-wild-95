@@ -11,5 +11,8 @@ extends StaticBody2D
 			spr.texture.region = Utils.TableTextureRegions[value]
 			spr.flip_h = value == Utils.TableOrientation.LEFT
 
+func _ready() -> void:
+	style = style
+
 func bump(_from_dir : Vector2):
 	GameManager.player.add_empty_icecream()

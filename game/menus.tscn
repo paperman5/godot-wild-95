@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ba36jwtdxnm45"]
+
+[ext_resource type="Texture2D" uid="uid://bmtxuu15ggrku" path="res://game/win_mockup.png" id="1_7qefd"]
+[ext_resource type="Script" uid="uid://bcymd7mrapev4" path="res://game/menus.gd" id="1_ktqu2"]
+[ext_resource type="Texture2D" uid="uid://csue710gikep3" path="res://game/lose_mockup.png" id="2_ktqu2"]
+
+[node name="Menus" type="Control" unique_id=578367975]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ktqu2")
+
+[node name="WinMenu" type="Control" parent="." unique_id=867947904]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="WinMenu" unique_id=499370153]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7qefd")
+expand_mode = 2
+
+[node name="LoseMenu" type="Control" parent="." unique_id=975099820]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LoseMenu" unique_id=9034063]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ktqu2")
+expand_mode = 2

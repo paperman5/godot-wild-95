@@ -9,9 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://d1ihbqcdneuak" path="res://game/game_ui.tscn" id="7_ej7fd"]
 [ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="8_ej7fd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
+size = Vector2(42, 422)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej7fd"]
+size = Vector2(568, 38)
+
 [node name="DinerTest" type="Node2D" unique_id=953448583 node_paths=PackedStringArray("timer_progress_bar")]
 y_sort_enabled = true
 script = ExtResource("1_qvh8k")
+time_limit = 60.0
 timer_progress_bar = NodePath("CanvasLayer/Timer")
 metadata/_edit_lock_ = true
 
@@ -63,7 +70,25 @@ style = 0
 
 [node name="CanvasLayer" parent="." unique_id=1845355852 instance=ExtResource("7_ej7fd")]
 
-[node name="IceCreamDispenser4" parent="." unique_id=1498930040 instance=ExtResource("8_ej7fd")]
+[node name="TrashCan" parent="." unique_id=1498930040 instance=ExtResource("8_ej7fd")]
 position = Vector2(208, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1189882882]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1386431212]
+position = Vector2(-21, 170)
+shape = SubResource("RectangleShape2D_hunv0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=522156164]
+position = Vector2(266, -19)
+shape = SubResource("RectangleShape2D_ej7fd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=701928062]
+position = Vector2(250, 371)
+shape = SubResource("RectangleShape2D_ej7fd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=522186358]
+position = Vector2(533, 170)
+shape = SubResource("RectangleShape2D_hunv0")
 
 [editable path="CanvasLayer"]

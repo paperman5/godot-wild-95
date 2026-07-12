@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
 size = Vector2(32, 32)
 
-[node name="IceCreamDispenser" type="StaticBody2D" unique_id=1869970340]
+[node name="TrashCan" type="StaticBody2D" unique_id=1869970340]
 script = ExtResource("1_h6tr3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1996763604]

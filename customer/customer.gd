@@ -8,7 +8,7 @@ var orders_left : Array[FoodItem] = []
 var bonus := false
 
 @onready var anim := %AnimationPlayer as AnimationPlayer
-@onready var order_backer := %Backer as Sprite2D
+@onready var order_backer := %Backer as AnimatedSprite2D
 @onready var icecream_scene := preload("uid://cg80er3ff08wp")
 
 func _ready() -> void:
@@ -36,14 +36,15 @@ func start_eating():
 	queue_free()
 
 func sit_direction(dir : Vector2):
-	if dir.normalized().is_equal_approx(Vector2.UP):
-		anim.play("idle_up")
-	elif dir.normalized().is_equal_approx(Vector2.RIGHT):
-		anim.play("idle_right")
-	elif dir.normalized().is_equal_approx(Vector2.DOWN):
-		anim.play("idle_down")
-	elif dir.normalized().is_equal_approx(Vector2.LEFT):
-		anim.play("idle_left")
+	anim.play("idle_down")
+	#if dir.normalized().is_equal_approx(Vector2.UP):
+		#anim.play("idle_up")
+	#elif dir.normalized().is_equal_approx(Vector2.RIGHT):
+		#anim.play("idle_right")
+	#elif dir.normalized().is_equal_approx(Vector2.DOWN):
+		#anim.play("idle_down")
+	#elif dir.normalized().is_equal_approx(Vector2.LEFT):
+		#anim.play("idle_left")
 
 func randomize_order():
 	var icecream = icecream_scene.instantiate()

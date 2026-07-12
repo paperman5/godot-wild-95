@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://uddj0n5ca5xs"]
 
 [ext_resource type="Script" uid="uid://0wwt47u74g7r" path="res://customer/customer.gd" id="1_2c3mv"]
-[ext_resource type="Texture2D" uid="uid://7xqyita073mw" path="res://player/Sabrina_Front_Idle_Animation.png" id="2_wgyk6"]
-[ext_resource type="Texture2D" uid="uid://jj5udgyqmmvl" path="res://player/Sabrina_Side_Idle_Animation.png" id="3_kyy7l"]
-[ext_resource type="Texture2D" uid="uid://cu4oq4qw3bst1" path="res://player/Sabrina_Back_Idle_Animation.png" id="4_tamf7"]
-[ext_resource type="Texture2D" uid="uid://1gx320xrcy8h" path="res://customer/CustomerBubble.png" id="5_kyy7l"]
+[ext_resource type="Texture2D" uid="uid://rlaqy6kd4rv3" path="res://customer/Nightwalker_Front_Idle_Animation-Sheet.png" id="2_fn4jp"]
+[ext_resource type="Texture2D" uid="uid://ddvpk3bcpiwkd" path="res://customer/CustomerBubble-2.png" id="3_fn4jp"]
 
-[sub_resource type="Animation" id="Animation_g1dw6"]
+[sub_resource type="Animation" id="Animation_wgyk6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -20,44 +18,8 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_wgyk6")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-11, -7)]
-}
 
-[sub_resource type="Animation" id="Animation_yw30f"]
+[sub_resource type="Animation" id="Animation_kyy7l"]
 resource_name = "idle_down"
 length = 0.40002000596076254
 loop_mode = 1
@@ -74,236 +36,55 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_wgyk6")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-11, -7)]
-}
 
-[sub_resource type="Animation" id="Animation_qjkh3"]
-resource_name = "idle_left"
-length = 0.40002000596076254
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_kyy7l")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-3, -6)]
-}
-
-[sub_resource type="Animation" id="Animation_g6k8r"]
-resource_name = "idle_right"
-length = 0.40002000596076254
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_kyy7l")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3, -6)]
-}
-
-[sub_resource type="Animation" id="Animation_boad6"]
-resource_name = "idle_up"
-length = 0.40002000596076254
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_tamf7")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(11, -7)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cslmy"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tamf7"]
 _data = {
-&"RESET": SubResource("Animation_g1dw6"),
-&"idle_down": SubResource("Animation_yw30f"),
-&"idle_left": SubResource("Animation_qjkh3"),
-&"idle_right": SubResource("Animation_g6k8r"),
-&"idle_up": SubResource("Animation_boad6")
+&"RESET": SubResource("Animation_wgyk6"),
+&"idle_down": SubResource("Animation_kyy7l")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn4jp"]
+atlas = ExtResource("3_fn4jp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgyk6"]
+atlas = ExtResource("3_fn4jp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hunv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn4jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgyk6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Customer" type="Node2D" unique_id=380656062]
 script = ExtResource("1_2c3mv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=575475049]
 unique_name_in_owner = true
-texture = ExtResource("2_wgyk6")
+texture = ExtResource("2_fn4jp")
 offset = Vector2(0, -15)
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1156798711]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1822053126]
 unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_cslmy")
-
-[node name="Hand" type="Marker2D" parent="." unique_id=194651464]
-unique_name_in_owner = true
-position = Vector2(-11, -7)
+libraries/ = SubResource("AnimationLibrary_tamf7")
 
 [node name="OrderBubble" type="Marker2D" parent="." unique_id=1720382662]
 
-[node name="Backer" type="Sprite2D" parent="OrderBubble" unique_id=1098259920]
+[node name="Backer" type="AnimatedSprite2D" parent="OrderBubble" unique_id=1322410310]
 unique_name_in_owner = true
-position = Vector2(19, -31)
-texture = ExtResource("5_kyy7l")
-offset = Vector2(-2, -1)
-hframes = 2
+position = Vector2(20, -31)
+sprite_frames = SubResource("SpriteFrames_hunv0")
+autoplay = "default"
+frame = 1
+frame_progress = 0.7738048
+offset = Vector2(0, -4)
