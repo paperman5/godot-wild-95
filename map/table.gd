@@ -27,7 +27,7 @@ func bump(_from_dir : Vector2):
 	if not is_instance_valid(test_order):
 		return
 	for customer in seated_customers:
-		if is_instance_valid(customer) and customer.has_matching_order(test_order):
+		if is_instance_valid(customer) and customer.can_be_served():
 			customer.deliver_order(test_order)
 			GameManager.player.pop_food_stack()
 

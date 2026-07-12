@@ -91,4 +91,8 @@ shape = SubResource("RectangleShape2D_ej7fd")
 position = Vector2(533, 170)
 shape = SubResource("RectangleShape2D_hunv0")
 
+[node name="ComboTimer" type="Timer" parent="." unique_id=443572638]
+unique_name_in_owner = true
+one_shot = true
+
 [editable path="CanvasLayer"]

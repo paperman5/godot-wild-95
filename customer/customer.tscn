@@ -88,3 +88,7 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.7738048
 offset = Vector2(0, -4)
+
+[node name="EatWaitTimer" type="Timer" parent="." unique_id=1888844217]
+unique_name_in_owner = true
+one_shot = true
