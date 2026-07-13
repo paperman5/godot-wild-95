@@ -33,24 +33,29 @@ var bonus := true
 		if is_instance_valid(anim):
 			sit_direction(Vector2.DOWN)
 @export var eat_wait_time := 1.0
-@export var think_time := 1.0
+@export var think_time := 2.0
 @export var prompt_bonus_time := 5.0
 
 @onready var spr := %Sprite2D as Sprite2D
-@onready var order_root := %OrderBubble as Node2D
 @onready var anim := %AnimationPlayer as AnimationPlayer
-@onready var order_backer := %Backer as AnimatedSprite2D
+@onready var order_bubble := %OrderBubble as Node2D
+@onready var thinking_bubble := %ThinkingBubble as AnimatedSprite2D
+@onready var bubble_root := %BubbleRoot as Node2D
+@onready var bubble_ninepatch := %BubbleNinePatch as NinePatchRect
+@onready var bubble_tail := %BubbleTail as Sprite2D
 @onready var icecream_scene := preload("uid://cg80er3ff08wp")
 @onready var eat_wait_timer := %EatWaitTimer as Timer
 @onready var thinking_timer := %ThinkingTimer as Timer
 @onready var bonus_timer := %BonusTimer as Timer
 
 func _ready() -> void:
-	left_seat.connect(GameManager.level.customer_left)
-	randomize_order()
-	order_root.hide()
-	anim.speed_scale = 0.5
-	thinking_timer.start(think_time)
+	if not Engine.is_editor_hint():
+		left_seat.connect(GameManager.level.customer_left)
+		randomize_order()
+		thinking_bubble.show()
+		bubble_root.hide()
+		anim.speed_scale = 0.5
+		thinking_timer.start(think_time)
 
 func has_matching_order(order_to_check : FoodItem) -> bool:
 	return find_matching_order(order_to_check) >= 0
@@ -71,9 +76,11 @@ func deliver_order(order : FoodItem):
 	if len(orders_left) <= 0:
 		# TODO: Check if all orders are correct
 		start_eating(true)
+	else:
+		bubble_fit_orders()
 
 func start_eating(order_matched : bool):
-	order_root.hide()
+	order_bubble.hide()
 	eat_wait_timer.start(eat_wait_time)
 	eating = true
 	# TODO: Play correct animation if order is matched or not
@@ -104,13 +111,34 @@ func randomize_order():
 	var icecream := icecream_scene.instantiate() as IceCream
 	icecream.max_flavors = GameManager.level.max_icecream_scoops
 	var scoops = randi_range(1, icecream.max_flavors)
-	order_backer.add_child(icecream)
+	bubble_root.add_child(icecream)
 	for i in range(scoops):
 		icecream.add_flavor([Utils.IceCreamType.BooBerry, 
 							Utils.IceCreamType.ShockALot, 
 							Utils.IceCreamType.Vilenilla].pick_random())
 	orig_orders = [icecream]
 	orders_left = [icecream]
+	bubble_fit_orders()
+
+func bubble_fit_orders():
+	const margin_side := 3
+	const margin_top := 3
+	const margin_bot := 4
+	const order_spacing := 3
+	const tail_x_offset := 5
+	var orders_height := 0.0
+	var orders_width := 0.0
+	for order in orders_left:
+		orders_height += abs(order.stack_pos.position.y)
+		orders_height += order_spacing
+		orders_width = maxf(orders_width, 12.0 if order is IceCream else 16.0)
+	orders_height = maxf(orders_height - order_spacing, 0.0)
+	
+	bubble_ninepatch.offset_left = -(orders_width/2 + margin_side)
+	bubble_ninepatch.offset_right = orders_width/2 + margin_side
+	bubble_ninepatch.offset_top = -(orders_height + margin_top)
+	bubble_ninepatch.offset_bottom = margin_bot
+	bubble_tail.offset = Vector2(bubble_ninepatch.offset_left + tail_x_offset, margin_bot)
 
 func finished_eating():
 	left_seat.emit(orig_orders, bonus)
@@ -118,7 +146,8 @@ func finished_eating():
 
 func _on_thinking_timer_timeout():
 	thinking = false
-	order_root.show()
+	thinking_bubble.hide()
+	bubble_root.show()
 	anim.speed_scale = 1.0
 	anim.seek(0.0)
 
