@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c8hbelfu3287k"]
+
+[ext_resource type="Script" uid="uid://y300xl347b3l" path="res://map/level.gd" id="1_rvogl"]
+[ext_resource type="PackedScene" uid="uid://d1ihbqcdneuak" path="res://game/game_ui.tscn" id="2_tkgu7"]
+[ext_resource type="PackedScene" uid="uid://cryasie5difhi" path="res://player/player.tscn" id="3_tkgu7"]
+
+[node name="LevelBase" type="Node2D" unique_id=594946845]
+y_sort_enabled = true
+script = ExtResource("1_rvogl")
+metadata/_edit_lock_ = true
+
+[node name="IngameUI" parent="." unique_id=1845355852 instance=ExtResource("2_tkgu7")]
+unique_name_in_owner = true
+
+[node name="LevelTimer" type="Timer" parent="." unique_id=1143715214 groups=["timers"]]
+unique_name_in_owner = true
+
+[node name="ComboTimer" type="Timer" parent="." unique_id=2051112347 groups=["timers"]]
+unique_name_in_owner = true
+
+[node name="TimerTicker" type="Timer" parent="." unique_id=158714082 groups=["timers"]]
+unique_name_in_owner = true
+
+[node name="SeatingTimer" type="Timer" parent="." unique_id=1138189394 groups=["timers"]]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=841717384]
+
+[node name="Player" parent="." unique_id=983482868 instance=ExtResource("3_tkgu7")]

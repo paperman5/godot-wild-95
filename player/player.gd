@@ -22,7 +22,7 @@ func _ready() -> void:
 	true_pos = position
 
 func _physics_process(_delta: float) -> void:
-	if moving:
+	if moving or GameManager.level.paused:
 		return
 	
 	var move_dir := Vector2.ZERO

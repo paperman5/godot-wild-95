@@ -22,7 +22,7 @@ gradient = SubResource("Gradient_ej7fd")
 fill = 1
 fill_from = Vector2(0.5, 0.49317408)
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1845355852]
+[node name="IngameUI" type="CanvasLayer" unique_id=1845355852]
 script = ExtResource("1_qe77m")
 
 [node name="VirtualJoystickDX" type="Control" parent="." unique_id=1742744842]
@@ -54,6 +54,7 @@ region_h = 718.0
 metadata/_custom_type_script = "uid://b8rvdausgmssn"
 
 [node name="Timer" type="TextureProgressBar" parent="." unique_id=967735402]
+unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -125,6 +126,5 @@ theme_override_font_sizes/font_size = 32
 text = "$0"
 
 [node name="Menus" parent="." unique_id=578367975 instance=ExtResource("3_pyphj")]
-process_mode = 2
 visible = false
 mouse_filter = 2

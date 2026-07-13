@@ -1,98 +1,84 @@
-[gd_scene format=4 uid="uid://bfcba71eywal4"]
+[gd_scene format=4 uid="uid://dk5rt65a0f75k"]
 
-[ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="1_okmqi"]
-[ext_resource type="Script" uid="uid://y300xl347b3l" path="res://map/level.gd" id="1_qvh8k"]
-[ext_resource type="PackedScene" uid="uid://cryasie5difhi" path="res://player/player.tscn" id="2_sly2x"]
-[ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="3_wdah5"]
-[ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="5_o4td3"]
-[ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="6_qvh8k"]
-[ext_resource type="PackedScene" uid="uid://d1ihbqcdneuak" path="res://game/game_ui.tscn" id="7_ej7fd"]
-[ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="8_ej7fd"]
+[ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_a33ug"]
+[ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_adnty"]
+[ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="3_hxaft"]
+[ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_n5d68"]
+[ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="5_8ivkt"]
+[ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="6_b5pmf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6gyw"]
 size = Vector2(42, 422)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej7fd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwg1p"]
 size = Vector2(568, 38)
 
-[node name="DinerTest" type="Node2D" unique_id=953448583 node_paths=PackedStringArray("timer_progress_bar")]
-y_sort_enabled = true
-script = ExtResource("1_qvh8k")
+[node name="DinerTest" unique_id=594946845 instance=ExtResource("1_a33ug")]
 time_limit = 60.0
-timer_progress_bar = NodePath("CanvasLayer/Timer")
-metadata/_edit_lock_ = true
 
-[node name="Floor" type="TileMapLayer" parent="." unique_id=769319647]
+[node name="Floor" type="TileMapLayer" parent="." index="4" unique_id=1637198439]
 tile_map_data = PackedByteArray("AAABAP//AgADAAAAAAAAAP//AgADAAAAAAACAP//AgADAAAAAAADAP//AgADAAAAAAAEAP//AgADAAAAAAAFAP//AgADAAAAAAAGAP//AgADAAAAAAAHAP//AgADAAAAAAAIAP//AgADAAAAAAAJAP//AgADAAAAAAAKAP//AgADAAAAAAALAP//AgADAAAAAAAMAP//AgADAAAAAAANAP//AgADAAAAAAAOAP//AgADAAAAAAAPAP//AgADAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAcAAgAAAAAAAAAAAAgAAgAAAAAAAAAAAAkAAgAAAAAAAAAAAAoAAgAAAAAAAAABAAAAAgAAAAAAAAABAAEAAgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAABAAYAAgAAAAAAAAABAAcAAgAAAAAAAAABAAgAAgAAAAAAAAABAAkAAgAAAAAAAAABAAoAAgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAACAAQAAgAAAAAAAAACAAUAAgAAAAAAAAACAAYAAgAAAAAAAAACAAcAAgAAAAAAAAACAAgAAgAAAAAAAAACAAkAAgAAAAAAAAACAAoAAgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAADAAIAAgAAAAAAAAADAAMAAgAAAAAAAAADAAQAAgAAAAAAAAADAAUAAgAAAAAAAAADAAYAAgAAAAAAAAADAAcAAgAAAAAAAAADAAgAAgAAAAAAAAADAAkAAgAAAAAAAAADAAoAAgAAAAAAAAAEAAAAAgAAAAAAAAAEAAEAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAgAAAAAAAAAEAAQAAgAAAAAAAAAEAAUAAgAAAAAAAAAEAAYAAgAAAAAAAAAEAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAAEAAkAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAFAAIAAgAAAAAAAAAFAAMAAgAAAAAAAAAFAAQAAgAAAAAAAAAFAAUAAgAAAAAAAAAFAAYAAgAAAAAAAAAFAAcAAgAAAAAAAAAFAAgAAgAAAAAAAAAFAAkAAgAAAAAAAAAFAAoAAgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAAGAAIAAgAAAAAAAAAGAAMAAgAAAAAAAAAGAAQAAgAAAAAAAAAGAAUAAgAAAAAAAAAGAAYAAgAAAAAAAAAGAAcAAgAAAAAAAAAGAAgAAgAAAAAAAAAGAAkAAgAAAAAAAAAGAAoAAgAAAAAAAAAHAAAAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAMAAgAAAAAAAAAHAAQAAgAAAAAAAAAHAAUAAgAAAAAAAAAHAAYAAgAAAAAAAAAHAAcAAgAAAAAAAAAHAAgAAgAAAAAAAAAHAAkAAgAAAAAAAAAHAAoAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAIAAgAAAAAAAAAIAAMAAgAAAAAAAAAIAAQAAgAAAAAAAAAIAAUAAgAAAAAAAAAIAAYAAgAAAAAAAAAIAAcAAgAAAAAAAAAIAAgAAgAAAAAAAAAIAAkAAgAAAAAAAAAIAAoAAgAAAAAAAAAJAAAAAgAAAAAAAAAJAAEAAgAAAAAAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAAAAAAJAAQAAgAAAAAAAAAJAAUAAgAAAAAAAAAJAAYAAgAAAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAJAAkAAgAAAAAAAAAJAAoAAgAAAAAAAAAKAAAAAgAAAAAAAAAKAAEAAgAAAAAAAAAKAAIAAgAAAAAAAAAKAAMAAgAAAAAAAAAKAAQAAgAAAAAAAAAKAAUAAgAAAAAAAAAKAAYAAgAAAAAAAAAKAAcAAgAAAAAAAAAKAAgAAgAAAAAAAAAKAAkAAgAAAAAAAAAKAAoAAgAAAAAAAAALAAAAAgAAAAAAAAALAAEAAgAAAAAAAAALAAIAAgAAAAAAAAALAAMAAgAAAAAAAAALAAQAAgAAAAAAAAALAAUAAgAAAAAAAAALAAYAAgAAAAAAAAALAAcAAgAAAAAAAAALAAgAAgAAAAAAAAALAAkAAgAAAAAAAAALAAoAAgAAAAAAAAAMAAAAAgAAAAAAAAAMAAEAAgAAAAAAAAAMAAIAAgAAAAAAAAAMAAMAAgAAAAAAAAAMAAQAAgAAAAAAAAAMAAUAAgAAAAAAAAAMAAYAAgAAAAAAAAAMAAcAAgAAAAAAAAAMAAgAAgAAAAAAAAAMAAkAAgAAAAAAAAAMAAoAAgAAAAAAAAANAAAAAgAAAAAAAAANAAEAAgAAAAAAAAANAAIAAgAAAAAAAAANAAMAAgAAAAAAAAANAAQAAgAAAAAAAAANAAUAAgAAAAAAAAANAAYAAgAAAAAAAAANAAcAAgAAAAAAAAANAAgAAgAAAAAAAAANAAkAAgAAAAAAAAANAAoAAgAAAAAAAAAOAAAAAgAAAAAAAAAOAAEAAgAAAAAAAAAOAAIAAgAAAAAAAAAOAAMAAgAAAAAAAAAOAAQAAgAAAAAAAAAOAAUAAgAAAAAAAAAOAAYAAgAAAAAAAAAOAAcAAgAAAAAAAAAOAAgAAgAAAAAAAAAOAAkAAgAAAAAAAAAOAAoAAgAAAAAAAAAPAAAAAgAAAAAAAAAPAAEAAgAAAAAAAAAPAAIAAgAAAAAAAAAPAAMAAgAAAAAAAAAPAAQAAgAAAAAAAAAPAAUAAgAAAAAAAAAPAAYAAgAAAAAAAAAPAAcAAgAAAAAAAAAPAAgAAgAAAAAAAAAPAAkAAgAAAAAAAAAPAAoAAgAAAAAAAAAAAP7/AgACAAAAAAABAP7/AgACAAAAAAACAP7/AgACAAAAAAADAP7/AgACAAAAAAAEAP7/AgACAAAAAAAFAP7/AgACAAAAAAAGAP7/AgACAAAAAAAHAP7/AgACAAAAAAAIAP7/AgACAAAAAAAJAP7/AgACAAAAAAAKAP7/AgACAAAAAAALAP7/AgACAAAAAAAMAP7/AgACAAAAAAANAP7/AgACAAAAAAAOAP7/AgACAAAAAAAPAP7/AgACAAAAAAA=")
-tile_set = ExtResource("1_okmqi")
+tile_set = ExtResource("2_adnty")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1818393492]
-position = Vector2(128, 61)
-zoom = Vector2(3, 3)
-
-[node name="Player" parent="." unique_id=1222708539 instance=ExtResource("2_sly2x")]
-position = Vector2(144, 48)
-
-[node name="Tables" type="Node2D" parent="." unique_id=206303096]
+[node name="Tables" type="Node2D" parent="." index="5" unique_id=444178591]
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 
-[node name="CounterH" parent="Tables" unique_id=1824851107 instance=ExtResource("3_wdah5")]
+[node name="CounterH" parent="Tables" index="0" unique_id=1824851107 instance=ExtResource("3_hxaft")]
 position = Vector2(80, 112)
 orientation = 0
 
-[node name="CounterH2" parent="Tables" unique_id=561287719 instance=ExtResource("3_wdah5")]
+[node name="CounterH2" parent="Tables" index="1" unique_id=1957388954 instance=ExtResource("3_hxaft")]
 position = Vector2(112, 112)
 
-[node name="CounterH3" parent="Tables" unique_id=1814086190 instance=ExtResource("3_wdah5")]
+[node name="CounterH3" parent="Tables" index="2" unique_id=93440693 instance=ExtResource("3_hxaft")]
 position = Vector2(144, 112)
 
-[node name="CounterH4" parent="Tables" unique_id=1505254118 instance=ExtResource("3_wdah5")]
+[node name="CounterH4" parent="Tables" index="3" unique_id=1607454789 instance=ExtResource("3_hxaft")]
 position = Vector2(176, 112)
 orientation = 2
 
-[node name="IceCreamDispenser" parent="." unique_id=1869970340 instance=ExtResource("5_o4td3")]
+[node name="IceCreamDispenser" parent="." index="6" unique_id=1869970340 instance=ExtResource("4_n5d68")]
 position = Vector2(112, 16)
 
-[node name="IceCreamDispenser2" parent="." unique_id=1618600525 instance=ExtResource("5_o4td3")]
+[node name="IceCreamDispenser2" parent="." index="7" unique_id=1854916030 instance=ExtResource("4_n5d68")]
 position = Vector2(144, 16)
 type = 1
 
-[node name="IceCreamDispenser3" parent="." unique_id=431738218 instance=ExtResource("5_o4td3")]
+[node name="IceCreamDispenser3" parent="." index="8" unique_id=1531561559 instance=ExtResource("4_n5d68")]
 position = Vector2(176, 16)
 type = 2
 counter_style = 2
 
-[node name="IceCreamGlassDispenser" parent="." unique_id=985355287 instance=ExtResource("6_qvh8k")]
+[node name="IceCreamGlassDispenser" parent="." index="9" unique_id=1679764628 instance=ExtResource("5_8ivkt")]
 position = Vector2(80, 16)
 style = 0
 
-[node name="CanvasLayer" parent="." unique_id=1845355852 instance=ExtResource("7_ej7fd")]
-
-[node name="TrashCan" parent="." unique_id=1498930040 instance=ExtResource("8_ej7fd")]
+[node name="TrashCan" parent="." index="10" unique_id=1508127543 instance=ExtResource("6_b5pmf")]
 position = Vector2(208, 16)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1189882882]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="11" unique_id=1911731478]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1386431212]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=1330784220]
 position = Vector2(-21, 170)
-shape = SubResource("RectangleShape2D_hunv0")
+shape = SubResource("RectangleShape2D_a6gyw")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=522156164]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" index="1" unique_id=1784021027]
 position = Vector2(266, -19)
-shape = SubResource("RectangleShape2D_ej7fd")
+shape = SubResource("RectangleShape2D_pwg1p")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=701928062]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" index="2" unique_id=1057219617]
 position = Vector2(250, 371)
-shape = SubResource("RectangleShape2D_ej7fd")
+shape = SubResource("RectangleShape2D_pwg1p")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=522186358]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" index="3" unique_id=344961450]
 position = Vector2(533, 170)
-shape = SubResource("RectangleShape2D_hunv0")
+shape = SubResource("RectangleShape2D_a6gyw")
 
-[node name="ComboTimer" type="Timer" parent="." unique_id=443572638]
-unique_name_in_owner = true
-one_shot = true
+[node name="Camera2D" parent="." index="13" unique_id=841717384]
+position = Vector2(121, 61)
+zoom = Vector2(3, 3)
 
-[editable path="CanvasLayer"]
+[node name="Player" parent="." index="14" unique_id=983482868]
+position = Vector2(112, 80)

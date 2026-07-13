@@ -15,6 +15,7 @@ script = ExtResource("1_ktqu2")
 
 [node name="WinMenu" type="Control" parent="." unique_id=867947904]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,6 +36,7 @@ expand_mode = 2
 
 [node name="LoseMenu" type="Control" parent="." unique_id=975099820]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,3 +54,119 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ktqu2")
 expand_mode = 2
+
+[node name="BeginMenu" type="Control" parent="." unique_id=1872491795]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="BeginMenu" unique_id=330429016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BeginMenu" unique_id=1888154686]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BeginMenu/VBoxContainer" unique_id=12487741]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "LEVEL X"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="BeginMenu/VBoxContainer" unique_id=1090705696]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Target Revenue: $X"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="BeginMenu/VBoxContainer" unique_id=1227967925]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Begin" type="Button" parent="BeginMenu/VBoxContainer" unique_id=377613259]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "BEGIN"
+
+[node name="MainMenu" type="Button" parent="BeginMenu/VBoxContainer" unique_id=1082785300]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "MAIN MENU"
+
+[node name="PauseMenu" type="Control" parent="." unique_id=1497502033]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=885138738]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=953638435]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer" unique_id=393626196]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PauseMenu/VBoxContainer" unique_id=814742515]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer" unique_id=431334812]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RESUME"
+
+[node name="MainMenu" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1898275591]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "MAIN MENU"
+
+[connection signal="pressed" from="BeginMenu/VBoxContainer/Begin" to="." method="_on_begin_resume_pressed"]
+[connection signal="pressed" from="BeginMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_begin_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

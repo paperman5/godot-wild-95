@@ -9,7 +9,7 @@ const save_file_path := "user://savegame.txt"
 
 const level_scenes = {
 	"main_menu" : "uid://6kyebxi5bbkj",
-	"test" : "uid://bfcba71eywal4"
+	"test" : "uid://dk5rt65a0f75k"
 }
 
 func _ready() -> void:

@@ -8,7 +8,7 @@ var tables : Array[Table] = []
 var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var customer_seating_timer := 3.0
 @export var time_limit := 100.0
-@export var timer_progress_bar : TextureProgressBar
+@export var timer_increments := 1.0
 @export var ice_cream_score := 5
 @export var food_score := 10
 @export var failed_order_multiplier := 0.5
@@ -22,37 +22,48 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 var score := 0
 var combo := 0
 var combo_points_buffer := 0.0
-var paused := false
+var paused := true
+var game_started := false
 
+@onready var level_timer := %LevelTimer as Timer
 @onready var combo_timer := %ComboTimer as Timer
+@onready var ticker_timer := %TimerTicker as Timer
+@onready var seating_timer := %SeatingTimer as Timer
+@onready var ui := %IngameUI as GameUI
 
 func _ready() -> void:
-	assert(timer_progress_bar != null)
 	GameManager.level = self
-	timer_progress_bar.max_value = time_limit
-	timer_progress_bar.value = 0.0
 	var all_tables = get_tree().get_nodes_in_group("tables")
 	for t in all_tables:
 		if is_instance_of(t, Table):
 			tables.append(t)
-	_create_seating_timer()
-	time_up.connect(_on_time_up)
+	
+	ui.set_max_time(time_limit)
+	ui.set_time_remaining(time_limit)
+	level_timer.start(time_limit)
+	seating_timer.start(customer_seating_timer)
+	ticker_timer.start(timer_increments)
+	pause()
+	
+	level_timer.timeout.connect(_on_time_up)
 	combo_timer.timeout.connect(_on_combo_timer_timeout)
+	seating_timer.timeout.connect(_on_seating_timer_timeout)
+	ticker_timer.timeout.connect(_on_ticker_timer_timeout)
+	
+	GameManager.menus.show_begin()
 
-func _process(delta: float) -> void:
-	if paused:
-		return
-	timer_progress_bar.value += delta
-	if is_equal_approx(timer_progress_bar.value, timer_progress_bar.max_value):
-		time_up.emit()
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		if not paused and game_started:
+			pause(true)
+		elif paused and game_started:
+			unpause(true)
 
-func _create_seating_timer():
-	var t = get_tree().create_timer(customer_seating_timer)
-	t.timeout.connect(_on_timer_timeout, CONNECT_ONE_SHOT)
-
-func _on_timer_timeout():
+func _on_seating_timer_timeout():
 	seat_random_table()
-	_create_seating_timer.call_deferred()
+
+func _on_ticker_timer_timeout():
+	ui.set_time_remaining(level_timer.time_left)
 
 func seat_random_table():
 	if not any_table_is_open():
@@ -101,17 +112,34 @@ func _on_combo_timer_timeout():
 	GameManager.game_ui.set_money(score)
 
 func _on_time_up():
-	paused = true
-	get_tree().paused = true
+	pause()
 	if score >= win_threshold:
 		win_game()
 	else:
 		lose_game()
 
+func pause(show_menu : bool = false):
+	for t in get_tree().get_nodes_in_group("timers"):
+		t.process_mode = Node.PROCESS_MODE_DISABLED
+	if show_menu:
+		GameManager.menus.show_pause()
+	paused = true
+
+func unpause(clear_menu : bool = false):
+	for t in get_tree().get_nodes_in_group("timers"):
+		t.process_mode = Node.PROCESS_MODE_INHERIT
+	if clear_menu:
+		GameManager.menus.hide_all()
+	if not game_started:
+		game_started = true
+	paused = false
+
 func lose_game():
+	pause()
 	GameManager.menus.show_lose()
 
 func win_game():
+	pause()
 	GameManager.menus.show_win()
 
 func get_order_base_points(order : FoodItem) -> float:
