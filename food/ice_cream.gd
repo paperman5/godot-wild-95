@@ -34,7 +34,7 @@ func is_full() -> bool:
 func add_flavor(flavor : Utils.IceCreamType):
 	if not is_full():
 		flavors.append(flavor)
-		var scoop_spr := get_node("Scoop%d" % (len(flavors)-1)) as Sprite2D
+		var scoop_spr := get_node("%%Scoop%d" % (len(flavors)-1)) as Sprite2D
 		scoop_spr.frame = flavor
 		scoop_spr.show()
 		stack_pos.position = get_node("Stack%d" % len(flavors)).position

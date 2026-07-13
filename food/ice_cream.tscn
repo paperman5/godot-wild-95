@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://cg80er3ff08wp"]
 
+[ext_resource type="Shader" uid="uid://c2jovr0ycf1nt" path="res://misc/outline_shader.gdshader" id="2_br1rg"]
 [ext_resource type="Texture2D" uid="uid://7pqhjovnht7d" path="res://food/Icecream-Sprites-Sheet.png" id="2_nuo3e"]
 [ext_resource type="Script" uid="uid://c440lb7pchno" path="res://food/ice_cream.gd" id="2_on6e3"]
 [ext_resource type="Texture2D" uid="uid://dyu3dll1riiam" path="res://food/Icecream-Cup-Normal-Sheet.png" id="3_br1rg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_on6e3"]
+shader = ExtResource("2_br1rg")
+shader_parameter/line_colour = Color(1, 0, 1, 1)
+shader_parameter/line_thickness = 1
+shader_parameter/highlighted = false
 
 [node name="IceCream" type="Node2D" unique_id=24763253 node_paths=PackedStringArray("stack_pos")]
 script = ExtResource("2_on6e3")
@@ -20,25 +27,32 @@ position = Vector2(0, -18)
 [node name="Stack3" type="Marker2D" parent="." unique_id=1445859342]
 position = Vector2(0, -22)
 
-[node name="Scoop0" type="Sprite2D" parent="." unique_id=1558877138]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2072623233]
+material = SubResource("ShaderMaterial_on6e3")
+
+[node name="Scoop0" type="Sprite2D" parent="CanvasGroup" unique_id=1558877138]
+unique_name_in_owner = true
 texture = ExtResource("2_nuo3e")
 offset = Vector2(0, -7)
 hframes = 3
 
-[node name="Cup" type="Sprite2D" parent="." unique_id=1700595010]
+[node name="Cup" type="Sprite2D" parent="CanvasGroup" unique_id=1700595010]
+unique_name_in_owner = true
 texture = ExtResource("3_br1rg")
 offset = Vector2(0, -7)
 hframes = 2
 frame = 1
 
-[node name="Scoop1" type="Sprite2D" parent="." unique_id=716324445]
+[node name="Scoop1" type="Sprite2D" parent="CanvasGroup" unique_id=716324445]
+unique_name_in_owner = true
 texture = ExtResource("2_nuo3e")
 offset = Vector2(1, -11)
 flip_h = true
 hframes = 3
 frame = 1
 
-[node name="Scoop2" type="Sprite2D" parent="." unique_id=2061715562]
+[node name="Scoop2" type="Sprite2D" parent="CanvasGroup" unique_id=2061715562]
+unique_name_in_owner = true
 texture = ExtResource("2_nuo3e")
 offset = Vector2(0, -15)
 hframes = 3

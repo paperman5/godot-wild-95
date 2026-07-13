@@ -15,6 +15,10 @@ const level_scenes = {
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+func _process(delta: float) -> void:
+	var zoom = get_viewport().get_camera_2d().zoom
+	RenderingServer.global_shader_parameter_set("zoom", zoom)
+
 func time_up():
 	pass
 

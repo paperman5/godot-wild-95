@@ -416,7 +416,6 @@ animations = [{
 
 [node name="Customer" type="Node2D" unique_id=380656062]
 script = ExtResource("1_2c3mv")
-think_time = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=575475049]
 unique_name_in_owner = true
