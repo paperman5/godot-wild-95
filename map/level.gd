@@ -73,6 +73,9 @@ func seat_random_table():
 		table = tables.pick_random()
 	
 	var new_customer := customer_scene.instantiate() as Customer
+	new_customer.customer_type = [Customer.CustomerType.Nightwalker,
+								Customer.CustomerType.Mothman,
+								Customer.CustomerType.Yeti].pick_random()
 	add_child(new_customer)
 	table.seat_customer_random_spot(new_customer)
 	new_customer.served.connect(_on_customer_served)

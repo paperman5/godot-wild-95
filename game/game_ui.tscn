@@ -104,6 +104,18 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
 
+[node name="Label3" type="Label" parent="HBoxContainer" unique_id=1558673512]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "x"
+vertical_alignment = 1
+
+[node name="ComboMult2" type="Label" parent="HBoxContainer" unique_id=225103234]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1911194489]
 anchors_preset = 1
 anchor_left = 1.0
