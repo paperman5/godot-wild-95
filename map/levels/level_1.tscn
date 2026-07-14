@@ -1,0 +1,64 @@
+[gd_scene format=4 uid="uid://ssywa7x2dhky"]
+
+[ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_6jxvd"]
+[ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_iuesu"]
+[ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_ja74h"]
+[ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_1s3v2"]
+[ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_e761b"]
+[ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="6_gxjui"]
+[ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="7_1s3v2"]
+
+[node name="Level1" unique_id=594946845 instance=ExtResource("1_6jxvd")]
+
+[node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=192271352]
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAADAAIAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAACAAMAAgAAAAAAAAADAAEAAgAAAAAAAAADAAMAAgAAAAAAAAAEAAEAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAgAAAAAAAAAFAAMAAgABAAAAAAAAAP//AgADAAAAAAABAP//AgADAAAAAAACAP//AgADAAAAAAADAP//AgADAAAAAAAEAP//AgADAAAAAAAAAP7/AgACAAAAAAABAP7/AgACAAAAAAACAP7/AgACAAAAAAADAP7/AgADAAMAAAAEAP7/AgAEAAMAAAD///7/AgABAAMAAAD/////AgABAAQAAAD//wAAAgABAAUAAAD//wEAAgABAAUAAAD//wIAAgABAAYAAAD//wMAAgABAAcAAAAGAAIAAgACAAcAAAAGAAMAAgABAAcAABAHAAMAAgAAAAcAABAGAAEAAgACAAYAAAAFAAIAAgAEAAAAAAAFAAEAAgACAAUAAAAFAAAAAgABAAUAABAFAP//AgABAAQAABAFAP7/AgABAAMAABAGAP7/AgAAAAMAABAGAP//AgAAAAQAABD+//7/AgAAAAMAAAD+////AgAAAAQAAAAHAP7/AgACAAMAAAAGAAAAAgAAAAUAABAHAP//AgACAAQAAAAHAAAAAgACAAQAAAAHAAEAAgACAAQAAAAHAAIAAgACAAQAAAD+/wAAAgAAAAUAAAD+/wIAAgAAAAUAAAD+/wEAAgAAAAcAAAD+/wMAAgAAAAcAAAD//wQAAgAAAAYAAAAGAAQAAgAAAAYAAAAAAAQAAgAAAAYAAAABAAQAAgAAAAYAAAACAAQAAgAAAAYAAAADAAQAAgAAAAYAAAAEAAQAAgAAAAYAAAAFAAQAAgAAAAYAAAA=")
+tile_set = ExtResource("2_iuesu")
+
+[node name="FloorOverlay" type="TileMapLayer" parent="." index="1" unique_id=787009874]
+tile_map_data = PackedByteArray("AAAAAP7/AgADAAQAAAABAP7/AgADAAUAAAACAP7/AgAEAAQAAAAFAAIAAgAEAAUAAAA=")
+tile_set = ExtResource("2_iuesu")
+
+[node name="Camera2D" parent="." index="7" unique_id=841717384]
+position = Vector2(96, 32)
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." index="8" unique_id=983482868]
+position = Vector2(48, 48)
+
+[node name="IceCreamDispenser" parent="." index="9" unique_id=1869970340 instance=ExtResource("3_ja74h")]
+position = Vector2(16, 16)
+
+[node name="IceCreamDispenser2" parent="." index="10" unique_id=983450660 instance=ExtResource("4_1s3v2")]
+position = Vector2(48, 16)
+
+[node name="IceCreamDispenser3" parent="." index="11" unique_id=30536140 instance=ExtResource("4_1s3v2")]
+position = Vector2(80, 16)
+type = 1
+
+[node name="IceCreamDispenser4" parent="." index="12" unique_id=94600920 instance=ExtResource("4_1s3v2")]
+position = Vector2(112, 16)
+type = 2
+counter_style = 2
+
+[node name="TrashCan" parent="." index="13" unique_id=87718783 instance=ExtResource("5_e761b")]
+position = Vector2(144, 16)
+
+[node name="Counter" parent="." index="14" unique_id=1824851107 instance=ExtResource("6_gxjui")]
+position = Vector2(16, 80)
+can_sit = false
+
+[node name="Counter2" parent="." index="15" unique_id=2110931083 instance=ExtResource("6_gxjui")]
+position = Vector2(48, 80)
+can_sit = true
+
+[node name="Counter3" parent="." index="16" unique_id=1534852338 instance=ExtResource("6_gxjui")]
+position = Vector2(80, 80)
+can_sit = true
+
+[node name="Counter4" parent="." index="17" unique_id=765467791 instance=ExtResource("6_gxjui")]
+position = Vector2(112, 80)
+orientation = 2
+can_sit = true
+
+[node name="Jukebox" parent="." index="18" unique_id=2059468624 instance=ExtResource("7_1s3v2")]
+position = Vector2(16, 112)

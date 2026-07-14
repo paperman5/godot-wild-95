@@ -17,6 +17,8 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var combo_refresh_on_success := true
 @export var combo_bonus := 0.25
 @export var max_icecream_scoops := 3
+@export var customer_icecream_chance := 1.0
+@export var customer_food_chance := 0.0
 # TODO: Stats?
 
 var score := 0
@@ -76,6 +78,8 @@ func seat_random_table():
 	new_customer.customer_type = [Customer.CustomerType.Nightwalker,
 								Customer.CustomerType.Mothman,
 								Customer.CustomerType.Yeti].pick_random()
+	new_customer.icecream_order_chance = customer_icecream_chance
+	new_customer.food_order_chance = customer_food_chance
 	add_child(new_customer)
 	table.seat_customer_random_spot(new_customer)
 	new_customer.served.connect(_on_customer_served)

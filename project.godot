@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Graveyard Shift"
-run/main_scene="uid://dk5rt65a0f75k"
+run/main_scene="uid://ssywa7x2dhky"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -23,10 +23,10 @@ Utils="*uid://cos4dbspdwf0a"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=960
+window/size/viewport_height=576
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

@@ -13,11 +13,18 @@ var seated_customers : Array[Customer] = []
 		if is_instance_valid(spr):
 			spr.texture.region = Utils.TableTextureRegions[value]
 			spr.flip_h = value == Utils.TableOrientation.LEFT
+@export var can_sit := true:
+	set(value):
+		can_sit = value
+		if is_instance_valid(placemat_spr):
+			placemat_spr.visible = value
 
 @onready var spr = %Sprite2D as Sprite2D
+@onready var placemat_spr = %Placemat as Sprite2D
 
 func _ready() -> void:
 	orientation = orientation
+	can_sit = can_sit
 	assert(len(seat_positions) == len(seat_directions))
 	for seat in seat_positions:
 		seated_customers.append(null)
@@ -44,6 +51,8 @@ func seat_customer(customer : Customer, spot : int):
 	customer.left_seat.connect(_on_customer_left.bind(spot), CONNECT_ONE_SHOT)
 
 func table_is_full() -> bool:
+	if not can_sit:
+		return true
 	for customer in seated_customers:
 		if not is_instance_valid(customer):
 			return false
