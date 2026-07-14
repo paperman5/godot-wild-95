@@ -27,7 +27,7 @@ func bump(_from_dir : Vector2):
 		return
 	var test_order = GameManager.player.get_held_order()
 	for customer in seated_customers:
-		if is_instance_valid(customer) and customer.can_be_served():
+		if is_instance_valid(customer) and customer.can_be_served() and customer.wants_food_type(test_order):
 			customer.deliver_order(test_order)
 			GameManager.player.pop_food_stack()
 

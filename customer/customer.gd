@@ -35,6 +35,8 @@ var bonus := true
 @export var eat_wait_time := 1.0
 @export var think_time := 2.0
 @export var prompt_bonus_time := 5.0
+@export var icecream_order_chance := 1.0
+@export var food_order_chance := 0.25
 
 @onready var spr := %Sprite2D as Sprite2D
 @onready var anim := %AnimationPlayer as AnimationPlayer
@@ -44,6 +46,7 @@ var bonus := true
 @onready var bubble_ninepatch := %BubbleNinePatch as NinePatchRect
 @onready var bubble_tail := %BubbleTail as Sprite2D
 @onready var icecream_scene := preload("uid://cg80er3ff08wp")
+@onready var food_scene := preload("uid://b6duh0virt7sy")
 @onready var eat_wait_timer := %EatWaitTimer as Timer
 @onready var thinking_timer := %ThinkingTimer as Timer
 @onready var bonus_timer := %BonusTimer as Timer
@@ -66,13 +69,48 @@ func find_matching_order(order_to_check : FoodItem) -> int:
 			return i
 	return -1
 
+func wants_icecream() -> bool:
+	for order in orders_left:
+		if is_instance_of(order, IceCream):
+			return true
+	return false
+
+func wants_cooked_food() -> bool:
+	for order in orders_left:
+		if is_instance_of(order, CookedFood):
+			return true
+	return false
+
+func wants_food_type(order : FoodItem) -> bool:
+	if is_instance_of(order, IceCream) and wants_icecream():
+		return true
+	elif is_instance_of(order, CookedFood) and wants_cooked_food():
+		return true
+	return false
+
 func deliver_order(order : FoodItem):
 	if len(orders_left) <= 0:
 		return
 	var order_i = find_matching_order(order)
-	served.emit(order, order_i >= 0)
+	var matched = order_i >= 0
+	served.emit(order, matched)
 	orders_given.append(order)
-	orders_left.remove_at(order_i if order_i >= 0 else 0)
+	if not matched:
+		if is_instance_of(order, IceCream) and wants_icecream():
+			for oi in range(len(orders_left)):
+				if is_instance_of(orders_left[oi], IceCream):
+					orders_left[oi].hide()
+					orders_left.remove_at(oi)
+					break
+		elif is_instance_of(order, CookedFood) and wants_cooked_food():
+			for oi in range(len(orders_left)):
+				if is_instance_of(orders_left[oi], CookedFood):
+					orders_left[oi].hide()
+					orders_left.remove_at(oi)
+					break
+	else:
+		orders_left[order_i].hide()
+		orders_left.remove_at(order_i)
 	if len(orders_left) <= 0:
 		# TODO: Check if all orders are correct
 		start_eating(true)
@@ -108,27 +146,39 @@ func sit_direction(dir : Vector2):
 		anim.stop()
 
 func randomize_order():
-	var icecream := icecream_scene.instantiate() as IceCream
-	icecream.max_flavors = GameManager.level.max_icecream_scoops
-	var scoops = randi_range(1, icecream.max_flavors)
-	bubble_root.add_child(icecream)
-	for i in range(scoops):
-		icecream.add_flavor([Utils.IceCreamType.BooBerry, 
-							Utils.IceCreamType.ShockALot, 
-							Utils.IceCreamType.Vilenilla].pick_random())
-	orig_orders = [icecream]
-	orders_left = [icecream]
+	var order_food := randf() <= food_order_chance
+	if order_food:
+		var food = food_scene.instantiate() as CookedFood
+		food.food_type = [Utils.FoodType.MonsterMashBurger, 
+							Utils.FoodType.Werewaffles].pick_random()
+		food.icon = true
+		bubble_root.add_child(food)
+		orig_orders.append(food)
+		orders_left.append(food)
+	var order_icecream := randf() <= icecream_order_chance
+	if order_icecream:
+		var icecream := icecream_scene.instantiate() as IceCream
+		icecream.max_flavors = GameManager.level.max_icecream_scoops
+		var scoops = randi_range(1, icecream.max_flavors)
+		bubble_root.add_child(icecream)
+		for i in range(scoops):
+			icecream.add_flavor([Utils.IceCreamType.BooBerry, 
+								Utils.IceCreamType.ShockALot, 
+								Utils.IceCreamType.Vilenilla].pick_random())
+		orig_orders.append(icecream)
+		orders_left.append(icecream)
 	bubble_fit_orders()
 
 func bubble_fit_orders():
 	const margin_side := 3
 	const margin_top := 3
 	const margin_bot := 4
-	const order_spacing := 3
+	const order_spacing := 4
 	const tail_x_offset := 5
 	var orders_height := 0.0
 	var orders_width := 0.0
 	for order in orders_left:
+		order.position.y = -orders_height
 		orders_height += abs(order.stack_pos.position.y)
 		orders_height += order_spacing
 		orders_width = maxf(orders_width, 12.0 if order is IceCream else 16.0)

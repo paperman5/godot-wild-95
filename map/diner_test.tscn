@@ -86,7 +86,9 @@ position = Vector2(112, 80)
 
 [node name="FoodDispenser" parent="." index="15" unique_id=1421862469 instance=ExtResource("7_adnty")]
 position = Vector2(16, 16)
+counter_style = 0
 
 [node name="FoodDispenser2" parent="." index="16" unique_id=1377158456 instance=ExtResource("7_adnty")]
 position = Vector2(48, 16)
 type = 1
+counter_style = 2
