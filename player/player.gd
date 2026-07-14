@@ -70,6 +70,9 @@ func _create_move_tween(dir : Vector2, bump : bool):
 func holding_icecream() -> bool:
 	return len(food_stack) > 0 and is_instance_of(food_stack[0], IceCream)
 
+func holding_empty_icecream() -> bool:
+	return holding_icecream() and food_stack[0].is_empty()
+
 func holding_food() -> bool:
 	return len(food_stack) > 0 and is_instance_of(food_stack[0], CookedFood)
 
@@ -86,6 +89,16 @@ func add_empty_icecream() -> bool:
 func add_icecream_flavor(flavor : Utils.IceCreamType):
 	if holding_icecream() and not food_stack[0].is_full():
 		food_stack[0].add_flavor(flavor)
+
+func add_cooked_food(type : Utils.FoodType) -> bool:
+	if len(food_stack) < max_food_stack:
+		if holding_empty_icecream():
+			return false
+		var food := preload("uid://b6duh0virt7sy").instantiate() as CookedFood
+		food.food_type = type
+		add_to_food_stack(food)
+		return true
+	return false
 
 func add_to_food_stack(new_food : FoodItem):
 	food_stack.push_front(new_food)

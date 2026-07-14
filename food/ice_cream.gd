@@ -6,9 +6,8 @@ extends FoodItem
 @export var max_flavors := 3
 
 func _ready() -> void:
-	for c in get_children():
-		if is_instance_of(c, Sprite2D) and c.name != "Cup":
-			c.hide()
+	for c in [%Scoop0, %Scoop1, %Scoop2]:
+		c.hide()
 
 func is_equal(other : FoodItem) -> bool:
 	if not is_instance_of(other, IceCream):

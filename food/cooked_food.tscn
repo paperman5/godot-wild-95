@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://b6duh0virt7sy"]
+
+[ext_resource type="Script" uid="uid://cyhlxtc8fleqt" path="res://food/cooked_food.gd" id="1_npkg4"]
+[ext_resource type="Texture2D" uid="uid://dj1kplkvcxxnf" path="res://food/Woofles.png" id="2_fel5j"]
+[ext_resource type="Texture2D" uid="uid://vo3mojygam5p" path="res://food/MonsterMashBurger.png" id="2_w2888"]
+
+[sub_resource type="Animation" id="Animation_kad00"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_fel5j")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0ek1"]
+_data = {
+&"RESET": SubResource("Animation_kad00")
+}
+
+[sub_resource type="Animation" id="Animation_ti45h"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_w2888")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -19)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oufri"]
+_data = {
+&"RESET": SubResource("Animation_ti45h")
+}
+
+[sub_resource type="Animation" id="Animation_v6g5r"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_fel5j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1wpw"]
+_data = {
+&"RESET": SubResource("Animation_v6g5r")
+}
+
+[node name="CookedFood" type="Node2D" unique_id=253560409 node_paths=PackedStringArray("stack_pos")]
+script = ExtResource("1_npkg4")
+stack_pos = NodePath("Stack")
+metadata/_custom_type_script = "uid://cyhlxtc8fleqt"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=167291162]
+unique_name_in_owner = true
+texture = ExtResource("2_fel5j")
+offset = Vector2(0, -8)
+
+[node name="Stack" type="Marker2D" parent="." unique_id=1967298677]
+position = Vector2(0, -19)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1910146271]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_q0ek1")
+libraries/burger = SubResource("AnimationLibrary_oufri")
+libraries/waffle = SubResource("AnimationLibrary_r1wpw")

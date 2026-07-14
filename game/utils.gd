@@ -26,3 +26,13 @@ const TableTextureRegions = {
 	TableOrientation.CENTER : Rect2(0, 32, 32, 64),
 	TableOrientation.RIGHT : Rect2(32, 32, 32, 64)
 }
+
+const food_scenes = {
+	FoodType.MonsterMashBurger : "",
+	FoodType.Werewaffles : ""
+}
+
+var food_textures = {
+	Utils.FoodType.MonsterMashBurger : preload("uid://vo3mojygam5p"),
+	Utils.FoodType.Werewaffles : preload("uid://dj1kplkvcxxnf")
+}
