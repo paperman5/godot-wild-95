@@ -19,7 +19,7 @@ var textures = {
 		counter_style = value
 		if is_instance_valid(counter_spr):
 			counter_spr.texture.region = Utils.TableTextureRegions[value]
-			counter_spr.flip_h = value == Utils.TableOrientation.LEFT
+			counter_spr.flip_h = Table.should_flip_texture(value)
 
 @onready var spr := %Sprite as Sprite2D
 @onready var counter_spr := %Counter as Sprite2D

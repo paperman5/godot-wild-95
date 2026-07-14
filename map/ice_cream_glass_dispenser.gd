@@ -9,7 +9,7 @@ extends StaticBody2D
 		style = value
 		if is_instance_valid(spr):
 			spr.texture.region = Utils.TableTextureRegions[value]
-			spr.flip_h = value == Utils.TableOrientation.LEFT
+			spr.flip_h = Table.should_flip_texture(value)
 
 func _ready() -> void:
 	style = style

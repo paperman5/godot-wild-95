@@ -18,21 +18,18 @@ const IceCreamColors = {
 }
 
 enum TableOrientation {
-	LEFT, CENTER, RIGHT
+	HOR_LEFT, HOR_CENTER, HOR_RIGHT,
+	VERT_LEFT, VERT_RIGHT, VERT_TOP,
+	CORNER_LEFT, CORNER_RIGHT
 }
 
 const TableTextureRegions = {
-	TableOrientation.LEFT : Rect2(32, 32, 32, 64),
-	TableOrientation.CENTER : Rect2(0, 32, 32, 64),
-	TableOrientation.RIGHT : Rect2(32, 32, 32, 64)
-}
-
-const food_scenes = {
-	FoodType.MonsterMashBurger : "",
-	FoodType.Werewaffles : ""
-}
-
-var food_textures = {
-	Utils.FoodType.MonsterMashBurger : preload("uid://vo3mojygam5p"),
-	Utils.FoodType.Werewaffles : preload("uid://dj1kplkvcxxnf")
+	TableOrientation.HOR_LEFT : Rect2(32, 32, 32, 64),
+	TableOrientation.HOR_CENTER : Rect2(0, 32, 32, 64),
+	TableOrientation.HOR_RIGHT : Rect2(32, 32, 32, 64),
+	TableOrientation.VERT_LEFT : Rect2(64, 64, 32, 32),
+	TableOrientation.VERT_RIGHT : Rect2(64, 64, 32, 32),
+	TableOrientation.VERT_TOP : Rect2(64, 32, 32, 64),
+	TableOrientation.CORNER_LEFT : Rect2(32, 32, 32, 64),
+	TableOrientation.CORNER_RIGHT : Rect2(32, 32, 32, 64),
 }

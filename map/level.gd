@@ -32,6 +32,7 @@ var game_started := false
 @onready var ticker_timer := %TimerTicker as Timer
 @onready var seating_timer := %SeatingTimer as Timer
 @onready var ui := %IngameUI as GameUI
+@onready var cam := get_node("Camera2D") as Camera2D
 
 func _ready() -> void:
 	GameManager.level = self
@@ -60,6 +61,8 @@ func _process(_delta: float) -> void:
 			pause(true)
 		elif paused and game_started:
 			unpause(true)
+	#if is_instance_valid(GameManager.player) and is_instance_valid(cam):
+		#cam.position = GameManager.player.position
 
 func _on_seating_timer_timeout():
 	seat_random_table()

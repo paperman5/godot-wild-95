@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dp4apy3l6khat"]
 
 [ext_resource type="Script" uid="uid://cxus5hjm8my5a" path="res://map/table.gd" id="1_5b3ib"]
-[ext_resource type="Texture2D" uid="uid://b8gnh4jvk427s" path="res://map/Stage1Tiles.png" id="2_g5qrt"]
 [ext_resource type="Texture2D" uid="uid://beenunw3tvduw" path="res://map/DinerTilesheet.png" id="3_vwkqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
@@ -9,19 +8,24 @@ size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5qrt"]
 resource_local_to_scene = true
-atlas = ExtResource("2_g5qrt")
+atlas = ExtResource("3_vwkqk")
 region = Rect2(0, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwkqk"]
+resource_local_to_scene = true
+atlas = ExtResource("3_vwkqk")
+region = Rect2(96, 88, 32, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hunv0"]
 atlas = ExtResource("3_vwkqk")
 region = Rect2(128, 32, 32, 32)
 
-[node name="Counter" type="StaticBody2D" unique_id=1824851107 node_paths=PackedStringArray("seat_positions") groups=["tables"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bvem"]
+atlas = ExtResource("3_vwkqk")
+region = Rect2(128, 64, 32, 32)
+
+[node name="Counter" type="StaticBody2D" unique_id=1824851107 groups=["tables"]]
 script = ExtResource("1_5b3ib")
-seat_positions = [NodePath("Seat1")]
-seat_directions = Array[Vector2i]([Vector2i(0, -1)])
-orientation = 1
-can_sit = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496502224]
 shape = SubResource("RectangleShape2D_hunv0")
@@ -31,9 +35,30 @@ unique_name_in_owner = true
 texture = SubResource("AtlasTexture_g5qrt")
 offset = Vector2(0, -16)
 
-[node name="Placemat" type="Sprite2D" parent="." unique_id=1777733682]
+[node name="Corner" type="Sprite2D" parent="." unique_id=245993759]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 5.928574)
+texture = SubResource("AtlasTexture_vwkqk")
+offset = Vector2(0, -26)
+
+[node name="PlacematH" type="Sprite2D" parent="." unique_id=1777733682]
 unique_name_in_owner = true
 texture = SubResource("AtlasTexture_hunv0")
 
-[node name="Seat1" type="Marker2D" parent="." unique_id=1181424213]
+[node name="PlacematV" type="Sprite2D" parent="." unique_id=1914696617]
+unique_name_in_owner = true
+visible = false
+texture = SubResource("AtlasTexture_5bvem")
+
+[node name="SeatB" type="Marker2D" parent="." unique_id=1181424213]
+unique_name_in_owner = true
 position = Vector2(0, 15)
+
+[node name="SeatL" type="Marker2D" parent="." unique_id=1530808518]
+unique_name_in_owner = true
+position = Vector2(-31, 16)
+
+[node name="SeatR" type="Marker2D" parent="." unique_id=1518030686]
+unique_name_in_owner = true
+position = Vector2(31, 16)

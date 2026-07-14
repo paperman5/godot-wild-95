@@ -2,18 +2,23 @@
 class_name FoodDispenser
 extends StaticBody2D
 
+var food_textures = {
+	Utils.FoodType.MonsterMashBurger : preload("uid://vo3mojygam5p"),
+	Utils.FoodType.Werewaffles : preload("uid://dj1kplkvcxxnf")
+}
+
 @export var type : Utils.FoodType:
 	set(value):
 		type = value
 		if is_instance_valid(spr):
-			spr.texture = Utils.food_textures[value]
+			spr.texture = food_textures[value]
 
 @export var counter_style : Utils.TableOrientation:
 	set(value):
 		counter_style = value
 		if is_instance_valid(counter_spr):
 			counter_spr.texture.region = Utils.TableTextureRegions[value]
-			counter_spr.flip_h = value == Utils.TableOrientation.LEFT
+			counter_spr.flip_h = Table.should_flip_texture(value)
 
 @export var cooking_time := 5.0
 

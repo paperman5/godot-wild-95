@@ -3,24 +3,25 @@ class_name Table
 extends StaticBody2D
 
 var seated_customers : Array[Customer] = []
-@export var seat_positions : Array[Node2D] = []
-@export var seat_directions : Array[Vector2i] = []
-@export var orientation : Utils.TableOrientation:
+var seat_positions : Array[Node2D] = []
+var seat_directions : Array[Vector2i] = []
+@export var orientation := Utils.TableOrientation.HOR_CENTER:
 	get:
 		return orientation
 	set(value):
 		orientation = value
-		if is_instance_valid(spr):
-			spr.texture.region = Utils.TableTextureRegions[value]
-			spr.flip_h = value == Utils.TableOrientation.LEFT
+		_set_orientation(value)
+		_set_placemat(can_sit)
 @export var can_sit := true:
 	set(value):
 		can_sit = value
-		if is_instance_valid(placemat_spr):
-			placemat_spr.visible = value
+		_set_orientation(orientation)
+		_set_placemat(value)
 
 @onready var spr = %Sprite2D as Sprite2D
-@onready var placemat_spr = %Placemat as Sprite2D
+@onready var placemat_spr_h = %PlacematH as Sprite2D
+@onready var placemat_spr_v = %PlacematV as Sprite2D
+@onready var corner := %Corner as Sprite2D
 
 func _ready() -> void:
 	orientation = orientation
@@ -60,3 +61,46 @@ func table_is_full() -> bool:
 
 func _on_customer_left(_orders : Array[FoodItem], _bonus : bool, spot : int):
 	seated_customers[spot] = null
+
+func _set_orientation(dir : Utils.TableOrientation):
+	if is_instance_valid(spr):
+		var region := Utils.TableTextureRegions[dir] as Rect2
+		if is_equal_approx(region.size.y, 32.0):
+			spr.offset.y = 0
+		else:
+			spr.offset.y = -16
+		spr.texture.region = region
+		spr.flip_h = should_flip_texture(dir)
+		placemat_spr_v.flip_h = spr.flip_h
+		corner.flip_h = spr.flip_h
+		corner.visible = dir in [Utils.TableOrientation.CORNER_LEFT, 
+								Utils.TableOrientation.CORNER_RIGHT]
+		seat_positions = []
+		seat_directions = []
+		if can_sit:
+			match orientation:
+				Utils.TableOrientation.HOR_LEFT, Utils.TableOrientation.HOR_CENTER, Utils.TableOrientation.HOR_RIGHT:
+					seat_positions.append(%SeatB)
+					seat_directions.append(Vector2i.UP)
+				Utils.TableOrientation.VERT_LEFT:
+					seat_positions.append(%SeatL)
+					seat_directions.append(Vector2i.RIGHT)
+				Utils.TableOrientation.VERT_RIGHT:
+					seat_positions.append(%SeatR)
+					seat_directions.append(Vector2i.LEFT)
+
+func _set_placemat(enabled : bool):
+	if is_instance_valid(placemat_spr_h):
+		placemat_spr_h.visible = orientation in [Utils.TableOrientation.HOR_LEFT,
+											Utils.TableOrientation.HOR_CENTER,
+											Utils.TableOrientation.HOR_RIGHT] \
+								and enabled
+	if is_instance_valid(placemat_spr_v):
+		placemat_spr_v.visible = orientation in [Utils.TableOrientation.VERT_LEFT,
+											Utils.TableOrientation.VERT_RIGHT] \
+								and enabled
+
+static func should_flip_texture(dir : Utils.TableOrientation) -> bool:
+	return dir in [Utils.TableOrientation.HOR_LEFT,
+					Utils.TableOrientation.VERT_LEFT,
+					Utils.TableOrientation.CORNER_LEFT]

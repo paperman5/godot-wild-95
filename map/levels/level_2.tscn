@@ -1,0 +1,87 @@
+[gd_scene format=4 uid="uid://dnv7od3o7m2u"]
+
+[ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_jg4xa"]
+[ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_e8sds"]
+[ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_avo2n"]
+[ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_2ux06"]
+[ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_ytvue"]
+[ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_k4ccm"]
+[ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_e8sds"]
+
+[node name="LevelBase" unique_id=594946845 instance=ExtResource("1_jg4xa")]
+
+[node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]
+z_index = -20
+tile_map_data = PackedByteArray("AAD8//7/AgAAAAAAAAD8////AgAAAAAAAAD8/wAAAgAAAAAAAAD8/wEAAgAAAAAAAAD9//7/AgAAAAAAAAD9////AgAAAAAAAAD9/wAAAgAAAAAAAAD9/wEAAgAAAAAAAAD+//7/AgAAAAAAAAD+////AgAAAAAAAAD+/wAAAgAAAAAAAAD+/wEAAgAAAAAAAAD///7/AgAAAAAAAAD/////AgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAAAAP7/AgAAAAAAAAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAP7/AgAAAAAAAAABAP//AgAAAAAAAAABAAAAAgAAAAAAAAABAAEAAgAAAAAAAAACAP7/AgAAAAAAAAACAP//AgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAADAP7/AgAAAAAAAAADAP//AgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAD8//3/AgADAAAAAAD9//3/AgADAAAAAAD+//3/AgADAAAAAAD///3/AgADAAAAAAAAAP3/AgADAAAAAAABAP3/AgADAAAAAAACAP3/AgADAAAAAAADAP3/AgADAAAAAAD8//z/AgACAAAAAAD9//z/AgACAAAAAAD+//z/AgACAAAAAAD///z/AgACAAAAAAAAAPz/AgACAAAAAAABAPz/AgACAAAAAAACAPz/AgACAAAAAAADAPz/AgACAAAAAAD7//z/AgABAAMAAAD7//3/AgABAAQAAAD7//7/AgABAAUAAAAEAPz/AgABAAMAABAEAP3/AgABAAQAABAEAP7/AgABAAUAABD7////AgABAAUAAAAEAP//AgACAAUAAAD7/wAAAgABAAYAAAD7/wEAAgABAAcAAAAFAP//AgACAAYAAAAFAAAAAgACAAcAAAAFAAEAAgABAAcAABAEAAEAAgABAAAAAAAEAAAAAgAEAAAAAAD6//7/AgAAAAUAAAD6/wAAAgAAAAUAAAAFAP7/AgAAAAUAABAGAAEAAgAAAAcAABD6/wEAAgAAAAcAAAD6////AgAAAAcAAAD6//z/AgAAAAMAAAD6//3/AgAAAAQAAAAFAPz/AgAAAAMAABAFAP3/AgAAAAQAABAGAPz/AgACAAMAAAAGAP3/AgACAAQAAAAGAP7/AgACAAQAAAAGAP//AgACAAQAAAAGAAAAAgACAAQAAAD7/wIAAgAAAAYAAAD8/wIAAgAAAAYAAAD9/wIAAgAAAAYAAAD+/wIAAgAAAAYAAAD//wIAAgAAAAYAAAAAAAIAAgAAAAYAAAABAAIAAgAAAAYAAAACAAIAAgAAAAYAAAADAAIAAgAAAAYAAAAEAAIAAgAAAAYAAAAFAAIAAgAAAAYAAAA=")
+tile_set = ExtResource("2_e8sds")
+
+[node name="FloorOverlay" type="TileMapLayer" parent="." index="1" unique_id=65226405]
+z_index = -20
+tile_map_data = PackedByteArray("AAD8//z/AgADAAQAAAD9//z/AgAEAAQAAAD///z/AgADAAQAAAAAAPz/AgADAAUAAAAEAAAAAgAEAAUAAAACAPz/AgADAAMAAAADAPz/AgAEAAMAAAD+//7/AgAAAAYAAAA=")
+tile_set = ExtResource("2_e8sds")
+
+[node name="Camera2D" parent="." index="7" unique_id=841717384]
+position = Vector2(16, -32)
+zoom = Vector2(3, 3)
+limit_left = -192
+limit_top = -128
+limit_right = 224
+limit_bottom = 64
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_left_margin = 0.63
+drag_top_margin = 1.0
+drag_right_margin = 0.71
+drag_bottom_margin = 1.0
+editor_draw_drag_margin = true
+
+[node name="Player" parent="." index="8" unique_id=983482868]
+position = Vector2(16, -16)
+
+[node name="IceCreamDispenser" parent="." index="9" unique_id=1869970340 instance=ExtResource("3_avo2n")]
+position = Vector2(16, -48)
+style = 0
+
+[node name="IceCreamDispenser2" parent="." index="10" unique_id=401477701 instance=ExtResource("4_2ux06")]
+position = Vector2(48, -48)
+
+[node name="IceCreamDispenser3" parent="." index="11" unique_id=280738391 instance=ExtResource("4_2ux06")]
+position = Vector2(80, -48)
+type = 1
+
+[node name="IceCreamDispenser4" parent="." index="12" unique_id=790007596 instance=ExtResource("4_2ux06")]
+position = Vector2(112, -48)
+type = 2
+
+[node name="TrashCan" parent="." index="13" unique_id=1309707232 instance=ExtResource("5_ytvue")]
+position = Vector2(-16, -48)
+
+[node name="Jukebox" parent="." index="14" unique_id=2059468624 instance=ExtResource("6_k4ccm")]
+position = Vector2(-112, -48)
+
+[node name="Counter" parent="." index="15" unique_id=1824851107 instance=ExtResource("7_e8sds")]
+position = Vector2(80, 16)
+orientation = 2
+
+[node name="Counter2" parent="." index="16" unique_id=8676003 instance=ExtResource("7_e8sds")]
+position = Vector2(48, 16)
+
+[node name="Counter3" parent="." index="17" unique_id=872716496 instance=ExtResource("7_e8sds")]
+position = Vector2(16, 16)
+
+[node name="Counter4" parent="." index="18" unique_id=369335425 instance=ExtResource("7_e8sds")]
+position = Vector2(-16, 16)
+
+[node name="Counter5" parent="." index="19" unique_id=453667649 instance=ExtResource("7_e8sds")]
+position = Vector2(-48, 16)
+orientation = 6
+can_sit = false
+
+[node name="Counter6" parent="." index="20" unique_id=603816248 instance=ExtResource("7_e8sds")]
+position = Vector2(-48, -16)
+orientation = 3
+
+[node name="Counter7" parent="." index="21" unique_id=1097091038 instance=ExtResource("7_e8sds")]
+position = Vector2(-48, -48)
+orientation = 5

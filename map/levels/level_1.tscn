@@ -49,16 +49,13 @@ can_sit = false
 
 [node name="Counter2" parent="." index="15" unique_id=2110931083 instance=ExtResource("6_gxjui")]
 position = Vector2(48, 80)
-can_sit = true
 
 [node name="Counter3" parent="." index="16" unique_id=1534852338 instance=ExtResource("6_gxjui")]
 position = Vector2(80, 80)
-can_sit = true
 
 [node name="Counter4" parent="." index="17" unique_id=765467791 instance=ExtResource("6_gxjui")]
 position = Vector2(112, 80)
 orientation = 2
-can_sit = true
 
 [node name="Jukebox" parent="." index="18" unique_id=2059468624 instance=ExtResource("7_1s3v2")]
 position = Vector2(16, 112)
