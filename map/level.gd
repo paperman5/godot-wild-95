@@ -80,7 +80,8 @@ func seat_random_table():
 	var new_customer := customer_scene.instantiate() as Customer
 	new_customer.customer_type = [Customer.CustomerType.Nightwalker,
 								Customer.CustomerType.Mothman,
-								Customer.CustomerType.Yeti].pick_random()
+								Customer.CustomerType.Yeti,
+								Customer.CustomerType.Goo].pick_random()
 	new_customer.icecream_order_chance = customer_icecream_chance
 	new_customer.food_order_chance = customer_food_chance
 	add_child(new_customer)

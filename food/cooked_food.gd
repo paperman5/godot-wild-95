@@ -23,8 +23,9 @@ var anim_keys = {
 
 func _ready() -> void:
 	food_type = food_type
-	GameManager.player.held_item_changed.connect(_on_held_item_changed)
-	_on_held_item_changed.call_deferred(GameManager.player.get_held_order())
+	if is_instance_valid(GameManager.player):
+		GameManager.player.held_item_changed.connect(_on_held_item_changed)
+		_on_held_item_changed.call_deferred(GameManager.player.get_held_order())
 
 func update_visuals():
 	if is_instance_valid(anim):
