@@ -25,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_2gctw")
 
 [node name="Backer" type="ColorRect" parent="." unique_id=1863191648]
@@ -34,13 +35,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Logo" type="TextureRect" parent="." unique_id=1819785673]
 layout_mode = 0
-offset_left = 135.0
-offset_top = 51.0
-offset_right = 486.0
-offset_bottom = 329.0
+offset_left = 82.0
+offset_top = 40.0
+offset_right = 433.0
+offset_bottom = 318.0
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_hunv0")
 
 [node name="Characters" type="TextureRect" parent="." unique_id=1514102999]
@@ -48,11 +51,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 266.0
-offset_top = -494.0
-offset_right = 592.0
-offset_bottom = -49.0
+offset_left = 243.0
+offset_top = -374.0
+offset_right = 495.0
+offset_bottom = -30.0
 grow_vertical = 0
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_20tr2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1640564926]
@@ -68,6 +72,7 @@ offset_right = -202.0
 offset_bottom = -96.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Continue" type="Button" parent="VBoxContainer" unique_id=1270767845]
 unique_name_in_owner = true
@@ -78,6 +83,15 @@ text = "CONTINUE"
 unique_name_in_owner = true
 layout_mode = 2
 text = "NEW GAME"
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1206149958]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Clear" type="Button" parent="VBoxContainer" unique_id=1332220308]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CLEAR SAVE"
 
 [node name="Credits" type="Control" parent="." unique_id=234892825]
 layout_mode = 1
@@ -90,13 +104,14 @@ offset_top = -443.0
 offset_bottom = -1.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="paperish" type="RichTextLabel" parent="Credits" unique_id=1432469585]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 102.0
-offset_right = 295.0
-offset_bottom = 154.0
+offset_left = 107.0
+offset_top = 89.0
+offset_right = 260.0
+offset_bottom = 141.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "Paperish ([url=https://paperish.itch.io/]socials[/url])
@@ -104,10 +119,10 @@ Programming"
 
 [node name="octo" type="RichTextLabel" parent="Credits" unique_id=1496679962]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 124.0
-offset_right = 537.0
-offset_bottom = 176.0
+offset_left = 297.0
+offset_top = 115.0
+offset_right = 450.0
+offset_bottom = 167.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "Octoburst (socials)
@@ -115,9 +130,9 @@ Pixel Art"
 
 [node name="py" type="RichTextLabel" parent="Credits" unique_id=2030873375]
 layout_mode = 0
-offset_left = 71.0
+offset_left = 51.0
 offset_top = 179.0
-offset_right = 258.0
+offset_right = 238.0
 offset_bottom = 231.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
@@ -126,10 +141,10 @@ HiRes Art, Storyboards"
 
 [node name="miz" type="RichTextLabel" parent="Credits" unique_id=348390757]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 203.0
-offset_right = 537.0
-offset_bottom = 255.0
+offset_left = 307.0
+offset_top = 195.0
+offset_right = 494.0
+offset_bottom = 247.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "Mizax (socials)
@@ -137,10 +152,10 @@ Pixel Art"
 
 [node name="blu" type="RichTextLabel" parent="Credits" unique_id=354627629]
 layout_mode = 0
-offset_left = 139.0
-offset_top = 268.0
-offset_right = 357.0
-offset_bottom = 322.0
+offset_left = 119.0
+offset_top = 263.0
+offset_right = 337.0
+offset_bottom = 317.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "BluSprinks ([url=https://blusprinks.crd.co/]socials[/url])
@@ -148,6 +163,7 @@ Pixel Art, SFX, Music, Admin"
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Clear" to="." method="_on_clear_pressed"]
 [connection signal="meta_clicked" from="Credits/paperish" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="Credits/octo" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="Credits/py" to="." method="_on_credit_meta_clicked"]

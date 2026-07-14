@@ -10,7 +10,8 @@ const save_file_path := "user://savegame.txt"
 
 const level_scenes = {
 	"main_menu" : "uid://6kyebxi5bbkj",
-	"test" : "uid://dk5rt65a0f75k"
+	"test" : "uid://dk5rt65a0f75k",
+	"level_1" : "uid://ssywa7x2dhky"
 }
 
 func _ready() -> void:
@@ -18,9 +19,11 @@ func _ready() -> void:
 	default_view_size = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
 
 func _process(delta: float) -> void:
-	var view_scale = Vector2(get_window().size) / default_view_size
-	var zoom = get_viewport().get_camera_2d().zoom
-	RenderingServer.global_shader_parameter_set("zoom", zoom * view_scale)
+	var cam = get_viewport().get_camera_2d()
+	if is_instance_valid(cam):
+		var view_scale = Vector2(get_window().size) / default_view_size
+		var zoom = cam.zoom
+		RenderingServer.global_shader_parameter_set("zoom", zoom * view_scale)
 
 func time_up():
 	pass

@@ -19,9 +19,16 @@ func _on_continue_pressed() -> void:
 
 
 func _on_new_game_pressed() -> void:
-	GameManager.change_scene("test")
+	GameManager.change_scene("level_1")
 
 
 func _on_credit_meta_clicked(meta: Variant) -> void:
 	# open the link in a web browser.
 	OS.shell_open(str(meta))
+
+
+func _on_clear_pressed() -> void:
+	if FileAccess.file_exists(GameManager.save_file_path):
+		DirAccess.remove_absolute(GameManager.save_file_path)
+		continue_load = "level_1"
+		continue_button.hide()
