@@ -26,7 +26,6 @@ Utils="*uid://cos4dbspdwf0a"
 window/size/viewport_width=960
 window/size/viewport_height=576
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
