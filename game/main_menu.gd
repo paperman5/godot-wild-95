@@ -32,3 +32,7 @@ func _on_clear_pressed() -> void:
 		DirAccess.remove_absolute(GameManager.save_file_path)
 		continue_load = "level_1"
 		continue_button.hide()
+
+
+func _on_mute_toggled(toggled_on: bool) -> void:
+	MusicManager.set_music_muted(toggled_on)

@@ -69,3 +69,7 @@ func start_music(track : AudioStreamMP3):
 func _on_beat_timer_timeout() -> void:
 	beat_idx += 1
 	beat.emit(beat_idx % beats_per_bar == 0)
+
+func set_music_muted(enabled : bool):
+	AudioServer.set_bus_mute(music_bus_idx, enabled)
+	
