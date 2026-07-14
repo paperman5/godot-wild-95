@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cg80er3ff08wp"]
 
-[ext_resource type="Shader" uid="uid://c2jovr0ycf1nt" path="res://misc/outline_shader.gdshader" id="2_br1rg"]
+[ext_resource type="Shader" uid="uid://c2jovr0ycf1nt" path="res://misc/outline_shader_canvasgroup.gdshader" id="2_br1rg"]
 [ext_resource type="Texture2D" uid="uid://7pqhjovnht7d" path="res://food/Icecream-Sprites-Sheet.png" id="2_nuo3e"]
 [ext_resource type="Script" uid="uid://c440lb7pchno" path="res://food/ice_cream.gd" id="2_on6e3"]
 [ext_resource type="Texture2D" uid="uid://dyu3dll1riiam" path="res://food/Icecream-Cup-Normal-Sheet.png" id="3_br1rg"]
@@ -8,11 +8,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_on6e3"]
 resource_local_to_scene = true
 shader = ExtResource("2_br1rg")
-shader_parameter/line_colour = Color(1, 0, 1, 1)
-shader_parameter/line_thickness = 1
+shader_parameter/type = 1
+shader_parameter/thickness = 1.0
 shader_parameter/highlighted = false
+shader_parameter/rainbow = false
 
-[node name="IceCream" type="Node2D" unique_id=24763253 node_paths=PackedStringArray("stack_pos")]
+[node name="IceCream" type="Node2D" unique_id=24763253 node_paths=PackedStringArray("stack_pos") groups=["food"]]
 script = ExtResource("2_on6e3")
 stack_pos = NodePath("Stack0")
 
@@ -29,6 +30,7 @@ position = Vector2(0, -18)
 position = Vector2(0, -22)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2072623233]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_on6e3")
 
 [node name="Scoop0" type="Sprite2D" parent="CanvasGroup" unique_id=1558877138]

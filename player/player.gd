@@ -1,6 +1,8 @@
 class_name Player
 extends Node2D
 
+signal held_item_changed(new : FoodItem)
+
 const TILE_SIZE = 32
 
 @export var tile_move_speed := 0.1
@@ -89,6 +91,7 @@ func add_empty_icecream() -> bool:
 func add_icecream_flavor(flavor : Utils.IceCreamType):
 	if holding_icecream() and not food_stack[0].is_full():
 		food_stack[0].add_flavor(flavor)
+		held_item_changed.emit(get_held_order())
 
 func add_cooked_food(type : Utils.FoodType) -> bool:
 	if len(food_stack) < max_food_stack:
@@ -101,12 +104,15 @@ func add_cooked_food(type : Utils.FoodType) -> bool:
 	return false
 
 func add_to_food_stack(new_food : FoodItem):
+	new_food.highlightable = false
 	food_stack.push_front(new_food)
 	_restack_food()
+	held_item_changed.emit(new_food)
 	
 func pop_food_stack():
 	var food = food_stack.pop_front()
 	_restack_food()
+	held_item_changed.emit(get_held_order())
 	if food != null:
 		food.queue_free()
 
@@ -137,4 +143,8 @@ func holding_valid_order() -> bool:
 			return false
 	return true
 	
-	
+func food_in_stack(search : FoodItem) -> bool:
+	for o in food_stack:
+		if o.is_equal(search):
+			return true
+	return false

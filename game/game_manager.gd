@@ -4,6 +4,7 @@ var player : Player
 var level : Level
 var game_ui : GameUI
 var menus : WinLoseMenus
+var default_view_size := Vector2.ZERO
 
 const save_file_path := "user://savegame.txt"
 
@@ -14,10 +15,12 @@ const level_scenes = {
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	default_view_size = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
 
 func _process(delta: float) -> void:
+	var view_scale = Vector2(get_window().size) / default_view_size
 	var zoom = get_viewport().get_camera_2d().zoom
-	RenderingServer.global_shader_parameter_set("zoom", zoom)
+	RenderingServer.global_shader_parameter_set("zoom", zoom * view_scale)
 
 func time_up():
 	pass

@@ -5,9 +5,14 @@ extends FoodItem
 @export var strict_order := false
 @export var max_flavors := 3
 
+@onready var spr_group := %CanvasGroup as CanvasGroup
+@onready var mat := spr_group.material as ShaderMaterial
+
 func _ready() -> void:
 	for c in [%Scoop0, %Scoop1, %Scoop2]:
 		c.hide()
+	GameManager.player.held_item_changed.connect(_on_held_item_changed)
+	_on_held_item_changed.call_deferred(GameManager.player.get_held_order())
 
 func is_equal(other : FoodItem) -> bool:
 	if not is_instance_of(other, IceCream):
@@ -40,3 +45,19 @@ func add_flavor(flavor : Utils.IceCreamType):
 
 func scoop_count() -> int:
 	return len(flavors)
+
+func _on_held_item_changed(new : FoodItem):
+	if not highlightable or not is_instance_valid(new):
+		mat.set_shader_parameter("highlighted", false)
+		mat.set_shader_parameter("rainbow", false)
+		return
+	if is_equal(new):
+		mat.set_shader_parameter("highlighted", true)
+		mat.set_shader_parameter("rainbow", true)
+		return
+	if GameManager.player.food_in_stack(self):
+		mat.set_shader_parameter("highlighted", true)
+		mat.set_shader_parameter("rainbow", false)
+		return
+	mat.set_shader_parameter("highlighted", false)
+	mat.set_shader_parameter("rainbow", false)

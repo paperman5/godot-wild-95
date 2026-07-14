@@ -2,9 +2,18 @@
 
 [ext_resource type="Script" uid="uid://cyhlxtc8fleqt" path="res://food/cooked_food.gd" id="1_npkg4"]
 [ext_resource type="Texture2D" uid="uid://dj1kplkvcxxnf" path="res://food/Woofles.png" id="2_fel5j"]
+[ext_resource type="Shader" uid="uid://d2ydv6yjv7vtj" path="res://misc/outline_shader.gdshader" id="2_ti45h"]
 [ext_resource type="Texture2D" uid="uid://vo3mojygam5p" path="res://food/MonsterMashBurger.png" id="2_w2888"]
 [ext_resource type="Texture2D" uid="uid://dbu53u2fc0p7y" path="res://food/MonsterMashBurger_Icon.png" id="3_q0ek1"]
 [ext_resource type="Texture2D" uid="uid://bafs4ygy2f7ux" path="res://food/Woofles_Icon.png" id="5_ti45h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0ek1"]
+resource_local_to_scene = true
+shader = ExtResource("2_ti45h")
+shader_parameter/type = 1
+shader_parameter/thickness = 1.0
+shader_parameter/highlighted = false
+shader_parameter/rainbow = false
 
 [sub_resource type="Animation" id="Animation_oufri"]
 resource_name = "RESET"
@@ -222,13 +231,14 @@ _data = {
 &"icon": SubResource("Animation_lanff")
 }
 
-[node name="CookedFood" type="Node2D" unique_id=253560409 node_paths=PackedStringArray("stack_pos")]
+[node name="CookedFood" type="Node2D" unique_id=253560409 node_paths=PackedStringArray("stack_pos") groups=["food"]]
 script = ExtResource("1_npkg4")
 stack_pos = NodePath("Stack")
 metadata/_custom_type_script = "uid://cyhlxtc8fleqt"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=167291162]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_q0ek1")
 texture = ExtResource("2_w2888")
 offset = Vector2(0, -8)
 

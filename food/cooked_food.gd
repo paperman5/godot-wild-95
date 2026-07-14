@@ -19,9 +19,12 @@ var anim_keys = {
 
 @onready var spr := %Sprite2D as Sprite2D
 @onready var anim := %AnimationPlayer as AnimationPlayer
+@onready var mat := spr.material as ShaderMaterial
 
 func _ready() -> void:
 	food_type = food_type
+	GameManager.player.held_item_changed.connect(_on_held_item_changed)
+	_on_held_item_changed.call_deferred(GameManager.player.get_held_order())
 
 func update_visuals():
 	if is_instance_valid(anim):
@@ -34,3 +37,19 @@ func is_equal(other : FoodItem) -> bool:
 	if not is_instance_of(other, CookedFood):
 		return false
 	return food_type == other.food_type
+
+func _on_held_item_changed(new : FoodItem):
+	if not highlightable or not is_instance_valid(new):
+		mat.set_shader_parameter("highlighted", false)
+		mat.set_shader_parameter("rainbow", false)
+		return
+	if is_equal(new):
+		mat.set_shader_parameter("highlighted", true)
+		mat.set_shader_parameter("rainbow", true)
+		return
+	if GameManager.player.food_in_stack(self):
+		mat.set_shader_parameter("highlighted", true)
+		mat.set_shader_parameter("rainbow", false)
+		return
+	mat.set_shader_parameter("highlighted", false)
+	mat.set_shader_parameter("rainbow", false)
