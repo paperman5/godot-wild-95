@@ -19,6 +19,7 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var max_icecream_scoops := 3
 @export var customer_icecream_chance := 1.0
 @export var customer_food_chance := 0.0
+@export var next_level := "level_1"
 # TODO: Stats?
 
 var score := 0

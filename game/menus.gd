@@ -37,3 +37,11 @@ func _on_begin_resume_pressed():
 
 func _on_main_menu_pressed():
 	GameManager.change_scene("main_menu")
+
+
+func _on_next_pressed() -> void:
+	GameManager.change_scene(GameManager.level.next_level)
+
+
+func _on_retry_pressed() -> void:
+	GameManager.reload_current_scene()

@@ -11,7 +11,9 @@ const save_file_path := "user://savegame.txt"
 const level_scenes = {
 	"main_menu" : "uid://6kyebxi5bbkj",
 	"test" : "uid://dk5rt65a0f75k",
-	"level_1" : "uid://ssywa7x2dhky"
+	"level_1" : "uid://ssywa7x2dhky",
+	"level_2" : "uid://dnv7od3o7m2u",
+	"level_3" : "uid://mufmt5bnk3bk"
 }
 
 func _ready() -> void:
@@ -39,6 +41,9 @@ func change_scene(new_scene : String):
 			var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
 			save_file.store_line(level_scenes[new_scene])
 			save_file.close()
+
+func reload_current_scene():
+	get_tree().reload_current_scene()
 
 func change_scene_uid(uid : String):
 	get_tree().change_scene_to_file(uid)
