@@ -135,6 +135,7 @@ func pause(show_menu : bool = false):
 	if show_menu:
 		GameManager.menus.show_pause()
 	paused = true
+	MusicManager.set_music_lofi(true)
 
 func unpause(clear_menu : bool = false):
 	for t in get_tree().get_nodes_in_group("timers"):
@@ -144,6 +145,7 @@ func unpause(clear_menu : bool = false):
 	if not game_started:
 		game_started = true
 	paused = false
+	MusicManager.set_music_lofi(false)
 
 func lose_game():
 	pause()

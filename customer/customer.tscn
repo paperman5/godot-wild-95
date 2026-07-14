@@ -568,17 +568,20 @@ texture = ExtResource("7_y5xyn")
 offset = Vector2(-3, 4)
 metadata/_edit_lock_ = true
 
-[node name="EatWaitTimer" type="Timer" parent="." unique_id=1888844217]
+[node name="EatWaitTimer" type="Timer" parent="." unique_id=1888844217 groups=["timers"]]
 unique_name_in_owner = true
 one_shot = true
 
-[node name="ThinkingTimer" type="Timer" parent="." unique_id=1958206162]
+[node name="ThinkingTimer" type="Timer" parent="." unique_id=1958206162 groups=["timers"]]
 unique_name_in_owner = true
 one_shot = true
 
-[node name="BonusTimer" type="Timer" parent="." unique_id=407263380]
+[node name="BonusTimer" type="Timer" parent="." unique_id=407263380 groups=["timers"]]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1737054731]
+bus = &"SFX"
 
 [connection signal="timeout" from="EatWaitTimer" to="." method="finished_eating"]
 [connection signal="timeout" from="ThinkingTimer" to="." method="_on_thinking_timer_timeout"]

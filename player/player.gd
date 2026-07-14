@@ -15,6 +15,7 @@ const TILE_SIZE = 32
 var move_tween : Tween
 var true_pos := Vector2.ZERO
 var moving := false
+var beat_initialized := false
 
 var food_stack : Array[FoodItem] = []
 
@@ -22,6 +23,7 @@ func _ready() -> void:
 	GameManager.player = self
 	anim.play("idle_down")
 	true_pos = position
+	MusicManager.beat.connect(_on_music_beat)
 
 func _physics_process(_delta: float) -> void:
 	if moving or GameManager.level.paused:
@@ -148,3 +150,9 @@ func food_in_stack(search : FoodItem) -> bool:
 		if o.is_equal(search):
 			return true
 	return false
+
+func _on_music_beat(_bar : bool):
+	if not beat_initialized:
+		beat_initialized = true
+		anim.speed_scale = MusicManager.music_bpm / (60.0 * Utils.DEFAULT_ANIM_SPEED)
+		anim.seek(0.0)

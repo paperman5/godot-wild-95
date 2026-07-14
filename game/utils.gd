@@ -33,3 +33,6 @@ const TableTextureRegions = {
 	TableOrientation.CORNER_LEFT : Rect2(32, 32, 32, 64),
 	TableOrientation.CORNER_RIGHT : Rect2(32, 32, 32, 64),
 }
+
+# All animations are at 5 fps
+const DEFAULT_ANIM_SPEED := 5

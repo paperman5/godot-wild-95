@@ -506,9 +506,6 @@ _data = {
 
 [node name="Player" type="Node2D" unique_id=983482868]
 script = ExtResource("1_onrkg")
-tile_move_speed = null
-move_cooldown = null
-max_food_stack = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=205100782]
 unique_name_in_owner = true
@@ -523,3 +520,7 @@ libraries/ = SubResource("AnimationLibrary_rgyib")
 [node name="Hand" type="Marker2D" parent="." unique_id=472818977]
 unique_name_in_owner = true
 position = Vector2(-11, -7)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1253964418]
+max_polyphony = 4
+bus = &"SFX"
