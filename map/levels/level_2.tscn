@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_k4ccm"]
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_e8sds"]
 
-[node name="LevelBase" unique_id=594946845 instance=ExtResource("1_jg4xa")]
+[node name="Level2" unique_id=594946845 instance=ExtResource("1_jg4xa")]
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]
 z_index = -20

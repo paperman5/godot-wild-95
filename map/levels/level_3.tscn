@@ -1,0 +1,102 @@
+[gd_scene format=4 uid="uid://mufmt5bnk3bk"]
+
+[ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_3dnot"]
+[ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_a4rac"]
+[ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_sc5sv"]
+[ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_t3kdf"]
+[ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_lo52u"]
+[ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_kyek8"]
+[ext_resource type="PackedScene" uid="uid://b72hvoukbhliu" path="res://map/food_dispenser.tscn" id="7_a4rac"]
+[ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_engu6"]
+
+[node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
+
+[node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]
+z_index = -20
+tile_map_data = PackedByteArray("AAD7//7/AgAAAAAAAAD7////AgAAAAAAAAD8//7/AgAAAAAAAAD8////AgAAAAAAAAD9//7/AgAAAAAAAAD9////AgAAAAAAAAD+//7/AgAAAAAAAAD+////AgAAAAAAAAD///7/AgAAAAAAAAD/////AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP//AgAAAAAAAAABAP7/AgAAAAAAAAABAP//AgAAAAAAAAACAP7/AgAAAAAAAAACAP//AgAAAAAAAAADAP7/AgAAAAAAAAADAP//AgAAAAAAAAAEAP7/AgAAAAAAAAAEAP//AgAAAAAAAAD7//3/AgADAAAAAAD8//3/AgADAAAAAAD9//3/AgADAAAAAAD+//3/AgADAAAAAAD///3/AgADAAAAAAAAAP3/AgADAAAAAAABAP3/AgADAAAAAAACAP3/AgADAAAAAAADAP3/AgADAAAAAAAEAP3/AgADAAAAAAD7//z/AgACAAAAAAD8//z/AgACAAAAAAD9//z/AgACAAAAAAD+//z/AgACAAAAAAD///z/AgACAAAAAAAAAPz/AgACAAAAAAABAPz/AgACAAAAAAACAPz/AgACAAAAAAADAPz/AgACAAAAAAAEAPz/AgACAAAAAAD5//z/AgAAAAMAAAD5//3/AgAAAAQAAAD5//7/AgAAAAUAAAD6//z/AgABAAMAAAD6//3/AgABAAQAAAD6//7/AgABAAUAAAAGAPz/AgAAAAMAABAFAPz/AgABAAMAABAGAP3/AgAAAAQAABAFAP3/AgABAAQAABAGAP7/AgAAAAUAABAFAP7/AgABAAUAABD7/wAAAgAAAAAAAAD7/wEAAgAAAAAAAAD8/wAAAgAAAAAAAAD8/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAD9/wEAAgAAAAAAAAD+/wAAAgAAAAAAAAD+/wEAAgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAAAAgAAAAAAAAABAAEAAgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAAEAAAAAgAAAAAAAAAEAAEAAgAAAAAAAAAFAAAAAgAEAAAAAAAFAAEAAgABAAAAAAAGAAAAAgACAAcAAAAGAAEAAgABAAcAABAFAP//AgACAAUAAAAGAP//AgACAAYAAAD6////AgABAAUAAAD6/wAAAgABAAYAAAD6/wEAAgABAAcAAAD5/wAAAgAAAAUAAAD5////AgAAAAcAAAD5/wEAAgAAAAcAAAD6/wIAAgAAAAYAAAD7/wIAAgAAAAYAAAD8/wIAAgAAAAYAAAD9/wIAAgAAAAYAAAD+/wIAAgAAAAYAAAD//wIAAgAAAAYAAAAAAAIAAgAAAAYAAAABAAIAAgAAAAYAAAACAAIAAgAAAAYAAAADAAIAAgAAAAYAAAAEAAIAAgAAAAYAAAAFAAIAAgAAAAYAAAAGAAIAAgAAAAYAAAAHAAEAAgAAAAcAABAHAP3/AgACAAQAAAAHAP7/AgACAAQAAAAHAP//AgACAAQAAAAHAAAAAgACAAQAAAAHAPz/AgACAAMAAAA=")
+tile_set = ExtResource("2_a4rac")
+
+[node name="FloorOverlay" type="TileMapLayer" parent="." index="1" unique_id=65226405]
+z_index = -20
+tile_map_data = PackedByteArray("AAD+//7/AgAAAAYAAAD8//z/AgAEAAQAAAD9//z/AgADAAUAAAD+//z/AgADAAQAABADAPz/AgADAAMAAAAEAPz/AgAEAAMAAAABAPz/AgAEAAQAAAACAPz/AgADAAQAAAAFAAAAAgAEAAUAAAA=")
+tile_set = ExtResource("2_a4rac")
+
+[node name="Camera2D" parent="." index="7" unique_id=841717384]
+position = Vector2(16, -32)
+zoom = Vector2(3, 3)
+limit_left = -224
+limit_top = -128
+limit_right = 256
+limit_bottom = 64
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_left_margin = 0.63
+drag_top_margin = 1.0
+drag_right_margin = 0.71
+drag_bottom_margin = 1.0
+editor_draw_drag_margin = true
+
+[node name="Player" parent="." index="8" unique_id=983482868]
+position = Vector2(16, -16)
+
+[node name="IceCreamDispenser" parent="." index="9" unique_id=1869970340 instance=ExtResource("3_sc5sv")]
+position = Vector2(-48, -48)
+style = 2
+
+[node name="IceCreamDispenser2" parent="." index="10" unique_id=401477701 instance=ExtResource("4_t3kdf")]
+position = Vector2(-144, -48)
+
+[node name="IceCreamDispenser3" parent="." index="11" unique_id=280738391 instance=ExtResource("4_t3kdf")]
+position = Vector2(-112, -48)
+type = 1
+
+[node name="IceCreamDispenser4" parent="." index="12" unique_id=790007596 instance=ExtResource("4_t3kdf")]
+position = Vector2(-80, -48)
+type = 2
+
+[node name="TrashCan" parent="." index="13" unique_id=1309707232 instance=ExtResource("5_lo52u")]
+position = Vector2(48, -48)
+
+[node name="Jukebox" parent="." index="14" unique_id=2059468624 instance=ExtResource("6_kyek8")]
+position = Vector2(144, -48)
+
+[node name="FoodDispenser" parent="." index="15" unique_id=1797276355 instance=ExtResource("7_a4rac")]
+position = Vector2(-16, -48)
+counter_style = 0
+
+[node name="FoodDispenser2" parent="." index="16" unique_id=1553281494 instance=ExtResource("7_a4rac")]
+position = Vector2(16, -48)
+type = 1
+counter_style = 2
+
+[node name="Counter" parent="." index="17" unique_id=1824851107 instance=ExtResource("7_engu6")]
+position = Vector2(80, -48)
+orientation = 5
+
+[node name="Counter2" parent="." index="18" unique_id=2123268963 instance=ExtResource("7_engu6")]
+position = Vector2(80, -16)
+orientation = 4
+
+[node name="Counter3" parent="." index="19" unique_id=436077438 instance=ExtResource("7_engu6")]
+position = Vector2(80, 16)
+orientation = 7
+
+[node name="Counter4" parent="." index="20" unique_id=523222152 instance=ExtResource("7_engu6")]
+position = Vector2(48, 16)
+
+[node name="Counter5" parent="." index="21" unique_id=933111047 instance=ExtResource("7_engu6")]
+position = Vector2(16, 16)
+
+[node name="Counter6" parent="." index="22" unique_id=766775791 instance=ExtResource("7_engu6")]
+position = Vector2(-16, 16)
+
+[node name="Counter7" parent="." index="23" unique_id=929500210 instance=ExtResource("7_engu6")]
+position = Vector2(-48, 16)
+
+[node name="Counter8" parent="." index="24" unique_id=4285912 instance=ExtResource("7_engu6")]
+position = Vector2(-80, 16)
+
+[node name="Counter9" parent="." index="25" unique_id=778345010 instance=ExtResource("7_engu6")]
+position = Vector2(-112, 16)
+orientation = 0

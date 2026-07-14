@@ -21,6 +21,13 @@ tile_set = ExtResource("2_iuesu")
 [node name="Camera2D" parent="." index="7" unique_id=841717384]
 position = Vector2(96, 32)
 zoom = Vector2(3, 3)
+limit_left = -64
+limit_top = -64
+limit_right = 256
+limit_bottom = 128
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="Player" parent="." index="8" unique_id=983482868]
 position = Vector2(48, 48)
