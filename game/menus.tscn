@@ -60,6 +60,7 @@ text = "NEXT LEVEL"
 
 [node name="LoseMenu" type="Control" parent="." unique_id=975099820]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,7 +164,6 @@ text = "MAIN MENU"
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1497502033]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
