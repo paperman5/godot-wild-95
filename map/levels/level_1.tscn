@@ -28,7 +28,7 @@ limit_right = 256
 limit_bottom = 128
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 2.0
+position_smoothing_speed = 8.0
 
 [node name="Player" parent="." index="8" unique_id=983482868]
 position = Vector2(48, 48)

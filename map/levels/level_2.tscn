@@ -30,12 +30,15 @@ limit_right = 224
 limit_bottom = 64
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 2.0
+position_smoothing_speed = 8.0
 drag_left_margin = 0.63
 drag_top_margin = 1.0
 drag_right_margin = 0.71
 drag_bottom_margin = 1.0
 editor_draw_drag_margin = true
+spring_stop_left = 115.0
+spring_stop_right = 115.0
+spring_stiffness = 5.0
 
 [node name="Player" parent="." index="8" unique_id=983482868]
 position = Vector2(16, -16)

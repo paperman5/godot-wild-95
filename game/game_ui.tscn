@@ -46,6 +46,7 @@ action_left = &"move_left"
 action_right = &"move_right"
 action_up = &"move_up"
 action_down = &"move_down"
+debug_show_region = false
 region_y = 175.0
 region_w = 394.0
 region_h = 401.0
