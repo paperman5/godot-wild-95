@@ -31,6 +31,7 @@ MusicManager="*uid://c2t0kmebu1eqp"
 window/size/viewport_width=960
 window/size/viewport_height=576
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 

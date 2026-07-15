@@ -608,7 +608,8 @@ func _calc_dpad(offset: Vector2, dist: float) -> void:
 
 # sin(22.5°) ≈ 0.3827 → divides the circle into 8 octants of 45°.
 # Each axis is evaluated independently, allowing simultaneous diagonal inputs.
-	const DIAG_T: float = 0.3827
+	#const DIAG_T: float = 0.3827
+	const DIAG_T: float = 0.7071
 
 	var dir: Vector2 = Vector2.ZERO
 	if nx > DIAG_T: dir.x = 1.0
@@ -616,9 +617,9 @@ func _calc_dpad(offset: Vector2, dist: float) -> void:
 	if ny > DIAG_T: dir.y = 1.0
 	elif ny < -DIAG_T: dir.y = -1.0
 
-	if dir == Vector2.ZERO:
-		dir.x = signf(nx)
-		dir.y = signf(ny)
+	#if dir == Vector2.ZERO:
+		#dir.x = signf(nx)
+		#dir.y = signf(ny)
 
 	if haptic_dpad_on_change and dir != _dpad_active and dir != Vector2.ZERO:
 		_haptic_vibrate(haptic_dpad_change_duration, haptic_dpad_change_amplitude)
