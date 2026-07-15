@@ -19,8 +19,9 @@ tile_set = ExtResource("2_a4rac")
 
 [node name="FloorOverlay" type="TileMapLayer" parent="." index="1" unique_id=65226405]
 z_index = -20
-tile_map_data = PackedByteArray("AAD+//7/AgAAAAYAAAD8//z/AgAEAAQAAAD9//z/AgADAAUAAAD+//z/AgADAAQAABADAPz/AgADAAMAAAAEAPz/AgAEAAMAAAABAPz/AgAEAAQAAAACAPz/AgADAAQAAAAFAAAAAgAEAAUAAAA=")
+tile_map_data = PackedByteArray("AAD8//z/AgAEAAQAAAD9//z/AgADAAUAAAD+//z/AgADAAQAABADAPz/AgADAAMAAAAEAPz/AgAEAAMAAAABAPz/AgAEAAQAAAACAPz/AgADAAQAAAAFAAAAAgAEAAUAAAA=")
 tile_set = ExtResource("2_a4rac")
+collision_visibility_mode = 1
 
 [node name="Camera2D" parent="." index="7" unique_id=841717384]
 position = Vector2(-16, -32)
