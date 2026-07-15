@@ -36,3 +36,10 @@ const TableTextureRegions = {
 
 # All animations are at 5 fps
 const DEFAULT_ANIM_SPEED := 5
+
+func advance_animation_single_frame(anim : AnimationPlayer):
+	var frame_time := 1.0 / Utils.DEFAULT_ANIM_SPEED
+	var new_time := snappedf(anim.current_animation_position, frame_time) + frame_time + 0.001
+	anim.seek(new_time, true)
+	anim.pause()
+	

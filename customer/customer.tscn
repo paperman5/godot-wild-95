@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dv5d13kmfdvth" path="res://customer/CustomerThinking.png" id="5_kyy7l"]
 [ext_resource type="Texture2D" uid="uid://bolreaaehah0j" path="res://customer/OrderBubble.png" id="6_cslmy"]
 [ext_resource type="Texture2D" uid="uid://t5gts47cv6e6" path="res://customer/OrderBubble_Tail.png" id="7_y5xyn"]
+[ext_resource type="PackedScene" uid="uid://xidsrps2e7ya" path="res://misc/music_sync_component.tscn" id="9_wfglr"]
 
 [sub_resource type="Animation" id="Animation_f5n86"]
 resource_name = "RESET"
@@ -510,7 +511,6 @@ animations = [{
 
 [node name="Customer" type="Node2D" unique_id=380656062]
 script = ExtResource("1_2c3mv")
-customer_type = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=575475049]
 unique_name_in_owner = true
@@ -582,6 +582,12 @@ one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1737054731]
 bus = &"SFX"
+
+[node name="MusicSyncComponent" parent="." unique_id=1947546521 node_paths=PackedStringArray("animation_player") instance=ExtResource("9_wfglr")]
+unique_name_in_owner = true
+animation_player = NodePath("../AnimationPlayer")
+advance_every_n_frames = 2
+starting_animation = "nightwalker/idle_down"
 
 [connection signal="timeout" from="EatWaitTimer" to="." method="finished_eating"]
 [connection signal="timeout" from="ThinkingTimer" to="." method="_on_thinking_timer_timeout"]

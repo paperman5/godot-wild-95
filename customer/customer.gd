@@ -30,8 +30,8 @@ var bonus := true
 @export var customer_type := CustomerType.Nightwalker:
 	set(value):
 		customer_type = value
-		if is_instance_valid(anim):
-			sit_direction(Vector2.DOWN)
+		#if is_instance_valid(anim):
+			#sit_direction(Vector2.DOWN)
 @export var eat_wait_time := 1.0
 @export var think_time := 2.0
 @export var prompt_bonus_time := 5.0
@@ -50,15 +50,19 @@ var bonus := true
 @onready var eat_wait_timer := %EatWaitTimer as Timer
 @onready var thinking_timer := %ThinkingTimer as Timer
 @onready var bonus_timer := %BonusTimer as Timer
+@onready var music_sync := %MusicSyncComponent as MusicSyncComponent
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
+		customer_type = customer_type
 		left_seat.connect(GameManager.level.customer_left)
 		randomize_order()
 		thinking_bubble.show()
 		bubble_root.hide()
-		anim.speed_scale = 0.5
+		music_sync.advance_every_n_beats = 4
 		thinking_timer.start(think_time)
+		music_sync.starting_animation = anim_library_keys[customer_type] + "/idle_down"
+		music_sync.start_sync()
 
 func has_matching_order(order_to_check : FoodItem) -> bool:
 	return find_matching_order(order_to_check) >= 0
@@ -119,6 +123,7 @@ func deliver_order(order : FoodItem):
 
 func start_eating(order_matched : bool):
 	order_bubble.hide()
+	music_sync.advance_every_n_beats = 1
 	eat_wait_timer.start(eat_wait_time)
 	eating = true
 	# TODO: Play correct animation if order is matched or not
@@ -136,14 +141,19 @@ func sit_direction(dir : Vector2):
 		anim_dir = "idle_down"
 	var anim_library = anim_library_keys[customer_type]
 	var anim_key = anim_library + "/" + anim_dir
-	anim.play(anim_library + "/" + "RESET")
+	anim.current_animation = anim_library + "/" + "RESET"
 	anim.seek(0.0, true)
-	if not Engine.is_editor_hint():
-		anim.play(anim_key)
-	else:
-		anim.play(anim_key)
-		anim.seek(0.0, true)
-		anim.stop()
+	anim.current_animation = anim_key
+	anim.seek(0.0, true)
+	anim.pause()
+	#anim.play(anim_library + "/" + "RESET")
+	#anim.seek(0.0, true)
+	#if not Engine.is_editor_hint():
+		#anim.play(anim_key)
+	#else:
+		#anim.play(anim_key)
+		#anim.seek(0.0, true)
+		#anim.stop()
 
 func randomize_order():
 	var order_food := randf() <= food_order_chance
@@ -198,8 +208,9 @@ func _on_thinking_timer_timeout():
 	thinking = false
 	thinking_bubble.hide()
 	bubble_root.show()
-	anim.speed_scale = 1.0
-	anim.seek(0.0)
+	music_sync.advance_every_n_beats = 2
+	#anim.speed_scale = 1.0
+	#anim.seek(0.0)
 
 func _on_bonus_timer_timeout():
 	bonus = false

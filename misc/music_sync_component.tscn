@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://xidsrps2e7ya"]
+
+[ext_resource type="Script" uid="uid://dto8ortu3cqso" path="res://misc/music_sync_component.gd" id="1_d466m"]
+
+[node name="MusicSyncComponent" type="Node" unique_id=1947546521]
+script = ExtResource("1_d466m")

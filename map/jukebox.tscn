@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://5d5c3bpu5tm1"]
 
 [ext_resource type="Texture2D" uid="uid://rigvmckfv425" path="res://map/Jukebox_Animation.png" id="1_1stij"]
+[ext_resource type="Script" uid="uid://do6vuqipm1b66" path="res://map/jukebox.gd" id="1_e8877"]
+[ext_resource type="PackedScene" uid="uid://xidsrps2e7ya" path="res://misc/music_sync_component.tscn" id="3_pedhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hunv0"]
 size = Vector2(32, 32)
@@ -45,6 +47,7 @@ _data = {
 }
 
 [node name="Jukebox" type="StaticBody2D" unique_id=2059468624]
+script = ExtResource("1_e8877")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323026383]
 shape = SubResource("RectangleShape2D_hunv0")
@@ -55,5 +58,10 @@ offset = Vector2(0, -16)
 hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1405280808]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_lyajm")
-autoplay = &"playing"
+
+[node name="MusicSyncComponent" parent="." unique_id=1947546521 node_paths=PackedStringArray("animation_player") instance=ExtResource("3_pedhm")]
+animation_player = NodePath("../AnimationPlayer")
+advance_every_n_frames = 2
+starting_animation = "playing"

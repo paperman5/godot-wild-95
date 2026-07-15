@@ -31,11 +31,6 @@ func _ready() -> void:
 	
 	start_music(preload("uid://crw2vhfvifdv0"))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func set_music_lofi(enabled : bool):
 	if not music_lofi_mode and enabled:
 		music_lofi_mode = true

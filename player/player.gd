@@ -15,33 +15,35 @@ const TILE_SIZE = 32
 var move_tween : Tween
 var true_pos := Vector2.ZERO
 var moving := false
-var beat_initialized := false
 
 var food_stack : Array[FoodItem] = []
 
 func _ready() -> void:
 	GameManager.player = self
-	anim.play("idle_down")
 	true_pos = position
-	MusicManager.beat.connect(_on_music_beat)
 
 func _physics_process(_delta: float) -> void:
 	if moving or GameManager.level.paused:
 		return
 	
 	var move_dir := Vector2.ZERO
+	var prev_anim_time := anim.current_animation_position
 	if Input.is_action_just_pressed("move_down"):
 		move_dir = Vector2.DOWN
-		anim.play("walk_down")
+		anim.current_animation = "walk_down"
+		anim.seek(prev_anim_time)
 	elif Input.is_action_just_pressed("move_up"):
 		move_dir = Vector2.UP
-		anim.play("walk_up")
+		anim.current_animation = "walk_up"
+		anim.seek(prev_anim_time)
 	elif Input.is_action_just_pressed("move_left"):
 		move_dir = Vector2.LEFT
-		anim.play("walk_left")
+		anim.current_animation = "walk_left"
+		anim.seek(prev_anim_time)
 	elif Input.is_action_just_pressed("move_right"):
 		move_dir = Vector2.RIGHT
-		anim.play("walk_right")
+		anim.current_animation = "walk_right"
+		anim.seek(prev_anim_time)
 	
 	if not move_dir.is_zero_approx():
 		var space_state = get_world_2d().direct_space_state
@@ -150,9 +152,3 @@ func food_in_stack(search : FoodItem) -> bool:
 		if o.is_equal(search):
 			return true
 	return false
-
-func _on_music_beat(_bar : bool):
-	if not beat_initialized:
-		beat_initialized = true
-		anim.speed_scale = MusicManager.music_bpm / (60.0 * Utils.DEFAULT_ANIM_SPEED)
-		anim.seek(0.0)
