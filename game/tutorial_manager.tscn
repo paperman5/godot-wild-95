@@ -5,11 +5,14 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ike0"]
 shader = ExtResource("1_c8afj")
-shader_parameter/zoom = Vector2(3, 3)
-shader_parameter/blur = 18.0
-shader_parameter/back_color = Color(0, 0, 0, 0.5019608)
-shader_parameter/highlight_points = PackedVector2Array(487, 261, -100, 0, -100, 0, -100, 0, -100, 0, -100, 0, -100, 0, -100, 0)
-shader_parameter/highlight_radii = PackedFloat32Array(87, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/zoom = Vector2(1, 1)
+shader_parameter/blur = 20.0
+shader_parameter/back_color = Color(0, 0, 0, 0.5)
+shader_parameter/highlight_points = PackedVector2Array(500, 300, -500, 500, -500, 500, -500, 500)
+shader_parameter/highlight_radii = PackedFloat32Array(30, 0, 0, 0)
+shader_parameter/slot_a = Vector2(-500, 500)
+shader_parameter/slot_b = Vector2(-500, 500)
+shader_parameter/slot_r = 20.0
 
 [node name="TutorialManager" type="CanvasLayer" unique_id=937039778]
 layer = 100

@@ -25,6 +25,7 @@ buses/default_bus_layout="uid://ciityham4jjfe"
 GameManager="*uid://dtbkogjkepxgn"
 Utils="*uid://cos4dbspdwf0a"
 MusicManager="*uid://c2t0kmebu1eqp"
+TutorialManager="*uid://claqn5mk6wn6q"
 
 [display]
 

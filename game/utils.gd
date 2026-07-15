@@ -42,4 +42,21 @@ func advance_animation_single_frame(anim : AnimationPlayer):
 	var new_time := snappedf(anim.current_animation_position, frame_time) + frame_time + 0.001
 	anim.seek(new_time, true)
 	anim.pause()
-	
+
+func get_view_scale() -> float:
+	## get_viewport().get_visible_rect() returns correct in-game pixel viewport size
+	## get_window().size returns correct w&h of window including black bars at t&b
+	#var orig_aspect = float(ProjectSettings.get_setting("display/window/size/viewport_width")) / float(ProjectSettings.get_setting("display/window/size/viewport_height"))
+	#var window_size := Vector2(get_window().size)
+	#if window_size.aspect() < orig_aspect:
+		#window_size = Vector2(window_size.x, window_size.x / orig_aspect)
+	#var ingame_size := get_viewport().get_visible_rect()
+	#var cam := get_viewport().get_camera_2d()
+	#if is_instance_valid(cam):
+		#return window_size.y * cam.zoom.y / ingame_size.size.y
+	#return window_size.y / ingame_size.size.y
+	var cam := get_viewport().get_camera_2d()
+	var base_scale := get_window().get_final_transform().get_scale().y
+	if is_instance_valid(cam):
+		return base_scale * cam.zoom.y
+	return base_scale

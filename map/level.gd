@@ -62,8 +62,6 @@ func _process(_delta: float) -> void:
 			pause(true)
 		elif paused and game_started:
 			unpause(true)
-	#if is_instance_valid(GameManager.player) and is_instance_valid(cam):
-		#cam.position = GameManager.player.position
 
 func _on_seating_timer_timeout():
 	seat_random_table()
