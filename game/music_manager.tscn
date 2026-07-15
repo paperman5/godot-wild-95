@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2t0kmebu1eqp"]
 
 [ext_resource type="Script" uid="uid://nvdj2lt6yk4d" path="res://game/music_manager.gd" id="1_8g7w3"]
-[ext_resource type="AudioStream" uid="uid://crw2vhfvifdv0" path="res://audio/test_song.mp3" id="2_bol72"]
+[ext_resource type="AudioStream" uid="uid://gnyquaeok27c" path="res://audio/surfin_kk.mp3" id="2_bol72"]
 
 [node name="MusicManager" type="Node" unique_id=861792273]
 process_mode = 3

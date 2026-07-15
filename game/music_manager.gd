@@ -29,7 +29,7 @@ func _ready() -> void:
 	hipass_filter = AudioServer.get_bus_effect(music_bus_idx, 1)
 	lofi_filter = AudioServer.get_bus_effect(music_bus_idx, 2)
 	
-	start_music(preload("uid://crw2vhfvifdv0"))
+	start_music(music_player.stream)
 
 func set_music_lofi(enabled : bool):
 	if not music_lofi_mode and enabled:
