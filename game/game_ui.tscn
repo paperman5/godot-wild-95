@@ -75,26 +75,29 @@ propagate_maximum_size = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_top = 22.0
-offset_right = 96.0
-offset_bottom = 76.0
+offset_left = -171.0
+offset_top = 23.0
+offset_right = 69.0
+offset_bottom = 77.0
 grow_horizontal = 2
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=192875762]
 layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "COMBO:"
 
 [node name="ComboBase" type="Label" parent="HBoxContainer" unique_id=2025984724]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="Label2" type="Label" parent="HBoxContainer" unique_id=1964453741]
 layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "x"
 vertical_alignment = 1
@@ -102,18 +105,7 @@ vertical_alignment = 1
 [node name="ComboMult" type="Label" parent="HBoxContainer" unique_id=1339755128]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "0"
-
-[node name="Label3" type="Label" parent="HBoxContainer" unique_id=1558673512]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "x"
-vertical_alignment = 1
-
-[node name="ComboMult2" type="Label" parent="HBoxContainer" unique_id=225103234]
-unique_name_in_owner = true
-layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "0"
 

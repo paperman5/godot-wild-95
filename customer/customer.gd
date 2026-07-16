@@ -26,6 +26,7 @@ var orders_given : Array[FoodItem] = []
 var thinking := true
 var eating := false
 var bonus := true
+var failed_order := false
 
 @export var customer_type := CustomerType.Nightwalker:
 	set(value):
@@ -51,6 +52,8 @@ var bonus := true
 @onready var thinking_timer := %ThinkingTimer as Timer
 @onready var bonus_timer := %BonusTimer as Timer
 @onready var music_sync := %MusicSyncComponent as MusicSyncComponent
+@onready var combo_root := %ComboRoot as Node2D
+@onready var combo_text := %ComboText as ComboText
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -59,6 +62,7 @@ func _ready() -> void:
 		randomize_order()
 		thinking_bubble.show()
 		bubble_root.hide()
+		combo_text.text = ""
 		music_sync.advance_every_n_beats = 4
 		thinking_timer.start(think_time)
 		music_sync.starting_animation = anim_library_keys[customer_type] + "/idle_down"
@@ -97,32 +101,43 @@ func deliver_order(order : FoodItem):
 		return
 	var order_i = find_matching_order(order)
 	var matched = order_i >= 0
+	failed_order = failed_order or (not matched)
+	combo_text.failed_order = failed_order
 	served.emit(order, matched)
 	orders_given.append(order)
 	if not matched:
+		combo_text.shown_bonus = 1.0
 		if is_instance_of(order, IceCream) and wants_icecream():
 			for oi in range(len(orders_left)):
 				if is_instance_of(orders_left[oi], IceCream):
 					orders_left[oi].hide()
 					orders_left.remove_at(oi)
+					combo_text.shown_price += roundi(GameManager.level.ice_cream_score * GameManager.level.failed_order_multiplier)
 					break
 		elif is_instance_of(order, CookedFood) and wants_cooked_food():
 			for oi in range(len(orders_left)):
 				if is_instance_of(orders_left[oi], CookedFood):
 					orders_left[oi].hide()
 					orders_left.remove_at(oi)
+					combo_text.shown_price += roundi(GameManager.level.food_score * GameManager.level.failed_order_multiplier)
 					break
 	else:
+		if is_instance_of(orders_left[order_i], IceCream):
+			combo_text.shown_price += roundi(GameManager.level.ice_cream_score)
+		elif is_instance_of(orders_left[order_i], CookedFood):
+			combo_text.shown_price += roundi(GameManager.level.food_score)
+		if bonus:
+			combo_text.shown_bonus += GameManager.level.combo_bonus
 		orders_left[order_i].hide()
 		orders_left.remove_at(order_i)
 	if len(orders_left) <= 0:
-		# TODO: Check if all orders are correct
-		start_eating(true)
+		start_eating(not failed_order)
 	else:
 		bubble_fit_orders()
 
 func start_eating(_order_matched : bool):
-	order_bubble.hide()
+	bubble_root.hide()
+	thinking_bubble.hide()
 	music_sync.advance_every_n_beats = 1
 	eat_wait_timer.start(eat_wait_time)
 	eating = true
@@ -202,6 +217,11 @@ func bubble_fit_orders():
 
 func finished_eating():
 	left_seat.emit(orig_orders, bonus)
+	combo_text.final = true
+	var prev_pos := combo_root.global_position
+	combo_root.get_parent().remove_child(combo_root)
+	GameManager.level.add_child(combo_root)
+	combo_root.global_position = prev_pos
 	queue_free()
 
 func _on_thinking_timer_timeout():

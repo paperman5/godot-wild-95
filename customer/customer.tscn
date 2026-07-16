@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dv5d13kmfdvth" path="res://customer/CustomerThinking.png" id="5_kyy7l"]
 [ext_resource type="Texture2D" uid="uid://bolreaaehah0j" path="res://customer/OrderBubble.png" id="6_cslmy"]
 [ext_resource type="Texture2D" uid="uid://t5gts47cv6e6" path="res://customer/OrderBubble_Tail.png" id="7_y5xyn"]
+[ext_resource type="PackedScene" uid="uid://dj43dcocgbx0u" path="res://customer/combo_text.tscn" id="9_p00no"]
 [ext_resource type="PackedScene" uid="uid://xidsrps2e7ya" path="res://misc/music_sync_component.tscn" id="9_wfglr"]
 
 [sub_resource type="Animation" id="Animation_f5n86"]
@@ -73,6 +74,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(11, -27)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OrderBubble/ComboRoot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -18)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tamf7"]
 _data = {
@@ -131,6 +144,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(12, -34)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OrderBubble/ComboRoot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -27)]
 }
 
 [sub_resource type="Animation" id="Animation_86350"]
@@ -226,6 +251,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(13, -37)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OrderBubble/ComboRoot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -29)]
 }
 
 [sub_resource type="Animation" id="Animation_wfglr"]
@@ -334,6 +371,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(11, -27)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OrderBubble/ComboRoot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -20)]
+}
 
 [sub_resource type="Animation" id="Animation_cslmy"]
 resource_name = "idle_down"
@@ -428,6 +477,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(13, -40)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OrderBubble/ComboRoot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, -32)]
 }
 
 [sub_resource type="Animation" id="Animation_tx8pg"]
@@ -548,7 +609,7 @@ position = Vector2(11, -27)
 
 [node name="BubbleNinePatch" type="NinePatchRect" parent="OrderBubble/BubbleRoot" unique_id=998653209]
 unique_name_in_owner = true
-z_index = -1
+z_index = 1
 anchors_preset = -1
 offset_left = -8.0
 offset_top = -15.0
@@ -564,9 +625,17 @@ metadata/_edit_lock_ = true
 
 [node name="BubbleTail" type="Sprite2D" parent="OrderBubble/BubbleRoot" unique_id=783858799]
 unique_name_in_owner = true
+z_index = 2
 texture = ExtResource("7_y5xyn")
 offset = Vector2(-3, 4)
 metadata/_edit_lock_ = true
+
+[node name="ComboRoot" type="Marker2D" parent="OrderBubble" unique_id=879893635]
+unique_name_in_owner = true
+position = Vector2(2, -18)
+
+[node name="ComboText" parent="OrderBubble/ComboRoot" unique_id=1811031233 instance=ExtResource("9_p00no")]
+unique_name_in_owner = true
 
 [node name="EatWaitTimer" type="Timer" parent="." unique_id=1888844217 groups=["timers"]]
 unique_name_in_owner = true

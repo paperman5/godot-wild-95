@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dj43dcocgbx0u"]
+
+[ext_resource type="Theme" uid="uid://55ic7fa2pnu2" path="res://misc/styles.tres" id="1_d8f3r"]
+[ext_resource type="Script" uid="uid://0mhdml8y2pd7" path="res://customer/combo_text.gd" id="2_ub42h"]
+
+[node name="ComboText" type="RichTextLabel" unique_id=1811031233]
+z_index = 10
+offset_left = -58.0
+offset_top = -56.0
+theme = ExtResource("1_d8f3r")
+theme_type_variation = &"CustomerCombo"
+bbcode_enabled = true
+text = "[color=gold]+$3[/color]
++1.25x"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("2_ub42h")
+metadata/_edit_lock_ = true
+
+[node name="PriceTextTimer" type="Timer" parent="." unique_id=1893099766 groups=["timers"]]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="BonusTextTimer" type="Timer" parent="." unique_id=1637425865 groups=["timers"]]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="PriceTextTimer" to="." method="_on_price_text_timer_timeout"]
+[connection signal="timeout" from="BonusTextTimer" to="." method="_on_bonus_text_timer_timeout"]

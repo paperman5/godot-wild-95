@@ -1,8 +1,18 @@
 [gd_resource type="Theme" format=3 uid="uid://55ic7fa2pnu2"]
 
+[ext_resource type="FontFile" uid="uid://vbsvuc7d43s5" path="res://font/hope_gold.ttf" id="1_hec11"]
 [ext_resource type="FontFile" uid="uid://ccxkmgxlnhemk" path="res://font/Caveat-VariableFont_wght.ttf" id="1_hijok"]
 
 [resource]
+CustomerCombo/base_type = &"RichTextLabel"
+CustomerCombo/colors/default_color = Color(0, 0.5176471, 0, 1)
+CustomerCombo/colors/font_outline_color = Color(1, 1, 1, 1)
+CustomerCombo/colors/font_shadow_color = Color(0, 0, 0, 1)
+CustomerCombo/constants/line_separation = -3
+CustomerCombo/constants/outline_size = 3
+CustomerCombo/constants/shadow_outline_size = 2
+CustomerCombo/font_sizes/normal_font_size = 18
+CustomerCombo/fonts/normal_font = ExtResource("1_hec11")
 TutorialText/base_type = &"RichTextLabel"
 TutorialText/constants/outline_size = 5
 TutorialText/font_sizes/normal_font_size = 32

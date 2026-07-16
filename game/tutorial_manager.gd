@@ -17,7 +17,7 @@ var input_locked := false
 var tutorial_active := false
 # NEED TO KEEP A REFERENCE SO THE SCRIPT DOESN'T GET DEREFERENCED AND FAIL
 var current_tutorial : TutorialScript
-var skip_tutorials := false
+var skip_tutorials := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

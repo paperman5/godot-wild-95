@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_engu6"]
 
 [node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
-customer_food_chance = 0.25
+customer_food_chance = 1.0
 music = ExtResource("2_sc5sv")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]

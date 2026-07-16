@@ -14,6 +14,7 @@ shader_parameter/highlighted = false
 shader_parameter/rainbow = false
 
 [node name="IceCream" type="Node2D" unique_id=24763253 node_paths=PackedStringArray("stack_pos") groups=["food"]]
+z_index = 3
 script = ExtResource("2_on6e3")
 stack_pos = NodePath("Stack0")
 
