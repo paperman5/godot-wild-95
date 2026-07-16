@@ -1,10 +1,11 @@
 extends Node
 
-signal beat(bar : bool)
+signal beat()
 
 @export var music_lofi_hipass_amt := 2000
 @export var music_lofi_drive := 0.5
 @export var music_lofi_fade_time := 0.2
+@export var extra_beats_per_beat := 0
 
 var music_lofi_tweener : Tween
 var music_lofi_mode := false
@@ -17,9 +18,10 @@ var lofi_filter : AudioEffectDistortion
 
 var music_bpm := 60.0
 var beat_idx := 0
-var beats_per_bar := 1
+var playback_pos := 0.0
+var next_beat := 0.0
+var current_track : MultiBPMAudioStream
 
-@onready var beat_timer := %BeatTimer as Timer
 @onready var music_player := %MusicPlayer as AudioStreamPlayer
 
 func _ready() -> void:
@@ -28,8 +30,29 @@ func _ready() -> void:
 	sfx_bus_idx = AudioServer.get_bus_index("SFX")
 	hipass_filter = AudioServer.get_bus_effect(music_bus_idx, 1)
 	lofi_filter = AudioServer.get_bus_effect(music_bus_idx, 2)
-	
-	start_music(music_player.stream)
+
+func _process(delta: float) -> void:
+	if current_track == null or not music_player.playing:
+		return
+	playback_pos += delta
+	if playback_pos >= next_beat:
+		beat_idx += 1
+		var diff := next_beat - playback_pos
+		next_beat = get_next_beat_time(playback_pos)
+		beat.emit()
+		if current_track.loop and next_beat >= current_track.loop_end:
+			playback_pos = current_track.loop_start + diff
+			music_player.seek(playback_pos)
+			next_beat = get_next_beat_time(playback_pos)
+
+func get_next_beat_time(after_pos : float) -> float:
+	var timestamps : Array[float] = current_track.bpm_ranges.keys()
+	var bpms : Array[float] = current_track.bpm_ranges.values()
+	if after_pos < timestamps[0]:
+		return timestamps[0]
+	var lbi := maxi(0, timestamps.bsearch(after_pos)-1)
+	var n_prev_beats := floori((after_pos - timestamps[lbi]) * bpms[lbi] / 60.0)
+	return float(n_prev_beats + 1) * 60.0 / bpms[lbi] + timestamps[lbi]
 
 func set_music_lofi(enabled : bool):
 	if not music_lofi_mode and enabled:
@@ -53,17 +76,18 @@ func _set_hipass_enabled(enabled : bool):
 func _set_lofi_enabled(enabled : bool):
 	AudioServer.set_bus_effect_enabled(music_bus_idx, 2, enabled)
 
-func start_music(track : AudioStreamMP3):
-	music_bpm = maxf(20.0, track.bpm)
-	beats_per_bar = maxi(1, track.bar_beats)
+func start_music(track : MultiBPMAudioStream):
+	if track == current_track:
+		return
+	current_track = track
+	for t in current_track.bpm_ranges.keys():
+		current_track.bpm_ranges[t] *= extra_beats_per_beat + 1
+	music_bpm = maxf(20.0, track.bpm_ranges.values()[0])
 	beat_idx = 0
-	music_player.stream = track
-	beat_timer.start(60.0/music_bpm)
+	music_player.stream = track.stream
+	next_beat = get_next_beat_time(0.0)
+	playback_pos = 0.0
 	music_player.play()
-
-func _on_beat_timer_timeout() -> void:
-	beat_idx += 1
-	beat.emit(beat_idx % beats_per_bar == 0)
 
 func set_music_muted(enabled : bool):
 	AudioServer.set_bus_mute(music_bus_idx, enabled)

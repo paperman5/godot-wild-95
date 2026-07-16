@@ -25,7 +25,7 @@ func start_sync():
 	if starting_animation != "":
 		animation_player.current_animation = starting_animation
 
-func _on_music_beat(_bar : bool):
+func _on_music_beat():
 	beat_idx = (beat_idx + 1) % advance_every_n_beats
 	if beat_idx != 0:
 		return

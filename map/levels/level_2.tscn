@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dnv7od3o7m2u"]
 
 [ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_jg4xa"]
+[ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/GSISP_Level1_V1.tres" id="2_avo2n"]
 [ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_e8sds"]
 [ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_avo2n"]
 [ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_2ux06"]
@@ -10,6 +11,7 @@
 
 [node name="Level2" unique_id=594946845 instance=ExtResource("1_jg4xa")]
 next_level = "level_3"
+music = ExtResource("2_avo2n")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]
 z_index = -20

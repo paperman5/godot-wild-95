@@ -20,6 +20,7 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var customer_icecream_chance := 1.0
 @export var customer_food_chance := 0.0
 @export var next_level := "level_1"
+@export var music : MultiBPMAudioStream
 # TODO: Stats?
 
 var score := 0
@@ -41,6 +42,8 @@ func _ready() -> void:
 	for t in all_tables:
 		if is_instance_of(t, Table):
 			tables.append(t)
+	
+	MusicManager.start_music(music)
 	
 	ui.set_max_time(time_limit)
 	ui.set_time_remaining(time_limit)

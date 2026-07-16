@@ -33,6 +33,12 @@ func highlight_nodes(nodes : Array[Node2D], radii : Array[float], offsets : Arra
 
 func _process(_delta: float) -> void:
 	highlight_mat.set_shader_parameter("zoom", Utils.get_view_scale() * Vector2.ONE)
+	if not tutorial_active or input_locked:
+		return
+	for action in ["move_down", "move_right", "move_up", "move_left"]:
+		if Input.is_action_just_pressed(action):
+			tutorial_acknowledged.emit(action)
+			break
 
 func begin_tutorial(tut : TutorialScript):
 	if skip_tutorials:
@@ -143,15 +149,3 @@ func start_acknowledge(lock_time : float):
 		get_tree().create_timer(lock_time).timeout.connect(_unlock_controls)
 	else:
 		_unlock_controls()
-
-func _input(event: InputEvent) -> void:
-	if not tutorial_active or input_locked:
-		return
-	if event.is_action_pressed("move_down"):
-		tutorial_acknowledged.emit("move_down")
-	elif event.is_action_pressed("move_right"):
-		tutorial_acknowledged.emit("move_right")
-	elif event.is_action_pressed("move_up"):
-		tutorial_acknowledged.emit("move_up")
-	elif event.is_action_pressed("move_left"):
-		tutorial_acknowledged.emit("move_left")
