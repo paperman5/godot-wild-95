@@ -5,6 +5,7 @@
 
 [node name="ComboText" type="RichTextLabel" unique_id=1811031233]
 z_index = 10
+texture_filter = 2
 offset_left = -58.0
 offset_top = -56.0
 theme = ExtResource("1_d8f3r")

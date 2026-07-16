@@ -11,6 +11,8 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var timer_increments := 1.0
 @export var ice_cream_score := 5
 @export var food_score := 10
+@export var ice_cream_prompt_bonus := 3
+@export var food_prompt_bonus := 3
 @export var failed_order_multiplier := 0.5
 @export var win_threshold := 50
 @export var combo_cooldown := 2.0
@@ -96,17 +98,8 @@ func any_table_is_open() -> bool:
 			return true
 	return false
 
-func customer_left(orders : Array[FoodItem], bonus : bool):
-	pass
-	#var tally := 0.0
-	#for i in range(len(orders)):
-		#tally += ice_cream_score if is_instance_of(orders[i], IceCream) else food_score
-	#tally *= pow(order_count_multiplier, len(orders)-1)
-	#score += roundi(tally)
-	#GameManager.game_ui.set_money(score)
-
-func _on_customer_served(order : FoodItem, matched : bool):
-	combo_points_buffer += get_order_base_points(order) * (1.0 if matched else failed_order_multiplier)
+func _on_customer_served(order : FoodItem, matched : bool, prompt : bool):
+	combo_points_buffer += get_score_for_order(order, matched, prompt)
 	if matched:
 		combo += 1
 		if combo_refresh_on_success:
@@ -163,3 +156,12 @@ func get_order_base_points(order : FoodItem) -> float:
 	elif is_instance_of(order, CookedFood):
 		return float(food_score)
 	return 0.0
+
+func get_score_for_order(order : FoodItem, matched : bool, prompt : bool) -> int:
+	var s := float(ice_cream_score if is_instance_of(order, IceCream) else food_score)
+	if prompt and matched:
+		s += ice_cream_prompt_bonus if is_instance_of(order, IceCream) else food_prompt_bonus
+	if not matched:
+		s *= failed_order_multiplier
+	return roundi(s)
+		

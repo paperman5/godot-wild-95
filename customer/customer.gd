@@ -17,15 +17,15 @@ const anim_library_keys = {
 	CustomerType.Mothman : "mothman",
 }
 
-signal left_seat(orders : Array[FoodItem], bonus : bool)
-signal served(order : FoodItem, matched : bool)
+signal left_seat(orders : Array[FoodItem])
+signal served(order : FoodItem, matched : bool, prompt : bool)
 
 var orig_orders : Array[FoodItem] = []
 var orders_left : Array[FoodItem] = []
 var orders_given : Array[FoodItem] = []
 var thinking := true
 var eating := false
-var bonus := true
+var prompt := true
 var failed_order := false
 
 @export var customer_type := CustomerType.Nightwalker:
@@ -50,15 +50,15 @@ var failed_order := false
 @onready var food_scene := preload("uid://b6duh0virt7sy")
 @onready var eat_wait_timer := %EatWaitTimer as Timer
 @onready var thinking_timer := %ThinkingTimer as Timer
-@onready var bonus_timer := %BonusTimer as Timer
+@onready var prompt_timer := %PromptTimer as Timer
 @onready var music_sync := %MusicSyncComponent as MusicSyncComponent
 @onready var combo_root := %ComboRoot as Node2D
 @onready var combo_text := %ComboText as ComboText
+@onready var patience_progress := %PatienceProgress as TextureProgressBar
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		customer_type = customer_type
-		left_seat.connect(GameManager.level.customer_left)
 		randomize_order()
 		thinking_bubble.show()
 		bubble_root.hide()
@@ -67,6 +67,10 @@ func _ready() -> void:
 		thinking_timer.start(think_time)
 		music_sync.starting_animation = anim_library_keys[customer_type] + "/idle_down"
 		music_sync.start_sync()
+
+func _process(delta: float) -> void:
+	if not eating and not thinking:
+		patience_progress.value = prompt_timer.time_left / prompt_bonus_time
 
 func has_matching_order(order_to_check : FoodItem) -> bool:
 	return find_matching_order(order_to_check) >= 0
@@ -103,31 +107,27 @@ func deliver_order(order : FoodItem):
 	var matched = order_i >= 0
 	failed_order = failed_order or (not matched)
 	combo_text.failed_order = failed_order
-	served.emit(order, matched)
+	served.emit(order, matched, prompt)
 	orders_given.append(order)
 	if not matched:
 		combo_text.shown_bonus = 1.0
 		if is_instance_of(order, IceCream) and wants_icecream():
 			for oi in range(len(orders_left)):
 				if is_instance_of(orders_left[oi], IceCream):
+					combo_text.shown_price += GameManager.level.get_score_for_order(orders_left[oi], false, false)
 					orders_left[oi].hide()
 					orders_left.remove_at(oi)
-					combo_text.shown_price += roundi(GameManager.level.ice_cream_score * GameManager.level.failed_order_multiplier)
 					break
 		elif is_instance_of(order, CookedFood) and wants_cooked_food():
 			for oi in range(len(orders_left)):
 				if is_instance_of(orders_left[oi], CookedFood):
+					combo_text.shown_price += GameManager.level.get_score_for_order(orders_left[oi], false, false)
 					orders_left[oi].hide()
 					orders_left.remove_at(oi)
-					combo_text.shown_price += roundi(GameManager.level.food_score * GameManager.level.failed_order_multiplier)
 					break
 	else:
-		if is_instance_of(orders_left[order_i], IceCream):
-			combo_text.shown_price += roundi(GameManager.level.ice_cream_score)
-		elif is_instance_of(orders_left[order_i], CookedFood):
-			combo_text.shown_price += roundi(GameManager.level.food_score)
-		if bonus:
-			combo_text.shown_bonus += GameManager.level.combo_bonus
+		combo_text.shown_price += GameManager.level.get_score_for_order(orders_left[order_i], true, prompt)
+		combo_text.shown_bonus += GameManager.level.combo_bonus
 		orders_left[order_i].hide()
 		orders_left.remove_at(order_i)
 	if len(orders_left) <= 0:
@@ -216,7 +216,7 @@ func bubble_fit_orders():
 	bubble_tail.offset = Vector2(bubble_ninepatch.offset_left + tail_x_offset, margin_bot)
 
 func finished_eating():
-	left_seat.emit(orig_orders, bonus)
+	left_seat.emit(orig_orders)
 	combo_text.final = true
 	var prev_pos := combo_root.global_position
 	combo_root.get_parent().remove_child(combo_root)
@@ -229,11 +229,11 @@ func _on_thinking_timer_timeout():
 	thinking_bubble.hide()
 	bubble_root.show()
 	music_sync.advance_every_n_beats = 2
-	#anim.speed_scale = 1.0
-	#anim.seek(0.0)
-
-func _on_bonus_timer_timeout():
-	bonus = false
+	prompt_timer.start(prompt_bonus_time)
 
 func can_be_served() -> bool:
 	return len(orders_left) > 0 and not thinking and not eating
+
+
+func _on_prompt_timer_timeout() -> void:
+	prompt = false

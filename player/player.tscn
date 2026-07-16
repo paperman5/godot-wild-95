@@ -528,5 +528,4 @@ bus = &"SFX"
 
 [node name="MusicSyncComponent" parent="." unique_id=1947546521 node_paths=PackedStringArray("animation_player") instance=ExtResource("8_rgyib")]
 animation_player = NodePath("../AnimationPlayer")
-advance_every_n_frames = 2
 starting_animation = "idle_down"

@@ -59,7 +59,7 @@ func table_is_full() -> bool:
 			return false
 	return true
 
-func _on_customer_left(_orders : Array[FoodItem], _bonus : bool, spot : int):
+func _on_customer_left(_orders : Array[FoodItem], spot : int):
 	seated_customers[spot] = null
 
 func _set_orientation(dir : Utils.TableOrientation):

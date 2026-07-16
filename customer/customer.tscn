@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dv5d13kmfdvth" path="res://customer/CustomerThinking.png" id="5_kyy7l"]
 [ext_resource type="Texture2D" uid="uid://bolreaaehah0j" path="res://customer/OrderBubble.png" id="6_cslmy"]
 [ext_resource type="Texture2D" uid="uid://t5gts47cv6e6" path="res://customer/OrderBubble_Tail.png" id="7_y5xyn"]
+[ext_resource type="Texture2D" uid="uid://b3x0duv36x74q" path="res://customer/OrderBubbleCenter.png" id="8_s8r3n"]
 [ext_resource type="PackedScene" uid="uid://dj43dcocgbx0u" path="res://customer/combo_text.tscn" id="9_p00no"]
+[ext_resource type="Texture2D" uid="uid://ps01vskn38to" path="res://customer/OrderBubbleOutside.png" id="9_tx8pg"]
 [ext_resource type="PackedScene" uid="uid://xidsrps2e7ya" path="res://misc/music_sync_component.tscn" id="9_wfglr"]
 
 [sub_resource type="Animation" id="Animation_f5n86"]
@@ -609,7 +611,6 @@ position = Vector2(11, -27)
 
 [node name="BubbleNinePatch" type="NinePatchRect" parent="OrderBubble/BubbleRoot" unique_id=998653209]
 unique_name_in_owner = true
-z_index = 1
 anchors_preset = -1
 offset_left = -8.0
 offset_top = -15.0
@@ -620,12 +621,30 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 3
-metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="PatienceProgress" type="TextureProgressBar" parent="OrderBubble/BubbleRoot/BubbleNinePatch" unique_id=1300244065]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 4
+texture_over = ExtResource("8_s8r3n")
+texture_progress = ExtResource("9_tx8pg")
+tint_progress = Color(0, 0.5647059, 0, 1)
 
 [node name="BubbleTail" type="Sprite2D" parent="OrderBubble/BubbleRoot" unique_id=783858799]
 unique_name_in_owner = true
-z_index = 2
 texture = ExtResource("7_y5xyn")
 offset = Vector2(-3, 4)
 metadata/_edit_lock_ = true
@@ -645,7 +664,7 @@ one_shot = true
 unique_name_in_owner = true
 one_shot = true
 
-[node name="BonusTimer" type="Timer" parent="." unique_id=407263380 groups=["timers"]]
+[node name="PromptTimer" type="Timer" parent="." unique_id=407263380 groups=["timers"]]
 unique_name_in_owner = true
 one_shot = true
 
@@ -659,4 +678,4 @@ starting_animation = "nightwalker/idle_down"
 
 [connection signal="timeout" from="EatWaitTimer" to="." method="finished_eating"]
 [connection signal="timeout" from="ThinkingTimer" to="." method="_on_thinking_timer_timeout"]
-[connection signal="timeout" from="BonusTimer" to="." method="_on_bonus_timer_timeout"]
+[connection signal="timeout" from="PromptTimer" to="." method="_on_prompt_timer_timeout"]
