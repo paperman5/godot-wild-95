@@ -121,7 +121,7 @@ func deliver_order(order : FoodItem):
 	else:
 		bubble_fit_orders()
 
-func start_eating(order_matched : bool):
+func start_eating(_order_matched : bool):
 	order_bubble.hide()
 	music_sync.advance_every_n_beats = 1
 	eat_wait_timer.start(eat_wait_time)

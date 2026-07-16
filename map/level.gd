@@ -103,7 +103,7 @@ func customer_left(orders : Array[FoodItem], bonus : bool):
 	#GameManager.game_ui.set_money(score)
 
 func _on_customer_served(order : FoodItem, matched : bool):
-	combo_points_buffer += get_order_base_points(order) * (1 if matched else failed_order_multiplier)
+	combo_points_buffer += get_order_base_points(order) * (1.0 if matched else failed_order_multiplier)
 	if matched:
 		combo += 1
 		if combo_refresh_on_success:

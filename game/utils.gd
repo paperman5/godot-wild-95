@@ -60,3 +60,12 @@ func get_view_scale() -> float:
 	if is_instance_valid(cam):
 		return base_scale * cam.zoom.y
 	return base_scale
+
+func get_node_screen_position(node : Node2D, offset := Vector2.ZERO) -> Vector2:
+	var win_ft := get_window().get_final_transform()
+	var offset_node := Node2D.new()
+	node.add_child(offset_node)
+	offset_node.position = offset
+	var p = (win_ft * offset_node.get_global_transform_with_canvas()).origin - win_ft.get_origin()
+	offset_node.free()
+	return p

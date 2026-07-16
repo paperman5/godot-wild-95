@@ -11,7 +11,7 @@ size = Vector2(32, 32)
 atlas = ExtResource("2_802qu")
 region = Rect2(0, 32, 32, 64)
 
-[node name="IceCreamDispenser" type="StaticBody2D" unique_id=1869970340]
+[node name="IceCreamGlassDispenser" type="StaticBody2D" unique_id=1869970340]
 script = ExtResource("1_802qu")
 style = 1
 

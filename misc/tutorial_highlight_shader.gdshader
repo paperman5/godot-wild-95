@@ -1,4 +1,7 @@
 shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D screen_texture : hint_screen_texture;
 
 uniform vec2 zoom = vec2(1.0);
 uniform float blur = 20.0;
@@ -8,6 +11,13 @@ uniform float[4] highlight_radii;
 uniform vec2 slot_a = vec2(0.0);
 uniform vec2 slot_b = vec2(0.0);
 uniform float slot_r = 20.0;
+uniform bool desaturate = true;
+uniform float desaturate_amt : hint_range(0.0, 1.0) = 0.5;
+varying vec4 modulate;
+
+void vertex() {
+	modulate = COLOR;
+}
 
 float dither8x8(vec2 position, float brightness) {
   int x = int(mod(position.x, 8.0));
@@ -94,6 +104,7 @@ float sdSegment( in vec2 p, in vec2 a, in vec2 b, in float r )
 }
 
 void fragment() {
+	vec4 screen = texture(screen_texture, SCREEN_UV);
 	vec4 c = vec4(back_color.rgb, 1.0);
 	vec2 screen_pixel_size = SCREEN_PIXEL_SIZE;
 	vec2 big_screen_pixel_size = SCREEN_PIXEL_SIZE * zoom;
@@ -115,7 +126,10 @@ void fragment() {
 		float r = highlight_radii[i] * big_screen_pixel_size.y;
 		c.a *= smoothstep(clamp(r-blur_r, 0.0, 1.0), clamp(r+blur_r, 0.0, 1.0), distance(vec2(uv.x*aspect,uv.y), p));
 	}
-	c.a = dither8x8(floor(UV/big_screen_pixel_size), c.a) * back_color.a;
-	
-	COLOR = c;
+	float dither = dither8x8(floor(UV/big_screen_pixel_size), c.a);
+	if (desaturate) {
+		screen.rgb = mix(screen.rgb, vec3(0.299 * screen.r + 0.587 * screen.g + 0.114 * screen.b), dither * desaturate_amt);
+	}
+	screen.rgb = mix(screen.rgb, screen.rgb * back_color.rgb, dither * back_color.a * modulate.a);
+	COLOR = screen;
 }

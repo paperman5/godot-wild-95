@@ -34,6 +34,8 @@ func hide_all():
 func _on_begin_resume_pressed():
 	hide_all()
 	GameManager.level.unpause()
+	var t := get_tree().create_timer(1.0)
+	t.timeout.connect(TutorialManager.begin_tutorial.bind(load("uid://cdmi5jjkyw4io")))
 
 func _on_main_menu_pressed():
 	GameManager.change_scene("main_menu")

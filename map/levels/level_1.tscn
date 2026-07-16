@@ -33,7 +33,7 @@ position_smoothing_speed = 8.0
 [node name="Player" parent="." index="8" unique_id=983482868]
 position = Vector2(48, 48)
 
-[node name="IceCreamDispenser" parent="." index="9" unique_id=1869970340 instance=ExtResource("3_ja74h")]
+[node name="IceCreamGlassDispenser" parent="." index="9" unique_id=1869970340 instance=ExtResource("3_ja74h")]
 position = Vector2(16, 16)
 
 [node name="IceCreamDispenser2" parent="." index="10" unique_id=983450660 instance=ExtResource("4_1s3v2")]

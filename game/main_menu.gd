@@ -36,3 +36,7 @@ func _on_clear_pressed() -> void:
 
 func _on_mute_toggled(toggled_on: bool) -> void:
 	MusicManager.set_music_muted(toggled_on)
+
+
+func _on_skip_tutorials_toggled(toggled_on: bool) -> void:
+	TutorialManager.skip_tutorials = toggled_on
