@@ -70,3 +70,11 @@ func get_node_screen_position(node : Node2D, offset := Vector2.ZERO) -> Vector2:
 	var p = (win_ft * offset_node.get_global_transform_with_canvas()).origin - win_ft.get_origin()
 	offset_node.free()
 	return p
+
+func get_node_ui_position(node : Node2D, offset := Vector2.ZERO) -> Vector2:
+	var offset_node := Node2D.new()
+	node.add_child(offset_node)
+	offset_node.position = offset
+	var p = offset_node.get_global_transform_with_canvas().get_origin()
+	offset_node.free()
+	return p

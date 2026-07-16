@@ -12,8 +12,8 @@ var sabrina : Player
 
 func show_tutorial():
 	sabrina = GameManager.player
-	var sabrina_screen_pos := Utils.get_node_screen_position(sabrina, Vector2(48, -32))
-	var sabrina_pos_2 := Utils.get_node_screen_position(sabrina, Vector2(0, 8))
+	var sabrina_screen_pos := Utils.get_node_ui_position(sabrina, Vector2(48, -32))
+	var sabrina_pos_2 := Utils.get_node_ui_position(sabrina, Vector2(0, 8))
 	var ic_a := Utils.get_node_screen_position(GameManager.level.get_node("IceCreamGlassDispenser"), Vector2(0, -15))
 	var ic_b := Utils.get_node_screen_position(GameManager.level.get_node("IceCreamDispenser4"), Vector2(0, -15))
 	TutorialManager.pause()
