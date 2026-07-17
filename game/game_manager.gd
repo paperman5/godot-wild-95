@@ -11,6 +11,7 @@ const save_file_path := "user://savegame.txt"
 const level_scenes = {
 	"main_menu" : "uid://6kyebxi5bbkj",
 	"test" : "uid://dk5rt65a0f75k",
+	"tutorial" : "uid://brtt2pl2rmduv",
 	"level_1" : "uid://ssywa7x2dhky",
 	"level_2" : "uid://dnv7od3o7m2u",
 	"level_3" : "uid://mufmt5bnk3bk"

@@ -34,10 +34,14 @@ func hide_all():
 func _on_begin_resume_pressed():
 	hide_all()
 	GameManager.level.unpause()
-	if TutorialManager.move_tutorial:
+	if TutorialManager.do_intro_tutorial and GameManager.level.name in ["Tutorial", "Level1"]:
 		var t := get_tree().create_timer(0.5)
-		t.timeout.connect(TutorialManager.begin_tutorial.bind(TutorialManager.tutorials['move']))
-		TutorialManager.move_tutorial = false
+		t.timeout.connect(TutorialManager.begin_tutorial.bind(TutorialManager.tutorials['intro']))
+		TutorialManager.do_intro_tutorial = false
+	if TutorialManager.do_food_tutorial and GameManager.level.name == "Level3":
+		var t := get_tree().create_timer(0.5)
+		t.timeout.connect(TutorialManager.begin_tutorial.bind(TutorialManager.tutorials['food']))
+		TutorialManager.do_food_tutorial = false
 
 func _on_main_menu_pressed():
 	GameManager.change_scene("main_menu")

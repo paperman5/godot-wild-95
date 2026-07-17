@@ -19,11 +19,13 @@ var tutorial_active := false
 var current_tutorial : TutorialScript
 var skip_tutorials := false
 var tutorials : Dictionary[String, TutorialScript] = {
-	"move" : preload("uid://cdmi5jjkyw4io"),
-	"serve" : preload("uid://dpkwce4pohxwp")
+	"intro" : preload("uid://biue011gwrn33"),
+	"food" : preload("uid://d5mkwhibie4b"),
 }
 
 # Tutorial flags
+var do_intro_tutorial := true
+var do_food_tutorial := true
 var move_tutorial := true
 var first_customer := true
 
@@ -33,7 +35,7 @@ func _ready() -> void:
 	clear_highlights()
 	#highlight_points([Vector2(100, 100)], [30.0])
 
-func highlight_nodes(nodes : Array[Node2D], radii : Array[float], offsets : Array[Vector2]):
+func highlight_nodes(nodes : Array, radii : Array, offsets : Array):
 	var node_ps : Array[Vector2] = []
 	for i in range(len(nodes)):
 		node_ps.append(Utils.get_node_screen_position(nodes[i], offsets[i]))
@@ -113,7 +115,12 @@ func clear_highlights():
 	highlight_mat.set_shader_parameter("slot_b", offscreen)
 	highlight_mat.set_shader_parameter("slot_r", 0.0)
 
-func highlight_points(points : Array[Vector2], radii : Array[float]):
+func clear_text():
+	text_lj.text = ""
+	text_cj.text = ""
+	text_rj.text = ""
+
+func highlight_points(points : Array, radii : Array):
 	var new_points : Array[Vector2] = []
 	new_points.resize(4)
 	new_points.fill(offscreen)
@@ -140,6 +147,7 @@ func pause():
 	GameManager.level.pause(false)
 
 func unpause():
+	text_continue.hide()
 	GameManager.level.unpause(true)
 
 func fade_in():
@@ -156,12 +164,14 @@ func _unlock_controls():
 
 func start_acknowledge(lock_time : float):
 	if not is_zero_approx(lock_time):
+		text_continue.hide()
 		input_locked = true
 		get_tree().create_timer(lock_time).timeout.connect(_unlock_controls)
 	else:
 		_unlock_controls()
 
 func _on_customer_seated(_customer : Customer):
-	if first_customer:
-		first_customer = false
-		begin_tutorial(tutorials['serve'])
+	pass
+	#if first_customer:
+		#first_customer = false
+		#begin_tutorial(tutorials['serve'])

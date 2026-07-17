@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="FoodTutorial" format=3 uid="uid://d5mkwhibie4b"]
+
+[ext_resource type="Script" uid="uid://b0khovc3lravt" path="res://tutorial/food_tutorial.gd" id="1_707xc"]
+
+[resource]
+script = ExtResource("1_707xc")
+metadata/_custom_type_script = "uid://b0khovc3lravt"

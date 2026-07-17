@@ -78,11 +78,12 @@ layout_mode = 2
 theme_override_constants/separation = 34
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=161438462]
+[node name="ScoreDisplay" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=161438462]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_xnou0")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TextureRect" unique_id=583089598]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScoreDisplay" unique_id=583089598]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,17 +95,17 @@ theme_override_constants/margin_top = 26
 theme_override_constants/margin_right = 22
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer" unique_id=1804512473]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScoreDisplay/MarginContainer" unique_id=1804512473]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=44003557]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ScoreDisplay/MarginContainer/HBoxContainer" unique_id=44003557]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_sxc2a")
 theme_type_variation = &"ScoreDisplay"
 text = "$"
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=1809603456]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ScoreDisplay/MarginContainer/HBoxContainer" unique_id=1809603456]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_sxc2a")

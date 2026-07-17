@@ -46,6 +46,8 @@ func seat_customer_random_spot(customer : Customer):
 	seat_customer(customer, seat)
 
 func seat_customer(customer : Customer, spot : int):
+	if customer.get_parent() == null:
+		GameManager.level.add_child(customer)
 	seated_customers[spot] = customer
 	customer.global_position = seat_positions[spot].global_position
 	customer.sit_direction(Vector2(seat_directions[spot]).normalized())

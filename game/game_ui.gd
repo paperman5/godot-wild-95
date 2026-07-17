@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var dpad := %VirtualJoystickDX as VirtualJoystickDX
 @onready var timer_ui := %Timer as TextureProgressBar
 @onready var combo_container := %ComboContainer as Control
+@onready var score_display := %ScoreDisplay as Control
 
 var base_tween : Tween
 var mult_tween : Tween

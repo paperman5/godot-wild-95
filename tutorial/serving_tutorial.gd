@@ -7,6 +7,15 @@ Pay close attention to what each one wants!"""
 var tut_text_2 := """Serving a customer quickly and
 correctly will earn you bonus cash!"""
 
+var tut_text_3 := """Customers aren't picky about the order of scoops.
+ChocBlue = BlueChoc"""
+
+var tut_text_4 := """Correctly serving multiple orders in quick succession
+will multiply your earnings!"""
+
+var tut_text_5 := """You can stack up to 4 orders in your hand.
+Stack and serve to get a big combo!"""
+
 func show_tutorial():
 	var target_customer : Customer
 	for c in GameManager.level.get_children():

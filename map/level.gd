@@ -77,15 +77,7 @@ func _on_seating_timer_timeout():
 func _on_ticker_timer_timeout():
 	ui.set_time_remaining(level_timer.time_left)
 
-func seat_random_table():
-	if not any_table_is_open():
-		return
-	var table = tables.pick_random()
-	while table.table_is_full():
-		table = tables.pick_random()
-	if TutorialManager.first_customer:
-		table = get_node("Counter2")
-	
+func create_customer() -> Customer:
 	var new_customer := customer_scene.instantiate() as Customer
 	new_customer.customer_type = [Customer.CustomerType.Nightwalker,
 								Customer.CustomerType.Mothman,
@@ -93,9 +85,19 @@ func seat_random_table():
 								Customer.CustomerType.Goo].pick_random()
 	new_customer.icecream_order_chance = customer_icecream_chance
 	new_customer.food_order_chance = customer_food_chance
+	new_customer.served.connect(_on_customer_served)
+	return new_customer
+
+func seat_random_table():
+	if not any_table_is_open():
+		return
+	var table = tables.pick_random()
+	while table.table_is_full():
+		table = tables.pick_random()
+	
+	var new_customer := create_customer()
 	add_child(new_customer)
 	table.seat_customer_random_spot(new_customer)
-	new_customer.served.connect(_on_customer_served)
 	customer_seated.emit(new_customer)
 
 func any_table_is_open() -> bool:
