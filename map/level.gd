@@ -3,6 +3,7 @@ extends Node2D
 
 signal time_up
 signal combo_cleared
+signal customer_seated(customer : Customer)
 
 var tables : Array[Table] = []
 var customer_scene = preload("uid://uddj0n5ca5xs")
@@ -59,6 +60,8 @@ func _ready() -> void:
 	seating_timer.timeout.connect(_on_seating_timer_timeout)
 	ticker_timer.timeout.connect(_on_ticker_timer_timeout)
 	
+	customer_seated.connect(TutorialManager._on_customer_seated)
+	
 	GameManager.menus.show_begin()
 
 func _process(_delta: float) -> void:
@@ -80,6 +83,8 @@ func seat_random_table():
 	var table = tables.pick_random()
 	while table.table_is_full():
 		table = tables.pick_random()
+	if TutorialManager.first_customer:
+		table = get_node("Counter2")
 	
 	var new_customer := customer_scene.instantiate() as Customer
 	new_customer.customer_type = [Customer.CustomerType.Nightwalker,
@@ -91,6 +96,7 @@ func seat_random_table():
 	add_child(new_customer)
 	table.seat_customer_random_spot(new_customer)
 	new_customer.served.connect(_on_customer_served)
+	customer_seated.emit(new_customer)
 
 func any_table_is_open() -> bool:
 	for table in tables:

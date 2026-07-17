@@ -17,7 +17,15 @@ var input_locked := false
 var tutorial_active := false
 # NEED TO KEEP A REFERENCE SO THE SCRIPT DOESN'T GET DEREFERENCED AND FAIL
 var current_tutorial : TutorialScript
-var skip_tutorials := true
+var skip_tutorials := false
+var tutorials : Dictionary[String, TutorialScript] = {
+	"move" : preload("uid://cdmi5jjkyw4io"),
+	"serve" : preload("uid://dpkwce4pohxwp")
+}
+
+# Tutorial flags
+var move_tutorial := true
+var first_customer := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +38,9 @@ func highlight_nodes(nodes : Array[Node2D], radii : Array[float], offsets : Arra
 	for i in range(len(nodes)):
 		node_ps.append(Utils.get_node_screen_position(nodes[i], offsets[i]))
 	highlight_points(node_ps, radii)
+
+func highlight_node(node : Node2D, radius : float, offset : Vector2):
+	highlight_points([Utils.get_node_screen_position(node, offset)], [radius])
 
 func _process(_delta: float) -> void:
 	highlight_mat.set_shader_parameter("zoom", Utils.get_view_scale() * Vector2.ONE)
@@ -149,3 +160,8 @@ func start_acknowledge(lock_time : float):
 		get_tree().create_timer(lock_time).timeout.connect(_unlock_controls)
 	else:
 		_unlock_controls()
+
+func _on_customer_seated(_customer : Customer):
+	if first_customer:
+		first_customer = false
+		begin_tutorial(tutorials['serve'])
