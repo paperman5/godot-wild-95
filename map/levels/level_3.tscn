@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_t3kdf"]
 [ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_lo52u"]
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_kyek8"]
-[ext_resource type="PackedScene" uid="uid://b72hvoukbhliu" path="res://map/food_dispenser.tscn" id="7_a4rac"]
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_engu6"]
+[ext_resource type="PackedScene" uid="uid://dp6cs81a2t2s5" path="res://map/marvy.tscn" id="9_sc5sv"]
 
 [node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
 customer_food_chance = 1.0
@@ -68,42 +68,36 @@ position = Vector2(48, -48)
 [node name="Jukebox" parent="." index="14" unique_id=2059468624 instance=ExtResource("6_kyek8")]
 position = Vector2(144, -48)
 
-[node name="FoodDispenser" parent="." index="15" unique_id=1797276355 instance=ExtResource("7_a4rac")]
-position = Vector2(-16, -48)
-counter_style = 0
-
-[node name="FoodDispenser2" parent="." index="16" unique_id=1553281494 instance=ExtResource("7_a4rac")]
-position = Vector2(16, -48)
-type = 1
-counter_style = 2
-
-[node name="Counter" parent="." index="17" unique_id=1824851107 instance=ExtResource("7_engu6")]
+[node name="Counter" parent="." index="15" unique_id=1824851107 instance=ExtResource("7_engu6")]
 position = Vector2(80, -48)
 orientation = 5
 
-[node name="Counter2" parent="." index="18" unique_id=2123268963 instance=ExtResource("7_engu6")]
+[node name="Counter2" parent="." index="16" unique_id=2123268963 instance=ExtResource("7_engu6")]
 position = Vector2(80, -16)
 orientation = 4
 
-[node name="Counter3" parent="." index="19" unique_id=436077438 instance=ExtResource("7_engu6")]
+[node name="Counter3" parent="." index="17" unique_id=436077438 instance=ExtResource("7_engu6")]
 position = Vector2(80, 16)
 orientation = 7
 
-[node name="Counter4" parent="." index="20" unique_id=523222152 instance=ExtResource("7_engu6")]
+[node name="Counter4" parent="." index="18" unique_id=523222152 instance=ExtResource("7_engu6")]
 position = Vector2(48, 16)
 
-[node name="Counter5" parent="." index="21" unique_id=933111047 instance=ExtResource("7_engu6")]
+[node name="Counter5" parent="." index="19" unique_id=933111047 instance=ExtResource("7_engu6")]
 position = Vector2(16, 16)
 
-[node name="Counter6" parent="." index="22" unique_id=766775791 instance=ExtResource("7_engu6")]
+[node name="Counter6" parent="." index="20" unique_id=766775791 instance=ExtResource("7_engu6")]
 position = Vector2(-16, 16)
 
-[node name="Counter7" parent="." index="23" unique_id=929500210 instance=ExtResource("7_engu6")]
+[node name="Counter7" parent="." index="21" unique_id=929500210 instance=ExtResource("7_engu6")]
 position = Vector2(-48, 16)
 
-[node name="Counter8" parent="." index="24" unique_id=4285912 instance=ExtResource("7_engu6")]
+[node name="Counter8" parent="." index="22" unique_id=4285912 instance=ExtResource("7_engu6")]
 position = Vector2(-80, 16)
 
-[node name="Counter9" parent="." index="25" unique_id=778345010 instance=ExtResource("7_engu6")]
+[node name="Counter9" parent="." index="23" unique_id=778345010 instance=ExtResource("7_engu6")]
 position = Vector2(-112, 16)
 orientation = 0
+
+[node name="Marvy" parent="." index="24" unique_id=52763829 instance=ExtResource("9_sc5sv")]
+position = Vector2(0, -48)

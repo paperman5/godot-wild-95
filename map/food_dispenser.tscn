@@ -28,6 +28,7 @@ shape = SubResource("RectangleShape2D_hunv0")
 
 [node name="Counter" type="Sprite2D" parent="." unique_id=1236278550]
 unique_name_in_owner = true
+visible = false
 texture = SubResource("AtlasTexture_ej7fd")
 offset = Vector2(0, -16)
 

@@ -21,6 +21,11 @@ var food_textures = {
 			counter_spr.flip_h = Table.should_flip_texture(value)
 
 @export var cooking_time := 5.0
+@export var visible_counter := true:
+	set(value):
+		visible_counter = value
+		if is_instance_valid(counter_spr):
+			counter_spr.visible = value
 
 @onready var spr := %Sprite as Sprite2D
 @onready var counter_spr := %Counter as Sprite2D
