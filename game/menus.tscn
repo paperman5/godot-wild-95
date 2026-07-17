@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bmtxuu15ggrku" path="res://game/win_mockup.png" id="1_7qefd"]
 [ext_resource type="Script" uid="uid://bcymd7mrapev4" path="res://game/menus.gd" id="1_ktqu2"]
 [ext_resource type="Texture2D" uid="uid://csue710gikep3" path="res://game/lose_mockup.png" id="2_ktqu2"]
+[ext_resource type="Texture2D" uid="uid://cnu2cexdic6xi" path="res://misc/pause menu.png" id="4_ej40b"]
+[ext_resource type="Texture2D" uid="uid://ccqofg3y5m34b" path="res://misc/resume.png" id="5_7jb3i"]
+[ext_resource type="Texture2D" uid="uid://bg0j464hwo0qu" path="res://misc/main menu.png" id="6_031gt"]
+[ext_resource type="Texture2D" uid="uid://5fykbpe1oguf" path="res://misc/pause.png" id="7_d5vjm"]
 
 [node name="Menus" type="Control" unique_id=578367975]
 layout_mode = 3
@@ -180,46 +184,80 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.50980395)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=953638435]
+[node name="TextureRect2" type="TextureRect" parent="PauseMenu" unique_id=322057800]
+custom_minimum_size = Vector2(0, 436)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -205.17645
+offset_top = -230.0
+offset_right = 205.17651
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_ej40b")
+expand_mode = 3
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="PauseMenu/VBoxContainer" unique_id=393626196]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "PAUSED"
-horizontal_alignment = 1
+[node name="Resume" type="TextureButton" parent="PauseMenu/TextureRect2" unique_id=1622978054]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1.8235474
+offset_top = 181.0
+offset_right = 135.82353
+offset_bottom = 234.0
+grow_horizontal = 2
+texture_normal = ExtResource("5_7jb3i")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Control" type="Control" parent="PauseMenu/VBoxContainer" unique_id=814742515]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
+[node name="MainMenu" type="TextureButton" parent="PauseMenu/TextureRect2" unique_id=1493442725]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.17645
+offset_top = 321.0
+offset_right = -4.176468
+offset_bottom = 410.5
+grow_horizontal = 2
+texture_normal = ExtResource("6_031gt")
+ignore_texture_size = true
+stretch_mode = 4
 
-[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer" unique_id=431334812]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "RESUME"
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/TextureRect2" unique_id=852448987]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.17647
+offset_right = 108.36287
+offset_bottom = 77.0
+grow_horizontal = 2
+texture = ExtResource("7_d5vjm")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="MainMenu" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1898275591]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "MAIN MENU"
-
-[node name="Control2" type="Control" parent="PauseMenu/VBoxContainer" unique_id=1924406898]
-custom_minimum_size = Vector2(0, 47)
-layout_mode = 2
-
-[node name="Next" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1762146410]
-layout_mode = 2
+[node name="Next" type="Button" parent="PauseMenu/TextureRect2" unique_id=1762146410]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.17646
+offset_top = 2.0
+offset_right = 93.82353
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "NEXT LEVEL"
 
@@ -229,6 +267,6 @@ text = "NEXT LEVEL"
 [connection signal="pressed" from="LoseMenu/VBoxContainer/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="BeginMenu/VBoxContainer/Begin" to="." method="_on_begin_resume_pressed"]
 [connection signal="pressed" from="BeginMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_begin_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="PauseMenu/TextureRect2/Resume" to="." method="_on_begin_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/TextureRect2/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/TextureRect2/Next" to="." method="_on_next_pressed"]

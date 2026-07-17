@@ -114,7 +114,7 @@ func _on_combo_timer_timeout():
 	combo = 0
 	combo_points_buffer = 0.0
 	combo_cleared.emit()
-	GameManager.game_ui.set_combo(0, 0.0)
+	GameManager.game_ui.set_combo(0, 1.0)
 	GameManager.game_ui.set_money(score)
 
 func _on_time_up():

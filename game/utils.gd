@@ -23,6 +23,12 @@ enum TableOrientation {
 	CORNER_LEFT, CORNER_RIGHT
 }
 
+const colors : Dictionary[String, Color] = {
+	"matched" : Color.WEB_GREEN,
+	"failed" : Color.FIREBRICK,
+	"combo" : Color.GOLD
+}
+
 const TableTextureRegions = {
 	TableOrientation.HOR_LEFT : Rect2(32, 32, 32, 64),
 	TableOrientation.HOR_CENTER : Rect2(0, 32, 32, 64),

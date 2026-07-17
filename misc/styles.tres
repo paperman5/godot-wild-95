@@ -2,8 +2,27 @@
 
 [ext_resource type="FontFile" uid="uid://vbsvuc7d43s5" path="res://font/hope_gold.ttf" id="1_hec11"]
 [ext_resource type="FontFile" uid="uid://ccxkmgxlnhemk" path="res://font/Caveat-VariableFont_wght.ttf" id="1_hijok"]
+[ext_resource type="FontFile" uid="uid://cylrh3j0losps" path="res://font/RobotoMono-Italic-VariableFont_wght.ttf" id="1_of0g1"]
+
+[sub_resource type="FontVariation" id="FontVariation_hunv0"]
+base_font = ExtResource("1_of0g1")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_sxc2a"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 700
+}
 
 [resource]
+ComboMeter/base_type = &"RichTextLabel"
+ComboMeter/colors/font_shadow_color = Color(0, 0, 0, 1)
+ComboMeter/constants/shadow_offset_x = 3
+ComboMeter/constants/shadow_offset_y = 2
+ComboMeter/font_sizes/normal_font_size = 30
+ComboMeter/fonts/normal_font = SubResource("FontVariation_hunv0")
 CustomerCombo/base_type = &"RichTextLabel"
 CustomerCombo/colors/default_color = Color(0, 0.5176471, 0, 1)
 CustomerCombo/colors/font_outline_color = Color(1, 1, 1, 1)
@@ -13,6 +32,11 @@ CustomerCombo/constants/outline_size = 3
 CustomerCombo/constants/shadow_outline_size = 2
 CustomerCombo/font_sizes/normal_font_size = 18
 CustomerCombo/fonts/normal_font = ExtResource("1_hec11")
+ScoreDisplay/base_type = &"Label"
+ScoreDisplay/colors/font_color = Color(0, 0, 0, 1)
+ScoreDisplay/constants/line_spacing = -20
+ScoreDisplay/font_sizes/font_size = 40
+ScoreDisplay/fonts/font = SubResource("FontVariation_sxc2a")
 TutorialText/base_type = &"RichTextLabel"
 TutorialText/constants/outline_size = 5
 TutorialText/font_sizes/normal_font_size = 32

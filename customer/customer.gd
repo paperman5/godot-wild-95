@@ -67,6 +67,7 @@ func _ready() -> void:
 		thinking_timer.start(think_time)
 		music_sync.starting_animation = anim_library_keys[customer_type] + "/idle_down"
 		music_sync.start_sync()
+		patience_progress.tint_progress = Utils.colors["matched"]
 
 func _process(delta: float) -> void:
 	if not eating and not thinking:
