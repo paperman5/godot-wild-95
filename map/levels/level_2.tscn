@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_e8sds"]
 
 [node name="Level2" unique_id=594946845 instance=ExtResource("1_jg4xa")]
+level_name = "Level 2"
+time_limit = 60.0
 next_level = "level_3"
+next_cutscene = "level3"
 music = ExtResource("2_avo2n")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]

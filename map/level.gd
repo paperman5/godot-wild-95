@@ -7,6 +7,7 @@ signal customer_seated(customer : Customer)
 
 var tables : Array[Table] = []
 var customer_scene = preload("uid://uddj0n5ca5xs")
+@export var level_name := "Level X"
 @export var customer_seating_timer := 3.0
 @export var time_limit := 100.0
 @export var timer_increments := 1.0
@@ -23,6 +24,7 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var customer_icecream_chance := 1.0
 @export var customer_food_chance := 0.0
 @export var next_level := "level_1"
+@export var next_cutscene := "opening"
 @export var music : MultiBPMAudioStream
 # TODO: Stats?
 
@@ -41,6 +43,8 @@ var game_started := false
 
 func _ready() -> void:
 	GameManager.level = self
+	GameManager.menus.set_level_name(level_name)
+	GameManager.menus.set_target_score(win_threshold)
 	var all_tables = get_tree().get_nodes_in_group("tables")
 	for t in all_tables:
 		if is_instance_of(t, Table):
@@ -65,7 +69,7 @@ func _ready() -> void:
 	GameManager.menus.show_begin()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not TutorialManager.tutorial_active:
 		if not paused and game_started:
 			pause(true)
 		elif paused and game_started:

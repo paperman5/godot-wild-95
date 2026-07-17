@@ -5,6 +5,9 @@ extends Control
 @onready var lose_menu := %LoseMenu as Control
 @onready var begin_menu := %BeginMenu as Control
 @onready var pause_menu := %PauseMenu as Control
+@onready var level_name: Label = %LevelName
+@onready var target_score: Label = %TargetScore
+
 
 func _ready() -> void:
 	show()
@@ -48,8 +51,14 @@ func _on_main_menu_pressed():
 
 
 func _on_next_pressed() -> void:
-	GameManager.change_scene(GameManager.level.next_level)
+	GameManager.go_to_next_level()
 
 
 func _on_retry_pressed() -> void:
 	GameManager.reload_current_scene()
+
+func set_level_name(new_name : String):
+	level_name.text = new_name
+
+func set_target_score(new_score : int):
+	target_score.text = "Target Score: $%d" % new_score

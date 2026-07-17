@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://c12jp7navtq01"]
+
+[ext_resource type="Texture2D" uid="uid://b7rk2bww27khc" path="res://cutscene/name_box.png" id="1_s6mci"]
+
+[resource]
+texture = ExtResource("1_s6mci")
+texture_margin_left = 19.0
+texture_margin_top = 21.0
+texture_margin_right = 18.0
+texture_margin_bottom = 21.0

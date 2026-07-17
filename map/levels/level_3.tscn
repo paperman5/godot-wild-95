@@ -11,7 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://dp6cs81a2t2s5" path="res://map/marvy.tscn" id="9_sc5sv"]
 
 [node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
+level_name = "Level 3"
+time_limit = 60.0
 customer_food_chance = 0.25
+next_level = "main_menu"
+next_cutscene = "ending"
 music = ExtResource("2_sc5sv")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]

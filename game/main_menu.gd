@@ -20,9 +20,12 @@ func _on_continue_pressed() -> void:
 
 func _on_new_game_pressed() -> void:
 	if TutorialManager.skip_tutorials:
-		GameManager.change_scene("level_1")
+		GameManager.next_cutscene = "level1"
+		GameManager.next_level = "level_1"
 	else:
-		GameManager.change_scene("tutorial")
+		GameManager.next_cutscene = "opening"
+		GameManager.next_level = "tutorial"
+	GameManager.change_scene("cutscene")
 
 
 func _on_credit_meta_clicked(meta: Variant) -> void:

@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://saxhvxyndssq"]
+
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn" id="1_vjqfn"]
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_4fvlw"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="3_apw3n"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_q3ssb"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_yuhcp"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="6_udaye"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="11_kfuw6"]
+
+[sub_resource type="Resource" id="Resource_s7mye"]
+script = ExtResource("2_4fvlw")
+scene = ExtResource("1_vjqfn")
+
+[sub_resource type="Resource" id="Resource_eqdhw"]
+script = ExtResource("2_4fvlw")
+scene = ExtResource("3_apw3n")
+
+[sub_resource type="Resource" id="Resource_55kbh"]
+script = ExtResource("2_4fvlw")
+scene = ExtResource("4_q3ssb")
+
+[sub_resource type="Resource" id="Resource_501pq"]
+script = ExtResource("2_4fvlw")
+scene = ExtResource("5_yuhcp")
+
+[sub_resource type="Resource" id="Resource_33f2m"]
+script = ExtResource("2_4fvlw")
+scene = ExtResource("6_udaye")
+overrides = {
+"box_color_custom": "Color(1, 1, 1, 1)",
+"box_color_use_global": "false",
+"box_panel": "\"res://cutscene/textbox.tres\"",
+"box_size": "Vector2(750, 150)",
+"name_label_box_modulate": "Color(1, 1, 1, 1)",
+"name_label_box_offset": "Vector2(0, -30)",
+"name_label_box_panel": "\"res://cutscene/namebox.tres\"",
+"name_label_box_use_global_color": "false",
+"next_indicator_size": "Vector2(20, 20)",
+"next_indicator_texture": "\"res://cutscene/talk triangle.png\"",
+"text_size": "20.0",
+"text_use_global_size": "false"
+}
+
+[resource]
+script = ExtResource("11_kfuw6")
+name = "cutscene_style"
+layer_list = Array[String](["10", "11", "12", "13"])
+layer_info = {
+"": SubResource("Resource_s7mye"),
+"10": SubResource("Resource_eqdhw"),
+"11": SubResource("Resource_55kbh"),
+"12": SubResource("Resource_501pq"),
+"13": SubResource("Resource_33f2m")
+}
+metadata/_latest_layer = "10"

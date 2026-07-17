@@ -25,7 +25,6 @@ var current_track : MultiBPMAudioStream
 @onready var music_player := %MusicPlayer as AudioStreamPlayer
 
 func _ready() -> void:
-	music_lofi_tweener = create_tween()
 	music_bus_idx = AudioServer.get_bus_index("Music")
 	sfx_bus_idx = AudioServer.get_bus_index("SFX")
 	hipass_filter = AudioServer.get_bus_effect(music_bus_idx, 1)
@@ -55,6 +54,8 @@ func get_next_beat_time(after_pos : float) -> float:
 	return float(n_prev_beats + 1) * 60.0 / bpms[lbi] + timestamps[lbi]
 
 func set_music_lofi(enabled : bool):
+	if music_lofi_tweener == null:
+		music_lofi_tweener = create_tween()
 	if not music_lofi_mode and enabled:
 		music_lofi_mode = true
 		music_lofi_tweener.kill()

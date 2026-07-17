@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="7_1s3v2"]
 
 [node name="Level1" unique_id=594946845 instance=ExtResource("1_6jxvd")]
+level_name = "Level 1"
+time_limit = 60.0
 next_level = "level_2"
+next_cutscene = "level2"
 music = ExtResource("2_e761b")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=192271352]

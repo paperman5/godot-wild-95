@@ -5,6 +5,8 @@ var level : Level
 var game_ui : GameUI
 var menus : WinLoseMenus
 var default_view_size := Vector2.ZERO
+var next_cutscene := "opening"
+var next_level := "tutorial"
 
 const save_file_path := "user://savegame.txt"
 
@@ -14,12 +16,14 @@ const level_scenes = {
 	"tutorial" : "uid://brtt2pl2rmduv",
 	"level_1" : "uid://ssywa7x2dhky",
 	"level_2" : "uid://dnv7od3o7m2u",
-	"level_3" : "uid://mufmt5bnk3bk"
+	"level_3" : "uid://mufmt5bnk3bk",
+	"cutscene" : "uid://g2lqs0suukre",
 }
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	default_view_size = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
+	#set_dialogic_filtering.call_deferred()
 
 func _process(delta: float) -> void:
 	var cam = get_viewport().get_camera_2d()
@@ -42,6 +46,14 @@ func change_scene(new_scene : String):
 			var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
 			save_file.store_line(level_scenes[new_scene])
 			save_file.close()
+
+func go_to_next_level():
+	if Dialogic.timeline_exists(level.next_cutscene):
+		next_cutscene = level.next_cutscene
+		next_level = level.next_level
+		change_scene("cutscene")
+	else:
+		change_scene(level.next_level)
 
 func reload_current_scene():
 	get_tree().reload_current_scene()
