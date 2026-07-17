@@ -24,6 +24,7 @@ var tutorials : Dictionary[String, TutorialScript] = {
 }
 
 # Tutorial flags
+var ios := false
 var do_intro_tutorial := true
 var do_food_tutorial := true
 var move_tutorial := true
@@ -33,6 +34,10 @@ var first_customer := true
 func _ready() -> void:
 	root.hide()
 	clear_highlights()
+	ios = OS.has_feature("web_ios")
+	if ios:
+		highlighter.material = null
+		highlighter.color = Color("000000b5")
 	#highlight_points([Vector2(100, 100)], [30.0])
 
 func highlight_nodes(nodes : Array, radii : Array, offsets : Array):
@@ -45,7 +50,8 @@ func highlight_node(node : Node2D, radius : float, offset : Vector2):
 	highlight_points([Utils.get_node_screen_position(node, offset)], [radius])
 
 func _process(_delta: float) -> void:
-	highlight_mat.set_shader_parameter("zoom", Utils.get_view_scale() * Vector2.ONE)
+	if not ios:
+		highlight_mat.set_shader_parameter("zoom", Utils.get_view_scale() * Vector2.ONE)
 	if not tutorial_active or input_locked:
 		return
 	for action in ["move_down", "move_right", "move_up", "move_left"]:
@@ -59,7 +65,8 @@ func begin_tutorial(tut : TutorialScript):
 	current_tutorial = tut
 	tutorial_active = true
 	root.show()
-	highlighter.show()
+	if not ios:
+		highlighter.show()
 	text_continue.hide()
 	clear_highlights()
 	hide_text()
@@ -72,7 +79,8 @@ func end_tutorial():
 	tutorial_active = false
 	current_tutorial = null
 	root.hide()
-	highlighter.hide()
+	if not ios:
+		highlighter.hide()
 	hide_text()
 	clear_highlights()
 
@@ -103,6 +111,7 @@ func set_text(text : String, just : HorizontalAlignment, pos : Vector2):
 			text_rj.position = pos - Vector2(text_rj.custom_minimum_size.x, text_rj.custom_minimum_size.y/2.0)
 
 func clear_highlights():
+	if ios: return
 	var new_points : Array[Vector2] = []
 	new_points.resize(4)
 	new_points.fill(offscreen)
@@ -121,6 +130,7 @@ func clear_text():
 	text_rj.text = ""
 
 func highlight_points(points : Array, radii : Array):
+	if ios: return
 	var new_points : Array[Vector2] = []
 	new_points.resize(4)
 	new_points.fill(offscreen)
@@ -136,11 +146,13 @@ func highlight_points(points : Array, radii : Array):
 	highlight_mat.set_shader_parameter("highlight_radii", new_radii)
 
 func highlight_slot(slot_a : Vector2, slot_b : Vector2, slot_r : float):
+	if ios: return
 	highlight_mat.set_shader_parameter("slot_a", slot_a)
 	highlight_mat.set_shader_parameter("slot_b", slot_b)
 	highlight_mat.set_shader_parameter("slot_r", slot_r)
 	
 func set_highlight_blur_amount(amount : float):
+	if ios: return
 	highlight_mat.set_shader_parameter("blur", amount)
 
 func pause():
