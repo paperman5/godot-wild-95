@@ -36,7 +36,7 @@ var food_textures = {
 @onready var spr := %Sprite as Sprite2D
 @onready var counter_spr := %Counter as Sprite2D
 @onready var cooking_timer := %CookingTimer as Timer
-@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio: AudioStreamPlayer2D = %AudioStreamPlayer2D
 
 var spr_material : ShaderMaterial
 var cooking := false

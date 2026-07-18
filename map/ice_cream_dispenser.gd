@@ -23,7 +23,7 @@ var textures = {
 
 @onready var spr := %Sprite as Sprite2D
 @onready var counter_spr := %Counter as Sprite2D
-@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio: AudioStreamPlayer2D = %AudioStreamPlayer2D
 
 func _ready() -> void:
 	type = type

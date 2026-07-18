@@ -22,7 +22,7 @@ var seat_directions : Array[Vector2i] = []
 @onready var placemat_spr_h = %PlacematH as Sprite2D
 @onready var placemat_spr_v = %PlacematV as Sprite2D
 @onready var corner := %Corner as Sprite2D
-@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio: AudioStreamPlayer2D = %AudioStreamPlayer2D
 
 func _ready() -> void:
 	orientation = orientation

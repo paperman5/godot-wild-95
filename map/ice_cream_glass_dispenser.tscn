@@ -81,5 +81,6 @@ hframes = 2
 frame = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1339099470]
+unique_name_in_owner = true
 stream = ExtResource("4_ptgmv")
 bus = &"SFX"

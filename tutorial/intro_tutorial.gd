@@ -65,6 +65,7 @@ func show_tutorial():
 	# Serving tutorial
 	var target_table := GameManager.level.get_node("Counter2") as Table
 	var target_customer := GameManager.level.create_customer()
+	target_customer.served.connect(GameManager.level._on_customer_served)
 	target_table.seat_customer_random_spot(target_customer)
 	var target_order = target_customer.bubble_root
 	var text_3_pos = Utils.get_node_ui_position(target_order, Vector2(40, -32))
@@ -96,8 +97,10 @@ func show_tutorial():
 	# Combo tutorial
 	target_table = GameManager.level.get_node("Counter2") as Table
 	target_customer = GameManager.level.create_customer()
+	target_customer.served.connect(GameManager.level._on_customer_served)
 	var target_table_2 := GameManager.level.get_node("Counter3") as Table
 	var target_customer_2 := GameManager.level.create_customer()
+	target_customer_2.served.connect(GameManager.level._on_customer_served)
 	target_table.seat_customer_random_spot(target_customer)
 	target_table_2.seat_customer_random_spot(target_customer_2)
 	target_order = target_customer.bubble_root

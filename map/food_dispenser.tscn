@@ -47,6 +47,7 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1797968312]
+unique_name_in_owner = true
 stream = ExtResource("5_fr1am")
 bus = &"SFX"
 

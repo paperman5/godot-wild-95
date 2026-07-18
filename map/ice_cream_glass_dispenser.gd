@@ -3,7 +3,7 @@ class_name IceCreamGlassDispenser
 extends StaticBody2D
 
 @onready var spr := %Sprite2D as Sprite2D
-@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio: AudioStreamPlayer2D = %AudioStreamPlayer2D
 
 @export var style : Utils.TableOrientation:
 	set(value):
