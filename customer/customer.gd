@@ -27,6 +27,8 @@ var thinking := true
 var eating := false
 var prompt := true
 var failed_order := false
+var order_initialized := false
+var total_prompt_time := 1.0
 
 @export var customer_type := CustomerType.Nightwalker:
 	set(value):
@@ -35,7 +37,8 @@ var failed_order := false
 			#sit_direction(Vector2.DOWN)
 @export var eat_wait_time := 1.0
 @export var think_time := 2.0
-@export var prompt_bonus_time := 5.0
+@export var prompt_bonus_time := 10.0
+@export var food_promptness_time_mult := 1.5
 @export var icecream_order_chance := 1.0
 @export var food_order_chance := 0.25
 
@@ -59,7 +62,9 @@ var failed_order := false
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		customer_type = customer_type
-		randomize_order()
+		if not order_initialized:
+			randomize_order()
+		bubble_fit_orders()
 		thinking_bubble.show()
 		bubble_root.hide()
 		combo_text.text = ""
@@ -71,7 +76,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not eating and not thinking:
-		patience_progress.value = prompt_timer.time_left / prompt_bonus_time
+		patience_progress.value = prompt_timer.time_left / total_prompt_time
 
 func has_matching_order(order_to_check : FoodItem) -> bool:
 	return find_matching_order(order_to_check) >= 0
@@ -193,9 +198,19 @@ func randomize_order():
 								Utils.IceCreamType.Vilenilla].pick_random())
 		orig_orders.append(icecream)
 		orders_left.append(icecream)
-	bubble_fit_orders()
+	order_initialized = true
+
+func set_orders(orders : Array[FoodItem]):
+	orders_left = orders
+	orig_orders = orders
+	order_initialized = true
 
 func bubble_fit_orders():
+	for order in orders_left:
+		if order.get_parent() == null:
+			bubble_root.add_child(order)
+		if is_instance_of(order, IceCream):
+			order.reset_visible()
 	const margin_side := 3
 	const margin_top := 3
 	const margin_bot := 4
@@ -230,7 +245,17 @@ func _on_thinking_timer_timeout():
 	thinking_bubble.hide()
 	bubble_root.show()
 	music_sync.advance_every_n_beats = 2
-	prompt_timer.start(prompt_bonus_time)
+	start_prompt_timer()
+
+func start_prompt_timer():
+	var time := 0.0
+	for order in orig_orders:
+		if is_instance_of(order, IceCream):
+			time += prompt_bonus_time
+		if is_instance_of(order, CookedFood):
+			time += prompt_bonus_time * food_promptness_time_mult
+	total_prompt_time = time
+	prompt_timer.start(total_prompt_time)
 
 func can_be_served() -> bool:
 	return len(orders_left) > 0 and not thinking and not eating

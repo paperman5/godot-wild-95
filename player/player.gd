@@ -6,7 +6,7 @@ signal held_item_changed(new : FoodItem)
 const TILE_SIZE = 32
 
 @export var tile_move_speed := 0.1
-@export var move_cooldown := 0.05
+@export var move_cooldown := 0.01
 @export var max_food_stack := 4
 
 @onready var spr := %Sprite2D as Sprite2D
@@ -23,7 +23,12 @@ func _ready() -> void:
 	true_pos = position
 
 func _physics_process(_delta: float) -> void:
-	if moving or GameManager.level.paused:
+	#if moving or GameManager.level.paused:
+		#return
+	if GameManager.level.paused:
+		return
+	if moving:
+		moving = false
 		return
 	
 	var move_dir := Vector2.ZERO

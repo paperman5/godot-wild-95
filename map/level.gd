@@ -7,6 +7,7 @@ signal customer_seated(customer : Customer)
 
 var tables : Array[Table] = []
 var customer_scene = preload("uid://uddj0n5ca5xs")
+@export var randomizer : CustomerRandomizer
 @export var level_name := "Level X"
 @export var customer_seating_timer := 3.0
 @export var time_limit := 100.0
@@ -17,7 +18,7 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var food_prompt_bonus := 3
 @export var failed_order_multiplier := 0.5
 @export var win_threshold := 50
-@export var combo_cooldown := 2.0
+@export var combo_cooldown := 2.5
 @export var combo_refresh_on_success := true
 @export var combo_bonus := 0.25
 @export var max_icecream_scoops := 3
@@ -89,7 +90,6 @@ func create_customer() -> Customer:
 								Customer.CustomerType.Goo].pick_random()
 	new_customer.icecream_order_chance = customer_icecream_chance
 	new_customer.food_order_chance = customer_food_chance
-	new_customer.served.connect(_on_customer_served)
 	return new_customer
 
 func seat_random_table():
@@ -99,7 +99,12 @@ func seat_random_table():
 	while table.table_is_full():
 		table = tables.pick_random()
 	
-	var new_customer := create_customer()
+	var new_customer : Customer = null
+	if randomizer != null:
+		new_customer = randomizer.pick_customer()
+	if not is_instance_valid(new_customer):
+		new_customer = create_customer()
+	new_customer.served.connect(_on_customer_served)
 	add_child(new_customer)
 	table.seat_customer_random_spot(new_customer)
 	customer_seated.emit(new_customer)
@@ -119,9 +124,12 @@ func _on_customer_served(order : FoodItem, matched : bool, prompt : bool):
 	else:
 		combo_timer.stop()
 		combo_timer.timeout.emit()
-	GameManager.game_ui.set_combo(roundi(combo_points_buffer), 1+combo*combo_bonus)
+	var bonus = 1+combo*combo_bonus if combo > 1 else 1.0
+	GameManager.game_ui.set_combo(roundi(combo_points_buffer), bonus)
 
 func _on_combo_timer_timeout():
+	if combo <= 1:
+		combo = 0
 	score += round(combo_points_buffer * (1 + combo * combo_bonus))
 	combo = 0
 	combo_points_buffer = 0.0

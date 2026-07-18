@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="CustomerRandomizer" format=3 uid="uid://d3hrjjxplifdt"]
+
+[ext_resource type="Script" uid="uid://clnl282sofqn2" path="res://customer/customer_randomizer_entry.gd" id="1_0ick4"]
+[ext_resource type="Script" uid="uid://b1t8enintunm6" path="res://customer/customer_randomizer.gd" id="2_dmiwp"]
+
+[sub_resource type="Resource" id="Resource_0vtcj"]
+script = ExtResource("1_0ick4")
+amount = 4
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[sub_resource type="Resource" id="Resource_gxrhv"]
+script = ExtResource("1_0ick4")
+ice_cream_scoops = 2
+amount = 4
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[sub_resource type="Resource" id="Resource_0p17r"]
+script = ExtResource("1_0ick4")
+ice_cream_scoops = 3
+amount = 4
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[sub_resource type="Resource" id="Resource_fv58k"]
+script = ExtResource("1_0ick4")
+order_food = true
+amount = 2
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[sub_resource type="Resource" id="Resource_3fpeu"]
+script = ExtResource("1_0ick4")
+ice_cream_scoops = 2
+order_food = true
+amount = 2
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[sub_resource type="Resource" id="Resource_tkcdb"]
+script = ExtResource("1_0ick4")
+ice_cream_scoops = 3
+order_food = true
+amount = 2
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[sub_resource type="Resource" id="Resource_uqtnp"]
+script = ExtResource("1_0ick4")
+order_ice_cream = false
+order_food = true
+amount = 2
+metadata/_custom_type_script = "uid://clnl282sofqn2"
+
+[resource]
+script = ExtResource("2_dmiwp")
+randomizer_entries = Array[ExtResource("1_0ick4")]([SubResource("Resource_0vtcj"), SubResource("Resource_gxrhv"), SubResource("Resource_0p17r"), SubResource("Resource_fv58k"), SubResource("Resource_3fpeu"), SubResource("Resource_tkcdb"), SubResource("Resource_uqtnp")])
+metadata/_custom_type_script = "uid://b1t8enintunm6"

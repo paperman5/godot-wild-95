@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_3dnot"]
 [ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_a4rac"]
 [ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/GSISP_Level1_V1.tres" id="2_sc5sv"]
+[ext_resource type="Resource" uid="uid://d3hrjjxplifdt" path="res://map/levels/level_3_randomizer.tres" id="2_t3kdf"]
 [ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_sc5sv"]
 [ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_t3kdf"]
 [ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_lo52u"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dp6cs81a2t2s5" path="res://map/marvy.tscn" id="9_sc5sv"]
 
 [node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
+randomizer = ExtResource("2_t3kdf")
 level_name = "Level 3"
 time_limit = 60.0
 customer_food_chance = 0.25
@@ -39,12 +41,8 @@ limit_bottom = 64
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-drag_left_margin = 0.63
-drag_top_margin = 1.0
-drag_right_margin = 0.71
-drag_bottom_margin = 1.0
 editor_draw_drag_margin = true
-spring_stop_left = 115.0
+spring_stop_left = 300.0
 spring_stop_right = 115.0
 spring_stiffness = 5.0
 

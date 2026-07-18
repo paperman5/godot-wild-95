@@ -43,6 +43,12 @@ func add_flavor(flavor : Utils.IceCreamType):
 		scoop_spr.show()
 		stack_pos.position = get_node("Stack%d" % len(flavors)).position
 
+func reset_visible():
+	for i in len(flavors):
+		var scoop_spr := get_node("%%Scoop%d" % i) as Sprite2D
+		scoop_spr.frame = flavors[i]
+		scoop_spr.show()
+
 func scoop_count() -> int:
 	return len(flavors)
 
