@@ -1,24 +1,89 @@
 [gd_scene format=3 uid="uid://6kyebxi5bbkj"]
 
 [ext_resource type="Script" uid="uid://balbwskpf7f0m" path="res://game/main_menu.gd" id="1_2gctw"]
+[ext_resource type="Resource" uid="uid://bdxwdm4p01jb2" path="res://audio/GSISP_MainMenu.tres" id="2_20tr2"]
+[ext_resource type="Texture2D" uid="uid://uijwv52637wy" path="res://game/GSISP_Logo_Glow100.PNG" id="3_t606k"]
+[ext_resource type="Texture2D" uid="uid://56v83ccnrk3h" path="res://game/GSISP_Logo_Text.PNG" id="4_7k2rn"]
+[ext_resource type="Theme" uid="uid://55ic7fa2pnu2" path="res://misc/styles.tres" id="5_7k2rn"]
+[ext_resource type="Texture2D" uid="uid://clmay53g6gdbd" path="res://game/GSISP_Logo_Glow75.PNG" id="5_wr6kv"]
+[ext_resource type="Texture2D" uid="uid://dcn3filpu70nh" path="res://misc/logo_large_monochrome_dark.png" id="6_wr6kv"]
+[ext_resource type="Texture2D" uid="uid://bp10eifdyehk3" path="res://misc/no_ai.png" id="7_6xmkl"]
+[ext_resource type="AudioStream" uid="uid://bql1jtntlk1ge" path="res://audio/neon_light.wav" id="9_7mn57"]
 
-[sub_resource type="Gradient" id="Gradient_owjf0"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.9647059, 0, 1)
+[sub_resource type="Gradient" id="Gradient_7k2rn"]
+offsets = PackedFloat32Array(0, 0.46568626, 0.78594774, 1)
+colors = PackedColorArray(0.003921569, 0, 0.078431375, 1, 0.004597903, 1.2091672e-08, 0.08687561, 1, 0.005241546, 2.3598869e-08, 0.09491167, 1, 0.005940675, 3.6098065e-08, 0.103640504, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hunv0"]
-gradient = SubResource("Gradient_owjf0")
-fill = 1
-fill_from = Vector2(0.5, 0.48293516)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7b218"]
+gradient = SubResource("Gradient_7k2rn")
+width = 8
+height = 256
+fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_2gctw"]
-colors = PackedColorArray(0, 0, 1, 1, 0.43529412, 0.7921569, 0, 1)
+[sub_resource type="Animation" id="Animation_6xmkl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_t606k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo/Logo2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_7k2rn")]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_20tr2"]
-gradient = SubResource("Gradient_2gctw")
-fill = 1
-fill_from = Vector2(0.5, 0.48293516)
+[sub_resource type="Animation" id="Animation_7mn57"]
+resource_name = "logo_flicker"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2333333, 1.6999998, 1.8, 2.6, 2.7, 3.1666667, 3.3999999, 3.7, 3.8, 4.2, 4.3333335, 4.5, 4.6666665, 5.0333333, 5.2, 6.433334, 6.666667, 7.1333337, 7.2333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k"), ExtResource("5_wr6kv"), ExtResource("3_t606k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo/Logo2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_7k2rn")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vmua"]
+_data = {
+&"RESET": SubResource("Animation_6xmkl"),
+&"logo_flicker": SubResource("Animation_7mn57")
+}
 
 [node name="MainMenu" type="Control" unique_id=1285499408]
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,139 +92,189 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2gctw")
+music = ExtResource("2_20tr2")
 
-[node name="Backer" type="ColorRect" parent="." unique_id=1863191648]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=910663314]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+texture = SubResource("GradientTexture2D_7b218")
 
 [node name="Logo" type="TextureRect" parent="." unique_id=1819785673]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 40.0
-offset_right = 433.0
-offset_bottom = 318.0
+offset_left = 49.0
+offset_top = -30.0
+offset_right = 507.0
+offset_bottom = 386.0
+offset_transform_enabled = true
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_hunv0")
+texture = ExtResource("3_t606k")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Characters" type="TextureRect" parent="." unique_id=1514102999]
+[node name="Logo2" type="TextureRect" parent="Logo" unique_id=530138807]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 243.0
-offset_top = -374.0
-offset_right = 495.0
-offset_bottom = -30.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_20tr2")
+texture = ExtResource("4_7k2rn")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1640564926]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -461.0
-offset_top = -192.0
-offset_right = -202.0
-offset_bottom = -96.0
-grow_horizontal = 0
-grow_vertical = 2
+offset_left = 134.0
+offset_top = 341.0
+offset_right = 393.0
+offset_bottom = 525.0
 mouse_filter = 2
 
 [node name="Continue" type="Button" parent="VBoxContainer" unique_id=1270767845]
 unique_name_in_owner = true
 layout_mode = 2
 text = "CONTINUE"
+metadata/_edit_lock_ = true
 
 [node name="NewGame" type="Button" parent="VBoxContainer" unique_id=1219977417]
 unique_name_in_owner = true
 layout_mode = 2
 text = "NEW GAME"
+metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="VBoxContainer" unique_id=1206149958]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="Clear" type="Button" parent="VBoxContainer" unique_id=1332220308]
 unique_name_in_owner = true
 layout_mode = 2
 text = "CLEAR SAVE"
+metadata/_edit_lock_ = true
 
-[node name="Credits" type="Control" parent="." unique_id=234892825]
+[node name="Control2" type="Control" parent="VBoxContainer" unique_id=1620945917]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="SkipTutorials" type="CheckBox" parent="VBoxContainer" unique_id=746301477]
+layout_mode = 2
+text = "Skip Tutorials"
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1160900310]
 layout_mode = 1
-anchor_left = 0.5
-anchor_top = 1.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -300.0
-offset_bottom = -1.0
+anchor_bottom = 0.5
+offset_left = -466.0
+offset_top = -157.5
+offset_bottom = 157.5
 grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
+grow_vertical = 2
+theme_override_constants/separation = 21
+alignment = 1
 
-[node name="paperish" type="RichTextLabel" parent="Credits" unique_id=1432469585]
-layout_mode = 0
-offset_left = 109.0
-offset_top = 56.0
-offset_right = 262.0
-offset_bottom = 108.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="VBoxContainer2" unique_id=1011873764]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2" unique_id=566371651]
+layout_mode = 2
+
+[node name="paperish" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer" unique_id=1432469585]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuRTL"
 bbcode_enabled = true
-text = "Paperish ([url=https://paperish.itch.io/]socials[/url])
+text = "Paperish ([url=https://paperish.itch.io/]itch[/url])
 Programming"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
-[node name="octo" type="RichTextLabel" parent="Credits" unique_id=1496679962]
-layout_mode = 0
-offset_left = 299.0
-offset_top = 82.0
-offset_right = 452.0
-offset_bottom = 134.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+[node name="octo" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer" unique_id=1496679962]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuRTL"
 bbcode_enabled = true
 text = "Octoburst (socials)
 Pixel Art"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
-[node name="py" type="RichTextLabel" parent="Credits" unique_id=2030873375]
-layout_mode = 0
-offset_left = 53.0
-offset_top = 146.0
-offset_right = 240.0
-offset_bottom = 198.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2" unique_id=629921246]
+layout_mode = 2
+
+[node name="py" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer2" unique_id=2030873375]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuRTL"
 bbcode_enabled = true
-text = "Pypixy ([url=https://pypixy.carrd.co/]socials[/url])
+text = "Pypixy ([url=https://pypixy.carrd.co/]carrd[/url])
 HiRes Art, Storyboards"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
-[node name="miz" type="RichTextLabel" parent="Credits" unique_id=348390757]
-layout_mode = 0
-offset_left = 309.0
-offset_top = 162.0
-offset_right = 496.0
-offset_bottom = 214.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+[node name="miz" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer2" unique_id=348390757]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuRTL"
 bbcode_enabled = true
 text = "Mizax (socials)
 Pixel Art"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
-[node name="blu" type="RichTextLabel" parent="Credits" unique_id=354627629]
-layout_mode = 0
-offset_left = 121.0
-offset_top = 230.0
-offset_right = 339.0
-offset_bottom = 284.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+[node name="blu" type="RichTextLabel" parent="VBoxContainer2" unique_id=354627629]
+layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuRTL"
 bbcode_enabled = true
-text = "BluSprinks ([url=https://blusprinks.crd.co/]socials[/url])
+text = "BluSprinks ([url=https://blusprinks.crd.co/]carrd[/url])
 Pixel Art, SFX, Music, Admin"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2" unique_id=2040396358]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/HBoxContainer3" unique_id=1924039532]
+custom_minimum_size = Vector2(143, 62)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_wr6kv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer2/HBoxContainer3" unique_id=864429672]
+custom_minimum_size = Vector2(143, 62)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_6xmkl")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Mute" type="Button" parent="." unique_id=447881083]
 layout_mode = 1
@@ -174,30 +289,22 @@ grow_horizontal = 0
 toggle_mode = true
 text = "MUTE"
 
-[node name="SkipTutorials" type="CheckBox" parent="." unique_id=746301477]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -383.0
-offset_top = 259.0
-offset_right = -250.0
-offset_bottom = 290.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-text = "Skip Tutorials"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=3638342]
+libraries/ = SubResource("AnimationLibrary_6vmua")
+autoplay = &"logo_flicker"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=275489810]
+stream = ExtResource("9_7mn57")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Clear" to="." method="_on_clear_pressed"]
-[connection signal="meta_clicked" from="Credits/paperish" to="." method="_on_credit_meta_clicked"]
-[connection signal="meta_clicked" from="Credits/octo" to="." method="_on_credit_meta_clicked"]
-[connection signal="meta_clicked" from="Credits/py" to="." method="_on_credit_meta_clicked"]
-[connection signal="meta_clicked" from="Credits/miz" to="." method="_on_credit_meta_clicked"]
-[connection signal="meta_clicked" from="Credits/blu" to="." method="_on_credit_meta_clicked"]
+[connection signal="toggled" from="VBoxContainer/SkipTutorials" to="." method="_on_skip_tutorials_toggled"]
+[connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer/paperish" to="." method="_on_credit_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer/octo" to="." method="_on_credit_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer2/py" to="." method="_on_credit_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer2/miz" to="." method="_on_credit_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer2/blu" to="." method="_on_credit_meta_clicked"]
 [connection signal="toggled" from="Mute" to="." method="_on_mute_toggled"]
-[connection signal="toggled" from="SkipTutorials" to="." method="_on_skip_tutorials_toggled"]

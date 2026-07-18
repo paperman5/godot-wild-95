@@ -75,6 +75,7 @@ script = ExtResource("1_i5thv")
 [node name="Root" type="Control" parent="." unique_id=1117705648]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

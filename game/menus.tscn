@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5fykbpe1oguf" path="res://misc/pause.png" id="7_d5vjm"]
 
 [node name="Menus" type="Control" unique_id=578367975]
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

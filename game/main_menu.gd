@@ -1,11 +1,14 @@
 class_name MainMenu
 extends Control
 
+@export var music : MultiBPMAudioStream
+
 @onready var continue_button := %Continue as Button
 @onready var newgame_button := %NewGame as Button
 var continue_load := ""
 
 func _ready() -> void:
+	MusicManager.start_music(music)
 	if FileAccess.file_exists(GameManager.save_file_path):
 		continue_button.show()
 		var file = FileAccess.open(GameManager.save_file_path, FileAccess.READ)

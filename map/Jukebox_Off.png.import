@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5fykbpe1oguf"
-path="res://.godot/imported/pause.png-c4cd4363b5265138b7d2c5e93eba5564.ctex"
+uid="uid://ck7d2honfif7p"
+path="res://.godot/imported/Jukebox_Off.png-30bbfa38c815ce7bcddf22c735de3f53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://misc/pause.png"
-dest_files=["res://.godot/imported/pause.png-c4cd4363b5265138b7d2c5e93eba5564.ctex"]
+source_file="res://map/Jukebox_Off.png"
+dest_files=["res://.godot/imported/Jukebox_Off.png-30bbfa38c815ce7bcddf22c735de3f53.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.9
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
