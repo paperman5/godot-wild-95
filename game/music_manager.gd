@@ -64,9 +64,9 @@ func get_next_beat_time(after_pos : float) -> float:
 	return float(n_prev_beats + 1) * 60.0 / bpms[lbi] + timestamps[lbi]
 
 func set_music_lofi(enabled : bool):
-	if music_lofi_tweener == null:
-		music_lofi_tweener = create_tween()
 	if not music_lofi_mode and enabled:
+		if music_lofi_tweener == null:
+			music_lofi_tweener = create_tween()
 		music_lofi_mode = true
 		music_lofi_tweener.kill()
 		music_lofi_tweener = create_tween()
@@ -74,6 +74,8 @@ func set_music_lofi(enabled : bool):
 		music_lofi_tweener.tween_property(hipass_filter, "cutoff_hz", music_lofi_hipass_amt, music_lofi_fade_time)
 		music_lofi_tweener.tween_property(lofi_filter, "drive", music_lofi_drive, music_lofi_fade_time)
 	elif music_lofi_mode and not enabled:
+		if music_lofi_tweener == null:
+			music_lofi_tweener = create_tween()
 		music_lofi_mode = false
 		music_lofi_tweener.kill()
 		music_lofi_tweener = create_tween()

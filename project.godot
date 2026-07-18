@@ -26,6 +26,7 @@ Utils="*uid://cos4dbspdwf0a"
 MusicManager="*uid://c2t0kmebu1eqp"
 TutorialManager="*uid://claqn5mk6wn6q"
 Dialogic="*uid://ds2q0uclmolvu"
+TransitionManager="*uid://bxb5otabu1th8"
 
 [dialogic]
 
@@ -56,11 +57,11 @@ text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/join_default_wait=true
-animations/leave_default_length=0.5
-animations/leave_default_wait=true
-animations/cross_fade_default_length=0.5
+animations/join_default_length=0.3
+animations/join_default_wait=false
+animations/leave_default_length=0.3
+animations/leave_default_wait=false
+animations/cross_fade_default_length=0.1
 choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
@@ -82,6 +83,9 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+animations/cross_fade_default="Fade Cross"
+animations/leave_default="Fade Out Down"
+portraits/default_portrait="res://addons/dialogic/Modules/HighlightPortrait/simple_highlight_portrait.tscn"
 
 [display]
 

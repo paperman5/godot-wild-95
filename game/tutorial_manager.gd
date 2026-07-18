@@ -44,8 +44,8 @@ func highlight_nodes(nodes : Array, radii : Array, offsets : Array):
 		node_ps.append(Utils.get_node_screen_position(nodes[i], offsets[i]))
 	highlight_points(node_ps, radii)
 
-func highlight_node(node : Node2D, radius : float, offset : Vector2):
-	highlight_points([Utils.get_node_screen_position(node, offset)], [radius])
+func highlight_node(node : Node2D, radius : float, node_offset : Vector2):
+	highlight_points([Utils.get_node_screen_position(node, node_offset)], [radius])
 
 func _process(_delta: float) -> void:
 	highlight_mat.set_shader_parameter("zoom", Utils.get_view_scale() * Vector2.ONE)

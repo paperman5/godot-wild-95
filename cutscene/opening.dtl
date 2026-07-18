@@ -1,7 +1,9 @@
+join sabrina (Default) left
+join ambrosia right
 ambrosia: Ah, Sabrina! About time you showed up.
 sabrina: Wh-- Where am I?
 ambrosia: Late to the grand opening. I’d write you up for this but I guess I can let it slide considering you were out cold from that concussion.
 sabrina: The what?
 ambrosia: Oh, honey. You don’t remember that either?
-sabrina: ...
+sabrina (Side): ...
 ambrosia: Well, no matter. The customers are hungry! Let’s get you going!

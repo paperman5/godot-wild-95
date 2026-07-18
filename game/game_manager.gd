@@ -7,6 +7,7 @@ var menus : WinLoseMenus
 var default_view_size := Vector2.ZERO
 var next_cutscene := "opening"
 var next_level := "tutorial"
+var scene_transition_min_time := 0.75
 
 const save_file_path := "user://savegame.txt"
 
@@ -25,7 +26,7 @@ func _ready() -> void:
 	default_view_size = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
 	#set_dialogic_filtering.call_deferred()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var cam = get_viewport().get_camera_2d()
 	if is_instance_valid(cam):
 		var view_scale = Vector2(get_window().size) / default_view_size
@@ -41,11 +42,24 @@ func change_scene(new_scene : String):
 	elif not new_scene in level_scenes.keys():
 		push_warning("Scene %s doesn't have a target UID" % new_scene)
 	else:
-		get_tree().change_scene_to_file(level_scenes[new_scene])
-		if new_scene != "main_menu":
-			var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
-			save_file.store_line(level_scenes[new_scene])
-			save_file.close()
+		var t = create_tween()
+		t.tween_callback(TransitionManager.fade_out)
+		t.tween_await(TransitionManager.fade_complete)
+		t.tween_callback(get_tree().change_scene_to_file.bind(level_scenes[new_scene]))
+		t.tween_interval(scene_transition_min_time)
+		t.tween_callback(TransitionManager.fade_in)
+		t.tween_callback(save.bind(new_scene))
+		#get_tree().change_scene_to_file(level_scenes[new_scene])
+		#if new_scene != "main_menu":
+			#var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
+			#save_file.store_line(level_scenes[new_scene])
+			#save_file.close()
+
+func save(scene):
+	if scene != "main_menu":
+		var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
+		save_file.store_line(level_scenes[scene])
+		save_file.close()
 
 func go_to_next_level():
 	if Dialogic.timeline_exists(level.next_cutscene):

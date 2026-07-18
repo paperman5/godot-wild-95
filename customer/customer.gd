@@ -91,7 +91,7 @@ func _ready() -> void:
 		audio.stream = enter_sfx
 		audio.play()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not eating and not thinking:
 		patience_progress.value = prompt_timer.time_left / total_prompt_time
 
