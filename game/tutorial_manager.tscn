@@ -1,21 +1,8 @@
 [gd_scene format=3 uid="uid://claqn5mk6wn6q"]
 
-[ext_resource type="Shader" uid="uid://cld06alj3ah6d" path="res://misc/tutorial_highlight_shader.gdshader" id="1_c8afj"]
 [ext_resource type="Script" uid="uid://dfl7qlwk53cou" path="res://game/tutorial_manager.gd" id="1_i5thv"]
+[ext_resource type="Material" uid="uid://k1pnxm20fna2" path="res://misc/new_shader_material.tres" id="3_f3stw"]
 [ext_resource type="Theme" uid="uid://55ic7fa2pnu2" path="res://misc/styles.tres" id="3_sy43y"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ike0"]
-shader = ExtResource("1_c8afj")
-shader_parameter/zoom = Vector2(1, 1)
-shader_parameter/blur = 20.0
-shader_parameter/back_color = Color(0, 0, 0, 0.70980394)
-shader_parameter/highlight_points = PackedVector2Array(500, 300, -500, 500, -500, 500, -500, 500)
-shader_parameter/highlight_radii = PackedFloat32Array(30, 0, 0, 0)
-shader_parameter/slot_a = Vector2(-500, 500)
-shader_parameter/slot_b = Vector2(-500, 500)
-shader_parameter/slot_r = 20.0
-shader_parameter/desaturate = true
-shader_parameter/desaturate_amt = 0.550000026125
 
 [sub_resource type="Animation" id="Animation_f3stw"]
 length = 0.001
@@ -87,7 +74,7 @@ theme = ExtResource("3_sy43y")
 
 [node name="Highlighter" type="ColorRect" parent="Root" unique_id=2131538925]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_2ike0")
+material = ExtResource("3_f3stw")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

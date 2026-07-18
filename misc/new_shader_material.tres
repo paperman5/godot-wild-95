@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://k1pnxm20fna2"]
+
+[ext_resource type="Shader" uid="uid://cld06alj3ah6d" path="res://misc/tutorial_highlight_shader.gdshader" id="1_6vl7t"]
+
+[resource]
+shader = ExtResource("1_6vl7t")
+shader_parameter/zoom = Vector2(3, 3)
+shader_parameter/blur = 20.0
+shader_parameter/back_color = Color(0, 0, 0, 0.70980394)
+shader_parameter/highlight_points = PackedVector2Array(500, 300, -500, 500, -500, 500, -500, 500)
+shader_parameter/highlight_radii = PackedFloat32Array(30, 0, 0, 0)
+shader_parameter/slot_a = Vector2(-500, 500)
+shader_parameter/slot_b = Vector2(-500, 500)
+shader_parameter/slot_r = 20.0
+shader_parameter/desaturate = true
+shader_parameter/desaturate_amt = 0.550000026125
