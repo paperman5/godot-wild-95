@@ -27,6 +27,9 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var next_level := "level_1"
 @export var next_cutscene := "opening"
 @export var music : MultiBPMAudioStream
+@export var combo_sfx : Array[AudioStream] = []
+@export var score_add_sfx : AudioStream
+@export var wrong_order_sfx : AudioStream
 # TODO: Stats?
 
 var score := 0
@@ -41,6 +44,7 @@ var game_started := false
 @onready var seating_timer := %SeatingTimer as Timer
 @onready var ui := %IngameUI as GameUI
 @onready var cam := get_node("Camera2D") as Camera2D
+@onready var audio: AudioStreamPlayer = %AudioStreamPlayer
 
 func _ready() -> void:
 	GameManager.level = self
@@ -124,7 +128,13 @@ func _on_customer_served(order : FoodItem, matched : bool, prompt : bool):
 	else:
 		combo_timer.stop()
 		combo_timer.timeout.emit()
-	var bonus = 1+combo*combo_bonus if combo > 1 else 1.0
+		audio.stream = wrong_order_sfx
+		audio.play()
+	var bonus := 1.0
+	if combo > 1:
+		bonus = 1+combo*combo_bonus
+		audio.stream = combo_sfx[combo-2]
+		audio.play()
 	GameManager.game_ui.set_combo(roundi(combo_points_buffer), bonus)
 
 func _on_combo_timer_timeout():
@@ -136,6 +146,8 @@ func _on_combo_timer_timeout():
 	combo_cleared.emit()
 	GameManager.game_ui.set_combo(0, 1.0)
 	GameManager.game_ui.set_money(score)
+	audio.stream = score_add_sfx
+	audio.play()
 
 func _on_time_up():
 	pause()

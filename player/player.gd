@@ -65,9 +65,6 @@ func _physics_process(_delta: float) -> void:
 				if not success:
 					audio.stream = empty_bump_sfx
 					audio.play()
-			else:
-				audio.stream = empty_bump_sfx
-				audio.play()
 			_create_move_tween(move_dir, true)
 		else:
 			true_pos += move_dir * TILE_SIZE
@@ -127,12 +124,14 @@ func add_to_food_stack(new_food : FoodItem):
 	_restack_food()
 	held_item_changed.emit(new_food)
 	
-func pop_food_stack():
+func pop_food_stack() -> bool:
 	var food = food_stack.pop_front()
 	_restack_food()
 	held_item_changed.emit(get_held_order())
 	if food != null:
 		food.queue_free()
+		return true
+	return false
 
 func _restack_food():
 	for item in food_stack:

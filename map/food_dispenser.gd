@@ -2,6 +2,9 @@
 class_name FoodDispenser
 extends StaticBody2D
 
+signal started_cooking
+signal cooking_done
+
 var food_textures = {
 	Utils.FoodType.MonsterMashBurger : preload("uid://vo3mojygam5p"),
 	Utils.FoodType.Werewaffles : preload("uid://dj1kplkvcxxnf")
@@ -26,10 +29,14 @@ var food_textures = {
 		visible_counter = value
 		if is_instance_valid(counter_spr):
 			counter_spr.visible = value
+@export var pickup_sfx : AudioStream
+@export var ready_sfx : AudioStream
+@export var start_sfx : AudioStream
 
 @onready var spr := %Sprite as Sprite2D
 @onready var counter_spr := %Counter as Sprite2D
 @onready var cooking_timer := %CookingTimer as Timer
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var spr_material : ShaderMaterial
 var cooking := false
@@ -53,11 +60,16 @@ func bump(_from_dir : Vector2) -> bool:
 		var success = GameManager.player.add_cooked_food(type)
 		if success:
 			food_ready = false
+			audio.stream = pickup_sfx
+			audio.play()
 			return true
 	elif not cooking:
 		cooking = true
 		food_ready = false
 		cooking_timer.start(cooking_time)
+		audio.stream = start_sfx
+		audio.play()
+		started_cooking.emit()
 		return true
 	return false
 
@@ -65,3 +77,6 @@ func bump(_from_dir : Vector2) -> bool:
 func _on_cooking_timer_timeout() -> void:
 	cooking = false
 	food_ready = true
+	audio.stream = ready_sfx
+	audio.play()
+	cooking_done.emit()

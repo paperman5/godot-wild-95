@@ -23,6 +23,7 @@ var textures = {
 
 @onready var spr := %Sprite as Sprite2D
 @onready var counter_spr := %Counter as Sprite2D
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	type = type
@@ -31,5 +32,6 @@ func _ready() -> void:
 func bump(from_dir : Vector2) -> bool:
 	if from_dir.normalized().is_equal_approx(Vector2.UP):
 		GameManager.player.add_icecream_flavor(type)
+		audio.play()
 		return true
 	return false

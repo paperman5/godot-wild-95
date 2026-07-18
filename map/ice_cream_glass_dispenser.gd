@@ -3,6 +3,7 @@ class_name IceCreamGlassDispenser
 extends StaticBody2D
 
 @onready var spr := %Sprite2D as Sprite2D
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var style : Utils.TableOrientation:
 	set(value):
@@ -16,4 +17,6 @@ func _ready() -> void:
 
 func bump(_from_dir : Vector2) -> bool:
 	var success = GameManager.player.add_empty_icecream()
+	if success:
+		audio.play()
 	return success

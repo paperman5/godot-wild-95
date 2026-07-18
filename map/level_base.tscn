@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://c8hbelfu3287k"]
 
 [ext_resource type="Script" uid="uid://y300xl347b3l" path="res://map/level.gd" id="1_rvogl"]
+[ext_resource type="AudioStream" uid="uid://deen2fbi7sqir" path="res://audio/SFX_Combo1.mp3" id="2_1s7pr"]
 [ext_resource type="PackedScene" uid="uid://d1ihbqcdneuak" path="res://game/game_ui.tscn" id="2_tkgu7"]
 [ext_resource type="Script" uid="uid://dq0bjhuigbx0s" path="res://map/game_camera.gd" id="3_8gydt"]
+[ext_resource type="AudioStream" uid="uid://w5tejs65hm0g" path="res://audio/SFX_Combo2.mp3" id="3_t58qp"]
 [ext_resource type="PackedScene" uid="uid://cryasie5difhi" path="res://player/player.tscn" id="3_tkgu7"]
+[ext_resource type="AudioStream" uid="uid://cm6hh0313iq2i" path="res://audio/SFX_Combo3.mp3" id="4_vjv1b"]
+[ext_resource type="AudioStream" uid="uid://qj2w0uq3i7bk" path="res://audio/SFX_MoneyEarned.wav" id="5_1s7pr"]
+[ext_resource type="AudioStream" uid="uid://dcxayirbcrj74" path="res://audio/SFX_WrongOrder.wav" id="6_t58qp"]
 
 [node name="LevelBase" type="Node2D" unique_id=594946845]
 y_sort_enabled = true
 script = ExtResource("1_rvogl")
+combo_sfx = Array[AudioStream]([ExtResource("2_1s7pr"), ExtResource("3_t58qp"), ExtResource("4_vjv1b")])
+score_add_sfx = ExtResource("5_1s7pr")
+wrong_order_sfx = ExtResource("6_t58qp")
 metadata/_edit_lock_ = true
 
 [node name="IngameUI" parent="." unique_id=1845355852 instance=ExtResource("2_tkgu7")]
@@ -29,3 +37,8 @@ unique_name_in_owner = true
 script = ExtResource("3_8gydt")
 
 [node name="Player" parent="." unique_id=983482868 instance=ExtResource("3_tkgu7")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=896079858]
+unique_name_in_owner = true
+max_polyphony = 4
+bus = &"SFX"
