@@ -9,7 +9,8 @@ var tables : Array[Table] = []
 var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var randomizer : CustomerRandomizer
 @export var level_name := "Level X"
-@export var customer_seating_timer := 3.0
+@export var seating_timer_max := 3.0
+@export var seating_timer_min := 2.3
 @export var time_limit := 100.0
 @export var timer_increments := 1.0
 @export var ice_cream_score := 5
@@ -60,7 +61,7 @@ func _ready() -> void:
 	ui.set_max_time(time_limit)
 	ui.set_time_remaining(time_limit)
 	level_timer.start(time_limit)
-	seating_timer.start(customer_seating_timer)
+	seating_timer.start(1.0)
 	ticker_timer.start(timer_increments)
 	pause()
 	
@@ -89,6 +90,8 @@ func _process(_delta: float) -> void:
 
 func _on_seating_timer_timeout():
 	seat_random_table()
+	var seated_ratio := get_seated_ratio()
+	seating_timer.start(lerp(seating_timer_min, seating_timer_max, seated_ratio))
 
 func _on_ticker_timer_timeout():
 	ui.set_time_remaining(level_timer.time_left)
@@ -205,3 +208,10 @@ func get_score_for_order(order : FoodItem, matched : bool, prompt : bool) -> int
 		s *= failed_order_multiplier
 	return roundi(s)
 		
+
+func get_seated_ratio() -> float:
+	var full := 0
+	for table in tables:
+		if table.table_is_full():
+			full += 1
+	return float(full) / len(tables)

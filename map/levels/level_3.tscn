@@ -15,7 +15,6 @@
 [node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
 randomizer = ExtResource("2_t3kdf")
 level_name = "Level 3"
-time_limit = 60.0
 customer_food_chance = 0.25
 next_level = "main_menu"
 starting_timeline = "level3"

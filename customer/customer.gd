@@ -36,7 +36,7 @@ var total_prompt_time := 1.0
 		if Engine.is_editor_hint() and is_instance_valid(anim):
 			sit_direction(Vector2.DOWN)
 @export var eat_wait_time := 1.0
-@export var think_time := 2.0
+@export var think_time := 1.0
 @export var prompt_bonus_time := 10.0
 @export var food_promptness_time_mult := 1.5
 @export var icecream_order_chance := 1.0

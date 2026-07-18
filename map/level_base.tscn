@@ -33,6 +33,7 @@ unique_name_in_owner = true
 
 [node name="SeatingTimer" type="Timer" parent="." unique_id=1138189394 groups=["timers"]]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=841717384]
 script = ExtResource("3_8gydt")
