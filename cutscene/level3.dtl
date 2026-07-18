@@ -1,12 +1,12 @@
 join sabrina left [z_index="2"]
 join ambrosia right [z_index="2"]
 sabrina: The place expanded again.
-ambrosia: Sabrina! I’d like to introduce you to Marvey!
+ambrosia: Sabrina! I’d like to introduce you to Marvy!
 join ambrosia rightmost
 join marvy right [z_index="1"]
 marvy: How do you do, young lady?
 sabrina: Hello.
-ambrosia: Marvey will be cooking up his famous Monster Mash Burgers and Werewoofles for the customers.
+ambrosia: Marvy will be cooking up his famous Monster Mash Burgers and Werewoofles for the customers.
 marvy: The Werewoofles are topped with Boo Berry Syrup!
 ambrosia: Isn’t he the sweetest?
 sabrina (Side): Great, another thing to keep track of.
