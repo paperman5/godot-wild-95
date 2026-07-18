@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var timer_ui := %Timer as TextureProgressBar
 @onready var combo_container := %ComboContainer as Control
 @onready var score_display := %ScoreDisplay as Control
+@onready var touchscreen_pause: TextureButton = %TouchscreenPause
 
 var base_tween : Tween
 var mult_tween : Tween
@@ -19,9 +20,12 @@ func _ready() -> void:
 	GameManager.game_ui = self
 	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
 		dpad.show()
+		touchscreen_pause.show()
 	else:
-		#dpad.show()
 		dpad.hide()
+		touchscreen_pause.hide()
+	#dpad.show()
+	#touchscreen_pause.show()
 	set_money(0)
 	set_combo(0, 1.0)
 
@@ -63,3 +67,8 @@ func set_max_time(max_time : float):
 
 func set_time_remaining(time : float):
 	timer_ui.value = time
+
+
+func _on_touchscreen_pause_pressed() -> void:
+	Input.action_press("pause")
+	Input.action_release.call_deferred("pause")
