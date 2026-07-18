@@ -1,18 +1,29 @@
 [gd_scene format=3 uid="uid://uddj0n5ca5xs"]
 
 [ext_resource type="Script" uid="uid://0wwt47u74g7r" path="res://customer/customer.gd" id="1_2c3mv"]
+[ext_resource type="AudioStream" uid="uid://dncno23m8a1ym" path="res://audio/SFX_NightwalkerAngry.wav" id="2_enp5v"]
 [ext_resource type="Texture2D" uid="uid://rlaqy6kd4rv3" path="res://customer/Nightwalker_Front_Idle_Animation-Sheet.png" id="2_fn4jp"]
+[ext_resource type="AudioStream" uid="uid://eyao51drs1k0" path="res://audio/SFX_NightwalkerHappy.wav" id="3_cm0v0"]
 [ext_resource type="Texture2D" uid="uid://cjdvliisjm17u" path="res://customer/Alien-Big-Ass-Head-Front-Sheet.png" id="3_tx8pg"]
 [ext_resource type="Texture2D" uid="uid://befgt0bnj6h13" path="res://customer/Mothman_Front_Idle_Animation.png" id="3_wgyk6"]
 [ext_resource type="Texture2D" uid="uid://cfb3ewe1s6e42" path="res://customer/TheGoo_Front_Idle_Animation.png" id="3_y5xyn"]
+[ext_resource type="AudioStream" uid="uid://875uia7cs3f0" path="res://audio/SFX_BigHeadAlienAngry.wav" id="4_20nie"]
 [ext_resource type="Texture2D" uid="uid://7q03gh1dnrq4" path="res://customer/Yeti_Front_Idle_Animation.png" id="4_tamf7"]
+[ext_resource type="AudioStream" uid="uid://dr4pjawtijke" path="res://audio/SFX_BigHeadAlienHappy.wav" id="5_ikqm6"]
 [ext_resource type="Texture2D" uid="uid://dv5d13kmfdvth" path="res://customer/CustomerThinking.png" id="5_kyy7l"]
 [ext_resource type="Texture2D" uid="uid://bolreaaehah0j" path="res://customer/OrderBubble.png" id="6_cslmy"]
+[ext_resource type="AudioStream" uid="uid://bi883l8qs5kjm" path="res://audio/SFX_TheGooAngry.wav" id="6_l7216"]
 [ext_resource type="Texture2D" uid="uid://t5gts47cv6e6" path="res://customer/OrderBubble_Tail.png" id="7_y5xyn"]
+[ext_resource type="AudioStream" uid="uid://bnjdjbal2y5w7" path="res://audio/SFX_TheGooHappy.wav" id="7_y25jj"]
+[ext_resource type="AudioStream" uid="uid://oi31qv3oncsu" path="res://audio/SFX_YetiAngry.wav" id="8_7m5fm"]
 [ext_resource type="Texture2D" uid="uid://b3x0duv36x74q" path="res://customer/OrderBubbleCenter.png" id="8_s8r3n"]
+[ext_resource type="AudioStream" uid="uid://dwbafbrrua1h2" path="res://audio/SFX_YetiHappy.wav" id="9_4gloo"]
 [ext_resource type="PackedScene" uid="uid://dj43dcocgbx0u" path="res://customer/combo_text.tscn" id="9_p00no"]
 [ext_resource type="Texture2D" uid="uid://ps01vskn38to" path="res://customer/OrderBubbleOutside.png" id="9_tx8pg"]
 [ext_resource type="PackedScene" uid="uid://xidsrps2e7ya" path="res://misc/music_sync_component.tscn" id="9_wfglr"]
+[ext_resource type="AudioStream" uid="uid://ba0bs62tqe4g5" path="res://audio/SFX_MothmanAngry.wav" id="10_eg574"]
+[ext_resource type="AudioStream" uid="uid://bljnxpx04siw4" path="res://audio/SFX_MothmanHappy.wav" id="11_id8pk"]
+[ext_resource type="AudioStream" uid="uid://ivrnpyovbwfo" path="res://audio/SFX_DoorJingle.wav" id="12_cm0v0"]
 
 [sub_resource type="Animation" id="Animation_f5n86"]
 resource_name = "RESET"
@@ -681,6 +692,19 @@ animations = [{
 
 [node name="Customer" type="Node2D" unique_id=380656062]
 script = ExtResource("1_2c3mv")
+character_sfx = Dictionary[String, AudioStream]({
+"alien/angry": ExtResource("4_20nie"),
+"alien/happy": ExtResource("5_ikqm6"),
+"goo/angry": ExtResource("6_l7216"),
+"goo/happy": ExtResource("7_y25jj"),
+"mothman/angry": ExtResource("10_eg574"),
+"mothman/happy": ExtResource("11_id8pk"),
+"nightwalker/angry": ExtResource("2_enp5v"),
+"nightwalker/happy": ExtResource("3_cm0v0"),
+"yeti/angry": ExtResource("8_7m5fm"),
+"yeti/happy": ExtResource("9_4gloo")
+})
+enter_sfx = ExtResource("12_cm0v0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=575475049]
 unique_name_in_owner = true
@@ -777,6 +801,7 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1737054731]
+unique_name_in_owner = true
 bus = &"SFX"
 
 [node name="MusicSyncComponent" parent="." unique_id=1947546521 node_paths=PackedStringArray("animation_player") instance=ExtResource("9_wfglr")]

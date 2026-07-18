@@ -8,10 +8,13 @@ const TILE_SIZE = 32
 @export var tile_move_speed := 0.1
 @export var move_cooldown := 0.01
 @export var max_food_stack := 4
+@export var empty_bump_sfx : AudioStream
 
 @onready var spr := %Sprite2D as Sprite2D
 @onready var anim := %AnimationPlayer as AnimationPlayer
 @onready var hand := %Hand as Marker2D
+@onready var audio: AudioStreamPlayer2D = %AudioStreamPlayer2D
+
 var move_tween : Tween
 var true_pos := Vector2.ZERO
 var moving := false
@@ -58,7 +61,13 @@ func _physics_process(_delta: float) -> void:
 		if result:
 			var colliding_obj := result[0]['collider'] as Node2D
 			if colliding_obj.has_method("bump"):
-				colliding_obj.bump(move_dir)
+				var success = colliding_obj.bump(move_dir)
+				if not success:
+					audio.stream = empty_bump_sfx
+					audio.play()
+			else:
+				audio.stream = empty_bump_sfx
+				audio.play()
 			_create_move_tween(move_dir, true)
 		else:
 			true_pos += move_dir * TILE_SIZE

@@ -48,15 +48,18 @@ func _process(_delta: float) -> void:
 		progress = 1.0 - cooking_timer.time_left / cooking_time
 	spr_material.set_shader_parameter("progress", progress)
 
-func bump(from_dir : Vector2):
+func bump(_from_dir : Vector2) -> bool:
 	if food_ready:
 		var success = GameManager.player.add_cooked_food(type)
 		if success:
 			food_ready = false
+			return true
 	elif not cooking:
 		cooking = true
 		food_ready = false
 		cooking_timer.start(cooking_time)
+		return true
+	return false
 
 
 func _on_cooking_timer_timeout() -> void:

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6kyebxi5bbkj"]
 
 [ext_resource type="Script" uid="uid://balbwskpf7f0m" path="res://game/main_menu.gd" id="1_2gctw"]
-[ext_resource type="Resource" uid="uid://bdxwdm4p01jb2" path="res://audio/GSISP_MainMenu.tres" id="2_20tr2"]
+[ext_resource type="Resource" uid="uid://bdxwdm4p01jb2" path="res://audio/music/GSISP_MainMenu.tres" id="2_20tr2"]
 [ext_resource type="Texture2D" uid="uid://uijwv52637wy" path="res://game/GSISP_Logo_Glow100.PNG" id="3_t606k"]
 [ext_resource type="Texture2D" uid="uid://56v83ccnrk3h" path="res://game/GSISP_Logo_Text.PNG" id="4_7k2rn"]
 [ext_resource type="Theme" uid="uid://55ic7fa2pnu2" path="res://misc/styles.tres" id="5_7k2rn"]

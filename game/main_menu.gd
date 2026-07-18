@@ -8,6 +8,7 @@ extends Control
 var continue_load := ""
 
 func _ready() -> void:
+	MusicManager.set_music_lofi(false)
 	MusicManager.start_music(music)
 	if FileAccess.file_exists(GameManager.save_file_path):
 		continue_button.show()

@@ -30,14 +30,16 @@ func _ready() -> void:
 	for seat in seat_positions:
 		seated_customers.append(null)
 
-func bump(_from_dir : Vector2):
+func bump(_from_dir : Vector2) -> bool:
 	if not GameManager.player.holding_valid_order():
-		return
+		return false
 	var test_order = GameManager.player.get_held_order()
 	for customer in seated_customers:
 		if is_instance_valid(customer) and customer.can_be_served() and customer.wants_food_type(test_order):
 			customer.deliver_order(test_order)
 			GameManager.player.pop_food_stack()
+			return true
+	return false
 
 func seat_customer_random_spot(customer : Customer):
 	var seat = randi_range(0, len(seat_positions)-1)

@@ -14,5 +14,6 @@ extends StaticBody2D
 func _ready() -> void:
 	style = style
 
-func bump(_from_dir : Vector2):
-	GameManager.player.add_empty_icecream()
+func bump(_from_dir : Vector2) -> bool:
+	var success = GameManager.player.add_empty_icecream()
+	return success

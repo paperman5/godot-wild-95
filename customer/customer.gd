@@ -41,6 +41,19 @@ var total_prompt_time := 1.0
 @export var food_promptness_time_mult := 1.5
 @export var icecream_order_chance := 1.0
 @export var food_order_chance := 0.25
+@export var character_sfx : Dictionary[String, AudioStream] = {
+	"nightwalker/angry" : null,
+	"nightwalker/happy" : null,
+	"alien/angry" : null,
+	"alien/happy" : null,
+	"goo/angry" : null,
+	"goo/happy" : null,
+	"yeti/angry" : null,
+	"yeti/happy" : null,
+	"mothman/angry" : null,
+	"mothman/happy" : null,
+}
+@export var enter_sfx : AudioStream
 
 @onready var spr := %Sprite2D as Sprite2D
 @onready var anim := %AnimationPlayer as AnimationPlayer
@@ -58,6 +71,8 @@ var total_prompt_time := 1.0
 @onready var combo_root := %ComboRoot as Node2D
 @onready var combo_text := %ComboText as ComboText
 @onready var patience_progress := %PatienceProgress as TextureProgressBar
+@onready var audio: AudioStreamPlayer2D = %AudioStreamPlayer2D
+
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -73,6 +88,8 @@ func _ready() -> void:
 		music_sync.starting_animation = anim_library_keys[customer_type] + "/idle_down"
 		music_sync.start_sync()
 		patience_progress.tint_progress = Utils.colors["matched"]
+		audio.stream = enter_sfx
+		audio.play()
 
 func _process(delta: float) -> void:
 	if not eating and not thinking:
@@ -123,6 +140,7 @@ func deliver_order(order : FoodItem):
 					combo_text.shown_price += GameManager.level.get_score_for_order(orders_left[oi], false, false)
 					orders_left[oi].hide()
 					orders_left.remove_at(oi)
+					_play_angry_sfx()
 					break
 		elif is_instance_of(order, CookedFood) and wants_cooked_food():
 			for oi in range(len(orders_left)):
@@ -130,16 +148,28 @@ func deliver_order(order : FoodItem):
 					combo_text.shown_price += GameManager.level.get_score_for_order(orders_left[oi], false, false)
 					orders_left[oi].hide()
 					orders_left.remove_at(oi)
+					_play_angry_sfx()
 					break
 	else:
 		combo_text.shown_price += GameManager.level.get_score_for_order(orders_left[order_i], true, prompt)
 		combo_text.shown_bonus += GameManager.level.combo_bonus
 		orders_left[order_i].hide()
 		orders_left.remove_at(order_i)
+		_play_happy_sfx()
 	if len(orders_left) <= 0:
 		start_eating(not failed_order)
 	else:
 		bubble_fit_orders()
+
+func _play_angry_sfx():
+	var key = anim_library_keys[customer_type]
+	audio.stream = character_sfx[key + "/angry"]
+	audio.play()
+
+func _play_happy_sfx():
+	var key = anim_library_keys[customer_type]
+	audio.stream = character_sfx[key + "/happy"]
+	audio.play()
 
 func start_eating(_order_matched : bool):
 	bubble_root.hide()

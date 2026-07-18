@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://ssywa7x2dhky"]
 
 [ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_6jxvd"]
-[ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/GSISP_Level1_V1.tres" id="2_e761b"]
+[ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/music/GSISP_Level1_V1.tres" id="2_e761b"]
 [ext_resource type="Resource" uid="uid://dkx73ki8lkwp2" path="res://map/levels/level_1_randomizer.tres" id="2_gxjui"]
 [ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_iuesu"]
 [ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_ja74h"]

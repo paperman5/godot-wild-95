@@ -6,8 +6,9 @@ var on := false
 func _ready() -> void:
 	bump.call_deferred(Vector2.ZERO)
 
-func bump(_from_dir : Vector2):
+func bump(_from_dir : Vector2) -> bool:
 	set_on(not on)
+	return true
 
 func set_on(value : bool):
 	on = value

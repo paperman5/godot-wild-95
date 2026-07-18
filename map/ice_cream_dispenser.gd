@@ -28,6 +28,8 @@ func _ready() -> void:
 	type = type
 	counter_style = counter_style
 
-func bump(from_dir : Vector2):
+func bump(from_dir : Vector2) -> bool:
 	if from_dir.normalized().is_equal_approx(Vector2.UP):
 		GameManager.player.add_icecream_flavor(type)
+		return true
+	return false

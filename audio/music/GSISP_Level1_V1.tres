@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MultiBPMAudioStream" format=3 uid="uid://dcun3ro0r4pu2"]
 
 [ext_resource type="Script" uid="uid://dee648284g1ij" path="res://misc/multi_bpm_audio_stream.gd" id="1_po6se"]
-[ext_resource type="AudioStream" uid="uid://cmoc1ii5ka2ox" path="res://audio/GSISP_Level1_V1.mp3" id="2_po6se"]
+[ext_resource type="AudioStream" uid="uid://cmoc1ii5ka2ox" path="res://audio/music/GSISP_Level1_V1.mp3" id="2_po6se"]
 
 [resource]
 script = ExtResource("1_po6se")
