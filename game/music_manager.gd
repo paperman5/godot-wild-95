@@ -43,11 +43,16 @@ func _process(delta: float) -> void:
 		music_player.seek(playback_pos)
 		next_beat = get_next_beat_time(playback_pos)
 
-func toggle_pause():
+func music_is_playing() -> bool:
+	return current_track != null and music_player.playing
+
+func music_pause():
+	if music_player.playing:
+		music_player.playing = false
+
+func music_resume():
 	if not music_player.playing and current_track != null:
 		music_player.play(playback_pos)
-	elif music_player.playing:
-		music_player.playing = false
 
 func get_next_beat_time(after_pos : float) -> float:
 	var timestamps : Array[float] = current_track.bpm_ranges.keys()

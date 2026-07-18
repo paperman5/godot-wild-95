@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_kyek8"]
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_engu6"]
 [ext_resource type="PackedScene" uid="uid://dp6cs81a2t2s5" path="res://map/marvy.tscn" id="9_sc5sv"]
+[ext_resource type="PackedScene" uid="uid://cch6gwrsrdyej" path="res://customer/nightwalker_drunk.tscn" id="11_lo52u"]
 
 [node name="Level3" unique_id=594946845 instance=ExtResource("1_3dnot")]
 randomizer = ExtResource("2_t3kdf")
@@ -103,3 +104,6 @@ orientation = 0
 
 [node name="Marvy" parent="." index="24" unique_id=52763829 instance=ExtResource("9_sc5sv")]
 position = Vector2(0, -48)
+
+[node name="NightwalkerDrunk" parent="." index="25" unique_id=1580295106 instance=ExtResource("11_lo52u")]
+position = Vector2(112, -48)

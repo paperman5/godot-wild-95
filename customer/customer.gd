@@ -33,8 +33,8 @@ var total_prompt_time := 1.0
 @export var customer_type := CustomerType.Nightwalker:
 	set(value):
 		customer_type = value
-		#if is_instance_valid(anim):
-			#sit_direction(Vector2.DOWN)
+		if Engine.is_editor_hint() and is_instance_valid(anim):
+			sit_direction(Vector2.DOWN)
 @export var eat_wait_time := 1.0
 @export var think_time := 2.0
 @export var prompt_bonus_time := 10.0

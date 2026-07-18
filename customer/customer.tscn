@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0wwt47u74g7r" path="res://customer/customer.gd" id="1_2c3mv"]
 [ext_resource type="Texture2D" uid="uid://rlaqy6kd4rv3" path="res://customer/Nightwalker_Front_Idle_Animation-Sheet.png" id="2_fn4jp"]
+[ext_resource type="Texture2D" uid="uid://cjdvliisjm17u" path="res://customer/Alien-Big-Ass-Head-Front-Sheet.png" id="3_tx8pg"]
 [ext_resource type="Texture2D" uid="uid://befgt0bnj6h13" path="res://customer/Mothman_Front_Idle_Animation.png" id="3_wgyk6"]
 [ext_resource type="Texture2D" uid="uid://cfb3ewe1s6e42" path="res://customer/TheGoo_Front_Idle_Animation.png" id="3_y5xyn"]
 [ext_resource type="Texture2D" uid="uid://7q03gh1dnrq4" path="res://customer/Yeti_Front_Idle_Animation.png" id="4_tamf7"]
@@ -94,7 +95,113 @@ _data = {
 &"RESET": SubResource("Animation_f5n86")
 }
 
+[sub_resource type="Animation" id="Animation_yvxl3"]
+resource_name = "RESET"
+length = 0.00999999999999999
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_tx8pg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OrderBubble/ThinkingBubble:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, -29)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OrderBubble/BubbleRoot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, -29)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OrderBubble/ComboRoot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -22)]
+}
+
+[sub_resource type="Animation" id="Animation_gqyhl"]
+resource_name = "idle_down"
+length = 0.40002000596076254
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_dccu1"]
+resource_name = "idle_down"
+length = 0.40002000596076254
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fn4jp"]
+_data = {
+&"RESET": SubResource("Animation_yvxl3"),
+&"idle_down": SubResource("Animation_gqyhl"),
+&"idle_side": SubResource("Animation_dccu1")
+}
 
 [sub_resource type="Animation" id="Animation_mt0m6"]
 resource_name = "RESET"
@@ -642,6 +749,7 @@ stretch_margin_bottom = 4
 texture_over = ExtResource("8_s8r3n")
 texture_progress = ExtResource("9_tx8pg")
 tint_progress = Color(0, 0.5647059, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="BubbleTail" type="Sprite2D" parent="OrderBubble/BubbleRoot" unique_id=783858799]
 unique_name_in_owner = true

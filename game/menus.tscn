@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://csue710gikep3" path="res://game/lose_mockup.png" id="2_ktqu2"]
 [ext_resource type="Texture2D" uid="uid://cnu2cexdic6xi" path="res://misc/pause menu.png" id="4_ej40b"]
 [ext_resource type="Texture2D" uid="uid://ccqofg3y5m34b" path="res://misc/resume.png" id="5_7jb3i"]
+[ext_resource type="Texture2D" uid="uid://bccpq16n0wj1e" path="res://misc/resume white.PNG" id="6_7jb3i"]
 [ext_resource type="Texture2D" uid="uid://bg0j464hwo0qu" path="res://misc/main menu.png" id="6_031gt"]
 [ext_resource type="Texture2D" uid="uid://5fykbpe1oguf" path="res://misc/pause.png" id="7_d5vjm"]
+[ext_resource type="Texture2D" uid="uid://l6wd72umh134" path="res://misc/main menu white.PNG" id="8_031gt"]
 
 [node name="Menus" type="Control" unique_id=578367975]
 texture_filter = 2
@@ -170,7 +172,6 @@ text = "MAIN MENU"
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1497502033]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,6 +218,7 @@ offset_right = 135.82353
 offset_bottom = 234.0
 grow_horizontal = 2
 texture_normal = ExtResource("5_7jb3i")
+texture_hover = ExtResource("6_7jb3i")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -232,6 +234,7 @@ offset_right = -4.176468
 offset_bottom = 410.5
 grow_horizontal = 2
 texture_normal = ExtResource("6_031gt")
+texture_hover = ExtResource("8_031gt")
 ignore_texture_size = true
 stretch_mode = 4
 

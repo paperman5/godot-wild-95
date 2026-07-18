@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cch6gwrsrdyej"]
+
+[ext_resource type="Texture2D" uid="uid://beenunw3tvduw" path="res://map/DinerTilesheet.png" id="1_nd62t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mui5"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hunv0"]
+atlas = ExtResource("1_nd62t")
+region = Rect2(96, 208, 64, 48)
+
+[node name="NightwalkerDrunk" type="StaticBody2D" unique_id=1580295106]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=226095807]
+shape = SubResource("RectangleShape2D_0mui5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1528449414]
+position = Vector2(0, 12)
+texture = SubResource("AtlasTexture_hunv0")
+offset = Vector2(-16, -20)

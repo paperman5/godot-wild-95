@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_ytvue"]
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_k4ccm"]
 [ext_resource type="PackedScene" uid="uid://dp4apy3l6khat" path="res://map/counter.tscn" id="7_e8sds"]
+[ext_resource type="PackedScene" uid="uid://cch6gwrsrdyej" path="res://customer/nightwalker_drunk.tscn" id="9_2ux06"]
 
 [node name="Level2" unique_id=594946845 instance=ExtResource("1_jg4xa")]
 level_name = "Level 2"
@@ -94,3 +95,7 @@ orientation = 3
 [node name="Counter7" parent="." index="21" unique_id=1097091038 instance=ExtResource("7_e8sds")]
 position = Vector2(-48, -48)
 orientation = 5
+
+[node name="NightwalkerDrunk" parent="." index="22" unique_id=1580295106 instance=ExtResource("9_2ux06")]
+position = Vector2(-80, -48)
+scale = Vector2(-1, 1)
