@@ -2,7 +2,6 @@ join sabrina left [z_index="2"]
 join ambrosia right [z_index="2"]
 sabrina: The place expanded again.
 ambrosia: Sabrina! I’d like to introduce you to Marvy!
-join ambrosia rightmost
 join marvy right [z_index="1"]
 marvy: How do you do, young lady?
 sabrina: Hello.
@@ -10,5 +9,5 @@ ambrosia: Marvy will be cooking up his famous Monster Mash Burgers and Werewoofl
 marvy: The Werewoofles are topped with Boo Berry Syrup!
 ambrosia: Isn’t he the sweetest?
 sabrina (Side): Great, another thing to keep track of.
-ambrosia: I’ll leave you two to it! I have to take my baby Princess to the vet for a check up! Don’t flirt too much while I’m gone~
+ambrosia: I’ll leave you two to it! I have to take my baby Princess to the vet for a check up! [wave]Don’t flirt too much while I’m gone~[/wave]
 sabrina: I don’t even like seafood.

@@ -15,7 +15,7 @@
 &"display_name": "Ambrosia",
 &"mirror": true,
 &"nicknames": [""],
-&"offset": Vector2(50, 0),
+&"offset": Vector2(70, 0),
 &"portraits": {
 "Default": {
 "export_overrides": {

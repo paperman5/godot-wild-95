@@ -13,9 +13,9 @@
 &"default_portrait": "Default",
 &"description": "",
 &"display_name": "Marvy",
-&"mirror": false,
+&"mirror": true,
 &"nicknames": [""],
-&"offset": Vector2(-30, -30),
+&"offset": Vector2(-100, -30),
 &"portraits": {
 "Default": {
 "export_overrides": {
