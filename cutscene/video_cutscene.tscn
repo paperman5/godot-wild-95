@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://v0sfet1ijhqs"]
+
+[ext_resource type="Script" uid="uid://cgwhll12wl3vs" path="res://cutscene/video_cutscene.gd" id="1_tud5g"]
+[ext_resource type="VideoStream" uid="uid://buuxc08dnt0tn" path="res://cutscene/GSISP_Opening_converted.ogv" id="2_6y8ls"]
+
+[node name="OpeningCutscene" type="Node" unique_id=372056606]
+script = ExtResource("1_tud5g")
+
+[node name="Control" type="Control" parent="." unique_id=1461476731]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backer" type="ColorRect" parent="Control" unique_id=209159202]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control" unique_id=573212551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.6667
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control/AspectRatioContainer" unique_id=505841872]
+layout_mode = 2
+stream = ExtResource("2_6y8ls")
+autoplay = true
+expand = true
+bus = &"Music"
+
+[connection signal="finished" from="Control/AspectRatioContainer/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

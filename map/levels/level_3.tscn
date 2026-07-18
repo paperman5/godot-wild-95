@@ -18,7 +18,7 @@ level_name = "Level 3"
 time_limit = 60.0
 customer_food_chance = 0.25
 next_level = "main_menu"
-next_cutscene = "ending"
+starting_timeline = "level3"
 music = ExtResource("2_sc5sv")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]

@@ -170,6 +170,11 @@ layout_mode = 2
 text = "Skip Tutorials"
 metadata/_edit_lock_ = true
 
+[node name="SkipCutscenes" type="CheckBox" parent="VBoxContainer" unique_id=954568898]
+layout_mode = 2
+text = "Skip Cutscenes"
+metadata/_edit_lock_ = true
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1160900310]
 layout_mode = 1
 anchors_preset = 6
@@ -302,6 +307,7 @@ bus = &"SFX"
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Clear" to="." method="_on_clear_pressed"]
 [connection signal="toggled" from="VBoxContainer/SkipTutorials" to="." method="_on_skip_tutorials_toggled"]
+[connection signal="toggled" from="VBoxContainer/SkipCutscenes" to="." method="_on_skip_cutscenes_toggled"]
 [connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer/paperish" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer/octo" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="VBoxContainer2/HBoxContainer2/py" to="." method="_on_credit_meta_clicked"]

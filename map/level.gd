@@ -25,7 +25,7 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var customer_icecream_chance := 1.0
 @export var customer_food_chance := 0.0
 @export var next_level := "level_1"
-@export var next_cutscene := "opening"
+@export var starting_timeline := ""
 @export var music : MultiBPMAudioStream
 @export var combo_sfx : Array[AudioStream] = []
 @export var score_add_sfx : AudioStream
@@ -71,7 +71,14 @@ func _ready() -> void:
 	
 	customer_seated.connect(TutorialManager._on_customer_seated)
 	
-	GameManager.menus.show_begin()
+	if starting_timeline != "" and Dialogic.timeline_exists(starting_timeline) and \
+			not GameManager.skip_cutscenes:
+		GameManager.menus.dim_background()
+		Dialogic.start(starting_timeline)
+		Dialogic.timeline_ended.connect(GameManager.menus.undim_background, CONNECT_ONE_SHOT)
+		Dialogic.timeline_ended.connect(GameManager.menus.show_begin, CONNECT_ONE_SHOT)
+	else:
+		GameManager.menus.show_begin()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and not TutorialManager.tutorial_active:

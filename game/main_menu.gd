@@ -23,13 +23,13 @@ func _on_continue_pressed() -> void:
 
 
 func _on_new_game_pressed() -> void:
-	if TutorialManager.skip_tutorials:
-		GameManager.next_cutscene = "level1"
-		GameManager.next_level = "level_1"
+	if GameManager.skip_cutscenes:
+		if TutorialManager.skip_tutorials:
+			GameManager.change_scene("level_1")
+		else:
+			GameManager.change_scene("tutorial")
 	else:
-		GameManager.next_cutscene = "opening"
-		GameManager.next_level = "tutorial"
-	GameManager.change_scene("cutscene")
+		GameManager.change_scene("opening_video")
 
 
 func _on_credit_meta_clicked(meta: Variant) -> void:
@@ -50,3 +50,7 @@ func _on_mute_toggled(toggled_on: bool) -> void:
 
 func _on_skip_tutorials_toggled(toggled_on: bool) -> void:
 	TutorialManager.skip_tutorials = toggled_on
+
+
+func _on_skip_cutscenes_toggled(toggled_on: bool) -> void:
+	GameManager.skip_cutscenes = toggled_on

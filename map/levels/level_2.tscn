@@ -15,6 +15,7 @@ level_name = "Level 2"
 time_limit = 60.0
 next_level = "level_3"
 next_cutscene = "level3"
+starting_timeline = "level2"
 music = ExtResource("2_avo2n")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]

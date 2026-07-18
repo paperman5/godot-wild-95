@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://co5ieo3lw2l5m"]
+
+[ext_resource type="PackedScene" uid="uid://v0sfet1ijhqs" path="res://cutscene/video_cutscene.tscn" id="1_j1lin"]
+
+[node name="Cutscene" unique_id=372056606 instance=ExtResource("1_j1lin")]
+next_scene = "tutorial"
+
+[node name="VideoStreamPlayer" parent="Control/AspectRatioContainer" parent_id_path=PackedInt32Array(573212551) index="0" unique_id=505841872]
+mouse_filter = 1
+
+[node name="Skip" type="Button" parent="Control" parent_id_path=PackedInt32Array(1461476731) index="2" unique_id=1575818121]
+visible = false
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -39.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+
+[connection signal="pressed" from="Control/Skip" to="." method="_on_skip_pressed"]

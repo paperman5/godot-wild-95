@@ -112,6 +112,7 @@ text = "NEXT LEVEL"
 
 [node name="BeginMenu" type="Control" parent="." unique_id=1872491795]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,6 +173,7 @@ text = "MAIN MENU"
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1497502033]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,6 +268,18 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "NEXT LEVEL"
+
+[node name="BackgroundDimmer" type="ColorRect" parent="." unique_id=300290445]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7411765)
 
 [connection signal="pressed" from="WinMenu/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="WinMenu/VBoxContainer/Next" to="." method="_on_next_pressed"]

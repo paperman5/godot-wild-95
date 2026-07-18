@@ -5,9 +5,9 @@ var level : Level
 var game_ui : GameUI
 var menus : WinLoseMenus
 var default_view_size := Vector2.ZERO
-var next_cutscene := "opening"
 var next_level := "tutorial"
 var scene_transition_min_time := 0.75
+var skip_cutscenes := false
 
 const save_file_path := "user://savegame.txt"
 
@@ -19,6 +19,7 @@ const level_scenes = {
 	"level_2" : "uid://dnv7od3o7m2u",
 	"level_3" : "uid://mufmt5bnk3bk",
 	"cutscene" : "uid://g2lqs0suukre",
+	"opening_video" : "uid://co5ieo3lw2l5m"
 }
 
 func _ready() -> void:
@@ -62,12 +63,9 @@ func save(scene):
 		save_file.close()
 
 func go_to_next_level():
-	if Dialogic.timeline_exists(level.next_cutscene):
-		next_cutscene = level.next_cutscene
+	if is_instance_valid(level):
 		next_level = level.next_level
-		change_scene("cutscene")
-	else:
-		change_scene(level.next_level)
+	change_scene(next_level)
 
 func reload_current_scene():
 	get_tree().reload_current_scene()
