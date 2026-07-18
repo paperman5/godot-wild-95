@@ -133,7 +133,8 @@ func _on_customer_served(order : FoodItem, matched : bool, prompt : bool):
 	var bonus := 1.0
 	if combo > 1:
 		bonus = 1+combo*combo_bonus
-		audio.stream = combo_sfx[combo-2]
+		var bonus_sfx_idx = mini(combo-2, 2)
+		audio.stream = combo_sfx[bonus_sfx_idx]
 		audio.play()
 	GameManager.game_ui.set_combo(roundi(combo_points_buffer), bonus)
 
