@@ -7,6 +7,7 @@ next_scene = "tutorial"
 
 [node name="VideoStreamPlayer" parent="Control/AspectRatioContainer" parent_id_path=PackedInt32Array(573212551) index="0" unique_id=505841872]
 mouse_filter = 1
+volume_db = 4.0
 
 [node name="Skip" type="Button" parent="Control" parent_id_path=PackedInt32Array(1461476731) index="2" unique_id=1575818121]
 visible = false

@@ -5,6 +5,9 @@ extends Control
 
 @onready var continue_button := %Continue as Button
 @onready var newgame_button := %NewGame as Button
+@onready var standard_menu_root: Control = %StandardMenuRoot
+@onready var credits_menu_root: Control = %CreditsMenuRoot
+
 var continue_load := ""
 
 func _ready() -> void:
@@ -17,6 +20,8 @@ func _ready() -> void:
 		file.close()
 	else:
 		continue_button.hide()
+	credits_menu_root.hide()
+	standard_menu_root.show()
 
 func _on_continue_pressed() -> void:
 	GameManager.change_scene_uid(continue_load)
@@ -54,3 +59,13 @@ func _on_skip_tutorials_toggled(toggled_on: bool) -> void:
 
 func _on_skip_cutscenes_toggled(toggled_on: bool) -> void:
 	GameManager.skip_cutscenes = toggled_on
+
+
+func _on_credits_pressed() -> void:
+	standard_menu_root.hide()
+	credits_menu_root.show()
+
+
+func _on_credits_back_pressed() -> void:
+	standard_menu_root.show()
+	credits_menu_root.hide()

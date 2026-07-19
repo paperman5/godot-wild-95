@@ -15,7 +15,7 @@
 [node name="Level2" unique_id=594946845 instance=ExtResource("1_jg4xa")]
 randomizer = ExtResource("2_ytvue")
 level_name = "Level 2"
-time_limit = 60.0
+time_limit = 75.0
 next_level = "level_3"
 starting_timeline = "level2"
 cutscene_music = ExtResource("3_k4ccm")
