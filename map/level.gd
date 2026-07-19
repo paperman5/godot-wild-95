@@ -168,12 +168,15 @@ func _on_time_up():
 	combo_timer.stop()
 	combo_timer.timeout.emit()
 	pause()
+	get_tree().create_timer(1.0).timeout.connect(_show_endround_menu)
+	time_up.emit(score)
+	MusicManager.start_music(level_end_music)
+
+func _show_endround_menu():
 	if score >= win_threshold:
 		win_game()
 	else:
 		lose_game()
-	time_up.emit(score)
-	MusicManager.start_music(level_end_music)
 
 func pause(show_menu : bool = false):
 	for t in get_tree().get_nodes_in_group("timers"):

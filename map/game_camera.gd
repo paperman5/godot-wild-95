@@ -12,7 +12,7 @@ var player : Player
 func _ready() -> void:
 	(func(): player = GameManager.player).call_deferred()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not is_instance_valid(player):
 		return
 	if player.position.x < orig_pos.x - spring_stop_left:

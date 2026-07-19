@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcymd7mrapev4" path="res://game/menus.gd" id="1_ktqu2"]
 [ext_resource type="Texture2D" uid="uid://0wa7qob7gpyx" path="res://misc/receipt.png" id="2_d5vjm"]
+[ext_resource type="Texture2D" uid="uid://biswp32yhkayh" path="res://misc/sabrinavictorystill.png" id="2_vnokb"]
 [ext_resource type="Texture2D" uid="uid://c2y2chxnn8a2q" path="res://misc/GOOD JOB.png" id="3_a7ltn"]
 [ext_resource type="Texture2D" uid="uid://cnu2cexdic6xi" path="res://misc/pause menu.png" id="4_ej40b"]
 [ext_resource type="Texture2D" uid="uid://58budprkpatp" path="res://misc/SCORE 2D.png" id="4_ievrn"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://i7ysnk60ii5f" path="res://misc/NEXT_LEVEL_1.png" id="9_vt6y8"]
 [ext_resource type="Texture2D" uid="uid://cfpb0eqwvfdk3" path="res://misc/NEXT_LEVEL_2.png" id="10_ms11p"]
 [ext_resource type="Texture2D" uid="uid://5hm1lueyon3f" path="res://misc/NEWSPAPER.png" id="12_2e45m"]
+[ext_resource type="Texture2D" uid="uid://nipiutehyd4a" path="res://misc/ambrosia_failure.png" id="13_27ebs"]
 [ext_resource type="Texture2D" uid="uid://b8j8phu2jhqx7" path="res://misc/TRY_AGAIN.png" id="13_vnokb"]
 
 [node name="Menus" type="Control" unique_id=578367975]
@@ -49,17 +51,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.50980395)
 
-[node name="CenterContainer" type="CenterContainer" parent="WinMenu" unique_id=528728128]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="WinMenu" unique_id=842183558]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+ratio = 1.6667
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu/AspectRatioContainer" unique_id=768726213]
+layout_mode = 2
+theme_override_constants/margin_left = 49
+
+[node name="TextureRect2" type="TextureRect" parent="WinMenu/AspectRatioContainer/MarginContainer" unique_id=301899147]
+layout_mode = 2
+texture = ExtResource("2_vnokb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CenterContainer" type="Control" parent="WinMenu" unique_id=475608053]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="WinMenu/CenterContainer" unique_id=232217283]
 custom_minimum_size = Vector2(472, 500)
-layout_mode = 2
+layout_mode = 0
+offset_left = -129.0
+offset_top = -266.0
+offset_right = 343.0
+offset_bottom = 234.0
 texture = ExtResource("2_d5vjm")
 expand_mode = 1
 stretch_mode = 4
@@ -80,6 +107,7 @@ grow_vertical = 2
 texture = ExtResource("3_a7ltn")
 expand_mode = 1
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="WinMenu/CenterContainer/TextureRect" unique_id=692617248]
 layout_mode = 0
@@ -90,6 +118,7 @@ offset_bottom = 214.0
 texture = ExtResource("4_ievrn")
 expand_mode = 1
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="ScoreLabelWin" type="Label" parent="WinMenu/CenterContainer/TextureRect" unique_id=155775993]
 unique_name_in_owner = true
@@ -103,6 +132,7 @@ offset_transform_rotation = 0.02443461
 theme = ExtResource("5_2e45m")
 theme_type_variation = &"ScoreDisplayWin"
 text = "$100"
+metadata/_edit_lock_ = true
 
 [node name="Retry" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=1333034494]
 layout_mode = 1
@@ -121,6 +151,7 @@ texture_normal = ExtResource("5_k26xn")
 texture_hover = ExtResource("6_2e45m")
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="MainMenu" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=709615624]
 layout_mode = 1
@@ -139,6 +170,7 @@ texture_normal = ExtResource("7_vnokb")
 texture_hover = ExtResource("8_27ebs")
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="NextLevel" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=120644656]
 layout_mode = 1
@@ -157,6 +189,7 @@ texture_normal = ExtResource("9_vt6y8")
 texture_hover = ExtResource("10_ms11p")
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="LoseMenu" type="Control" parent="." unique_id=538571425]
 unique_name_in_owner = true
@@ -177,17 +210,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.50980395)
 
-[node name="CenterContainer" type="CenterContainer" parent="LoseMenu" unique_id=1102269755]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="LoseMenu" unique_id=348747716]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+ratio = 1.6667
+
+[node name="MarginContainer" type="MarginContainer" parent="LoseMenu/AspectRatioContainer" unique_id=2021931099]
+layout_mode = 2
+theme_override_constants/margin_left = 71
+
+[node name="TextureRect" type="TextureRect" parent="LoseMenu/AspectRatioContainer/MarginContainer" unique_id=857172779]
+layout_mode = 2
+texture = ExtResource("13_27ebs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CenterContainer" type="Control" parent="LoseMenu" unique_id=399471120]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="LoseMenu/CenterContainer" unique_id=239315289]
 custom_minimum_size = Vector2(472, 500)
-layout_mode = 2
+layout_mode = 0
+offset_left = -26.0
+offset_top = -253.0
+offset_right = 446.0
+offset_bottom = 247.0
 texture = ExtResource("12_2e45m")
 expand_mode = 1
 stretch_mode = 4
@@ -208,6 +266,7 @@ grow_vertical = 2
 texture = ExtResource("13_vnokb")
 expand_mode = 1
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="LoseMenu/CenterContainer/TextureRect" unique_id=315205661]
 layout_mode = 0
@@ -218,6 +277,7 @@ offset_bottom = 222.0
 texture = ExtResource("4_ievrn")
 expand_mode = 1
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="ScoreLabelLose" type="Label" parent="LoseMenu/CenterContainer/TextureRect" unique_id=2031863354]
 unique_name_in_owner = true
@@ -231,6 +291,7 @@ offset_transform_rotation = 0.02443461
 theme = ExtResource("5_2e45m")
 theme_type_variation = &"ScoreDisplayWin"
 text = "$100"
+metadata/_edit_lock_ = true
 
 [node name="Retry" type="TextureButton" parent="LoseMenu/CenterContainer/TextureRect" unique_id=1758242363]
 layout_mode = 1
@@ -249,6 +310,7 @@ texture_normal = ExtResource("5_k26xn")
 texture_hover = ExtResource("6_2e45m")
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="MainMenu" type="TextureButton" parent="LoseMenu/CenterContainer/TextureRect" unique_id=425294385]
 layout_mode = 1
@@ -267,6 +329,7 @@ texture_normal = ExtResource("7_vnokb")
 texture_hover = ExtResource("8_27ebs")
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="BeginMenu" type="Control" parent="." unique_id=1872491795]
 unique_name_in_owner = true
@@ -411,22 +474,6 @@ texture = ExtResource("7_d5vjm")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Next" type="Button" parent="PauseMenu/TextureRect2" unique_id=1762146410]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -94.17646
-offset_top = 2.0
-offset_right = 93.82353
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "NEXT LEVEL"
-
 [node name="BackgroundDimmer" type="ColorRect" parent="." unique_id=300290445]
 unique_name_in_owner = true
 visible = false
@@ -448,4 +495,3 @@ color = Color(0, 0, 0, 0.7411765)
 [connection signal="pressed" from="BeginMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/Resume" to="." method="_on_begin_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="PauseMenu/TextureRect2/Next" to="." method="_on_next_pressed"]

@@ -10,7 +10,7 @@ and bump it again when it's done to pick it up."""
 func show_tutorial():
 	var ic_a := Utils.get_node_screen_position(GameManager.level.get_node("Marvy/FoodDispenser"), Vector2(0, -15))
 	var ic_b := Utils.get_node_screen_position(GameManager.level.get_node("Marvy/FoodDispenser2"), Vector2(0, -15))
-	var text_1_pos = ic_a + Vector2.DOWN*220
+	var text_1_pos = Utils.get_node_ui_position(GameManager.level.get_node("Marvy/FoodDispenser"), Vector2(0, 48))
 	TutorialManager.pause()
 	TutorialManager.clear_highlights()
 	TutorialManager.clear_text()

@@ -4,6 +4,7 @@ extends FoodItem
 @export var flavors : Array[Utils.IceCreamType] = []
 @export var strict_order := false
 @export var max_flavors := 3
+@export var alt_sprites : Texture
 
 @onready var spr_group := %CanvasGroup as CanvasGroup
 @onready var mat := spr_group.material as ShaderMaterial
@@ -11,6 +12,8 @@ extends FoodItem
 func _ready() -> void:
 	for c in [%Scoop0, %Scoop1, %Scoop2]:
 		c.hide()
+		if GameManager.use_alt_sprites:
+			c.texture = alt_sprites
 	GameManager.player.held_item_changed.connect(_on_held_item_changed)
 	_on_held_item_changed.call_deferred(GameManager.player.get_held_order())
 

@@ -68,7 +68,7 @@ func get_view_scale() -> float:
 		return base_scale * cam.zoom.y
 	return base_scale
 
-func get_node_screen_position(node : Node2D, offset := Vector2.ZERO) -> Vector2:
+func get_node_screen_position(node : CanvasItem, offset := Vector2.ZERO) -> Vector2:
 	var win_ft := get_window().get_final_transform()
 	var offset_node := Node2D.new()
 	node.add_child(offset_node)
