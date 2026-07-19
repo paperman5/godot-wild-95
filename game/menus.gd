@@ -40,7 +40,7 @@ func hide_all():
 func _on_begin_resume_pressed():
 	hide_all()
 	GameManager.level.unpause()
-	if TutorialManager.do_intro_tutorial and GameManager.level.name in ["Tutorial", "Level1"]:
+	if TutorialManager.do_intro_tutorial and GameManager.level.name in ["Tutorial"]:
 		var t := get_tree().create_timer(0.5)
 		t.timeout.connect(TutorialManager.begin_tutorial.bind(TutorialManager.tutorials['intro']))
 		TutorialManager.do_intro_tutorial = false

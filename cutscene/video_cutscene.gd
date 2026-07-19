@@ -6,6 +6,8 @@ extends Node
 func _ready() -> void:
 	MusicManager.set_music_lofi(false)
 	MusicManager.music_pause()
+	if next_scene == "tutorial" and TutorialManager.skip_tutorials:
+		next_scene = "level_1"
 
 
 func _on_video_stream_player_finished() -> void:
