@@ -6,10 +6,9 @@
 [resource]
 script = ExtResource("1_78xl0")
 bpm_ranges = Dictionary[float, float]({
-0.0: 60.0
+0.0: 100.0
 })
 loop = true
-loop_start = 0.03
-loop_end = 19.5
+loop_end = 19.2
 stream = ExtResource("2_7ry7j")
 metadata/_custom_type_script = "uid://dee648284g1ij"

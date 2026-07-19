@@ -45,10 +45,12 @@ func change_scene(new_scene : String):
 	else:
 		var t = create_tween()
 		t.tween_callback(TransitionManager.fade_out)
+		t.tween_callback(MusicManager.music_fade_out)
 		t.tween_await(TransitionManager.fade_complete)
 		t.tween_callback(get_tree().change_scene_to_file.bind(level_scenes[new_scene]))
 		t.tween_interval(scene_transition_min_time)
 		t.tween_callback(TransitionManager.fade_in)
+		t.tween_callback(MusicManager.music_fade_in)
 		t.tween_callback(save.bind(new_scene))
 		#get_tree().change_scene_to_file(level_scenes[new_scene])
 		#if new_scene != "main_menu":

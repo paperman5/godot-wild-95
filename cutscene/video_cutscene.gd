@@ -3,6 +3,9 @@ extends Node
 @export var next_scene := ""
 @onready var skip: Button = $Control/Skip
 
+func _ready() -> void:
+	MusicManager.music_pause()
+
 
 func _on_video_stream_player_finished() -> void:
 	GameManager.change_scene(next_scene)

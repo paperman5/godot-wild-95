@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MultiBPMAudioStream" format=3 uid="uid://dkc62wum467xq"]
+
+[ext_resource type="Script" uid="uid://dee648284g1ij" path="res://misc/multi_bpm_audio_stream.gd" id="1_c53rc"]
+[ext_resource type="AudioStream" uid="uid://dyvefa71yxkrq" path="res://audio/music/GSISP_Tutorial.mp3" id="2_c53rc"]
+
+[resource]
+script = ExtResource("1_c53rc")
+bpm_ranges = Dictionary[float, float]({
+0.0: 140.0
+})
+loop = true
+loop_start = 1.714
+loop_end = 22.302
+stream = ExtResource("2_c53rc")
+metadata/_custom_type_script = "uid://dee648284g1ij"

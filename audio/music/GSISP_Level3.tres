@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MultiBPMAudioStream" format=3 uid="uid://26buwvopgame"]
+
+[ext_resource type="Script" uid="uid://dee648284g1ij" path="res://misc/multi_bpm_audio_stream.gd" id="1_qp0so"]
+[ext_resource type="AudioStream" uid="uid://n2flho8uxhng" path="res://audio/music/GSISP_Level3.mp3" id="2_qp0so"]
+
+[resource]
+script = ExtResource("1_qp0so")
+bpm_ranges = Dictionary[float, float]({
+0.0: 120.0,
+7.0: 140.0
+})
+exit_times = Array[float]([25.0, 45.571, 66.143])
+loop = true
+loop_start = 7.857
+loop_end = 69.571
+stream = ExtResource("2_qp0so")
+metadata/_custom_type_script = "uid://dee648284g1ij"

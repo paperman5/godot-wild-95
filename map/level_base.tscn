@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://y300xl347b3l" path="res://map/level.gd" id="1_rvogl"]
 [ext_resource type="AudioStream" uid="uid://blas6id57vto1" path="res://audio/SFX_Combo1.wav" id="2_t58qp"]
 [ext_resource type="PackedScene" uid="uid://d1ihbqcdneuak" path="res://game/game_ui.tscn" id="2_tkgu7"]
+[ext_resource type="Resource" uid="uid://4b11weak0k4r" path="res://audio/music/GSISP_LevelEnd.tres" id="2_vjv1b"]
 [ext_resource type="Script" uid="uid://dq0bjhuigbx0s" path="res://map/game_camera.gd" id="3_8gydt"]
 [ext_resource type="PackedScene" uid="uid://cryasie5difhi" path="res://player/player.tscn" id="3_tkgu7"]
 [ext_resource type="AudioStream" uid="uid://hfl6548n6sry" path="res://audio/SFX_Combo2.wav" id="3_vjv1b"]
@@ -15,6 +16,7 @@ y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_rvogl")
 failed_order_multiplier = 0.2
+level_end_music = ExtResource("2_vjv1b")
 score_add_sfx = ExtResource("5_1s7pr")
 wrong_order_sfx = ExtResource("6_t58qp")
 metadata/_edit_lock_ = true

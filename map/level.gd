@@ -27,7 +27,9 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var customer_food_chance := 0.0
 @export var next_level := "level_1"
 @export var starting_timeline := ""
+@export var cutscene_music : MultiBPMAudioStream
 @export var music : MultiBPMAudioStream
+@export var level_end_music : MultiBPMAudioStream
 @export var score_add_sfx : AudioStream
 @export var wrong_order_sfx : AudioStream
 # TODO: Stats?
@@ -55,8 +57,6 @@ func _ready() -> void:
 		if is_instance_of(t, Table):
 			tables.append(t)
 	
-	MusicManager.start_music(music)
-	
 	ui.set_max_time(time_limit)
 	ui.set_time_remaining(time_limit)
 	level_timer.start(time_limit)
@@ -78,8 +78,11 @@ func _ready() -> void:
 		Dialogic.start(starting_timeline)
 		Dialogic.timeline_ended.connect(GameManager.menus.undim_background, CONNECT_ONE_SHOT)
 		Dialogic.timeline_ended.connect(GameManager.menus.show_begin, CONNECT_ONE_SHOT)
+		Dialogic.timeline_ended.connect(MusicManager.start_music.bind(music), CONNECT_ONE_SHOT)
+		MusicManager.start_music(cutscene_music)
 	else:
 		GameManager.menus.show_begin()
+		MusicManager.start_music(music)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and not TutorialManager.tutorial_active:
@@ -170,6 +173,7 @@ func _on_time_up():
 	else:
 		lose_game()
 	time_up.emit(score)
+	MusicManager.start_music(level_end_music)
 
 func pause(show_menu : bool = false):
 	for t in get_tree().get_nodes_in_group("timers"):

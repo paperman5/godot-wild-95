@@ -5,9 +5,11 @@ signal beat()
 @export var music_lofi_hipass_amt := 2000
 @export var music_lofi_drive := 0.5
 @export var music_lofi_fade_time := 0.2
+@export var music_volume_fade_time := 0.5
 @export var extra_beats_per_beat := 0
 
 var music_lofi_tweener : Tween
+var music_fade_tween : Tween
 var music_lofi_mode := false
 
 var music_bus_idx : int
@@ -21,6 +23,8 @@ var beat_idx := 0
 var playback_pos := 0.0
 var next_beat := 0.0
 var current_track : MultiBPMAudioStream
+var latency := 0.0
+var initial_music_volume := 0.0
 
 @onready var music_player := %MusicPlayer as AudioStreamPlayer
 
@@ -29,6 +33,8 @@ func _ready() -> void:
 	sfx_bus_idx = AudioServer.get_bus_index("SFX")
 	hipass_filter = AudioServer.get_bus_effect(music_bus_idx, 1)
 	lofi_filter = AudioServer.get_bus_effect(music_bus_idx, 2)
+	latency = AudioServer.get_output_latency()
+	initial_music_volume = AudioServer.get_bus_volume_linear(music_bus_idx)
 
 func _process(delta: float) -> void:
 	if current_track == null or not music_player.playing:
@@ -38,7 +44,7 @@ func _process(delta: float) -> void:
 		beat_idx += 1
 		next_beat = get_next_beat_time(playback_pos)
 		beat.emit()
-	if current_track.loop and playback_pos >= current_track.loop_end:
+	if current_track.loop and playback_pos >= current_track.loop_end - latency:
 		playback_pos = current_track.loop_start + playback_pos - current_track.loop_end
 		music_player.seek(playback_pos)
 		next_beat = get_next_beat_time(playback_pos)
@@ -53,6 +59,23 @@ func music_pause():
 func music_resume():
 	if not music_player.playing and current_track != null:
 		music_player.play(playback_pos)
+
+func music_fade_out():
+	if music_fade_tween != null:
+		music_fade_tween.kill()
+	music_fade_tween = create_tween()
+	var current_vol = AudioServer.get_bus_volume_linear(music_bus_idx)
+	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, 0.01, music_volume_fade_time)
+
+func music_fade_in():
+	if music_fade_tween != null:
+		music_fade_tween.kill()
+	music_fade_tween = create_tween()
+	var current_vol = AudioServer.get_bus_volume_linear(music_bus_idx)
+	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, initial_music_volume, music_volume_fade_time)
+
+func _set_music_bus_volume(volume_linear : float):
+	AudioServer.set_bus_volume_db(music_bus_idx, linear_to_db(volume_linear))
 
 func get_next_beat_time(after_pos : float) -> float:
 	var timestamps : Array[float] = current_track.bpm_ranges.keys()

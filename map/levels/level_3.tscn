@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_3dnot"]
 [ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_a4rac"]
-[ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/music/GSISP_Level1_V1.tres" id="2_sc5sv"]
 [ext_resource type="Resource" uid="uid://d3hrjjxplifdt" path="res://map/levels/level_3_randomizer.tres" id="2_t3kdf"]
+[ext_resource type="Resource" uid="uid://dkc62wum467xq" path="res://audio/music/GSISP_Tutorial.tres" id="3_kyek8"]
 [ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_sc5sv"]
+[ext_resource type="Resource" uid="uid://26buwvopgame" path="res://audio/music/GSISP_Level3.tres" id="4_kyek8"]
 [ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_t3kdf"]
 [ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_lo52u"]
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_kyek8"]
@@ -18,7 +19,8 @@ level_name = "Level 3"
 customer_food_chance = 0.25
 next_level = "main_menu"
 starting_timeline = "level3"
-music = ExtResource("2_sc5sv")
+cutscene_music = ExtResource("3_kyek8")
+music = ExtResource("4_kyek8")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]
 z_index = -20

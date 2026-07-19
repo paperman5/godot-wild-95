@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://dnv7od3o7m2u"]
 
 [ext_resource type="PackedScene" uid="uid://c8hbelfu3287k" path="res://map/level_base.tscn" id="1_jg4xa"]
-[ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/music/GSISP_Level1_V1.tres" id="2_avo2n"]
+[ext_resource type="Resource" uid="uid://dcun3ro0r4pu2" path="res://audio/music/GSISP_Level1.tres" id="2_avo2n"]
 [ext_resource type="TileSet" uid="uid://c1l35qqps12hs" path="res://map/diner_tiles.tres" id="2_e8sds"]
 [ext_resource type="Resource" uid="uid://cikg00hl77aro" path="res://map/levels/level_2_randomizer.tres" id="2_ytvue"]
 [ext_resource type="PackedScene" uid="uid://3nl1cgfi6qaj" path="res://map/ice_cream_glass_dispenser.tscn" id="3_avo2n"]
+[ext_resource type="Resource" uid="uid://dkc62wum467xq" path="res://audio/music/GSISP_Tutorial.tres" id="3_k4ccm"]
 [ext_resource type="PackedScene" uid="uid://cbyr57q28oqv3" path="res://map/ice_cream_dispenser.tscn" id="4_2ux06"]
 [ext_resource type="PackedScene" uid="uid://b601qwcmx8o72" path="res://map/trash_can.tscn" id="5_ytvue"]
 [ext_resource type="PackedScene" uid="uid://5d5c3bpu5tm1" path="res://map/jukebox.tscn" id="6_k4ccm"]
@@ -17,6 +18,7 @@ level_name = "Level 2"
 time_limit = 60.0
 next_level = "level_3"
 starting_timeline = "level2"
+cutscene_music = ExtResource("3_k4ccm")
 music = ExtResource("2_avo2n")
 
 [node name="Floor" type="TileMapLayer" parent="." index="0" unique_id=1684205611]
