@@ -28,6 +28,12 @@ variation_opentype = {
 2003265652: 700
 }
 
+[sub_resource type="FontVariation" id="FontVariation_5fgsp"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 700
+}
+
 [resource]
 BeginMenu/base_type = &"Label"
 BeginMenu/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -66,4 +72,4 @@ ScoreDisplayWin/fonts/font = SubResource("FontVariation_ievrn")
 TutorialText/base_type = &"RichTextLabel"
 TutorialText/constants/outline_size = 5
 TutorialText/font_sizes/normal_font_size = 32
-TutorialText/fonts/normal_font = ExtResource("1_hijok")
+TutorialText/fonts/normal_font = SubResource("FontVariation_5fgsp")

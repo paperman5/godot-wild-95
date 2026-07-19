@@ -77,7 +77,7 @@ func get_node_screen_position(node : CanvasItem, offset := Vector2.ZERO) -> Vect
 	offset_node.free()
 	return p
 
-func get_node_ui_position(node : Node2D, offset := Vector2.ZERO) -> Vector2:
+func get_node_ui_position(node : CanvasItem, offset := Vector2.ZERO) -> Vector2:
 	var offset_node := Node2D.new()
 	node.add_child(offset_node)
 	offset_node.position = offset
