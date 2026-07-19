@@ -19,7 +19,8 @@ const level_scenes = {
 	"level_2" : "uid://dnv7od3o7m2u",
 	"level_3" : "uid://mufmt5bnk3bk",
 	"cutscene" : "uid://g2lqs0suukre",
-	"opening_video" : "uid://co5ieo3lw2l5m"
+	"opening_video" : "uid://co5ieo3lw2l5m",
+	"end_video" : "uid://becvipn7o3n22"
 }
 
 func _ready() -> void:

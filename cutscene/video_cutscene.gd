@@ -4,6 +4,7 @@ extends Node
 @onready var skip: Button = $Control/Skip
 
 func _ready() -> void:
+	MusicManager.set_music_lofi(false)
 	MusicManager.music_pause()
 
 

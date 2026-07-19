@@ -17,7 +17,7 @@
 randomizer = ExtResource("2_t3kdf")
 level_name = "Level 3"
 customer_food_chance = 0.25
-next_level = "main_menu"
+next_level = "end_video"
 starting_timeline = "level3"
 cutscene_music = ExtResource("3_kyek8")
 music = ExtResource("4_kyek8")
