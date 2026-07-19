@@ -8,6 +8,8 @@ extends Control
 @onready var level_name: Label = %LevelName
 @onready var target_score: Label = %TargetScore
 @onready var background_dimmer: ColorRect = %BackgroundDimmer
+@onready var score_label_win: Label = %ScoreLabelWin
+@onready var score_label_lose: Label = %ScoreLabelLose
 
 
 func _ready() -> void:
@@ -73,3 +75,7 @@ func set_level_name(new_name : String):
 
 func set_target_score(new_score : int):
 	target_score.text = "Target Score: $%d" % new_score
+
+func _on_time_up(final_score : int):
+	score_label_lose.text = str(final_score)
+	score_label_win.text = str(final_score)

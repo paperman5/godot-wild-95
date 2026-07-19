@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-signal time_up
+signal time_up(final_score : int)
 signal combo_cleared
 signal customer_seated(customer : Customer)
 
@@ -68,6 +68,7 @@ func _ready() -> void:
 	combo_timer.timeout.connect(_on_combo_timer_timeout)
 	seating_timer.timeout.connect(_on_seating_timer_timeout)
 	ticker_timer.timeout.connect(_on_ticker_timer_timeout)
+	time_up.connect(GameManager.menus._on_time_up)
 	
 	customer_seated.connect(TutorialManager._on_customer_seated)
 	
@@ -161,11 +162,14 @@ func _on_combo_timer_timeout():
 	audio.play()
 
 func _on_time_up():
+	combo_timer.stop()
+	combo_timer.timeout.emit()
 	pause()
 	if score >= win_threshold:
 		win_game()
 	else:
 		lose_game()
+	time_up.emit(score)
 
 func pause(show_menu : bool = false):
 	for t in get_tree().get_nodes_in_group("timers"):
