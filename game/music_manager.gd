@@ -114,9 +114,9 @@ func _set_lofi_enabled(enabled : bool):
 	AudioServer.set_bus_effect_enabled(music_bus_idx, 2, enabled)
 
 func start_music(track : MultiBPMAudioStream):
-	if track == current_track:
+	if current_track != null and track.stream == current_track.stream:
 		return
-	current_track = track
+	current_track = track.duplicate_deep()
 	for t in current_track.bpm_ranges.keys():
 		current_track.bpm_ranges[t] *= extra_beats_per_beat + 1
 	music_bpm = maxf(20.0, track.bpm_ranges.values()[0])
