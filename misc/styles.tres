@@ -16,6 +16,12 @@ variation_opentype = {
 2003265652: 700
 }
 
+[sub_resource type="FontVariation" id="FontVariation_ievrn"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 700
+}
+
 [resource]
 ComboMeter/base_type = &"RichTextLabel"
 ComboMeter/colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -39,6 +45,13 @@ ScoreDisplay/colors/font_color = Color(0, 0, 0, 1)
 ScoreDisplay/constants/line_spacing = -20
 ScoreDisplay/font_sizes/font_size = 40
 ScoreDisplay/fonts/font = SubResource("FontVariation_sxc2a")
+ScoreDisplayLose/base_type = &"Label"
+ScoreDisplayWin/base_type = &"Label"
+ScoreDisplayWin/colors/font_color = Color(1, 0.09803922, 0.5372549, 1)
+ScoreDisplayWin/colors/font_outline_color = Color(1, 1, 1, 1)
+ScoreDisplayWin/constants/outline_size = 16
+ScoreDisplayWin/font_sizes/font_size = 54
+ScoreDisplayWin/fonts/font = SubResource("FontVariation_ievrn")
 TutorialText/base_type = &"RichTextLabel"
 TutorialText/constants/outline_size = 5
 TutorialText/font_sizes/normal_font_size = 32

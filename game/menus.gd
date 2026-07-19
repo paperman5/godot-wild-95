@@ -77,5 +77,5 @@ func set_target_score(new_score : int):
 	target_score.text = "Target Score: $%d" % new_score
 
 func _on_time_up(final_score : int):
-	score_label_lose.text = str(final_score)
-	score_label_win.text = str(final_score)
+	score_label_lose.text = "$%d" % final_score
+	score_label_win.text = "$%d" % final_score

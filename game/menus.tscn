@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://ba36jwtdxnm45"]
 
-[ext_resource type="Texture2D" uid="uid://bmtxuu15ggrku" path="res://game/win_mockup.png" id="1_7qefd"]
 [ext_resource type="Script" uid="uid://bcymd7mrapev4" path="res://game/menus.gd" id="1_ktqu2"]
-[ext_resource type="Texture2D" uid="uid://csue710gikep3" path="res://game/lose_mockup.png" id="2_ktqu2"]
+[ext_resource type="Texture2D" uid="uid://0wa7qob7gpyx" path="res://misc/receipt.png" id="2_d5vjm"]
+[ext_resource type="Texture2D" uid="uid://c2y2chxnn8a2q" path="res://misc/GOOD JOB.png" id="3_a7ltn"]
 [ext_resource type="Texture2D" uid="uid://cnu2cexdic6xi" path="res://misc/pause menu.png" id="4_ej40b"]
+[ext_resource type="Texture2D" uid="uid://58budprkpatp" path="res://misc/SCORE 2D.png" id="4_ievrn"]
+[ext_resource type="Theme" uid="uid://55ic7fa2pnu2" path="res://misc/styles.tres" id="5_2e45m"]
 [ext_resource type="Texture2D" uid="uid://ccqofg3y5m34b" path="res://misc/resume.png" id="5_7jb3i"]
+[ext_resource type="Texture2D" uid="uid://cifma578fpy4e" path="res://misc/RETRY_1.png" id="5_k26xn"]
+[ext_resource type="Texture2D" uid="uid://d2oub4pwsat7e" path="res://misc/RETRY_2.png" id="6_2e45m"]
 [ext_resource type="Texture2D" uid="uid://bccpq16n0wj1e" path="res://misc/resume white.PNG" id="6_7jb3i"]
 [ext_resource type="Texture2D" uid="uid://bg0j464hwo0qu" path="res://misc/main menu.png" id="6_031gt"]
 [ext_resource type="Texture2D" uid="uid://5fykbpe1oguf" path="res://misc/pause.png" id="7_d5vjm"]
+[ext_resource type="Texture2D" uid="uid://cvs4b5fc7cx7a" path="res://misc/MAIN_MENU_HEART_1.png" id="7_vnokb"]
+[ext_resource type="Texture2D" uid="uid://ddd4iamv05733" path="res://misc/MAIN_MENU_HEART_2.png" id="8_27ebs"]
 [ext_resource type="Texture2D" uid="uid://l6wd72umh134" path="res://misc/main menu white.PNG" id="8_031gt"]
+[ext_resource type="Texture2D" uid="uid://i7ysnk60ii5f" path="res://misc/NEXT_LEVEL_1.png" id="9_vt6y8"]
+[ext_resource type="Texture2D" uid="uid://cfpb0eqwvfdk3" path="res://misc/NEXT_LEVEL_2.png" id="10_ms11p"]
+[ext_resource type="Texture2D" uid="uid://5hm1lueyon3f" path="res://misc/NEWSPAPER.png" id="12_2e45m"]
+[ext_resource type="Texture2D" uid="uid://b8j8phu2jhqx7" path="res://misc/TRY_AGAIN.png" id="13_vnokb"]
 
 [node name="Menus" type="Control" unique_id=578367975]
 texture_filter = 2
@@ -30,73 +40,127 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="WinMenu" unique_id=499370153]
-texture_filter = 2
+[node name="ColorRect" type="ColorRect" parent="WinMenu" unique_id=1119014420]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7qefd")
-expand_mode = 2
+color = Color(0, 0, 0, 0.50980395)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu" unique_id=1438113459]
+[node name="CenterContainer" type="CenterContainer" parent="WinMenu" unique_id=528728128]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="WinMenu/CenterContainer" unique_id=232217283]
+custom_minimum_size = Vector2(472, 500)
+layout_mode = 2
+texture = ExtResource("2_d5vjm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="WinMenu/CenterContainer/TextureRect" unique_id=1845389686]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -26.5
-offset_right = 94.0
-offset_bottom = 26.5
+offset_left = -101.0
+offset_top = -257.0
+offset_right = 184.0
+offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_a7ltn")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Retry" type="Button" parent="WinMenu/VBoxContainer" unique_id=1283451189]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "RETRY"
+[node name="TextureRect2" type="TextureRect" parent="WinMenu/CenterContainer/TextureRect" unique_id=692617248]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 165.0
+offset_right = 254.0
+offset_bottom = 214.0
+texture = ExtResource("4_ievrn")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Next" type="Button" parent="WinMenu/VBoxContainer" unique_id=892445460]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "NEXT LEVEL"
+[node name="ScoreLabelWin" type="Label" parent="WinMenu/CenterContainer/TextureRect" unique_id=155775993]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 253.0
+offset_top = 157.0
+offset_right = 443.0
+offset_bottom = 226.0
+offset_transform_enabled = true
+offset_transform_rotation = 0.02443461
+theme = ExtResource("5_2e45m")
+theme_type_variation = &"ScoreDisplayWin"
+text = "$100"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="WinMenu" unique_id=1133478518]
+[node name="Retry" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=1333034494]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -91.0
-offset_top = 148.0
-offset_right = 86.0
-offset_bottom = 193.0
+anchor_bottom = 1.0
+offset_left = -179.0
+offset_top = -110.0
+offset_right = -89.0
+offset_bottom = -28.0
 grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_k26xn")
+texture_hover = ExtResource("6_2e45m")
+ignore_texture_size = true
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="WinMenu/HBoxContainer" unique_id=340695636]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "SCORE: "
-metadata/_edit_lock_ = true
+[node name="MainMenu" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=709615624]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -75.0
+offset_right = 27.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_vnokb")
+texture_hover = ExtResource("8_27ebs")
+ignore_texture_size = true
+stretch_mode = 4
 
-[node name="ScoreLabelWin" type="Label" parent="WinMenu/HBoxContainer" unique_id=155775993]
+[node name="NextLevel" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=120644656]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -88.0
+offset_right = 153.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("9_vt6y8")
+texture_hover = ExtResource("10_ms11p")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="LoseMenu" type="Control" parent="." unique_id=538571425]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "100"
-metadata/_edit_lock_ = true
-
-[node name="LoseMenu" type="Control" parent="." unique_id=975099820]
-unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,70 +168,105 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="LoseMenu" unique_id=9034063]
-texture_filter = 2
+[node name="ColorRect" type="ColorRect" parent="LoseMenu" unique_id=560568399]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ktqu2")
-expand_mode = 2
+color = Color(0, 0, 0, 0.50980395)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LoseMenu" unique_id=51289743]
+[node name="CenterContainer" type="CenterContainer" parent="LoseMenu" unique_id=1102269755]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LoseMenu/CenterContainer" unique_id=239315289]
+custom_minimum_size = Vector2(472, 500)
+layout_mode = 2
+texture = ExtResource("12_2e45m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="LoseMenu/CenterContainer/TextureRect" unique_id=408520159]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -55.0
-offset_right = 94.0
-offset_bottom = 55.0
+offset_left = -215.0
+offset_top = -250.0
+offset_right = 168.0
+offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("13_vnokb")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Retry" type="Button" parent="LoseMenu/VBoxContainer" unique_id=2023581565]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "RETRY"
+[node name="TextureRect2" type="TextureRect" parent="LoseMenu/CenterContainer/TextureRect" unique_id=315205661]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 173.0
+offset_right = 237.0
+offset_bottom = 222.0
+texture = ExtResource("4_ievrn")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Next" type="Button" parent="LoseMenu/VBoxContainer" unique_id=1329473781]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "NEXT LEVEL"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LoseMenu" unique_id=864324838]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -91.0
-offset_top = 148.0
-offset_right = 86.0
-offset_bottom = 193.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="LoseMenu/HBoxContainer" unique_id=219710419]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "SCORE: "
-metadata/_edit_lock_ = true
-
-[node name="ScoreLabelLose" type="Label" parent="LoseMenu/HBoxContainer" unique_id=618804335]
+[node name="ScoreLabelLose" type="Label" parent="LoseMenu/CenterContainer/TextureRect" unique_id=2031863354]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "100"
-metadata/_edit_lock_ = true
+layout_mode = 0
+offset_left = 236.0
+offset_top = 165.0
+offset_right = 426.0
+offset_bottom = 234.0
+offset_transform_enabled = true
+offset_transform_rotation = 0.02443461
+theme = ExtResource("5_2e45m")
+theme_type_variation = &"ScoreDisplayWin"
+text = "$100"
+
+[node name="Retry" type="TextureButton" parent="LoseMenu/CenterContainer/TextureRect" unique_id=1758242363]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -118.0
+offset_right = -100.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_k26xn")
+texture_hover = ExtResource("6_2e45m")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="MainMenu" type="TextureButton" parent="LoseMenu/CenterContainer/TextureRect" unique_id=425294385]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -72.0
+offset_right = 50.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_vnokb")
+texture_hover = ExtResource("8_27ebs")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="BeginMenu" type="Control" parent="." unique_id=1872491795]
 unique_name_in_owner = true
@@ -340,10 +439,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.7411765)
 
-[connection signal="pressed" from="WinMenu/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="WinMenu/VBoxContainer/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="LoseMenu/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="LoseMenu/VBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/NextLevel" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="BeginMenu/VBoxContainer/Begin" to="." method="_on_begin_resume_pressed"]
 [connection signal="pressed" from="BeginMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/Resume" to="." method="_on_begin_resume_pressed"]
