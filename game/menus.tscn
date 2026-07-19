@@ -21,6 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://5hm1lueyon3f" path="res://misc/NEWSPAPER.png" id="12_2e45m"]
 [ext_resource type="Texture2D" uid="uid://nipiutehyd4a" path="res://misc/ambrosia_failure.png" id="13_27ebs"]
 [ext_resource type="Texture2D" uid="uid://b8j8phu2jhqx7" path="res://misc/TRY_AGAIN.png" id="13_vnokb"]
+[ext_resource type="Texture2D" uid="uid://bihpfjxdrgohg" path="res://misc/ClockInMachine.png" id="16_tonny"]
+[ext_resource type="Texture2D" uid="uid://c31em4ykpgojl" path="res://misc/CLOCK-BEGIN-1.png" id="17_wya3k"]
+[ext_resource type="Texture2D" uid="uid://busnpsvabtoew" path="res://misc/CLOCK-BEGIN-2.png" id="18_bf2ym"]
+[ext_resource type="Texture2D" uid="uid://d2qkcn17kpjbd" path="res://misc/CLOCK-MAINMENU-1.png" id="19_ydurp"]
+[ext_resource type="Texture2D" uid="uid://6fh1yfxiffog" path="res://misc/CLOCK-MAINMENU-2.png" id="20_2upno"]
 
 [node name="Menus" type="Control" unique_id=578367975]
 texture_filter = 2
@@ -333,7 +338,6 @@ metadata/_edit_lock_ = true
 
 [node name="BeginMenu" type="Control" parent="." unique_id=1872491795]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -364,33 +368,105 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelName" type="Label" parent="BeginMenu/VBoxContainer" unique_id=12487741]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "LEVEL X"
-horizontal_alignment = 1
-
-[node name="TargetScore" type="Label" parent="BeginMenu/VBoxContainer" unique_id=1090705696]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Target Revenue: $X"
-horizontal_alignment = 1
-
 [node name="Control" type="Control" parent="BeginMenu/VBoxContainer" unique_id=1227967925]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Begin" type="Button" parent="BeginMenu/VBoxContainer" unique_id=377613259]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "BEGIN"
+[node name="Control" type="Control" parent="BeginMenu" unique_id=1327029494]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MainMenu" type="Button" parent="BeginMenu/VBoxContainer" unique_id=1082785300]
+[node name="TextureRect" type="TextureRect" parent="BeginMenu/Control" unique_id=1139204222]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.0
+offset_top = -243.0
+offset_right = 71.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_tonny")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Begin" type="TextureButton" parent="BeginMenu/Control/TextureRect" unique_id=567113595]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -166.0
+offset_right = 97.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_wya3k")
+texture_hover = ExtResource("18_bf2ym")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="MainMenu" type="TextureButton" parent="BeginMenu/Control/TextureRect" unique_id=625589406]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = 126.0
+offset_right = 96.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("19_ydurp")
+texture_hover = ExtResource("20_2upno")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BeginMenu/Control" unique_id=541055547]
+layout_mode = 0
+offset_left = 49.0
+offset_top = -111.0
+offset_right = 354.0
+offset_bottom = 126.0
+theme_override_constants/separation = 12
+
+[node name="LevelName" type="Label" parent="BeginMenu/Control/VBoxContainer" unique_id=12487741]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "MAIN MENU"
+theme = ExtResource("5_2e45m")
+theme_type_variation = &"BeginMenu"
+text = "LEVEL X"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TargetScore" type="Label" parent="BeginMenu/Control/VBoxContainer" unique_id=1090705696]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_2e45m")
+theme_type_variation = &"BeginMenu"
+text = "Target Revenue:
+$X"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1497502033]
 unique_name_in_owner = true
@@ -491,7 +567,7 @@ color = Color(0, 0, 0, 0.7411765)
 [connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/NextLevel" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="BeginMenu/VBoxContainer/Begin" to="." method="_on_begin_resume_pressed"]
-[connection signal="pressed" from="BeginMenu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="BeginMenu/Control/TextureRect/Begin" to="." method="_on_begin_resume_pressed"]
+[connection signal="pressed" from="BeginMenu/Control/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/Resume" to="." method="_on_begin_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/MainMenu" to="." method="_on_main_menu_pressed"]

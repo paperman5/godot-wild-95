@@ -7,7 +7,7 @@ var menus : WinLoseMenus
 var default_view_size := Vector2.ZERO
 var next_level := "tutorial"
 var scene_transition_min_time := 0.75
-var skip_cutscenes := true
+var skip_cutscenes := false
 var use_alt_sprites := false
 
 const save_file_path := "user://savegame.txt"

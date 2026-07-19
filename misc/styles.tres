@@ -5,6 +5,12 @@
 [ext_resource type="FontFile" uid="uid://cylrh3j0losps" path="res://font/RobotoMono-Italic-VariableFont_wght.ttf" id="1_of0g1"]
 
 [sub_resource type="FontVariation" id="FontVariation_hunv0"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_of0g1"]
 base_font = ExtResource("1_of0g1")
 variation_opentype = {
 2003265652: 700
@@ -23,12 +29,17 @@ variation_opentype = {
 }
 
 [resource]
+BeginMenu/base_type = &"Label"
+BeginMenu/colors/font_outline_color = Color(0, 0, 0, 1)
+BeginMenu/constants/outline_size = 7
+BeginMenu/font_sizes/font_size = 58
+BeginMenu/fonts/font = SubResource("FontVariation_hunv0")
 ComboMeter/base_type = &"RichTextLabel"
 ComboMeter/colors/font_shadow_color = Color(0, 0, 0, 1)
 ComboMeter/constants/shadow_offset_x = 3
 ComboMeter/constants/shadow_offset_y = 2
 ComboMeter/font_sizes/normal_font_size = 30
-ComboMeter/fonts/normal_font = SubResource("FontVariation_hunv0")
+ComboMeter/fonts/normal_font = SubResource("FontVariation_of0g1")
 CustomerCombo/base_type = &"RichTextLabel"
 CustomerCombo/colors/default_color = Color(0, 0.5176471, 0, 1)
 CustomerCombo/colors/font_outline_color = Color(1, 1, 1, 1)

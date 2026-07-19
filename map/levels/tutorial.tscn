@@ -11,6 +11,7 @@
 
 [node name="Tutorial" unique_id=594946845 instance=ExtResource("1_mq2qu")]
 level_name = "Tutorial"
+win_threshold = 1
 starting_timeline = "opening"
 cutscene_music = ExtResource("2_mq2qu")
 music = ExtResource("2_mq2qu")

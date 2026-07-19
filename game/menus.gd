@@ -74,7 +74,7 @@ func set_level_name(new_name : String):
 	level_name.text = new_name
 
 func set_target_score(new_score : int):
-	target_score.text = "Target Score: $%d" % new_score
+	target_score.text = "Target Score:\n$%d" % new_score
 
 func _on_time_up(final_score : int):
 	score_label_lose.text = "$%d" % final_score
