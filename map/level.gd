@@ -9,7 +9,7 @@ var tables : Array[Table] = []
 var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var randomizer : CustomerRandomizer
 @export var level_name := "Level X"
-@export var seating_timer_max := 3.0
+@export var seating_timer_max := 3.0  
 @export var seating_timer_min := 2.3
 @export var time_limit := 100.0
 @export var timer_increments := 1.0
@@ -28,7 +28,6 @@ var customer_scene = preload("uid://uddj0n5ca5xs")
 @export var next_level := "level_1"
 @export var starting_timeline := ""
 @export var music : MultiBPMAudioStream
-@export var combo_sfx : Array[AudioStream] = []
 @export var score_add_sfx : AudioStream
 @export var wrong_order_sfx : AudioStream
 # TODO: Stats?
@@ -101,7 +100,8 @@ func create_customer() -> Customer:
 	new_customer.customer_type = [Customer.CustomerType.Nightwalker,
 								Customer.CustomerType.Mothman,
 								Customer.CustomerType.Yeti,
-								Customer.CustomerType.Goo].pick_random()
+								Customer.CustomerType.Goo,
+								Customer.CustomerType.Alien].pick_random()
 	new_customer.icecream_order_chance = customer_icecream_chance
 	new_customer.food_order_chance = customer_food_chance
 	return new_customer
@@ -144,8 +144,8 @@ func _on_customer_served(order : FoodItem, matched : bool, prompt : bool):
 	if combo > 1:
 		bonus = 1+combo*combo_bonus
 		var bonus_sfx_idx = mini(combo-2, 2)
-		audio.stream = combo_sfx[bonus_sfx_idx]
-		audio.play()
+		var ap : AudioStreamPlayer = get_node("Combo%d" % bonus_sfx_idx)
+		ap.play()
 	GameManager.game_ui.set_combo(roundi(combo_points_buffer), bonus)
 
 func _on_combo_timer_timeout():

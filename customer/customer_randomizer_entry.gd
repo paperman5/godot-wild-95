@@ -11,6 +11,11 @@ extends Resource
 
 func create_customer() -> Customer:
 	var customer := preload("uid://uddj0n5ca5xs").instantiate() as Customer
+	customer.customer_type = [Customer.CustomerType.Nightwalker,
+								Customer.CustomerType.Mothman,
+								Customer.CustomerType.Yeti,
+								Customer.CustomerType.Goo,
+								Customer.CustomerType.Alien].pick_random()
 	var orders : Array[FoodItem] = []
 	if order_food:
 		var food := preload("uid://b6duh0virt7sy").instantiate() as CookedFood

@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c8hbelfu3287k"]
 
 [ext_resource type="Script" uid="uid://y300xl347b3l" path="res://map/level.gd" id="1_rvogl"]
-[ext_resource type="AudioStream" uid="uid://deen2fbi7sqir" path="res://audio/SFX_Combo1.mp3" id="2_1s7pr"]
+[ext_resource type="AudioStream" uid="uid://blas6id57vto1" path="res://audio/SFX_Combo1.wav" id="2_t58qp"]
 [ext_resource type="PackedScene" uid="uid://d1ihbqcdneuak" path="res://game/game_ui.tscn" id="2_tkgu7"]
 [ext_resource type="Script" uid="uid://dq0bjhuigbx0s" path="res://map/game_camera.gd" id="3_8gydt"]
-[ext_resource type="AudioStream" uid="uid://w5tejs65hm0g" path="res://audio/SFX_Combo2.mp3" id="3_t58qp"]
 [ext_resource type="PackedScene" uid="uid://cryasie5difhi" path="res://player/player.tscn" id="3_tkgu7"]
-[ext_resource type="AudioStream" uid="uid://cm6hh0313iq2i" path="res://audio/SFX_Combo3.mp3" id="4_vjv1b"]
+[ext_resource type="AudioStream" uid="uid://hfl6548n6sry" path="res://audio/SFX_Combo2.wav" id="3_vjv1b"]
+[ext_resource type="AudioStream" uid="uid://d2j4o53mdcmeb" path="res://audio/SFX_Combo3.wav" id="4_llqci"]
 [ext_resource type="AudioStream" uid="uid://qj2w0uq3i7bk" path="res://audio/SFX_MoneyEarned.wav" id="5_1s7pr"]
 [ext_resource type="AudioStream" uid="uid://dcxayirbcrj74" path="res://audio/SFX_WrongOrder.wav" id="6_t58qp"]
 
@@ -14,7 +14,7 @@
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_rvogl")
-combo_sfx = Array[AudioStream]([ExtResource("2_1s7pr"), ExtResource("3_t58qp"), ExtResource("4_vjv1b")])
+failed_order_multiplier = 0.2
 score_add_sfx = ExtResource("5_1s7pr")
 wrong_order_sfx = ExtResource("6_t58qp")
 metadata/_edit_lock_ = true
@@ -27,6 +27,7 @@ unique_name_in_owner = true
 
 [node name="ComboTimer" type="Timer" parent="." unique_id=2051112347 groups=["timers"]]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="TimerTicker" type="Timer" parent="." unique_id=158714082 groups=["timers"]]
 unique_name_in_owner = true
@@ -43,4 +44,17 @@ script = ExtResource("3_8gydt")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=896079858]
 unique_name_in_owner = true
 max_polyphony = 4
+bus = &"SFX"
+
+[node name="Combo0" type="AudioStreamPlayer" parent="." unique_id=12945443]
+stream = ExtResource("2_t58qp")
+bus = &"SFX"
+
+[node name="Combo1" type="AudioStreamPlayer" parent="." unique_id=90557461]
+stream = ExtResource("3_vjv1b")
+bus = &"SFX"
+
+[node name="Combo2" type="AudioStreamPlayer" parent="." unique_id=999612582]
+stream = ExtResource("4_llqci")
+max_polyphony = 2
 bus = &"SFX"

@@ -128,6 +128,7 @@ starting_animation = "idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1775239862]
 stream = ExtResource("5_5fgsp")
+volume_db = -3.0
 bus = &"SFX"
 
 [connection signal="cooking_done" from="FoodDispenser" to="." method="_on_food_dispenser_cooking_done"]

@@ -692,6 +692,7 @@ animations = [{
 
 [node name="Customer" type="Node2D" unique_id=380656062]
 script = ExtResource("1_2c3mv")
+think_time = 2.0
 character_sfx = Dictionary[String, AudioStream]({
 "alien/angry": ExtResource("4_20nie"),
 "alien/happy": ExtResource("5_ikqm6"),
