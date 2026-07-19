@@ -25,8 +25,8 @@ var tut_text_7 := """You can stack up to 4 orders in
 your hand! Orders are served
 from the bottom first."""
 
-var tut_text_7_5 := """Stack 'em high and serve to
-get a big combo!
+var tut_text_7_5 := """Stack 'em high and serve 'em
+fast to get a big combo!
 [img width=48]uid://bg0806348ngcd[/img]"""
 
 var tut_text_8 := """Try to get the highest score you can

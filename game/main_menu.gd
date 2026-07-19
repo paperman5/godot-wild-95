@@ -7,6 +7,7 @@ extends Control
 @onready var newgame_button := %NewGame as Button
 @onready var standard_menu_root: Control = %StandardMenuRoot
 @onready var credits_menu_root: Control = %CreditsMenuRoot
+@onready var clear_button: Button = %Clear
 
 var continue_load := ""
 
@@ -15,11 +16,13 @@ func _ready() -> void:
 	MusicManager.start_music(music)
 	if FileAccess.file_exists(GameManager.save_file_path):
 		continue_button.show()
+		clear_button.show()
 		var file = FileAccess.open(GameManager.save_file_path, FileAccess.READ)
 		continue_load = file.get_line()
 		file.close()
 	else:
 		continue_button.hide()
+		clear_button.hide()
 	credits_menu_root.hide()
 	standard_menu_root.show()
 
@@ -59,6 +62,7 @@ func _on_clear_pressed() -> void:
 		DirAccess.remove_absolute(GameManager.save_file_path)
 		continue_load = "level_1"
 		continue_button.hide()
+		clear_button.hide()
 
 
 func _on_mute_toggled(toggled_on: bool) -> void:

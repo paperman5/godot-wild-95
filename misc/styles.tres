@@ -16,6 +16,63 @@ variation_opentype = {
 2003265652: 700
 }
 
+[sub_resource type="FontVariation" id="FontVariation_7mn57"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_of0g1"]
+bg_color = Color(0.99607843, 0.30980393, 0.6313726, 1)
+skew = Vector2(0.225, 0)
+border_width_left = 9
+border_width_right = 9
+border_color = Color(1, 0.9529412, 0.9882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.36078432)
+shadow_size = 9
+shadow_offset = Vector2(4.865, 2.79)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv8kf"]
+bg_color = Color(0.48864168, 0.23402226, 0.6875737, 1)
+skew = Vector2(0.225, 0)
+border_width_left = 9
+border_width_right = 9
+border_color = Color(1, 0.9529412, 0.9882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.36078432)
+shadow_size = 9
+shadow_offset = Vector2(4.865, 2.79)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a46he"]
+bg_color = Color(0.3305042, 0.14041534, 0.4735096, 1)
+skew = Vector2(0.225, 0)
+border_width_left = 9
+border_width_right = 9
+border_color = Color(1, 0.9529412, 0.9882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.36078432)
+shadow_size = 9
+shadow_offset = Vector2(4.865, 2.79)
+
+[sub_resource type="FontVariation" id="FontVariation_wb3uj"]
+base_font = ExtResource("1_hijok")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73fth"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b218"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxoi5"]
+
 [sub_resource type="FontVariation" id="FontVariation_sxc2a"]
 base_font = ExtResource("1_hijok")
 variation_opentype = {
@@ -55,6 +112,19 @@ CustomerCombo/constants/outline_size = -1
 CustomerCombo/constants/shadow_outline_size = 2
 CustomerCombo/font_sizes/normal_font_size = 18
 CustomerCombo/fonts/normal_font = ExtResource("1_hec11")
+MainMenuButton1/base_type = &"Button"
+MainMenuButton1/colors/font_color = Color(1, 1, 1, 1)
+MainMenuButton1/font_sizes/font_size = 26
+MainMenuButton1/fonts/font = SubResource("FontVariation_7mn57")
+MainMenuButton1/styles/hover = SubResource("StyleBoxFlat_of0g1")
+MainMenuButton1/styles/normal = SubResource("StyleBoxFlat_rv8kf")
+MainMenuButton1/styles/pressed = SubResource("StyleBoxFlat_a46he")
+MainMenuCheckbox/base_type = &"CheckBox"
+MainMenuCheckbox/font_sizes/font_size = 19
+MainMenuCheckbox/fonts/font = SubResource("FontVariation_wb3uj")
+MainMenuCheckbox/styles/hover = SubResource("StyleBoxEmpty_73fth")
+MainMenuCheckbox/styles/normal = SubResource("StyleBoxEmpty_7b218")
+MainMenuCheckbox/styles/pressed = SubResource("StyleBoxEmpty_gxoi5")
 MainMenuRTL/base_type = &"RichTextLabel"
 MainMenuRTL/colors/default_color = Color(1, 1, 1, 1)
 ScoreDisplay/base_type = &"Label"
