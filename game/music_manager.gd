@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 		beat.emit()
 	if current_track.loop and playback_pos >= current_track.loop_end - latency:
 		playback_pos = current_track.loop_start + playback_pos - current_track.loop_end
+		playback_pos = maxf(0.0, playback_pos)
 		music_player.seek(playback_pos)
 		next_beat = get_next_beat_time(playback_pos)
 
