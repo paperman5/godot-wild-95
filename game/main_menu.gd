@@ -24,10 +24,17 @@ func _ready() -> void:
 	standard_menu_root.show()
 
 func _on_continue_pressed() -> void:
-	GameManager.change_scene_uid(continue_load)
+	var to_load = ""
+	for key in GameManager.level_scenes.keys():
+		if GameManager.level_scenes[key] == continue_load:
+			to_load = key
+	if to_load != "":
+		GameManager.change_scene(to_load)
 
 
 func _on_new_game_pressed() -> void:
+	TutorialManager.do_intro_tutorial = true
+	TutorialManager.do_food_tutorial = true
 	if GameManager.skip_cutscenes:
 		if TutorialManager.skip_tutorials:
 			GameManager.change_scene("level_1")
@@ -35,6 +42,11 @@ func _on_new_game_pressed() -> void:
 			GameManager.change_scene("tutorial")
 	else:
 		GameManager.change_scene("opening_video")
+	
+	if TutorialManager.skip_tutorials:
+		GameManager.save("level_1")
+	else:
+		GameManager.save("tutorial")
 
 
 func _on_credit_meta_clicked(meta: Variant) -> void:

@@ -170,6 +170,7 @@ func show_tutorial():
 	await TutorialManager.anim.animation_finished
 	await GameManager.get_tree().create_timer(1.0).timeout
 	
-	GameManager.go_to_next_level()
+	GameManager.save_won("level_1")
+	GameManager.change_scene("level_1")
 
 pass

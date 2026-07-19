@@ -98,6 +98,9 @@ func _on_seating_timer_timeout():
 
 func _on_ticker_timer_timeout():
 	ui.set_time_remaining(level_timer.time_left)
+	if name == "Tutorial" and level_timer.time_left <= 10.0:
+		ticker_timer.stop()
+		level_timer.stop()
 
 func create_customer() -> Customer:
 	var new_customer := customer_scene.instantiate() as Customer
@@ -175,6 +178,7 @@ func _on_time_up():
 func _show_endround_menu():
 	if score >= win_threshold:
 		win_game()
+		GameManager.save_won(next_level)
 	else:
 		lose_game()
 
