@@ -82,7 +82,7 @@ func _ready() -> void:
 		bubble_fit_orders()
 		thinking_bubble.show()
 		bubble_root.hide()
-		combo_text.text = ""
+		combo_text.update_texts()
 		music_sync.advance_every_n_beats = 4
 		thinking_timer.start(think_time)
 		music_sync.starting_animation = anim_library_keys[customer_type] + "/idle_down"

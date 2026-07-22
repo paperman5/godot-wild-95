@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://55ic7fa2pnu2"]
 
-[ext_resource type="FontFile" uid="uid://vbsvuc7d43s5" path="res://font/hope_gold.ttf" id="1_hec11"]
 [ext_resource type="FontFile" uid="uid://ccxkmgxlnhemk" path="res://font/Caveat-VariableFont_wght.ttf" id="1_hijok"]
 [ext_resource type="FontFile" uid="uid://cylrh3j0losps" path="res://font/RobotoMono-Italic-VariableFont_wght.ttf" id="1_of0g1"]
+[ext_resource type="FontFile" uid="uid://bpxh2io188j0n" path="res://font/monogram-bitmap.png" id="3_of0g1"]
 
 [sub_resource type="FontVariation" id="FontVariation_hunv0"]
 base_font = ExtResource("1_hijok")
@@ -104,14 +104,9 @@ ComboMeter/constants/shadow_offset_y = 2
 ComboMeter/font_sizes/normal_font_size = 30
 ComboMeter/fonts/normal_font = SubResource("FontVariation_of0g1")
 CustomerCombo/base_type = &"RichTextLabel"
-CustomerCombo/colors/default_color = Color(0, 0.5176471, 0, 1)
-CustomerCombo/colors/font_outline_color = Color(1, 1, 1, 1)
-CustomerCombo/colors/font_shadow_color = Color(0, 0, 0, 1)
-CustomerCombo/constants/line_separation = -3
-CustomerCombo/constants/outline_size = -1
-CustomerCombo/constants/shadow_outline_size = 2
-CustomerCombo/font_sizes/normal_font_size = 18
-CustomerCombo/fonts/normal_font = ExtResource("1_hec11")
+CustomerCombo/constants/line_separation = -1
+CustomerCombo/font_sizes/normal_font_size = 6
+CustomerCombo/fonts/normal_font = ExtResource("3_of0g1")
 MainMenuButton1/base_type = &"Button"
 MainMenuButton1/colors/font_color = Color(1, 1, 1, 1)
 MainMenuButton1/font_sizes/font_size = 26

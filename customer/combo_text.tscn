@@ -5,19 +5,63 @@
 
 [node name="ComboText" type="RichTextLabel" unique_id=1811031233]
 z_index = 10
-texture_filter = 2
+texture_filter = 1
+clip_contents = false
 offset_left = -58.0
 offset_top = -56.0
+offset_transform_position = Vector2(-1, -1)
 theme = ExtResource("1_d8f3r")
 theme_type_variation = &"CustomerCombo"
 bbcode_enabled = true
-text = "[color=gold]+$3[/color]
-+1.25x"
+text = "[color=web_green]+$8[/color]
+[color=gold]+1.25x[/color]"
 scroll_active = false
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("2_ub42h")
 metadata/_edit_lock_ = true
+
+[node name="Shadow1" type="RichTextLabel" parent="." unique_id=1462662193]
+unique_name_in_owner = true
+show_behind_parent = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d8f3r")
+theme_type_variation = &"CustomerCombo"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "+$8
++1.25x"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Shadow2" type="RichTextLabel" parent="." unique_id=1437844199]
+unique_name_in_owner = true
+show_behind_parent = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d8f3r")
+theme_type_variation = &"CustomerCombo"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "+$8
++1.25x"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="PriceTextTimer" type="Timer" parent="." unique_id=1893099766 groups=["timers"]]
 unique_name_in_owner = true

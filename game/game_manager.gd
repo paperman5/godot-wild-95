@@ -9,6 +9,7 @@ var next_level := "tutorial"
 var scene_transition_min_time := 0.75
 var skip_cutscenes := false
 var use_alt_sprites := false
+var running_level_from_editor := false
 
 const save_file_path := "user://savegame.txt"
 
@@ -27,6 +28,7 @@ const level_scenes = {
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	default_view_size = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
+	running_level_from_editor = get_tree().current_scene.name != "MainMenu"
 	#set_dialogic_filtering.call_deferred()
 
 func _process(_delta: float) -> void:

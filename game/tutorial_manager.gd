@@ -37,6 +37,7 @@ func _ready() -> void:
 	ios = OS.has_feature("web_ios")
 	if ios:
 		highlighter.material.shader = preload("uid://bp40gkccv2lpx")
+	skip_tutorials = GameManager.running_level_from_editor
 
 func highlight_nodes(nodes : Array, radii : Array, offsets : Array):
 	var node_ps : Array[Vector2] = []

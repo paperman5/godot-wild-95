@@ -73,7 +73,7 @@ func _ready() -> void:
 	customer_seated.connect(TutorialManager._on_customer_seated)
 	
 	if starting_timeline != "" and Dialogic.timeline_exists(starting_timeline) and \
-			not GameManager.skip_cutscenes:
+			not GameManager.skip_cutscenes and not GameManager.running_level_from_editor:
 		GameManager.menus.dim_background()
 		Dialogic.start(starting_timeline)
 		Dialogic.timeline_ended.connect(GameManager.menus.undim_background, CONNECT_ONE_SHOT)
