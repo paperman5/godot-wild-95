@@ -58,8 +58,10 @@ func change_scene(new_scene : String):
 		t.tween_callback(TransitionManager.fade_out)
 		t.tween_callback(MusicManager.music_fade_out)
 		t.tween_await(TransitionManager.fade_complete)
+		if MusicManager.music_fading:
+			t.tween_await(MusicManager.music_fade_finished)
+		t.tween_interval(scene_transition_min_time * Engine.time_scale)
 		t.tween_callback(get_tree().change_scene_to_file.bind(level_scenes[new_scene]))
-		t.tween_interval(scene_transition_min_time)
 		t.tween_callback(TransitionManager.fade_in)
 		t.tween_callback(MusicManager.music_fade_in)
 

@@ -75,13 +75,14 @@ func _create_move_tween(dir : Vector2, bump : bool):
 		move_tween.kill()
 	
 	moving = true
+	var speed := tile_move_speed * Engine.time_scale
 	move_tween = create_tween().set_parallel(true)
 	if not bump:
-		move_tween.tween_property(self, "position", true_pos, tile_move_speed)
+		move_tween.tween_property(self, "position", true_pos, speed)
 	else:
-		move_tween.tween_property(self, "position", true_pos + TILE_SIZE*dir/2, tile_move_speed/2)
-		move_tween.chain().tween_property(self, "position", true_pos, tile_move_speed/2)
-	move_tween.tween_interval(move_cooldown)
+		move_tween.tween_property(self, "position", true_pos + TILE_SIZE*dir/2, speed/2)
+		move_tween.chain().tween_property(self, "position", true_pos, speed/2)
+	move_tween.tween_interval(move_cooldown * Engine.time_scale)
 	move_tween.chain().tween_callback(func(): moving = false)
 	
 func holding_icecream() -> bool:

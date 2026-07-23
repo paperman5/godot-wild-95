@@ -120,7 +120,6 @@ stretch_mode = 5
 
 [node name="StandardMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=895917823]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="Logo" type="TextureRect" parent="AspectRatioContainer/StandardMenuRoot" unique_id=1819785673]
@@ -309,7 +308,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CreditsBack" type="Button" parent="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2" unique_id=111389388]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(171, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("5_7k2rn")
@@ -318,6 +317,7 @@ text = "Back"
 
 [node name="OptionsMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=30002277]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/OptionsMenuRoot" unique_id=1916411843]

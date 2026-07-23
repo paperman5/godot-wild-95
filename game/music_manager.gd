@@ -1,6 +1,7 @@
 extends Node
 
 signal beat()
+signal music_fade_finished
 
 @export var music_lofi_hipass_amt := 2000
 @export var music_lofi_drive := 0.5
@@ -25,6 +26,7 @@ var next_beat := 0.0
 var current_track : MultiBPMAudioStream
 var latency := 0.0
 var initial_music_volume := 0.0
+var music_fading := false
 
 @onready var music_player := %MusicPlayer as AudioStreamPlayer
 
@@ -39,7 +41,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if current_track == null or not music_player.playing:
 		return
-	playback_pos += delta
+	playback_pos += delta / Engine.time_scale
 	if playback_pos >= next_beat:
 		beat_idx += 1
 		next_beat = get_next_beat_time(playback_pos)
@@ -64,16 +66,21 @@ func music_resume():
 func music_fade_out():
 	if music_fade_tween != null:
 		music_fade_tween.kill()
+	music_fading = true
 	music_fade_tween = create_tween()
 	var current_vol = AudioServer.get_bus_volume_linear(music_bus_idx)
-	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, 0.01, music_volume_fade_time)
+	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, 0.0, music_volume_fade_time * Engine.time_scale)
+	music_fade_tween.tween_callback(func(): music_fading = false)
+	music_fade_tween.tween_callback(func(): music_fade_finished.emit())
 
 func music_fade_in():
 	if music_fade_tween != null:
 		music_fade_tween.kill()
 	music_fade_tween = create_tween()
 	var current_vol = AudioServer.get_bus_volume_linear(music_bus_idx)
-	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, initial_music_volume * GameManager.music_vol_adjustment, music_volume_fade_time)
+	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, initial_music_volume * GameManager.music_vol_adjustment, music_volume_fade_time * Engine.time_scale)
+	music_fade_tween.tween_callback(func(): music_fading = false)
+	music_fade_tween.tween_callback(func(): music_fade_finished.emit())
 
 func _set_music_bus_volume(volume_linear : float):
 	AudioServer.set_bus_volume_db(music_bus_idx, linear_to_db(volume_linear))
@@ -95,8 +102,8 @@ func set_music_lofi(enabled : bool):
 		music_lofi_tweener.kill()
 		music_lofi_tweener = create_tween()
 		music_lofi_tweener.set_parallel()
-		music_lofi_tweener.tween_property(hipass_filter, "cutoff_hz", music_lofi_hipass_amt, music_lofi_fade_time)
-		music_lofi_tweener.tween_property(lofi_filter, "drive", music_lofi_drive, music_lofi_fade_time)
+		music_lofi_tweener.tween_property(hipass_filter, "cutoff_hz", music_lofi_hipass_amt, music_lofi_fade_time * Engine.time_scale)
+		music_lofi_tweener.tween_property(lofi_filter, "drive", music_lofi_drive, music_lofi_fade_time * Engine.time_scale)
 	elif music_lofi_mode and not enabled:
 		if music_lofi_tweener == null:
 			music_lofi_tweener = create_tween()
@@ -104,8 +111,8 @@ func set_music_lofi(enabled : bool):
 		music_lofi_tweener.kill()
 		music_lofi_tweener = create_tween()
 		music_lofi_tweener.set_parallel()
-		music_lofi_tweener.tween_property(hipass_filter, "cutoff_hz", 20, music_lofi_fade_time)
-		music_lofi_tweener.tween_property(lofi_filter, "drive", 0.0, music_lofi_fade_time)
+		music_lofi_tweener.tween_property(hipass_filter, "cutoff_hz", 20, music_lofi_fade_time * Engine.time_scale)
+		music_lofi_tweener.tween_property(lofi_filter, "drive", 0.0, music_lofi_fade_time * Engine.time_scale)
 
 func _set_hipass_enabled(enabled : bool):
 	AudioServer.set_bus_effect_enabled(music_bus_idx, 1, enabled)

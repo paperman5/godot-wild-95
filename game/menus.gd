@@ -52,11 +52,11 @@ func _on_begin_resume_pressed():
 func dim_background():
 	var t = create_tween()
 	t.tween_callback(background_dimmer.show)
-	t.tween_property(background_dimmer, "modulate:a", 1.0, 0.2)
+	t.tween_property(background_dimmer, "modulate:a", 1.0, 0.2 * Engine.time_scale)
 
 func undim_background():
 	var t = create_tween()
-	t.tween_property(background_dimmer, "modulate:a", 0.0, 0.2)
+	t.tween_property(background_dimmer, "modulate:a", 0.0, 0.2 * Engine.time_scale)
 	t.tween_callback(background_dimmer.hide)
 
 func _on_main_menu_pressed():
