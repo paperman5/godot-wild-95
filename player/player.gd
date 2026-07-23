@@ -98,7 +98,8 @@ func add_empty_icecream() -> bool:
 		# If we already have an empty icecream don't add another one
 		if holding_icecream() and food_stack[0].is_empty():
 			return false
-		var icecream = preload("uid://cg80er3ff08wp").instantiate()
+		var icecream := preload("uid://cg80er3ff08wp").instantiate() as IceCream
+		icecream.set_symbols_visible(false)
 		add_to_food_stack(icecream)
 		return true
 	return false

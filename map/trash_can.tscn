@@ -8,12 +8,14 @@
 size = Vector2(32, 32)
 
 [node name="TrashCan" type="StaticBody2D" unique_id=1869970340]
+texture_filter = 1
 script = ExtResource("1_h6tr3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1996763604]
 shape = SubResource("RectangleShape2D_hunv0")
 
 [node name="TrashCan" type="Sprite2D" parent="." unique_id=954497979]
+use_parent_material = true
 texture = ExtResource("2_wy813")
 offset = Vector2(0, -16)
 

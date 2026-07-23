@@ -244,6 +244,7 @@ func bubble_fit_orders():
 	const margin_side := 3
 	const margin_top := 3
 	const margin_bot := 4
+	const margin_symbol := 8
 	const order_spacing := 4
 	const tail_x_offset := 5
 	var orders_height := 0.0
@@ -257,6 +258,8 @@ func bubble_fit_orders():
 	
 	bubble_ninepatch.offset_left = -(orders_width/2 + margin_side)
 	bubble_ninepatch.offset_right = orders_width/2 + margin_side
+	if GameManager.use_alt_sprites:
+		bubble_ninepatch.offset_right = orders_width/2 + margin_side + margin_symbol
 	bubble_ninepatch.offset_top = -(orders_height + margin_top)
 	bubble_ninepatch.offset_bottom = margin_bot
 	bubble_tail.offset = Vector2(bubble_ninepatch.offset_left + tail_x_offset, margin_bot)

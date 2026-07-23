@@ -11,11 +11,13 @@ region = Rect2(96, 208, 64, 48)
 
 [node name="NightwalkerDrunk" type="StaticBody2D" unique_id=1580295106]
 y_sort_enabled = true
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=226095807]
 shape = SubResource("RectangleShape2D_0mui5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1528449414]
+use_parent_material = true
 position = Vector2(0, 12)
 texture = SubResource("AtlasTexture_hunv0")
 offset = Vector2(-16, -20)

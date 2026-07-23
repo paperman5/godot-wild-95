@@ -125,12 +125,14 @@ _data = {
 }
 
 [node name="Jukebox" type="StaticBody2D" unique_id=2059468624]
+texture_filter = 1
 script = ExtResource("1_e8877")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323026383]
 shape = SubResource("RectangleShape2D_hunv0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=601446722]
+use_parent_material = true
 texture = ExtResource("1_1stij")
 offset = Vector2(0, -16)
 hframes = 8

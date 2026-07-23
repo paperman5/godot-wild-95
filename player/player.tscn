@@ -507,11 +507,13 @@ _data = {
 }
 
 [node name="Player" type="Node2D" unique_id=983482868]
+texture_filter = 1
 script = ExtResource("1_onrkg")
 empty_bump_sfx = ExtResource("2_hg6s5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=205100782]
 unique_name_in_owner = true
+use_parent_material = true
 texture = ExtResource("2_yw30f")
 offset = Vector2(0, -15)
 hframes = 2

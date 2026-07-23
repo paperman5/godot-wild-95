@@ -168,6 +168,7 @@ func _on_combo_timer_timeout():
 	audio.play()
 
 func _on_time_up():
+	ui.set_time_remaining(0.0)
 	combo_timer.stop()
 	combo_timer.timeout.emit()
 	pause()

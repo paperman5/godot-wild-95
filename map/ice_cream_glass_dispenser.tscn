@@ -13,6 +13,7 @@ atlas = ExtResource("2_802qu")
 region = Rect2(0, 32, 32, 64)
 
 [node name="IceCreamGlassDispenser" type="StaticBody2D" unique_id=1869970340]
+texture_filter = 1
 script = ExtResource("1_802qu")
 style = 1
 
@@ -21,10 +22,12 @@ shape = SubResource("RectangleShape2D_hunv0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236278550]
 unique_name_in_owner = true
+use_parent_material = true
 texture = SubResource("AtlasTexture_802qu")
 offset = Vector2(0, -16)
 
 [node name="IceCreamGlass" type="Sprite2D" parent="." unique_id=954497979]
+use_parent_material = true
 position = Vector2(-7, -2)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -32,6 +35,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass2" type="Sprite2D" parent="." unique_id=2118368986]
+use_parent_material = true
 position = Vector2(-7, 2)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -39,6 +43,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass3" type="Sprite2D" parent="." unique_id=1433146987]
+use_parent_material = true
 position = Vector2(-7, 6)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -46,6 +51,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass4" type="Sprite2D" parent="." unique_id=1728585973]
+use_parent_material = true
 position = Vector2(-7, 10)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -53,6 +59,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass5" type="Sprite2D" parent="." unique_id=2039446348]
+use_parent_material = true
 position = Vector2(7, -2)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -60,6 +67,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass6" type="Sprite2D" parent="." unique_id=1037110914]
+use_parent_material = true
 position = Vector2(7, 2)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -67,6 +75,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass7" type="Sprite2D" parent="." unique_id=783513588]
+use_parent_material = true
 position = Vector2(7, 6)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)
@@ -74,6 +83,7 @@ hframes = 2
 frame = 1
 
 [node name="IceCreamGlass8" type="Sprite2D" parent="." unique_id=1712233080]
+use_parent_material = true
 position = Vector2(7, 10)
 texture = ExtResource("3_802qu")
 offset = Vector2(0, -24)

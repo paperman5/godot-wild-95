@@ -19,7 +19,7 @@ region = Rect2(96, 88, 32, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hunv0"]
 atlas = ExtResource("3_vwkqk")
-region = Rect2(128, 32, 32, 32)
+region = Rect2(129, 33, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bvem"]
 atlas = ExtResource("3_vwkqk")
@@ -33,23 +33,27 @@ shape = SubResource("RectangleShape2D_hunv0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429451809]
 unique_name_in_owner = true
+use_parent_material = true
 texture = SubResource("AtlasTexture_g5qrt")
 offset = Vector2(0, -16)
 
 [node name="Corner" type="Sprite2D" parent="." unique_id=245993759]
 unique_name_in_owner = true
 visible = false
+use_parent_material = true
 position = Vector2(0, 5.928574)
 texture = SubResource("AtlasTexture_vwkqk")
 offset = Vector2(0, -26)
 
 [node name="PlacematH" type="Sprite2D" parent="." unique_id=1777733682]
 unique_name_in_owner = true
+use_parent_material = true
 texture = SubResource("AtlasTexture_hunv0")
 
 [node name="PlacematV" type="Sprite2D" parent="." unique_id=1914696617]
 unique_name_in_owner = true
 visible = false
+use_parent_material = true
 texture = SubResource("AtlasTexture_5bvem")
 
 [node name="SeatB" type="Marker2D" parent="." unique_id=1181424213]

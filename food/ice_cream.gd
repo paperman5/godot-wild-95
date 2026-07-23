@@ -10,10 +10,8 @@ extends FoodItem
 @onready var mat := spr_group.material as ShaderMaterial
 
 func _ready() -> void:
-	for c in [%Scoop0, %Scoop1, %Scoop2]:
+	for c in [%Scoop0, %Scoop1, %Scoop2, %Separator0, %Separator1, %Symbol0, %Symbol1, %Symbol2]:
 		c.hide()
-		if GameManager.use_alt_sprites:
-			c.texture = alt_sprites
 	GameManager.player.held_item_changed.connect(_on_held_item_changed)
 	_on_held_item_changed.call_deferred(GameManager.player.get_held_order())
 
@@ -32,6 +30,9 @@ func is_equal(other : FoodItem) -> bool:
 			return false
 	return true
 
+func set_symbols_visible(enabled : bool):
+	$SymbolRoot.visible = enabled
+
 func is_empty() -> bool:
 	return len(flavors) == 0
 
@@ -45,12 +46,27 @@ func add_flavor(flavor : Utils.IceCreamType):
 		scoop_spr.frame = flavor
 		scoop_spr.show()
 		stack_pos.position = get_node("Stack%d" % len(flavors)).position
+		if len(flavors) > 1:
+			%Separator0.show()
+		if len(flavors) > 2:
+			%Separator1.show()
 
 func reset_visible():
+	const symbol_offset := Vector2i(11, 8)
+	const margin_top := 3
 	for i in len(flavors):
 		var scoop_spr := get_node("%%Scoop%d" % i) as Sprite2D
 		scoop_spr.frame = flavors[i]
 		scoop_spr.show()
+		if GameManager.use_alt_sprites:
+			var alt_spr := get_node("%%Symbol%d" % i) as Sprite2D
+			alt_spr.frame = flavors[i]
+			alt_spr.offset = Vector2(symbol_offset.x, stack_pos.position.y + margin_top + symbol_offset.y * (len(flavors) - 1 - i))
+			alt_spr.show()
+	if len(flavors) > 1:# and flavors[0] == flavors[1]:
+		%Separator0.show()
+	if len(flavors) > 2:# and flavors[1] == flavors[2]:
+		%Separator1.show()
 
 func scoop_count() -> int:
 	return len(flavors)

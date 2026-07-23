@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://brnv7tosuv5ti"]
+
+[ext_resource type="Shader" uid="uid://jvws5uobte67" path="res://misc/smooth_pixel_shader.gdshader" id="1_c1if7"]
+
+[resource]
+shader = ExtResource("1_c1if7")
+shader_parameter/linear_interp = true
+shader_parameter/interp_sharpness = Vector2i(3, 3)

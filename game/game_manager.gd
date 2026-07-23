@@ -8,7 +8,7 @@ var default_view_size := Vector2.ZERO
 var next_level := "tutorial"
 var scene_transition_min_time := 0.75
 var skip_cutscenes := false
-var use_alt_sprites := false
+var use_alt_sprites := true
 var running_level_from_editor := false
 
 const save_file_path := "user://savegame.txt"
