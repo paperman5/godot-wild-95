@@ -120,6 +120,7 @@ stretch_mode = 5
 
 [node name="StandardMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=895917823]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Logo" type="TextureRect" parent="AspectRatioContainer/StandardMenuRoot" unique_id=1819785673]
@@ -182,37 +183,12 @@ text = "Credits"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
-[node name="Clear" type="Button" parent="AspectRatioContainer/StandardMenuRoot/VBoxContainer" unique_id=1332220308]
+[node name="Options" type="Button" parent="AspectRatioContainer/StandardMenuRoot/VBoxContainer" unique_id=590619061]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_7k2rn")
 theme_type_variation = &"MainMenuButton1"
-text = "Clear Save"
-
-[node name="Control2" type="Control" parent="AspectRatioContainer/StandardMenuRoot/VBoxContainer" unique_id=1565311231]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/StandardMenuRoot/VBoxContainer" unique_id=2128202100]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="SkipTutorials" type="CheckBox" parent="AspectRatioContainer/StandardMenuRoot/VBoxContainer/VBoxContainer" unique_id=746301477]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("5_7k2rn")
-theme_type_variation = &"MainMenuCheckbox"
-text = "Skip Tutorials"
-alignment = 1
-
-[node name="SkipCutscenes" type="CheckBox" parent="AspectRatioContainer/StandardMenuRoot/VBoxContainer/VBoxContainer" unique_id=954568898]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("5_7k2rn")
-theme_type_variation = &"MainMenuCheckbox"
-text = "Skip Cutscenes"
-alignment = 1
+text = "Options"
 
 [node name="CreditsMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=970087285]
 unique_name_in_owner = true
@@ -224,6 +200,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 384.0
+offset_bottom = 0.011474609
 grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
@@ -339,6 +316,215 @@ theme = ExtResource("5_7k2rn")
 theme_type_variation = &"MainMenuButton1"
 text = "Back"
 
+[node name="OptionsMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=30002277]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/OptionsMenuRoot" unique_id=1916411843]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 384.0
+offset_bottom = 0.011474609
+grow_vertical = 2
+theme_override_constants/margin_left = 77
+theme_override_constants/margin_right = 77
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer" unique_id=606951024]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1377397310]
+layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"OptionsCategoryLabel"
+text = "General"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1702472364]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SkipTutorials" type="CheckBox" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=746301477]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuCheckbox"
+text = "Skip Tutorials"
+
+[node name="SkipCutscenes" type="CheckBox" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=954568898]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuCheckbox"
+text = "Skip Cutscenes"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1855544776]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=952365887]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=114259319]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.71
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "Music Volume:"
+horizontal_alignment = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=54891632]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "100%"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=1839913465]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 125.0
+step = 5.0
+value = 100.0
+scrollable = false
+tick_count = 6
+ticks_on_borders = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=294127782]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=734724892]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=754571221]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "SFX Volume:"
+horizontal_alignment = 2
+
+[node name="SFXVolumeLabel" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=1547284586]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "100%"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=563133295]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 125.0
+step = 5.0
+value = 100.0
+scrollable = false
+tick_count = 6
+ticks_on_borders = true
+
+[node name="Control3" type="Control" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1684392368]
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 2
+
+[node name="Clear" type="Button" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1332220308]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuButton1"
+text = "Clear Save"
+
+[node name="Control2" type="Control" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1384044188]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1451331245]
+layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"OptionsCategoryLabel"
+text = "Accessibility"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1255259081]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Symbols" type="CheckBox" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=177997099]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Adds a set of shapes to the side of ice cream orders to indicate the ice cream types."
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuCheckbox"
+text = "Ice Cream Symbols"
+
+[node name="Hold" type="CheckBox" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=798854031]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Hold a direction to continuously move."
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuCheckbox"
+text = "Hold to Move"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=2049175517]
+layout_mode = 2
+tooltip_text = "Game a little too fast for you (or not fast enough?) Adjust the speed here."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=360666301]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1708252641]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.56
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "Game Speed:"
+horizontal_alignment = 2
+
+[node name="GameSpeedLabel" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1904566612]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "100%"
+
+[node name="GameSpeedSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=343351792]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 50.0
+max_value = 125.0
+step = 5.0
+value = 100.0
+scrollable = false
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Control" type="Control" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1812327070]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="OptionsBack" type="Button" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=201124228]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"MainMenuButton1"
+text = "Back"
+
 [node name="Mute" type="Button" parent="." unique_id=447881083]
 visible = false
 layout_mode = 1
@@ -360,13 +546,20 @@ autoplay = &"logo_flicker"
 [connection signal="pressed" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/Clear" to="." method="_on_clear_pressed"]
-[connection signal="toggled" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/VBoxContainer/SkipTutorials" to="." method="_on_skip_tutorials_toggled"]
-[connection signal="toggled" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/VBoxContainer/SkipCutscenes" to="." method="_on_skip_cutscenes_toggled"]
+[connection signal="pressed" from="AspectRatioContainer/StandardMenuRoot/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="meta_clicked" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/HBoxContainer/paperish" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/HBoxContainer/octo" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/HBoxContainer2/py" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/HBoxContainer2/miz" to="." method="_on_credit_meta_clicked"]
 [connection signal="meta_clicked" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/blu" to="." method="_on_credit_meta_clicked"]
-[connection signal="pressed" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/CreditsBack" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/CreditsMenuRoot/VBoxContainer2/CreditsBack" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/SkipTutorials" to="." method="_on_skip_tutorials_toggled"]
+[connection signal="toggled" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/SkipCutscenes" to="." method="_on_skip_cutscenes_toggled"]
+[connection signal="value_changed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer2/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer3/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="pressed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/Clear" to="." method="_on_clear_pressed"]
+[connection signal="toggled" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/Symbols" to="." method="_on_symbols_toggled"]
+[connection signal="toggled" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/Hold" to="." method="_on_hold_toggled"]
+[connection signal="value_changed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer/GameSpeedSlider" to="." method="_on_game_speed_slider_value_changed"]
+[connection signal="pressed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/OptionsBack" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Mute" to="." method="_on_mute_toggled"]

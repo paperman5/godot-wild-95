@@ -73,7 +73,7 @@ func music_fade_in():
 		music_fade_tween.kill()
 	music_fade_tween = create_tween()
 	var current_vol = AudioServer.get_bus_volume_linear(music_bus_idx)
-	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, initial_music_volume, music_volume_fade_time)
+	music_fade_tween.tween_method(_set_music_bus_volume, current_vol, initial_music_volume * GameManager.music_vol_adjustment, music_volume_fade_time)
 
 func _set_music_bus_volume(volume_linear : float):
 	AudioServer.set_bus_volume_db(music_bus_idx, linear_to_db(volume_linear))

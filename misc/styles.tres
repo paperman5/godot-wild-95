@@ -66,12 +66,21 @@ shadow_offset = Vector2(4.865, 2.79)
 
 [sub_resource type="FontVariation" id="FontVariation_wb3uj"]
 base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 550
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73fth"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b218"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxoi5"]
+
+[sub_resource type="FontVariation" id="FontVariation_j3pel"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 550
+}
 
 [sub_resource type="FontVariation" id="FontVariation_sxc2a"]
 base_font = ExtResource("1_hijok")
@@ -83,6 +92,12 @@ variation_opentype = {
 base_font = ExtResource("1_hijok")
 variation_opentype = {
 2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_6vmua"]
+base_font = ExtResource("1_hijok")
+variation_opentype = {
+2003265652: 550
 }
 
 [sub_resource type="FontVariation" id="FontVariation_5fgsp"]
@@ -115,13 +130,16 @@ MainMenuButton1/styles/hover = SubResource("StyleBoxFlat_of0g1")
 MainMenuButton1/styles/normal = SubResource("StyleBoxFlat_rv8kf")
 MainMenuButton1/styles/pressed = SubResource("StyleBoxFlat_a46he")
 MainMenuCheckbox/base_type = &"CheckBox"
-MainMenuCheckbox/font_sizes/font_size = 19
+MainMenuCheckbox/font_sizes/font_size = 21
 MainMenuCheckbox/fonts/font = SubResource("FontVariation_wb3uj")
 MainMenuCheckbox/styles/hover = SubResource("StyleBoxEmpty_73fth")
 MainMenuCheckbox/styles/normal = SubResource("StyleBoxEmpty_7b218")
 MainMenuCheckbox/styles/pressed = SubResource("StyleBoxEmpty_gxoi5")
 MainMenuRTL/base_type = &"RichTextLabel"
 MainMenuRTL/colors/default_color = Color(1, 1, 1, 1)
+OptionsCategoryLabel/base_type = &"RichTextLabel"
+OptionsCategoryLabel/font_sizes/normal_font_size = 32
+OptionsCategoryLabel/fonts/normal_font = SubResource("FontVariation_j3pel")
 ScoreDisplay/base_type = &"Label"
 ScoreDisplay/colors/font_color = Color(0, 0, 0, 1)
 ScoreDisplay/constants/line_spacing = -20
@@ -134,6 +152,9 @@ ScoreDisplayWin/colors/font_outline_color = Color(1, 1, 1, 1)
 ScoreDisplayWin/constants/outline_size = 16
 ScoreDisplayWin/font_sizes/font_size = 54
 ScoreDisplayWin/fonts/font = SubResource("FontVariation_ievrn")
+SliderLabel/base_type = &"Label"
+SliderLabel/font_sizes/font_size = 20
+SliderLabel/fonts/font = SubResource("FontVariation_6vmua")
 TutorialText/base_type = &"RichTextLabel"
 TutorialText/constants/outline_size = 5
 TutorialText/font_sizes/normal_font_size = 32
