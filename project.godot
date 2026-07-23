@@ -174,3 +174,7 @@ highlight_color={
 "type": "color",
 "value": Color(0, 0.75686276, 0, 1)
 }
+total_scale={
+"type": "float",
+"value": 1.0
+}

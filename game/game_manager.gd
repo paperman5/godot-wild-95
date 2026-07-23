@@ -42,8 +42,10 @@ func _process(_delta: float) -> void:
 	var cam = get_viewport().get_camera_2d()
 	if is_instance_valid(cam):
 		var view_scale = Vector2(get_window().size) / default_view_size
+		var total_scale = Utils.get_view_scale()
 		var zoom = cam.zoom
 		RenderingServer.global_shader_parameter_set("zoom", zoom * view_scale)
+		RenderingServer.global_shader_parameter_set("total_scale", total_scale)
 
 func time_up():
 	pass
