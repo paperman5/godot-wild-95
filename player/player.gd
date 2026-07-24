@@ -6,7 +6,7 @@ signal held_item_changed(new : FoodItem)
 const TILE_SIZE = 32
 
 @export var tile_move_speed := 0.1
-@export var move_cooldown := 0.01
+@export var move_hold_cooldown := 0.15
 @export var max_food_stack := 4
 @export var empty_bump_sfx : AudioStream
 
@@ -18,6 +18,7 @@ const TILE_SIZE = 32
 var move_tween : Tween
 var true_pos := Vector2.ZERO
 var moving := false
+var can_hold_move := true
 
 var food_stack : Array[FoodItem] = []
 
@@ -26,8 +27,6 @@ func _ready() -> void:
 	true_pos = position
 
 func _physics_process(_delta: float) -> void:
-	#if moving or GameManager.level.paused:
-		#return
 	if GameManager.level.paused:
 		return
 	if moving:
@@ -36,19 +35,23 @@ func _physics_process(_delta: float) -> void:
 	
 	var move_dir := Vector2.ZERO
 	var prev_anim_time := anim.current_animation_position
-	if Input.is_action_just_pressed("move_down"):
+	if Input.is_action_just_pressed("move_down") or \
+			(Input.is_action_pressed("move_down") and can_hold_move):
 		move_dir = Vector2.DOWN
 		anim.current_animation = "walk_down"
 		anim.seek(prev_anim_time)
-	elif Input.is_action_just_pressed("move_up"):
+	elif Input.is_action_just_pressed("move_up") or \
+			(Input.is_action_pressed("move_up") and can_hold_move):
 		move_dir = Vector2.UP
 		anim.current_animation = "walk_up"
 		anim.seek(prev_anim_time)
-	elif Input.is_action_just_pressed("move_left"):
+	elif Input.is_action_just_pressed("move_left") or \
+			(Input.is_action_pressed("move_left") and can_hold_move):
 		move_dir = Vector2.LEFT
 		anim.current_animation = "walk_left"
 		anim.seek(prev_anim_time)
-	elif Input.is_action_just_pressed("move_right"):
+	elif Input.is_action_just_pressed("move_right") or \
+			(Input.is_action_pressed("move_right") and can_hold_move):
 		move_dir = Vector2.RIGHT
 		anim.current_animation = "walk_right"
 		anim.seek(prev_anim_time)
@@ -75,15 +78,17 @@ func _create_move_tween(dir : Vector2, bump : bool):
 		move_tween.kill()
 	
 	moving = true
-	var speed := tile_move_speed * Engine.time_scale
+	can_hold_move = false
+	var move_time := tile_move_speed * Engine.time_scale
 	move_tween = create_tween().set_parallel(true)
 	if not bump:
-		move_tween.tween_property(self, "position", true_pos, speed)
+		move_tween.tween_property(self, "position", true_pos, move_time)
 	else:
-		move_tween.tween_property(self, "position", true_pos + TILE_SIZE*dir/2, speed/2)
-		move_tween.chain().tween_property(self, "position", true_pos, speed/2)
-	move_tween.tween_interval(move_cooldown * Engine.time_scale)
-	move_tween.chain().tween_callback(func(): moving = false)
+		move_tween.tween_property(self, "position", true_pos + TILE_SIZE*dir/2, move_time/2)
+		move_tween.chain().tween_property(self, "position", true_pos, move_time/2)
+	if GameManager.hold_to_move:
+		move_tween.tween_interval(move_hold_cooldown * Engine.time_scale)
+		move_tween.chain().tween_callback(func(): can_hold_move = true)
 	
 func holding_icecream() -> bool:
 	return len(food_stack) > 0 and is_instance_of(food_stack[0], IceCream)

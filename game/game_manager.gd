@@ -15,6 +15,9 @@ var music_vol_adjustment := 1.0
 var default_sfx_vol_db := 0.0
 var sfx_vol_adjustment := 1.0
 var hold_to_move := false
+var hold_to_move_speed := 0.15
+var hold_speed_min := 0.1
+var hold_speed_max := 0.2
 
 const save_file_path := "user://savegame.txt"
 

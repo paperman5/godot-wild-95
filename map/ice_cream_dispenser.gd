@@ -30,7 +30,8 @@ func _ready() -> void:
 	type = type
 	counter_style = counter_style
 	alt_icon.frame = type
-	alt_icon.visible = GameManager.use_alt_sprites
+	if not Engine.is_editor_hint():
+		alt_icon.visible = GameManager.use_alt_sprites
 
 func bump(from_dir : Vector2) -> bool:
 	if from_dir.normalized().is_equal_approx(Vector2.UP):

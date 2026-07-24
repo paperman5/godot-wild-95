@@ -120,6 +120,7 @@ stretch_mode = 5
 
 [node name="StandardMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=895917823]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Logo" type="TextureRect" parent="AspectRatioContainer/StandardMenuRoot" unique_id=1819785673]
@@ -317,7 +318,6 @@ text = "Back"
 
 [node name="OptionsMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=30002277]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/OptionsMenuRoot" unique_id=1916411843]
@@ -332,6 +332,7 @@ theme_override_constants/margin_right = 77
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer" unique_id=606951024]
 layout_mode = 2
+theme_override_constants/separation = 2
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1377397310]
@@ -342,10 +343,6 @@ text = "General"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1702472364]
-layout_mode = 2
-theme_override_constants/separation = 0
 
 [node name="SkipTutorials" type="CheckBox" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=746301477]
 unique_name_in_owner = true
@@ -432,7 +429,7 @@ tick_count = 6
 ticks_on_borders = true
 
 [node name="Control3" type="Control" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1684392368]
-custom_minimum_size = Vector2(0, 29)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="Clear" type="Button" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1332220308]
@@ -443,7 +440,7 @@ theme_type_variation = &"MainMenuButton1"
 text = "Clear Save"
 
 [node name="Control2" type="Control" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1384044188]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1451331245]
@@ -454,10 +451,6 @@ text = "Accessibility"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1255259081]
-layout_mode = 2
-theme_override_constants/separation = 0
 
 [node name="Symbols" type="CheckBox" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=177997099]
 unique_name_in_owner = true
@@ -478,6 +471,41 @@ tooltip_text = "Hold a direction to continuously move."
 theme = ExtResource("5_7k2rn")
 theme_type_variation = &"MainMenuCheckbox"
 text = "Hold to Move"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=1558154089]
+layout_mode = 2
+tooltip_text = "Game a little too fast for you (or not fast enough?) Adjust the speed here."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer4" unique_id=139161710]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer4/HBoxContainer" unique_id=944506671]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.4
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "Hold to Move Speed:"
+horizontal_alignment = 2
+
+[node name="HoldSpeedLabel" type="Label" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer4/HBoxContainer" unique_id=1137655810]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"SliderLabel"
+text = "150%"
+
+[node name="HoldSpeedSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer4" unique_id=608241231]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 100.0
+max_value = 200.0
+step = 5.0
+value = 150.0
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2" unique_id=2049175517]
 layout_mode = 2
@@ -560,6 +588,7 @@ autoplay = &"logo_flicker"
 [connection signal="pressed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/Clear" to="." method="_on_clear_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/Symbols" to="." method="_on_symbols_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/Hold" to="." method="_on_hold_toggled"]
+[connection signal="value_changed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer4/HoldSpeedSlider" to="." method="_on_hold_speed_slider_value_changed"]
 [connection signal="value_changed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer/GameSpeedSlider" to="." method="_on_game_speed_slider_value_changed"]
 [connection signal="pressed" from="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/OptionsBack" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Mute" to="." method="_on_mute_toggled"]

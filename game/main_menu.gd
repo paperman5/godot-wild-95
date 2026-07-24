@@ -18,6 +18,8 @@ extends Control
 @onready var sfx_volume_slider: HSlider = %SFXVolumeSlider
 @onready var symbols: CheckBox = %Symbols
 @onready var hold: CheckBox = %Hold
+@onready var hold_speed_label: Label = %HoldSpeedLabel
+@onready var hold_speed_slider: HSlider = %HoldSpeedSlider
 @onready var game_speed_label: Label = %GameSpeedLabel
 @onready var game_speed_slider: HSlider = %GameSpeedSlider
 
@@ -42,6 +44,8 @@ func _ready() -> void:
 	music_volume_slider.value = 100 * GameManager.music_vol_adjustment
 	sfx_volume_slider.value = 100 * GameManager.sfx_vol_adjustment
 	game_speed_slider.value = 100 * Engine.time_scale
+	hold_speed_slider.value = lerp(100.0, 200.0, \
+		inverse_lerp(GameManager.hold_speed_max, GameManager.hold_speed_min, GameManager.hold_to_move_speed))
 	skip_cutscenes.set_pressed_no_signal(GameManager.skip_cutscenes)
 	skip_tutorials.set_pressed_no_signal(TutorialManager.skip_tutorials)
 	hold.set_pressed_no_signal(GameManager.hold_to_move)
@@ -141,3 +145,9 @@ func _on_symbols_toggled(toggled_on: bool) -> void:
 
 func _on_hold_toggled(toggled_on: bool) -> void:
 	GameManager.hold_to_move = toggled_on
+
+
+func _on_hold_speed_slider_value_changed(value: float) -> void:
+	hold_speed_label.text = "%d%%" % roundi(value)
+	GameManager.hold_to_move_speed = lerp(GameManager.hold_speed_max, GameManager.hold_speed_min, \
+		inverse_lerp(hold_speed_slider.min_value, hold_speed_slider.max_value, value))
