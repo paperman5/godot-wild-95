@@ -38,6 +38,7 @@ func _ready() -> void:
 	# when using the Compatibility renderer, so replace the highlight shader
 	# with one that doesn't use the screen texture (disables desaturation)
 	ios = OS.has_feature("web_ios") or OS.has_feature("web_macos")
+	#ios = true
 	if ios:
 		highlighter.material.shader = preload("uid://bp40gkccv2lpx")
 	skip_tutorials = GameManager.running_level_from_editor
@@ -52,7 +53,6 @@ func highlight_node(node : Node2D, radius : float, node_offset : Vector2):
 	highlight_points([Utils.get_node_screen_position(node, node_offset)], [radius])
 
 func _process(_delta: float) -> void:
-	highlight_mat.set_shader_parameter("zoom", Utils.get_view_scale() * Vector2.ONE)
 	if not tutorial_active or input_locked:
 		return
 	for action in ["move_down", "move_right", "move_up", "move_left"]:

@@ -1,18 +1,45 @@
-shader_type canvas_item;
-render_mode unshaded;
+float dither2x2(vec2 position, float brightness) {
+  int x = int(mod(position.x, 2.0));
+  int y = int(mod(position.y, 2.0));
+  int index = x + y * 2;
+  float limit = 0.0;
 
-uniform vec2 zoom = vec2(1.0);
-uniform float blur = 20.0;
-uniform vec4 back_color : source_color = vec4(0.0, 0.0, 0.0, 0.5);
-uniform vec2[4] highlight_points;
-uniform float[4] highlight_radii;
-uniform vec2 slot_a = vec2(0.0);
-uniform vec2 slot_b = vec2(0.0);
-uniform float slot_r = 20.0;
-varying vec4 modulate;
+  if (x < 8) {
+    if (index == 0) limit = 0.25;
+    if (index == 1) limit = 0.75;
+    if (index == 2) limit = 1.00;
+    if (index == 3) limit = 0.50;
+  }
 
-void vertex() {
-	modulate = COLOR;
+  return brightness < limit ? 0.0 : 1.0;
+}
+
+float dither4x4(vec2 position, float brightness) {
+  int x = int(mod(position.x, 4.0));
+  int y = int(mod(position.y, 4.0));
+  int index = x + y * 4;
+  float limit = 0.0;
+
+  if (x < 8) {
+    if (index == 0) limit = 0.0625;
+    if (index == 1) limit = 0.5625;
+    if (index == 2) limit = 0.1875;
+    if (index == 3) limit = 0.6875;
+    if (index == 4) limit = 0.8125;
+    if (index == 5) limit = 0.3125;
+    if (index == 6) limit = 0.9375;
+    if (index == 7) limit = 0.4375;
+    if (index == 8) limit = 0.25;
+    if (index == 9) limit = 0.75;
+    if (index == 10) limit = 0.125;
+    if (index == 11) limit = 0.625;
+    if (index == 12) limit = 1.0;
+    if (index == 13) limit = 0.5;
+    if (index == 14) limit = 0.875;
+    if (index == 15) limit = 0.375;
+  }
+
+  return brightness < limit ? 0.0 : 1.0;
 }
 
 float dither8x8(vec2 position, float brightness) {
@@ -89,39 +116,4 @@ float dither8x8(vec2 position, float brightness) {
   }
 
   return brightness < limit ? 0.0 : 1.0;
-}
-
-float sdSegment( in vec2 p, in vec2 a, in vec2 b, in float r )
-{
-    vec2 ba = b-a;
-    vec2 pa = p-a;
-    float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
-    return length(pa-h*ba)-r;
-}
-
-void fragment() {
-	vec4 c = vec4(back_color.rgb, 1.0);
-	vec2 screen_pixel_size = SCREEN_PIXEL_SIZE;
-	vec2 big_screen_pixel_size = SCREEN_PIXEL_SIZE * zoom;
-	float aspect = float(SCREEN_PIXEL_SIZE.y) / float(SCREEN_PIXEL_SIZE.x);
-	vec2 uv = floor(UV/big_screen_pixel_size)*big_screen_pixel_size;
-	float blur_r = big_screen_pixel_size.y * blur / 2.0;
-	
-	// Slot rendering: rounded line
-	vec2 pa = slot_a * vec2(aspect, 1.0) * screen_pixel_size;
-	vec2 pb = slot_b * vec2(aspect, 1.0) * screen_pixel_size;
-	float line = sdSegment(vec2(uv.x*aspect, uv.y), pa, pb, slot_r*screen_pixel_size.y);
-	float line_r = slot_r*big_screen_pixel_size.y;
-	c.a *= smoothstep(clamp(line_r-blur_r, 0.0, 1.0), clamp(line_r+blur_r, 0.0, 1.0), line);
-	
-	// Point rendering
-	for (int i = 0; i < 4; i++) {
-		vec2 p = vec2(highlight_points[i].x * aspect, highlight_points[i].y) * screen_pixel_size;
-		p = floor(p/big_screen_pixel_size)*big_screen_pixel_size;
-		float r = highlight_radii[i] * big_screen_pixel_size.y;
-		c.a *= smoothstep(clamp(r-blur_r, 0.0, 1.0), clamp(r+blur_r, 0.0, 1.0), distance(vec2(uv.x*aspect,uv.y), p));
-	}
-	float dither = dither8x8(floor(UV/big_screen_pixel_size), c.a);
-	c = vec4(c.rgb, dither * back_color.a);
-	COLOR = c;
 }

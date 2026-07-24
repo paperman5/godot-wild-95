@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://claqn5mk6wn6q"]
 
 [ext_resource type="Script" uid="uid://dfl7qlwk53cou" path="res://game/tutorial_manager.gd" id="1_i5thv"]
-[ext_resource type="Material" uid="uid://k1pnxm20fna2" path="res://misc/new_shader_material.tres" id="3_f3stw"]
+[ext_resource type="Material" uid="uid://k1pnxm20fna2" path="res://shader/tutorial_highlight_material.tres" id="3_f3stw"]
 [ext_resource type="Theme" uid="uid://55ic7fa2pnu2" path="res://misc/styles.tres" id="3_sy43y"]
 
 [sub_resource type="Animation" id="Animation_f3stw"]

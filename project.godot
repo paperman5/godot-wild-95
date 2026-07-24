@@ -176,5 +176,5 @@ highlight_color={
 }
 total_scale={
 "type": "float",
-"value": 1.0
+"value": 3.0
 }

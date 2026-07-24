@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cg80er3ff08wp"]
 
-[ext_resource type="Shader" uid="uid://c2jovr0ycf1nt" path="res://misc/outline_shader_canvasgroup.gdshader" id="2_br1rg"]
+[ext_resource type="Shader" uid="uid://c2jovr0ycf1nt" path="res://shader/outline_shader_canvasgroup.gdshader" id="2_br1rg"]
 [ext_resource type="Texture2D" uid="uid://dnnwvh4hd6blh" path="res://food/Icecream-Sprites-Alt-Sheet.png" id="2_hebd0"]
 [ext_resource type="Texture2D" uid="uid://7pqhjovnht7d" path="res://food/Icecream-Sprites-Sheet.png" id="2_nuo3e"]
 [ext_resource type="Script" uid="uid://c440lb7pchno" path="res://food/ice_cream.gd" id="2_on6e3"]
