@@ -23,20 +23,19 @@ extends Control
 @onready var game_speed_label: Label = %GameSpeedLabel
 @onready var game_speed_slider: HSlider = %GameSpeedSlider
 
-var continue_load := ""
+var continue_load := "tutorial"
 
 func _ready() -> void:
 	MusicManager.set_music_lofi(false)
 	MusicManager.start_music(music)
-	if FileAccess.file_exists(GameManager.save_file_path):
+	var load_success = GameManager.load_save_file()
+	if load_success and GameManager.next_level != "tutorial":
 		continue_button.show()
-		clear_button.show()
-		var file = FileAccess.open(GameManager.save_file_path, FileAccess.READ)
-		continue_load = file.get_line()
-		file.close()
+		clear_button.disabled = false
+		continue_load = GameManager.next_level
 	else:
 		continue_button.hide()
-		clear_button.hide()
+		clear_button.disabled = true
 	credits_menu_root.hide()
 	options_menu_root.hide()
 	standard_menu_root.show()
@@ -52,12 +51,7 @@ func _ready() -> void:
 	symbols.set_pressed_no_signal(GameManager.use_alt_sprites)
 
 func _on_continue_pressed() -> void:
-	var to_load = ""
-	for key in GameManager.level_scenes.keys():
-		if GameManager.level_scenes[key] == continue_load:
-			to_load = key
-	if to_load != "":
-		GameManager.change_scene(to_load)
+	GameManager.change_scene(continue_load)
 
 
 func _on_new_game_pressed() -> void:
@@ -83,11 +77,11 @@ func _on_credit_meta_clicked(meta: Variant) -> void:
 
 
 func _on_clear_pressed() -> void:
-	if FileAccess.file_exists(GameManager.save_file_path):
+	if GameManager.save_file_exists():
 		DirAccess.remove_absolute(GameManager.save_file_path)
-		continue_load = "level_1"
+		continue_load = "tutorial"
 		continue_button.hide()
-		clear_button.hide()
+		clear_button.disabled = true
 
 
 func _on_mute_toggled(toggled_on: bool) -> void:
@@ -112,12 +106,14 @@ func _on_back_pressed() -> void:
 	standard_menu_root.show()
 	options_menu_root.hide()
 	credits_menu_root.hide()
+	GameManager.save(continue_load)
 
 
 func _on_options_pressed() -> void:
 	standard_menu_root.hide()
 	options_menu_root.show()
 	credits_menu_root.hide()
+	clear_button.disabled = not GameManager.save_file_exists()
 
 
 func _on_music_volume_slider_value_changed(value: float) -> void:

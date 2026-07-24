@@ -74,11 +74,38 @@ func save_won(next_level_name):
 	if next_level_name in ["level_1", "level_2", "level_3"]:
 		save(next_level_name)
 
+func save_file_exists() -> bool:
+	return FileAccess.file_exists(save_file_path)
+
 func save(scene):
-	if scene != "main_menu":
-		var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
-		save_file.store_line(level_scenes[scene])
-		save_file.close()
+	var data = {
+		"scene" : scene,
+		"skip_cutscenes" : skip_cutscenes,
+		"skip_tutorials" : TutorialManager.skip_tutorials,
+		"music_vol" : music_vol_adjustment,
+		"sfx_vol" : sfx_vol_adjustment,
+		"alt_symbols" : use_alt_sprites,
+		"hold_to_move" : hold_to_move,
+		"hold_speed" : hold_to_move_speed,
+		"game_speed" : Engine.time_scale
+	}
+	var save_str = JSON.stringify(data)
+	var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	save_file.store_line(save_str)
+	save_file.close()
+
+func load_save_file() -> bool:
+	if not save_file_exists():
+		return false
+	var save_file := FileAccess.open(save_file_path, FileAccess.READ)
+	var save_str := save_file.get_as_text()
+	var data = JSON.parse_string(save_str)
+	save_file.close()
+	if data == null or not data is Dictionary:
+		return false
+	for key in data.keys():
+		try_load_save_key(data, key)
+	return true
 
 func go_to_next_level():
 	if is_instance_valid(level):
@@ -90,3 +117,27 @@ func reload_current_scene():
 
 func change_scene_uid(uid : String):
 	get_tree().change_scene_to_file(uid)
+
+
+func try_load_save_key(save_data : Dictionary, key : String):
+	if not key in save_data:
+		return
+	match key:
+		'scene':
+			next_level = save_data[key]
+		'skip_cutscenes':
+			skip_cutscenes = save_data[key]
+		'skip_tutorials':
+			TutorialManager.skip_tutorials = save_data[key]
+		'music_vol':
+			music_vol_adjustment = save_data[key]
+		'sfx_vol':
+			sfx_vol_adjustment = save_data[key]
+		'alt_symbols':
+			use_alt_sprites = save_data[key]
+		'hold_to_move':
+			hold_to_move = save_data[key]
+		'hold_speed':
+			hold_to_move_speed = save_data[key]
+		'game_speed':
+			Engine.time_scale = save_data[key]

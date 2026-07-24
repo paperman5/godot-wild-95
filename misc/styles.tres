@@ -22,6 +22,20 @@ variation_opentype = {
 2003265652: 700
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqmj1"]
+bg_color = Color(0.32256, 0.2736, 0.36, 1)
+skew = Vector2(0.225, 0)
+border_width_left = 9
+border_width_right = 9
+border_color = Color(1, 0.9529412, 0.9882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.36078432)
+shadow_size = 9
+shadow_offset = Vector2(4.865, 2.79)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_of0g1"]
 bg_color = Color(0.99607843, 0.30980393, 0.6313726, 1)
 skew = Vector2(0.225, 0)
@@ -126,6 +140,7 @@ MainMenuButton1/base_type = &"Button"
 MainMenuButton1/colors/font_color = Color(1, 1, 1, 1)
 MainMenuButton1/font_sizes/font_size = 26
 MainMenuButton1/fonts/font = SubResource("FontVariation_7mn57")
+MainMenuButton1/styles/disabled = SubResource("StyleBoxFlat_kqmj1")
 MainMenuButton1/styles/hover = SubResource("StyleBoxFlat_of0g1")
 MainMenuButton1/styles/normal = SubResource("StyleBoxFlat_rv8kf")
 MainMenuButton1/styles/pressed = SubResource("StyleBoxFlat_a46he")
