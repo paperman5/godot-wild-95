@@ -120,7 +120,6 @@ stretch_mode = 5
 
 [node name="StandardMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=895917823]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="Logo" type="TextureRect" parent="AspectRatioContainer/StandardMenuRoot" unique_id=1819785673]
@@ -318,6 +317,7 @@ text = "Back"
 
 [node name="OptionsMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=30002277]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/OptionsMenuRoot" unique_id=1916411843]

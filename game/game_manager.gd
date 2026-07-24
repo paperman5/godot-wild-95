@@ -39,7 +39,9 @@ func _ready() -> void:
 	running_level_from_editor = get_tree().current_scene.name != "MainMenu"
 	default_music_vol_db = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
 	default_sfx_vol_db = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
-	#set_dialogic_filtering.call_deferred()
+	
+	if running_level_from_editor:
+		GameManager.load_save_file()
 
 func _process(_delta: float) -> void:
 	var cam = get_viewport().get_camera_2d()

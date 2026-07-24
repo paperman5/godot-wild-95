@@ -6,7 +6,6 @@ signal held_item_changed(new : FoodItem)
 const TILE_SIZE = 32
 
 @export var tile_move_speed := 0.1
-@export var move_hold_cooldown := 0.15
 @export var max_food_stack := 4
 @export var empty_bump_sfx : AudioStream
 
@@ -32,6 +31,13 @@ func _physics_process(_delta: float) -> void:
 	if moving:
 		moving = false
 		return
+	
+	var is_holding_move := false
+	for action in ['move_down', 'move_up', 'move_left', 'move_right']:
+		is_holding_move = is_holding_move or \
+			(Input.is_action_pressed(action) and \
+			not Input.is_action_just_pressed(action) and \
+			can_hold_move)
 	
 	var move_dir := Vector2.ZERO
 	var prev_anim_time := anim.current_animation_position
@@ -69,7 +75,7 @@ func _physics_process(_delta: float) -> void:
 					audio.stream = empty_bump_sfx
 					audio.play()
 			_create_move_tween(move_dir, true)
-		else:
+		elif result.is_empty():
 			true_pos += move_dir * TILE_SIZE
 			_create_move_tween(move_dir, false)
 
@@ -86,8 +92,8 @@ func _create_move_tween(dir : Vector2, bump : bool):
 	else:
 		move_tween.tween_property(self, "position", true_pos + TILE_SIZE*dir/2, move_time/2)
 		move_tween.chain().tween_property(self, "position", true_pos, move_time/2)
-	if GameManager.hold_to_move:
-		move_tween.tween_interval(move_hold_cooldown * Engine.time_scale)
+	if GameManager.hold_to_move and not bump:
+		move_tween.tween_interval(GameManager.hold_to_move_speed * Engine.time_scale)
 		move_tween.chain().tween_callback(func(): can_hold_move = true)
 	
 func holding_icecream() -> bool:
