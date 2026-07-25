@@ -37,10 +37,10 @@ func _ready() -> void:
 	# Seems like Apple devices might not like multiple screen-reading shaders
 	# when using the Compatibility renderer, so replace the highlight shader
 	# with one that doesn't use the screen texture (disables desaturation)
-	ios = OS.has_feature("web_ios") or OS.has_feature("web_macos")
-	#ios = true
-	if ios:
-		highlighter.material.shader = preload("uid://bp40gkccv2lpx")
+	# TESTING: Should be fixed with a BackBufferCopy node
+	#ios = OS.has_feature("web_ios") or OS.has_feature("web_macos")
+	#if ios:
+		#highlighter.material.shader = preload("uid://bp40gkccv2lpx")
 	skip_tutorials = GameManager.running_level_from_editor
 
 func highlight_nodes(nodes : Array, radii : Array, offsets : Array):
