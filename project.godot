@@ -13,8 +13,9 @@ config_version=5
 config/name="Graveyard Shift"
 run/main_scene="uid://6kyebxi5bbkj"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/bg_color=Color(0.16078432, 0.08627451, 0.33333334, 1)
 boot_splash/image="uid://d2461c2mfp7nk"
-config/icon="uid://dlx8vs8ydcha8"
+config/icon="uid://dcopdvvrt5b0r"
 
 [audio]
 
