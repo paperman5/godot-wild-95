@@ -39,7 +39,6 @@ script = ExtResource("1_ktqu2")
 
 [node name="WinMenu" type="Control" parent="." unique_id=867947904]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,7 +138,8 @@ theme_type_variation = &"ScoreDisplayWin"
 text = "$100"
 metadata/_edit_lock_ = true
 
-[node name="Retry" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=1333034494]
+[node name="WinRetry" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=1333034494]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -154,6 +154,7 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("5_k26xn")
 texture_hover = ExtResource("6_2e45m")
+texture_focused = ExtResource("6_2e45m")
 ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_lock_ = true
@@ -173,11 +174,13 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("7_vnokb")
 texture_hover = ExtResource("8_27ebs")
+texture_focused = ExtResource("8_27ebs")
 ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_lock_ = true
 
 [node name="NextLevel" type="TextureButton" parent="WinMenu/CenterContainer/TextureRect" unique_id=120644656]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -192,6 +195,7 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("9_vt6y8")
 texture_hover = ExtResource("10_ms11p")
+texture_focused = ExtResource("10_ms11p")
 ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_lock_ = true
@@ -298,7 +302,8 @@ theme_type_variation = &"ScoreDisplayWin"
 text = "$100"
 metadata/_edit_lock_ = true
 
-[node name="Retry" type="TextureButton" parent="LoseMenu/CenterContainer/TextureRect" unique_id=1758242363]
+[node name="LoseRetry" type="TextureButton" parent="LoseMenu/CenterContainer/TextureRect" unique_id=1758242363]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -313,6 +318,7 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("5_k26xn")
 texture_hover = ExtResource("6_2e45m")
+texture_focused = ExtResource("6_2e45m")
 ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_lock_ = true
@@ -332,12 +338,14 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("7_vnokb")
 texture_hover = ExtResource("8_27ebs")
+texture_focused = ExtResource("8_27ebs")
 ignore_texture_size = true
 stretch_mode = 4
 metadata/_edit_lock_ = true
 
 [node name="BeginMenu" type="Control" parent="." unique_id=1872491795]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -403,7 +411,8 @@ texture = ExtResource("16_tonny")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Begin" type="TextureButton" parent="BeginMenu/Control/TextureRect" unique_id=567113595]
+[node name="BeginButton" type="TextureButton" parent="BeginMenu/Control/TextureRect" unique_id=567113595]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -418,6 +427,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("17_wya3k")
 texture_hover = ExtResource("18_bf2ym")
+texture_focused = ExtResource("18_bf2ym")
 ignore_texture_size = true
 stretch_mode = 5
 metadata/_edit_lock_ = true
@@ -437,6 +447,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("19_ydurp")
 texture_hover = ExtResource("20_2upno")
+texture_focused = ExtResource("20_2upno")
 ignore_texture_size = true
 stretch_mode = 5
 metadata/_edit_lock_ = true
@@ -506,6 +517,7 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="Resume" type="TextureButton" parent="PauseMenu/TextureRect2" unique_id=1622978054]
+unique_name_in_owner = true
 texture_filter = 2
 layout_mode = 1
 anchors_preset = 5
@@ -518,6 +530,7 @@ offset_bottom = 234.0
 grow_horizontal = 2
 texture_normal = ExtResource("5_7jb3i")
 texture_hover = ExtResource("6_7jb3i")
+texture_focused = ExtResource("6_7jb3i")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -534,6 +547,7 @@ offset_bottom = 410.5
 grow_horizontal = 2
 texture_normal = ExtResource("6_031gt")
 texture_hover = ExtResource("8_031gt")
+texture_focused = ExtResource("8_031gt")
 ignore_texture_size = true
 stretch_mode = 4
 
@@ -562,12 +576,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.7411765)
 
-[connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/WinRetry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="WinMenu/CenterContainer/TextureRect/NextLevel" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/LoseRetry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="LoseMenu/CenterContainer/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="BeginMenu/Control/TextureRect/Begin" to="." method="_on_begin_resume_pressed"]
+[connection signal="pressed" from="BeginMenu/Control/TextureRect/BeginButton" to="." method="_on_begin_resume_pressed"]
 [connection signal="pressed" from="BeginMenu/Control/TextureRect/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/Resume" to="." method="_on_begin_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/TextureRect2/MainMenu" to="." method="_on_main_menu_pressed"]

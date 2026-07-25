@@ -22,6 +22,8 @@ extends Control
 @onready var hold_speed_slider: HSlider = %HoldSpeedSlider
 @onready var game_speed_label: Label = %GameSpeedLabel
 @onready var game_speed_slider: HSlider = %GameSpeedSlider
+@onready var credits_back: Button = %CreditsBack
+@onready var options_back: Button = %OptionsBack
 
 var continue_load := "tutorial"
 
@@ -31,10 +33,12 @@ func _ready() -> void:
 	var load_success = GameManager.load_save_file()
 	if load_success and GameManager.next_level != "tutorial":
 		continue_button.show()
+		continue_button.grab_focus(true)
 		clear_button.disabled = false
 		continue_load = GameManager.next_level
 	else:
 		continue_button.hide()
+		newgame_button.grab_focus(true)
 		clear_button.disabled = true
 	credits_menu_root.hide()
 	options_menu_root.hide()
@@ -100,6 +104,7 @@ func _on_credits_pressed() -> void:
 	standard_menu_root.hide()
 	options_menu_root.hide()
 	credits_menu_root.show()
+	credits_back.grab_focus(true)
 
 
 func _on_back_pressed() -> void:
@@ -107,6 +112,10 @@ func _on_back_pressed() -> void:
 	options_menu_root.hide()
 	credits_menu_root.hide()
 	GameManager.save(continue_load)
+	if continue_button.visible:
+		continue_button.grab_focus(true)
+	elif newgame_button.visible:
+		newgame_button.grab_focus(true)
 
 
 func _on_options_pressed() -> void:
@@ -114,6 +123,7 @@ func _on_options_pressed() -> void:
 	options_menu_root.show()
 	credits_menu_root.hide()
 	clear_button.disabled = not GameManager.save_file_exists()
+	skip_tutorials.grab_focus(true)
 
 
 func _on_music_volume_slider_value_changed(value: float) -> void:

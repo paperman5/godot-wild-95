@@ -10,7 +10,11 @@ extends Control
 @onready var background_dimmer: ColorRect = %BackgroundDimmer
 @onready var score_label_win: Label = %ScoreLabelWin
 @onready var score_label_lose: Label = %ScoreLabelLose
-
+@onready var win_retry: TextureButton = %WinRetry
+@onready var win_next_level: TextureButton = %NextLevel
+@onready var lose_retry: TextureButton = %LoseRetry
+@onready var begin_button: TextureButton = %BeginButton
+@onready var resume: TextureButton = %Resume
 
 func _ready() -> void:
 	show()
@@ -20,18 +24,22 @@ func _ready() -> void:
 func show_win():
 	hide_all()
 	win_menu.show()
+	win_next_level.grab_focus()
 
 func show_lose():
 	hide_all()
 	lose_menu.show()
+	lose_retry.grab_focus()
 
 func show_begin():
 	hide_all()
 	begin_menu.show()
+	begin_button.grab_focus()
 
 func show_pause():
 	hide_all()
 	pause_menu.show()
+	resume.grab_focus()
 
 func hide_all():
 	for c in get_children():
