@@ -19,4 +19,5 @@ func _on_skip_pressed() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton or event is InputEventKey:
-		skip.show()
+		skip.show.call_deferred()
+		skip.grab_focus.call_deferred(true)
