@@ -120,6 +120,7 @@ stretch_mode = 5
 
 [node name="StandardMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=895917823]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Logo" type="TextureRect" parent="AspectRatioContainer/StandardMenuRoot" unique_id=1819785673]
@@ -318,7 +319,6 @@ text = "Back"
 
 [node name="OptionsMenuRoot" type="Control" parent="AspectRatioContainer" unique_id=30002277]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/OptionsMenuRoot" unique_id=1916411843]
@@ -389,6 +389,8 @@ text = "100%"
 [node name="MusicVolumeSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=1839913465]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"OptionsSlider"
 max_value = 125.0
 step = 5.0
 value = 100.0
@@ -422,6 +424,8 @@ text = "100%"
 [node name="SFXVolumeSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=563133295]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"OptionsSlider"
 max_value = 125.0
 step = 5.0
 value = 100.0
@@ -500,6 +504,8 @@ text = "150%"
 [node name="HoldSpeedSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer4" unique_id=608241231]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"OptionsSlider"
 min_value = 100.0
 max_value = 200.0
 step = 5.0
@@ -535,6 +541,8 @@ text = "100%"
 [node name="GameSpeedSlider" type="HSlider" parent="AspectRatioContainer/OptionsMenuRoot/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=343351792]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_7k2rn")
+theme_type_variation = &"OptionsSlider"
 min_value = 50.0
 max_value = 125.0
 step = 5.0

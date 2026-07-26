@@ -84,11 +84,27 @@ variation_opentype = {
 2003265652: 550
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73fth"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ofpo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b218"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4ajl"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxoi5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wpu2j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t0bhc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oupij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uf4am"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujf18"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_of0g1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a46he"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqmj1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74k6f"]
 
 [sub_resource type="FontVariation" id="FontVariation_j3pel"]
 base_font = ExtResource("1_hijok")
@@ -145,16 +161,30 @@ MainMenuButton1/styles/hover = SubResource("StyleBoxFlat_of0g1")
 MainMenuButton1/styles/normal = SubResource("StyleBoxFlat_rv8kf")
 MainMenuButton1/styles/pressed = SubResource("StyleBoxFlat_a46he")
 MainMenuCheckbox/base_type = &"CheckBox"
+MainMenuCheckbox/colors/font_color = Color(1, 1, 1, 1)
+MainMenuCheckbox/colors/font_hover_color = Color(0.83975405, 0.83975405, 0.839754, 1)
+MainMenuCheckbox/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuCheckbox/constants/outline_size = 3
 MainMenuCheckbox/font_sizes/font_size = 21
 MainMenuCheckbox/fonts/font = SubResource("FontVariation_wb3uj")
-MainMenuCheckbox/styles/hover = SubResource("StyleBoxEmpty_73fth")
-MainMenuCheckbox/styles/normal = SubResource("StyleBoxEmpty_7b218")
-MainMenuCheckbox/styles/pressed = SubResource("StyleBoxEmpty_gxoi5")
+MainMenuCheckbox/styles/disabled = SubResource("StyleBoxEmpty_6ofpo")
+MainMenuCheckbox/styles/disabled_mirrored = SubResource("StyleBoxEmpty_n4ajl")
+MainMenuCheckbox/styles/focus = SubResource("StyleBoxEmpty_wpu2j")
+MainMenuCheckbox/styles/hover = SubResource("StyleBoxEmpty_t0bhc")
+MainMenuCheckbox/styles/hover_mirrored = SubResource("StyleBoxEmpty_oupij")
+MainMenuCheckbox/styles/hover_pressed = SubResource("StyleBoxEmpty_uf4am")
+MainMenuCheckbox/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ujf18")
+MainMenuCheckbox/styles/normal = SubResource("StyleBoxEmpty_of0g1")
+MainMenuCheckbox/styles/normal_mirrored = SubResource("StyleBoxEmpty_a46he")
+MainMenuCheckbox/styles/pressed = SubResource("StyleBoxEmpty_kqmj1")
+MainMenuCheckbox/styles/pressed_mirrored = SubResource("StyleBoxEmpty_74k6f")
 MainMenuRTL/base_type = &"RichTextLabel"
 MainMenuRTL/colors/default_color = Color(1, 1, 1, 1)
 OptionsCategoryLabel/base_type = &"RichTextLabel"
+OptionsCategoryLabel/constants/outline_size = 3
 OptionsCategoryLabel/font_sizes/normal_font_size = 30
 OptionsCategoryLabel/fonts/normal_font = SubResource("FontVariation_j3pel")
+OptionsSlider/base_type = &"HSlider"
 ScoreDisplay/base_type = &"Label"
 ScoreDisplay/colors/font_color = Color(0, 0, 0, 1)
 ScoreDisplay/constants/line_spacing = -20
@@ -168,6 +198,7 @@ ScoreDisplayWin/constants/outline_size = 16
 ScoreDisplayWin/font_sizes/font_size = 54
 ScoreDisplayWin/fonts/font = SubResource("FontVariation_ievrn")
 SliderLabel/base_type = &"Label"
+SliderLabel/constants/outline_size = 3
 SliderLabel/font_sizes/font_size = 20
 SliderLabel/fonts/font = SubResource("FontVariation_6vmua")
 TutorialText/base_type = &"RichTextLabel"
